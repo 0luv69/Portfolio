@@ -1,0 +1,373 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic SEO -->
+    <title>Rujal Baniya - Portfolio | 0luv69</title>
+    <meta
+      name="description"
+      content="Explore the portfolio of 0luv60, showcasing projects, skills, and contact information. Discover innovative solutions in web development, photo editing, cybersecurity, and more."
+    />
+    <meta
+      name="keywords"
+      content="rujal baniya, 0luv60, Web Development, Projects, Python, OpenCV, Django, Cybersecurity, Hackathon"
+    />
+    <meta name="author" content="0luv69" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="https://avatars.githubusercontent.com/u/119644775?v=4"
+      type="image/x-icon"
+    />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rujal Baniya",
+        "url": "https://www.rujalbaniya.com.np",
+        "sameAs": ["https://github.com/0luv69"],
+        "jobTitle": "Web Developer",
+
+        "description": "Explore the portfolio of Your Name, showcasing projects, skills, and contact information. Discover innovative solutions in web development, photo editing, cybersecurity, and more."
+      }
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="bg-gray-900 text-gray-100">
+    <!-- Sidebar -->
+    <nav
+      class="hidden lg:flex lg:flex-col lg:w-24 bg-gray-800 fixed top-0 left-0 h-full justify-center items-center space-y-6"
+    >
+      <img
+        src="https://avatars.githubusercontent.com/u/119644775?v=4"
+        alt="Profile Picture"
+        class="rounded-full w-20 h-20 object-cover"
+      />
+      <a
+        href="#"
+        class="w-full text-center py-3 text-green-400 hover:text-white"
+        ><i class="fas fa-home text-2xl"></i>
+        <p class="text-xs mt-1">HOME</p></a
+      >
+      <a
+        href="#about"
+        class="w-full text-center py-3 text-gray-400 hover:text-green-400"
+        ><i class="fas fa-user text-2xl"></i>
+        <p class="text-xs mt-1">ABOUT</p></a
+      >
+      <a
+        href="#projects"
+        class="w-full text-center py-3 text-gray-400 hover:text-green-400"
+        ><i class="fas fa-eye text-2xl"></i>
+        <p class="text-xs mt-1">PROJECTS</p></a
+      >
+      <a
+        href="#contact"
+        class="w-full text-center py-3 text-gray-400 hover:text-green-400"
+        ><i class="fas fa-envelope text-2xl"></i>
+        <p class="text-xs mt-1">CONTACT</p></a
+      >
+    </nav>
+
+    <!-- Navbar for Small Screens -->
+    <div class="lg:hidden w-full bg-gray-800 text-white fixed bottom-0 z-50">
+      <nav class="flex justify-around py-3">
+        <a href="#" class="text-white hover:text-teal-400">
+          <i class="fas fa-home text-2xl"></i>
+        </a>
+        <a href="#about" class="text-white hover:text-teal-400">
+          <i class="fas fa-user text-2xl"></i>
+        </a>
+        <a href="#projects" class="text-white hover:text-teal-400">
+          <i class="fas fa-eye text-2xl"></i>
+        </a>
+        <a href="#contact" class="text-white hover:text-teal-400">
+          <i class="fas fa-envelope text-2xl"></i>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="lg:ml-24 p-8 pb-16">
+      <!-- Home Section -->
+      <section id="home" class="text-center">
+        <h1 class="text-4xl lg:text-6xl font-bold text-green-400">
+          I'm Rujal Baniya.
+        </h1>
+        <p class="text-lg lg:text-xl mt-4">
+          Python programmer, Web Developer, & Penetration Tester.
+        </p>
+        <img
+          src="https://i.ibb.co/Hz0RS2b/me.jpg"
+          alt="Rujal Baniya"
+          class="mt-6 mx-auto rounded-lg shadow-lg"
+          width="768"
+          height="377"
+        />
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="mt-16 lg:mt-32 flex flex-col text-center">
+        <h2 class="text-3xl lg:text-4xl font-bold text-green-400">About Me</h2>
+        <p class="mt-4 text-center leading-relaxed px-10">
+          I am an enthusiastic and dedicated software developer with a passion
+          for Python programming, web development, and cybersecurity. I thrive
+          on challenges and continuously seek opportunities to apply my skills
+          in creative and impactful ways. I have a solid foundation in both
+          frontend and backend technologies and am eager to contribute to
+          innovative projects.
+        </p>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="mt-16 lg:mt-32">
+        <h3 class="text-3xl lg:text-4xl font-bold text-green-400">
+          Tech Stack
+        </h3>
+        <div class="mt-8">
+          <h3 class="text-2xl font-bold text-green-400">My Skills</h3>
+          <div class="mt-4">
+            <p class="text-lg font-semibold">Python</p>
+            <div class="w-full bg-gray-700 rounded-full h-2.5">
+              <div
+                class="bg-green-400 h-2.5 rounded-full"
+                style="width: 95%"
+              ></div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <p class="text-lg font-semibold">Cyber Security</p>
+            <div class="w-full bg-gray-700 rounded-full h-2.5">
+              <div
+                class="bg-green-400 h-2.5 rounded-full"
+                style="width: 85%"
+              ></div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <p class="text-lg font-semibold">Web Development</p>
+            <div class="w-full bg-gray-700 rounded-full h-2.5">
+              <div
+                class="bg-green-400 h-2.5 rounded-full"
+                style="width: 80%"
+              ></div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <p class="text-lg font-semibold">Django</p>
+            <div class="w-full bg-gray-700 rounded-full h-2.5">
+              <div
+                class="bg-green-400 h-2.5 rounded-full"
+                style="width: 75%"
+              ></div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <p class="text-lg font-semibold">JavaScript</p>
+            <div class="w-full bg-gray-700 rounded-full h-2.5">
+              <div
+                class="bg-green-400 h-2.5 rounded-full"
+                style="width: 70%"
+              ></div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <p class="text-lg font-semibold">Git & GitHub</p>
+            <div class="w-full bg-gray-700 rounded-full h-2.5">
+              <div
+                class="bg-green-400 h-2.5 rounded-full"
+                style="width: 90%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="mt-16 lg:mt-32">
+        <h2 class="text-3xl lg:text-4xl font-bold text-green-400">Projects</h2>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div
+            class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out"
+          >
+            <h3 class="text-2xl font-semibold text-green-400">
+              Hackathon Winner - Incodeble IICQuest
+            </h3>
+            <p class="mt-2 text-gray-300">
+              Won the Incodeble IICQuest hackathon by developing a
+              groundbreaking project focused on cybersecurity enhancements.
+            </p>
+            <a
+              href="#"
+              class="text-green-400 hover:underline mt-4 block"
+              target="_blank"
+              >View Project</a
+            >
+          </div>
+          <div
+            class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out"
+          >
+            <h3 class="text-2xl font-semibold text-green-400">Photo Editor</h3>
+            <p class="mt-2 text-gray-300">
+              Created an advanced photo editor with Python and OpenCV, featuring
+              multiple filters, cropping, and image enhancement capabilities.
+            </p>
+            <a
+              href="https://github.com/0luv69/photo-editor"
+              class="text-green-400 hover:underline mt-4 block"
+              target="_blank"
+              >View Project</a
+            >
+          </div>
+          <div
+            class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out"
+          >
+            <h3 class="text-2xl font-semibold text-green-400">My Portfolio</h3>
+            <p class="mt-2 text-gray-300">
+              Designed and developed my personal portfolio website using Django,
+              showcasing my skills, projects, and experience.
+            </p>
+            <a
+              href="https://github.com/0luv69/portfolio"
+              class="text-green-400 hover:underline mt-4 block"
+              target="_blank"
+              >View Project</a
+            >
+          </div>
+          <!-- New Project 1 -->
+          <div
+            class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out"
+          >
+            <h3 class="text-2xl font-semibold text-green-400">MCQCHAMPS</h3>
+            <p class="mt-2 text-gray-300">
+              Developed an interactive Multiple Choice Questions (MCQ) platform
+              that allows users to test their knowledge on various subjects with
+              real-time feedback.
+            </p>
+            <a
+              href="https://github.com/0luv69/MCQCHAMPS"
+              class="text-green-400 hover:underline mt-4 block"
+              target="_blank"
+              >View Project</a
+            >
+          </div>
+          <!-- New Project 2 -->
+          <div
+            class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out"
+          >
+            <h3 class="text-2xl font-semibold text-green-400">Ideathon_Nbc</h3>
+            <p class="mt-2 text-gray-300">
+              Participated in Ideathon Nbc, contributing innovative ideas and
+              collaborating on projects aimed at solving real-world problems.
+            </p>
+            <a
+              href="https://github.com/0luv69/Ideathon_Nbc"
+              class="text-green-400 hover:underline mt-4 block"
+              target="_blank"
+              >View Project</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="mt-16 lg:mt-32">
+        <h2 class="text-3xl lg:text-4xl font-bold text-green-400">
+          Contact Me
+        </h2>
+        <p class="mt-4 text-lg">Let's get in touch. Send me a message:</p>
+        <form class="mt-8 space-y-4" method="post" action="/contact/">
+          {% csrf_token %}
+          <input
+            class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg"
+            type="text"
+            name="name"
+            placeholder="Name"
+            required
+          />
+          <input
+            class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg"
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+          <input
+            class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg"
+            type="text"
+            name="subject"
+            placeholder="Subject"
+            required
+          />
+          <textarea
+            class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg"
+            placeholder="Message"
+            name="message"
+            required
+          ></textarea>
+          <button
+            class="w-full p-3 bg-green-400 text-gray-900 rounded-lg font-bold hover:bg-green-500"
+          >
+            SEND MESSAGE
+          </button>
+        </form>
+      </section>
+    </div>
+
+    <script>
+      // Function to add 'active' class to the navbar links based on section in view
+      document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll("nav a");
+
+        const options = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.5,
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              navLinks.forEach((link) => {
+                link.classList.remove("text-green-400");
+                link.classList.add("text-gray-400");
+                if (
+                  link.getAttribute("href").substring(1) === entry.target.id
+                ) {
+                  link.classList.remove("text-gray-400");
+                  link.classList.add("text-green-400");
+                }
+              });
+            }
+          });
+        }, options);
+
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      });
+    </script>
+  </body>
+</html>
