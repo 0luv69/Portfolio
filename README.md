@@ -6,5 +6,7 @@ Link: https://www.rujalbaniya.com.np/
 
 ### Normal over view
 -Used Django for back end
+
 -Used Tailwind for css 
+
 -Used versal to host the site
