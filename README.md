@@ -7,3 +7,4 @@ Link: https://www.rujalbaniya.com.np/
 
 Used Django for back end
 Used Tailwind for css 
+Used versal to host the site
