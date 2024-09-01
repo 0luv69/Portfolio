@@ -6,3 +6,4 @@ Link: https://www.rujalbaniya.com.np/
 
 
 Used Django for back end
+Used Tail
