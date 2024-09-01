@@ -1,6 +1,6 @@
 Link: https://www.rujalbaniya.com.np/
 
-# Portfolio oF mine
+# Portfolio of Mine
 
 -This website has to deal with the real being of me 
 
