@@ -6,7 +6,7 @@ Link: https://www.rujalbaniya.com.np/
 
 -I am related to field of Python programming, web development, and cybersecurity
 
-### Normal over view
+### Normal overview
 -Used Django for back end
 
 -Used Tailwind for css 
