@@ -25,4 +25,5 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('contact/', views.contact, name='contact'),
+    # path('googleee23894d0f67f069.html/', views.about, name='about'),
 ]
