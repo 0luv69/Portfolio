@@ -12,3 +12,6 @@ Link: https://www.rujalbaniya.com.np/
 -Used Tailwind for css 
 
 -Used versal to host the site
+
+
+Thanks for the visit......
