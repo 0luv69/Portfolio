@@ -8,7 +8,8 @@ def home(request):
 
     return render(request, 'pages/index.html', {})
 
-
+def test(request):
+    return render(request, 'pages/test.html', {})
 
 def contact(request):
     if request.method == 'POST':

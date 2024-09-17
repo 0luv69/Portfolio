@@ -91,7 +91,7 @@ if USE_SQLITE:
     }
 }
 
-if PRODUCTION_ENV:
+elif PRODUCTION_ENV:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
