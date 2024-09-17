@@ -1,203 +1,176 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <link
+      rel="icon"
+      href="{% static 'img/logo.png' %}"
+      type="image/x-icon"
+    />
 
-<head>
-    <title>Rujal Baniya - Portfolio | 0luv69</title>
-    <meta name="description" content="Rujal Baniya - A passionate software developer specializing in Python, cybersecurity, and web development. Has done projects in tkinter, Django, won Hackathon Ideathon, and specializes in cybersecurity and more." />
-    <meta name="keywords" content="rujal baniya, Rujal , 0luv60, Web Development, Projects, Python, OpenCV, Django, Cybersecurity, Hackathon winner Nepal, Ideathon, MCQCHAMPS developer, Nepali, Nepal" />
-    <meta name="author" content="Rujal Baniya aka 0luv69" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="https://source.unsplash.com/random/24x24?technology" type="image/x-icon" />
+<script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Font Awesome & Google Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #1a202c;
-            color: #e2e8f0;
-        }
-
-        h1, h2, h3 {
-            color: #68d391;
-        }
-
-        .navbar a:hover {
-            color: #68d391;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .skills-progress-bar {
-            background-color: #2d3748;
-            border-radius: 1rem;
-        }
-
-        .skills-progress-bar-inner {
-            background-color: #68d391;
-            height: 0.625rem;
-            border-radius: 1rem;
-        }
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
     </style>
-</head>
 
-<body class="bg-gray-900 text-gray-100">
+  </head>
 
-    <!-- Sidebar -->
-    <nav class="hidden lg:flex lg:flex-col lg:w-24 bg-gray-800 fixed top-0 left-0 h-full justify-center items-center space-y-6">
-        <img src="https://source.unsplash.com/random/80x80?profile" alt="Profile Picture" class="rounded-full w-20 h-20 object-cover" />
-        <a href="#home" class="w-full text-center py-3 text-green-400"><i class="fas fa-home text-2xl"></i><p class="text-xs mt-1">HOME</p></a>
-        <a href="#about" class="w-full text-center py-3 text-gray-400 hover:text-green-400"><i class="fas fa-user text-2xl"></i><p class="text-xs mt-1">ABOUT</p></a>
-        <a href="#projects" class="w-full text-center py-3 text-gray-400 hover:text-green-400"><i class="fas fa-eye text-2xl"></i><p class="text-xs mt-1">PROJECTS</p></a>
-        <a href="#contact" class="w-full text-center py-3 text-gray-400 hover:text-green-400"><i class="fas fa-envelope text-2xl"></i><p class="text-xs mt-1">CONTACT</p></a>
-    </nav>
 
-    <!-- Navbar for Small Screens -->
-    <div class="lg:hidden w-full bg-gray-800 text-white fixed bottom-0 z-50">
-        <nav class="flex justify-around py-3">
-            <a href="#home" class="text-white hover:text-green-400"><i class="fas fa-home text-2xl"></i></a>
-            <a href="#about" class="text-white hover:text-green-400"><i class="fas fa-user text-2xl"></i></a>
-            <a href="#projects" class="text-white hover:text-green-400"><i class="fas fa-eye text-2xl"></i></a>
-            <a href="#contact" class="text-white hover:text-green-400"><i class="fas fa-envelope text-2xl"></i></a>
-        </nav>
+  <body>
+            <!-- Projects Section -->
+<section id="projects" class="mt-16 lg:mt-32">
+    <h2 class="text-3xl lg:text-4xl font-bold text-green-400">Projects</h2>
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <!-- Hackathon Winner Project -->
+        <div class="w-full px-4">
+            <div class="relative mb-12">
+                <div class="overflow-hidden rounded-[10px]">
+                    <img
+                        src="https://dummyimage.com/600x400/4a5568/ffffff&text=Hackathon+Project"
+                        alt="Hackathon Winner"
+                        class="w-full"
+                    />
+                </div>
+                <div class="relative z-10 mx-7 -mt-20 rounded-lg bg-white dark:bg-gray-800 py-[34px] px-3 text-center shadow-portfolio dark:shadow-box-dark">
+                    <span class="text-green-400 mb-2 block text-sm font-medium">
+                        Cybersecurity
+                    </span>
+                    <h3 class="text-dark dark:text-white mb-5 text-xl font-bold">
+                        Hackathon Winner - Incodeble IICQuest
+                    </h3>
+                    <a
+                        href="#"
+                        class="text-gray-600 dark:text-gray-300 hover:border-green-400 hover:bg-green-400 inline-block rounded-md border border-gray-300 dark:border-gray-600 py-[10px] px-7 text-sm font-medium transition hover:text-white"
+                        target="_blank"
+                    >
+                        View Project
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo Editor Project -->
+        <div class="w-full px-4">
+            <div class="relative mb-12">
+                <div class="overflow-hidden rounded-[10px]">
+                    <img
+                        src="https://dummyimage.com/600x400/4a5568/ffffff&text=Photo+Editor"
+                        alt="Photo Editor"
+                        class="w-full"
+                    />
+                </div>
+                <div class="relative z-10 mx-7 -mt-20 rounded-lg bg-white dark:bg-gray-800 py-[34px] px-3 text-center shadow-portfolio dark:shadow-box-dark">
+                    <span class="text-green-400 mb-2 block text-sm font-medium">
+                        Python & OpenCV
+                    </span>
+                    <h3 class="text-dark dark:text-white mb-5 text-xl font-bold">
+                        Photo Editor
+                    </h3>
+                    <a
+                        href="https://github.com/0luv69/photo-editor"
+                        class="text-gray-600 dark:text-gray-300 hover:border-green-400 hover:bg-green-400 inline-block rounded-md border border-gray-300 dark:border-gray-600 py-[10px] px-7 text-sm font-medium transition hover:text-white"
+                        target="_blank"
+                    >
+                        View Project
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio Project -->
+        <div class="w-full px-4">
+            <div class="relative mb-12">
+                <div class="overflow-hidden rounded-[10px]">
+                    <img
+                        src="https://dummyimage.com/600x400/4a5568/ffffff&text=My+Portfolio"
+                        alt="My Portfolio"
+                        class="w-full"
+                    />
+                </div>
+                <div class="relative z-10 mx-7 -mt-20 rounded-lg bg-white dark:bg-gray-800 py-[34px] px-3 text-center shadow-portfolio dark:shadow-box-dark">
+                    <span class="text-green-400 mb-2 block text-sm font-medium">
+                        Django
+                    </span>
+                    <h3 class="text-dark dark:text-white mb-5 text-xl font-bold">
+                        My Portfolio
+                    </h3>
+                    <a
+                        href="https://github.com/0luv69/portfolio"
+                        class="text-gray-600 dark:text-gray-300 hover:border-green-400 hover:bg-green-400 inline-block rounded-md border border-gray-300 dark:border-gray-600 py-[10px] px-7 text-sm font-medium transition hover:text-white"
+                        target="_blank"
+                    >
+                        View Project
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MCQCHAMPS Project -->
+        <div class="w-full px-4">
+            <div class="relative mb-12">
+                <div class="overflow-hidden rounded-[10px]">
+                    <img
+                        src="https://dummyimage.com/600x400/4a5568/ffffff&text=MCQCHAMPS"
+                        alt="MCQCHAMPS"
+                        class="w-full"
+                    />
+                </div>
+                <div class="relative z-10 mx-7 -mt-20 rounded-lg bg-white dark:bg-gray-800 py-[34px] px-3 text-center shadow-portfolio dark:shadow-box-dark">
+                    <span class="text-green-400 mb-2 block text-sm font-medium">
+                        Interactive Platform
+                    </span>
+                    <h3 class="text-dark dark:text-white mb-5 text-xl font-bold">
+                        MCQCHAMPS
+                    </h3>
+                    <a
+                        href="https://github.com/0luv69/MCQCHAMPS"
+                        class="text-gray-600 dark:text-gray-300 hover:border-green-400 hover:bg-green-400 inline-block rounded-md border border-gray-300 dark:border-gray-600 py-[10px] px-7 text-sm font-medium transition hover:text-white"
+                        target="_blank"
+                    >
+                        View Project
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ideathon_Nbc Project -->
+        <div class="w-full px-4">
+            <div class="relative mb-12">
+                <div class="overflow-hidden rounded-[10px]">
+                    <img
+                        src="https://dummyimage.com/600x400/4a5568/ffffff&text=Ideathon_Nbc"
+                        alt="Ideathon_Nbc"
+                        class="w-full"
+                    />
+                </div>
+                <div class="relative z-10 mx-7 -mt-20 rounded-lg bg-white dark:bg-gray-800 py-[34px] px-3 text-center shadow-portfolio dark:shadow-box-dark">
+                    <span class="text-green-400 mb-2 block text-sm font-medium">
+                        Innovation
+                    </span>
+                    <h3 class="text-dark dark:text-white mb-5 text-xl font-bold">
+                        Ideathon_Nbc
+                    </h3>
+                    <a
+                        href="https://github.com/0luv69/Ideathon_Nbc"
+                        class="text-gray-600 dark:text-gray-300 hover:border-green-400 hover:bg-green-400 inline-block rounded-md border border-gray-300 dark:border-gray-600 py-[10px] px-7 text-sm font-medium transition hover:text-white"
+                        target="_blank"
+                    >
+                        View Project
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
 
-    <!-- Main Content -->
-    <div class="lg:ml-24 p-8 pb-16">
-        <!-- Home Section -->
-        <section id="home" class="text-center">
-            <h1 class="text-5xl lg:text-6xl font-bold text-green-400">I'm Rujal Baniya</h1>
-            <p class="text-xl lg:text-2xl mt-4">Python Programmer, Web Developer, & Penetration Tester.</p>
-            <img src="https://source.unsplash.com/random/768x377?developer" alt="Rujal Baniya" class="mt-6 mx-auto rounded-lg shadow-lg" width="768" height="377" />
-        </section>
 
-        <!-- About Section -->
-        <section id="about" class="mt-16 lg:mt-32 text-center">
-            <h2 class="section-title">About Me</h2>
-            <p class="leading-relaxed px-10">I am an enthusiastic software developer with a passion for Python, web development, and cybersecurity. I have experience in both frontend and backend technologies.</p>
-
-            <!-- Experience, Education, Interests -->
-            <div class="mt-8 flex flex-col lg:flex-row justify-center items-center space-y-8 lg:space-y-0 lg:space-x-16">
-                <div>
-                    <h3 class="text-2xl font-bold text-green-400">Experience</h3>
-                    <p class="mt-4 text-lg">Developed web applications using Django and Flask, and created desktop applications with Python and Tkinter.</p>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-bold text-green-400">Education</h3>
-                    <p class="mt-4 text-lg">Currently pursuing a Bachelor's in Computer Science. Completed various online certifications in programming and cybersecurity.</p>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-bold text-green-400">Interests</h3>
-                    <p class="mt-4 text-lg">I enjoy exploring new technologies, contributing to open-source, and solving complex problems with innovative solutions.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="mt-16 lg:mt-32">
-            <h3 class="section-title">Tech Stack</h3>
-            <div class="mt-8 space-y-6">
-                <div>
-                    <p class="text-lg font-semibold">Python</p>
-                    <div class="skills-progress-bar">
-                        <div class="skills-progress-bar-inner" style="width: 95%;"></div>
-                    </div>
-                </div>
-                <div>
-                    <p class="text-lg font-semibold">Cyber Security</p>
-                    <div class="skills-progress-bar">
-                        <div class="skills-progress-bar-inner" style="width: 85%;"></div>
-                    </div>
-                </div>
-                <div>
-                    <p class="text-lg font-semibold">Web Development</p>
-                    <div class="skills-progress-bar">
-                        <div class="skills-progress-bar-inner" style="width: 80%;"></div>
-                    </div>
-                </div>
-                <div>
-                    <p class="text-lg font-semibold">Django</p>
-                    <div class="skills-progress-bar">
-                        <div class="skills-progress-bar-inner" style="width: 75%;"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="mt-16 lg:mt-32">
-            <h2 class="section-title">Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
-                    <h3 class="text-2xl font-semibold text-green-400">Hackathon Winner - Incodeble IICQuest</h3>
-                    <p class="mt-2 text-gray-300">Won the Incodeble IICQuest hackathon by developing a project focused on cybersecurity enhancements.</p>
-                    <a href="#" class="text-green-400 hover:underline mt-4 block">View Project</a>
-                </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
-                    <h3 class="text-2xl font-semibold text-green-400">Photo Editor</h3>
-                    <p class="mt-2 text-gray-300">Created a photo editor using Python and OpenCV with image enhancement features.</p>
-                    <a href="https://github.com/0luv69/photo-editor" class="text-green-400 hover:underline mt-4 block">View Project</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="mt-16 lg:mt-32">
-            <h2 class="section-title">Contact Me</h2>
-            <p class="mt-4 text-lg">Let's get in touch. Send me a message:</p>
-            <form class="mt-8 space-y-4" method="post" action="/contact/">
-                <input class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg" type="text" name="name" placeholder="Name" required />
-                <input class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg" type="email" name="email" placeholder="Email" required />
-                <input class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg" type="text" name="subject" placeholder="Subject" required />
-                <textarea class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg" name="message" placeholder="Message" required></textarea>
-                <button class="w-full p-3 bg-green-400 text-gray-900 rounded-lg font-bold hover:bg-green-500">SEND MESSAGE</button>
-            </form>
-        </section>
-    </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const sections = document.querySelectorAll("section");
-            const navLinks = document.querySelectorAll("nav a");
-
-            const options = {
-                root: null,
-                rootMargin: "0px",
-                threshold: 0.5
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(link => {
-                            link.classList.remove("text-green-400");
-                            link.classList.add("text-gray-400");
-                            if (link.getAttribute("href").substring(1) === entry.target.id) {
-                                link.classList.remove("text-gray-400");
-                                link.classList.add("text-green-400");
-                            }
-                        });
-                    }
-                });
-            }, options);
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-        });
-    </script>
-</body>
+  </body>
 
 </html>
