@@ -157,11 +157,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 if PRODUCTION_ENV:
-    STATIC_URL = '/staticf/'
+    STATIC_URL = '/staticfiles/'
 STATICFILES_DIRS= [os.path.join(BASE_DIR, 'public/static/'), os.path.join(BASE_DIR, 'theme', 'static', 'css', 'dist'),]
 
 
-STATIC_ROOT= os.path.join(BASE_DIR, 'staticf')
+STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
