@@ -1,17 +1,28 @@
 import os
 from pathlib import Path
+import dj_database_url
+
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=1iw*zi*ojh1&!!8(%+a1g!7g@9#bn_=gkdk0tv7$cc4p1c_=z'
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = bool(os.getenv('DEBUG'))
+PRODUCTION_ENV = bool(os.getenv('PRODUCTION_ENV'))
+USE_SQLITE = bool(os.getenv('USE_SQLITE'))
 
-ALLOWED_HOSTS = ['.vercel.app', "127.0.0.1", "www.rujalbaniya.com.np"]
 
+
+ALLOWED_HOSTS = ["127.0.0.1", 'localhost']
+
+
+if PRODUCTION_ENV:
+    ALLOWED_HOSTS = ['.vercel.app', "www.rujalbaniya.com.np", "rujalbaniya.com.np"]
 
 # Application definition
  
@@ -23,12 +34,26 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-
     'main',
+
+    "tailwind",
+    'theme',
+    'whitenoise.runserver_nostatic',
 ]
+
+# tailwind configutation 
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -59,15 +84,40 @@ WSGI_APPLICATION = 'protfolio.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
+if PRODUCTION_ENV:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': str(os.getenv('PROD_NAME')),
+            'USER': 'postgres',
+            'PASSWORD': str(os.getenv('PROD_PASSWORD')),
+            'HOST': str(os.getenv('PROD_HOST')),
+            'PORT': str(os.getenv('PROD_PORT')),
+        }
+    }
+     
+else:
+        DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': str(os.getenv('Dev_NAME')),
+            'USER': 'postgres',
+            'PASSWORD': str(os.getenv('Dev_PASSWORD')),
+            'HOST': str(os.getenv('Dev_HOST')),
+            'PORT': str(os.getenv('Dev_PORT')),
+        }
+    }
+
+
+
+if USE_SQLITE:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -108,6 +158,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS= [os.path.join(BASE_DIR, 'public/static/'), os.path.join(BASE_DIR, 'theme', 'static', 'css', 'dist'),]
 
 
+STATIC_ROOT= os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 
