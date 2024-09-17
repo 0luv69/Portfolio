@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
-import dj_database_url
+# import dj_database_url
+
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -12,12 +13,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.getenv('DEBUG'))
-PRODUCTION_ENV = (os.getenv('PRODUCTION_ENV'))
-USE_SQLITE = (os.getenv('USE_SQLITE'))
-
-print(PRODUCTION_ENV,DEBUG, USE_SQLITE)
-
+DEBUG = str(os.getenv('DEBUG')).lower() == 'true'
+PRODUCTION_ENV = str(os.getenv('PRODUCTION_ENV')).lower() == 'true'
+USE_SQLITE = str(os.getenv('USE_SQLITE')).lower() == 'true'
 
 ALLOWED_HOSTS = ["127.0.0.1", 'localhost']
 
@@ -85,7 +83,6 @@ WSGI_APPLICATION = 'protfolio.wsgi.application'
 
 
 # Database
-
 if USE_SQLITE:
     DATABASES = {
     'default': {

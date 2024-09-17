@@ -3,16 +3,10 @@ from .models import *
 
 # Create your views here.
 # importing setting to check its value 
-from protfolio.settings import PRODUCTION_ENV,USE_SQLITE, DEBUG
 
 def home(request):
-    context = { 
-        "production": str(PRODUCTION_ENV),
-        "sqlite": str(USE_SQLITE),
-        "debug": str(DEBUG)
 
-    }
-    return render(request, 'pages/index.html', context)
+    return render(request, 'pages/index.html', {})
 
 
 
