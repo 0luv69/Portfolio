@@ -12,17 +12,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.getenv('DEBUG'))
-PRODUCTION_ENV = bool(os.getenv('PRODUCTION_ENV'))
-USE_SQLITE = bool(os.getenv('USE_SQLITE'))
+DEBUG = (os.getenv('DEBUG'))
+PRODUCTION_ENV = (os.getenv('PRODUCTION_ENV'))
+USE_SQLITE = (os.getenv('USE_SQLITE'))
 
+print(PRODUCTION_ENV,DEBUG, USE_SQLITE)
 
 
 ALLOWED_HOSTS = ["127.0.0.1", 'localhost']
 
 
 if PRODUCTION_ENV:
-    ALLOWED_HOSTS = ['.vercel.app', "www.rujalbaniya.com.np", "rujalbaniya.com.np"]
+    ALLOWED_HOSTS += ['.vercel.app', "www.rujalbaniya.com.np", "rujalbaniya.com.np"]
 
 # Application definition
  
@@ -85,6 +86,14 @@ WSGI_APPLICATION = 'protfolio.wsgi.application'
 
 # Database
 
+if USE_SQLITE:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
 if PRODUCTION_ENV:
     DATABASES = {
         'default': {
@@ -111,13 +120,7 @@ else:
 
 
 
-if USE_SQLITE:
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
