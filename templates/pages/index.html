@@ -22,7 +22,7 @@
     <!-- Favicon -->
     <link
       rel="icon"
-      href="https://avatars.githubusercontent.com/u/119644775?v=4"
+      href="{% static 'img/logo.png' %}"
       type="image/x-icon"
     />
 
@@ -42,23 +42,29 @@
     }
     </script>
 
+
+    <!-- Fonts calling  -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
     <style>
       body {
         font-family: "Montserrat", sans-serif;
       }
     </style>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
+
   </head>
   <body class="bg-gray-900 text-gray-100">
     <!-- Sidebar -->
@@ -66,7 +72,7 @@
       class="hidden lg:flex lg:flex-col lg:w-24 bg-gray-800 fixed top-0 left-0 h-full justify-center items-center space-y-6"
     >
       <img
-        src="https://avatars.githubusercontent.com/u/119644775?v=4"
+        src="{% static 'img/logo.png' %}"
         alt="Profile Picture"
         class="rounded-full w-20 h-20 object-cover"
       />
@@ -125,7 +131,7 @@
           Python programmer, Web Developer, & Penetration Tester.
         </p>
         <img
-          src="https://i.ibb.co/Hz0RS2b/me.jpg"
+          src="{% static 'img/me.jpg' %}"
           alt="Rujal Baniya"
           class="mt-6 mx-auto rounded-lg shadow-lg"
           width="768"
