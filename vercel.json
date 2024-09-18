@@ -1,11 +1,5 @@
-
-
 {
   "builds": [
-    {
-      "src": "build.sh",
-      "use": "@vercel/static-build"
-    },
     {
       "src": "protfolio/wsgi.py",
       "use": "@vercel/python",
@@ -21,5 +15,6 @@
       "src": "/(.*)",
       "dest": "protfolio/wsgi.py"
     }
-  ]
+  ],
+  "buildCommand": "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate --noinput"
 }
