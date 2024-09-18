@@ -15,7 +15,5 @@
       "src": "/(.*)",
       "dest": "protfolio/wsgi.py"
     }
-  ],
-  
-  "buildCommand": "echo 'Starting build...' "
+  ]
 }
