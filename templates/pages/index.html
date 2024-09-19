@@ -3,7 +3,18 @@
 <html lang="en">
 
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="{% static 'img/logo.png' %}"
+      type="image/x-icon"
+    />
+
     <!-- Basic SEO -->
+    <meta name="author" content="Rujal Baniya" />
     <title>Rujal Baniya - Portfolio | 0luv69</title>
     <meta
       name="description"
@@ -13,34 +24,24 @@
       name="keywords"
       content="rujal baniya, Rujal , 0luv60, Web Development, Projects, Python, OpenCV, Django, Cybersecurity, Hackathon winner nepal, Ideathon, MCQCHAMPS devloper, nepali, nepal"
     />
-    <meta name="author" content="Rujal Baniya aka 0luv69" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rujal Baniya",
+        "jobTitle": "Software Developer",
+        "url": "https://www.rujalbaniya.com.np",
+        "sameAs": [
+          
+          "https://github.com/0luv69"
+        ],
+        "description": "Experienced Python developer and cybersecurity enthusiast."
+      }
+    </script>
 
     <!-- Google auth -->
-    <meta name="google-site-verification" content="1heX8GaiN16IAX4TyAzBN3Oc5sdjTb6jkz_BfLc1hVg" />
-
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="{% static 'img/logo.png' %}"
-      type="image/x-icon"
-    />
-
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Rujal Baniya",
-      "jobTitle": "Software Developer",
-      "url": "https://www.rujalbaniya.com.np",
-      "sameAs": [
-        
-        "https://github.com/0luv69"
-      ],
-      "description": "Experienced Python developer and cybersecurity enthusiast."
-    }
-    </script>
+    <!-- <meta name="google-site-verification" content="1heX8GaiN16IAX4TyAzBN3Oc5sdjTb6jkz_BfLc1hVg" /> -->
 
 
     <!-- Fonts calling  -->
@@ -56,8 +57,7 @@
     
     
     
-    
-    
+    <!-- CSS Style sheet calling -->
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
     <style>
       body {
@@ -66,357 +66,366 @@
     </style>
 
   </head>
-  <body class="bg-gray-900 text-gray-100">
-    <!-- Sidebar -->
-    <nav
-      class="hidden lg:flex lg:flex-col lg:w-24 bg-gray-800 fixed top-0 left-0 h-full justify-center items-center space-y-6"
-    >
-      <img
-        src="{% static 'img/logo.png' %}"
-        alt="Profile Picture"
-        class="rounded-full w-20 h-20 object-cover"
-      />
-      <a
-        href="/"
-        class="w-full text-center py-3 text-green-400 hover:text-white"
-        ><i class="fas fa-home text-2xl"></i>
-        <p class="text-xs mt-1">HOME</p></a
-      >
-      <a
-        href="#about"
-        class="w-full text-center py-3 text-gray-400 hover:text-green-400"
-        ><i class="fas fa-user text-2xl"></i>
-        <p class="text-xs mt-1">ABOUT</p></a
-      >
-      <a
-        href="#projects"
-        class="w-full text-center py-3 text-gray-400 hover:text-green-400"
-        ><i class="fas fa-eye text-2xl"></i>
-        <p class="text-xs mt-1">PROJECTS</p></a
-      >
-      <a
-        href="#contact"
-        class="w-full text-center py-3 text-gray-400 hover:text-green-400"
-        ><i class="fas fa-envelope text-2xl"></i>
-        <p class="text-xs mt-1">CONTACT</p></a
-      >
+
+
+  <body class="bg-gray-900 text-gray-100"></body>
+    <!-- Sidebar for large screens -->
+    <nav class="hidden lg:flex lg:flex-col lg:w-24 bg-gray-800 fixed top-0 left-0 h-full justify-center items-center space-y-6">
+        <img src="{% static 'img/logo.png' %}" alt="luv 69 rujal" class="rounded-full w-20 h-20 object-cover mb-6">
+        <a href="#home" class="nav-link w-full text-center py-3 text-green-400 hover:text-white transition duration-300">
+            <i class="fas fa-home text-2xl"></i>
+            <p class="text-xs mt-1">HOME</p>
+        </a>
+        <a href="#about" class="nav-link w-full text-center py-3 text-gray-400 hover:text-green-400 transition duration-300">
+            <i class="fas fa-user text-2xl"></i>
+            <p class="text-xs mt-1">ABOUT</p>
+        </a>
+        <a href="#projects" class="nav-link w-full text-center py-3 text-gray-400 hover:text-green-400 transition duration-300">
+            <i class="fas fa-eye text-2xl"></i>
+            <p class="text-xs mt-1">PROJECTS</p>
+        </a>
+        <a href="#contact" class="nav-link w-full text-center py-3 text-gray-400 hover:text-green-400 transition duration-300">
+            <i class="fas fa-envelope text-2xl"></i>
+            <p class="text-xs mt-1">CONTACT</p>
+        </a>
     </nav>
 
-    <!-- Navbar for Small Screens -->
+    <!-- Navbar for small screens -->
     <div class="lg:hidden w-full bg-gray-800 text-white fixed bottom-0 z-50">
-      <nav class="flex justify-around py-3">
-        <a href="/" class="text-white hover:text-teal-400">
-          <i class="fas fa-home text-2xl"></i>
-        </a>
-        <a href="#about" class="text-white hover:text-teal-400">
-          <i class="fas fa-user text-2xl"></i>
-        </a>
-        <a href="#projects" class="text-white hover:text-teal-400">
-          <i class="fas fa-eye text-2xl"></i>
-        </a>
-        <a href="#contact" class="text-white hover:text-teal-400">
-          <i class="fas fa-envelope text-2xl"></i>
-        </a>
-      </nav>
+        <nav class="flex justify-around py-3">
+            <a href="#home" class="nav-link text-white hover:text-green-400 transition duration-300">
+                <i class="fas fa-home text-2xl"></i>
+            </a>
+            <a href="#about" class="nav-link text-white hover:text-green-400 transition duration-300">
+                <i class="fas fa-user text-2xl"></i>
+            </a>
+            <a href="#projects" class="nav-link text-white hover:text-green-400 transition duration-300">
+                <i class="fas fa-eye text-2xl"></i>
+            </a>
+            <a href="#contact" class="nav-link text-white hover:text-green-400 transition duration-300">
+                <i class="fas fa-envelope text-2xl"></i>
+            </a>
+        </nav>
     </div>
 
     <!-- Main Content -->
-    <div class="lg:ml-24 p-8 pb-16">
-      <!-- Home Section -->
-      <section id="home" class="text-center">
-        <h1 class="text-4xl lg:text-6xl font-bold text-green-400">
-          I'm Rujal Baniya.
-        </h1>
-        <p class="text-lg lg:text-xl mt-4">
-          Python programmer, Web Developer, & Penetration Tester.
-        </p>
-        <img
-          src="{% static 'img/me.jpg' %}"
-          alt="Rujal Baniya"
-          class="mt-6 mx-auto rounded-lg shadow-lg"
-          width="768"
-          height="377"
-        />
-
-                <!-- call to action button contact & github -->
-        <div class="mt-8 flex justify-center space-x-4">
-            <a href=" https://github.com/0luv69" target="_blank"
-                class="bg-gradient-to-r from-green-400 to-green-500 text-gray-900 px-8 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:from-green-500 hover:to-green-600">
-                 GitHub
-            </a>
-            <!-- redirect to antoer page -->
-            <a href="#contact" 
-                class="bg-gray-800 text-green-400 px-8 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-700">
-                Contact Me
-            </a>
-        </div>
-      </section>
-
-      <!-- About Section -->
-      <section id="about" class="mt-16 lg:mt-32 flex flex-col text-center">
-        <h2 class="text-3xl lg:text-4xl font-bold text-green-400">About Me</h2>
-        <p class="mt-4 text-center leading-relaxed px-10">
-          I am an enthusiastic and dedicated software developer with a passion
-          for Python programming, web development, and cybersecurity. 
-        <br>
-        I thrive on challenges and continuously seek opportunities to apply my skills
-        in creative and impactful ways. 
-        <br>
-          Gained solid foundation in both
-          frontend and backend technologies and am eager to contribute to
-          innovative projects.
-        </p>
-
-         <!-- Experience, Education, Interests -->
-        <div class="mt-8 flex flex-col lg:flex-row justify-center items-center space-y-8 lg:space-y-0 lg:space-x-16">
-            <div>
-                <h3 class="text-2xl font-bold text-green-400">Experience</h3>
-                <p class="mt-4 text-lg">Developed web applications using Django, and created desktop applications with Python and Tkinter, Have Participated in many Hackathon & Ideathon.</p>
-            </div>
-            <div>
-                <h3 class="text-2xl font-bold text-green-400">Education</h3>
-                <p class="mt-4 text-lg">Currently pursuing a Bachelor's in Computer Science. Completed various online certifications in programming and cybersecurity.</p>
-            </div>
-            <div>
-                <h3 class="text-2xl font-bold text-green-400">Interests</h3>
-                <p class="mt-4 text-lg">I enjoy exploring new technologies, solving some of complex problems with innovative solutions.</p>
-            </div>
-        </div>
-         
-      </section>
-
-      <!-- Skills Section -->
-      <section id="skills" class="mt-16 lg:mt-32">
-        <h3 class="text-3xl lg:text-4xl font-bold text-green-400">
-          Tech Stack
-        </h3>
-        <div class="mt-8">
-          <h3 class="text-2xl font-bold text-green-400">My Skills</h3>
-          <div class="mt-4">
-            <p class="text-lg font-semibold">Python</p>
-            <div class="w-full bg-gray-700 rounded-full h-2.5">
-              <div
-                class="bg-green-400 h-2.5 rounded-full"
-                style="width: 95%"
-              ></div>
-            </div>
-          </div>
-          <div class="mt-4">
-            <p class="text-lg font-semibold">Cyber Security</p>
-            <div class="w-full bg-gray-700 rounded-full h-2.5">
-              <div
-                class="bg-green-400 h-2.5 rounded-full"
-                style="width: 85%"
-              ></div>
-            </div>
-          </div>
-          <div class="mt-4">
-            <p class="text-lg font-semibold">Web Development</p>
-            <div class="w-full bg-gray-700 rounded-full h-2.5">
-              <div
-                class="bg-green-400 h-2.5 rounded-full"
-                style="width: 80%"
-              ></div>
-            </div>
-          </div>
-          <div class="mt-4">
-            <p class="text-lg font-semibold">Django</p>
-            <div class="w-full bg-gray-700 rounded-full h-2.5">
-              <div
-                class="bg-green-400 h-2.5 rounded-full"
-                style="width: 75%"
-              ></div>
-            </div>
-          </div>
-          <div class="mt-4">
-            <p class="text-lg font-semibold">JavaScript</p>
-            <div class="w-full bg-gray-700 rounded-full h-2.5">
-              <div
-                class="bg-green-400 h-2.5 rounded-full"
-                style="width: 70%"
-              ></div>
-            </div>
-          </div>
-          <div class="mt-4">
-            <p class="text-lg font-semibold">Git & GitHub</p>
-            <div class="w-full bg-gray-700 rounded-full h-2.5">
-              <div
-                class="bg-green-400 h-2.5 rounded-full"
-                style="width: 90%"
-              ></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Projects Section -->
-      <section id="projects" class="mt-16 lg:mt-32">
-        <h2 class="text-3xl lg:text-4xl font-bold text-green-400">Projects</h2>
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div
-            class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out"
-          >
-            <h3 class="text-2xl font-semibold text-green-400">
-              Hackathon Winner - Incodeble IICQuest
-            </h3>
-            <p class="mt-2 text-gray-300">
-              Won the Incodeble IICQuest hackathon by developing a
-              groundbreaking project focused on cybersecurity enhancements.
+    <div class="lg:ml-24 p-8 pb-24">
+        <!-- Home Section -->
+        <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center">
+            <h1 class="text-5xl lg:text-7xl font-bold text-green-400 mb-4">
+                Rujal Baniya
+            </h1>
+            <p class="text-xl lg:text-2xl mb-8">
+                Python Programmer | Web Developer | Penetration Tester
             </p>
-            <a
-              href="#"
-              class="text-green-400 hover:underline mt-4 block"
-              target="_blank"
-              >View Project</a
-            >
-          </div>
-          <div
-            class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out"
-          >
-            <h3 class="text-2xl font-semibold text-green-400">Photo Editor</h3>
-            <p class="mt-2 text-gray-300">
-              Created an advanced photo editor with Python and OpenCV, featuring
-              multiple filters, cropping, and image enhancement capabilities.
-            </p>
-            <a
-              href="https://github.com/0luv69/photo-editor"
-              class="text-green-400 hover:underline mt-4 block"
-              target="_blank"
-              >View Project</a
-            >
-          </div>
-          <div
-            class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out"
-          >
-            <h3 class="text-2xl font-semibold text-green-400">My Portfolio</h3>
-            <p class="mt-2 text-gray-300">
-              Designed and developed my personal portfolio website using Django,
-              showcasing my skills, projects, and experience.
-            </p>
-            <a
-              href="https://github.com/0luv69/portfolio"
-              class="text-green-400 hover:underline mt-4 block"
-              target="_blank"
-              >View Project</a
-            >
-          </div>
-          <!-- New Project 1 -->
-          <div
-            class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out"
-          >
-            <h3 class="text-2xl font-semibold text-green-400">MCQCHAMPS</h3>
-            <p class="mt-2 text-gray-300">
-              Developed an interactive Multiple Choice Questions (MCQ) platform
-              that allows users to test their knowledge on various subjects with
-              real-time feedback.
-            </p>
-            <a
-              href="https://github.com/0luv69/MCQCHAMPS"
-              class="text-green-400 hover:underline mt-4 block"
-              target="_blank"
-              >View Project</a
-            >
-          </div>
-          <!-- New Project 2 -->
-          <div
-            class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out"
-          >
-            <h3 class="text-2xl font-semibold text-green-400">Ideathon_Nbc</h3>
-            <p class="mt-2 text-gray-300">
-              Participated in Ideathon Nbc, contributing innovative ideas and
-              collaborating on projects aimed at solving real-world problems.
-            </p>
-            <a
-              href="https://github.com/0luv69/Ideathon_Nbc"
-              class="text-green-400 hover:underline mt-4 block"
-              target="_blank"
-              >View Project</a
-            >
-          </div>
-        </div>
-      </section>
+            <img src="{% static 'img/me.jpg' %}" alt="Rujal Baniya" class="w-64 h-64 rounded-full shadow-lg mb-8 object-cover">
+            <div class="flex space-x-4">
+                <a href="https://github.com/0luv69" target="_blank" class="bg-green-500 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600">
+                    GitHub
+                </a>
+                <a href="#contact" class="bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600">
+                    Contact Me
+                </a>
+            </div>
+        </section>
 
-      <!-- Contact Section -->
-      <section id="contact" class="mt-16 lg:mt-32">
-        <h2 class="text-3xl lg:text-4xl font-bold text-green-400">
-          Contact Me
-        </h2>
-        <p class="mt-4 text-lg">Let's get in touch. Send me a message:</p>
-        <form class="mt-8 space-y-4" method="post" action="/contact/">
-          {% csrf_token %}
-          <input
-            class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg"
-            type="text"
-            name="name"
-            placeholder="Name"
-            autocomplete="name"
-            required
-          />
-          <input
-            class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg"
-            type="email"
-            name="email"
-            placeholder="Email"
-            autocomplete="email"
-            required
-          />
-          <input
-            class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg"
-            type="text"
-            name="subject"
-            placeholder="Subject"
-            autocomplete="subject"
-            required
-          />
-          <textarea
-            class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg"
-            placeholder="Message"
-            name="message"
-            autocomplete="message"
-            required
-          ></textarea>
-          <button
-            class="w-full p-3 bg-green-400 text-gray-900 rounded-lg font-bold hover:bg-green-500"
-          >
-            SEND MESSAGE
-          </button>
-        </form>
-      </section>
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <h2 class="text-4xl font-bold text-green-400 mb-8">About Me</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <p class="text-lg leading-relaxed">
+                        I am an enthusiastic and dedicated software developer with a passion for Python programming, web development, and cybersecurity. I thrive on challenges and continuously seek opportunities to apply my skills in creative and impactful ways.
+                    </p>
+                    <p class="text-lg leading-relaxed mt-4">
+                        With a solid foundation in both frontend and backend technologies, I am eager to contribute to innovative projects and push the boundaries of what's possible in the digital realm.
+                    </p>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-green-400 mb-2">Experience</h3>
+                        <p class="text-lg">Developed web applications using Django, created desktop applications with Python and Tkinter, and participated in numerous Hackathons & Ideathons.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-green-400 mb-2">Education</h3>
+                        <p class="text-lg">Currently pursuing a Bachelor's in Computer Science. Completed various online certifications in programming and cybersecurity.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-green-400 mb-2">Interests</h3>
+                        <p class="text-lg">I enjoy exploring new technologies and solving complex problems with innovative solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20">
+            <h2 class="text-4xl font-bold text-green-400 mb-8">Tech Stack</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-lg font-semibold mb-2">Python</p>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                            <div class="bg-green-400 h-2.5 rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-lg font-semibold mb-2">Cyber Security</p>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                            <div class="bg-green-400 h-2.5 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-lg font-semibold mb-2">Web Development</p>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                            <div class="bg-green-400 h-2.5 rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-lg font-semibold mb-2">Django</p>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                            <div class="bg-green-400 h-2.5 rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-lg font-semibold mb-2">JavaScript</p>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                            <div class="bg-green-400 h-2.5 rounded-full" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-lg font-semibold mb-2">Git & GitHub</p>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                            <div class="bg-green-400 h-2.5 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <h2 class="text-4xl font-bold text-green-400 mb-12">Featured Projects</h2>
+            <div class="space-y-16">
+
+<!-- Pariwar -->
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <div class="lg:flex">
+                        <div class="lg:w-1/2">
+                            <img src="{% static 'img/pariwar.png' %}" alt="Hackathon Winning pariwar app" class="w-full h-full object-cover">
+                        </div>
+                        <div class="lg:w-1/2 p-8">
+                            <h3 class="text-2xl font-semibold text-green-400 mb-4">Hackathon Winning: Pariwar</h3>
+                            <p class="text-gray-300 mb-6">
+                                Pariwar is a web application designed to facilitate communication and support within families and extended family networks. It provides a platform where individuals, especially students who may find it challenging to communicate directly with their parents, can seek advice and support from other family members or individuals playing familial roles.
+                                <br>
+                                <br>
+                                <span>Group Project: Incodeable</span>
+                                <br>
+                                <span>Won: Incodeble IICQuest Hackathon</span>
+                                <br>
+                                <span>Technologies: Django, HTML, CSS, JavaScript, React, Node js.......</span>
+                                <br>
+                            </p>
+                            <!-- Code link -->
+                            <a href="https://github.com/0luv69/Hackathon_incodeble_iicquest_Pariwar" class="bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600"  target="_blank" rel="noopener noreferrer">View source code</a>
+                            <a href="https://pariwar.vercel.app/" class="inline-block bg-green-500 text-gray-900 ml-2 px-6 py-2 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+<!-- Photo Edtior -->
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <div class="lg:flex flex-row-reverse">
+                        <div class="lg:w-1/2">
+                            <img src="{% static 'img/photoeditor.png' %}" alt="Photo Editor" class="w-full h-full object-cover">
+                        </div>
+                        <div class="lg:w-1/2 p-8">
+                            <h3 class="text-2xl font-semibold text-green-400 mb-4">Photo Editor</h3>
+                            <p class="text-gray-300 mb-6">
+                                Created an advanced photo editor using Python and OpenCV, featuring multiple filters, cropping, and image enhancement capabilities. This project demonstrates my proficiency in image processing and creating user-friendly interfaces for complex operations.
+
+                                <br>
+                                <br>
+                                <span>Based on: Windows Only</span>
+                                <br>
+                                <span>Technologies: Python, OpenCV, Tkinter</span>
+                                <br>
+                                <span>
+                                  Features: Color up, Filter, Corp, Remove BG, Draw etc....
+                                </span>
+                            </p>
+                            <a href="https://www.youtube.com/watch?v=srPU6JW-RRA"  class="bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600"  target="_blank">Watch Demo Video</a>
+                            <a href="https://github.com/0luv69/photo-editor" class="inline-block bg-green-500 text-gray-900 ml-2 px-6 py-2 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600" target="_blank">View Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+<!-- Mcq Champs -->
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <div class="lg:flex">
+                        <div class="lg:w-1/2">
+                            <img src="{% static 'img/mcqchamps.png' %}" alt="MCQCHAMPS" class="w-full h-full object-cover">
+                        </div>
+                        <div class="lg:w-1/2 p-8">
+                            <h3 class="text-2xl font-semibold text-green-400 mb-4">MCQCHAMPS</h3>
+                            <p class="text-gray-300 mb-6">
+                                Developed an interactive Multiple Choice Questions (MCQ) platform that allows users to test their knowledge on various subjects with real-time feedback.
+
+                                <br>
+                                <br>
+                                <span>MCQ: Study, take test </span>
+                                <br>
+                                <span>Technologies: Django, HTML, CSS, JavaScript, Tailwind</span>
+                                <br>
+                                <span>With: PPT post, post your presentation</span>
+                                <br>
+                                <span>Goal: Make my Friends more knowledgeable</span>
+                            </p>
+                            
+                            <a href="#" class="inline-block bg-red-400 text-gray-900 px-6 py-2 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-red-200" target="_blank" disabled>Sorry No source Code, Private</a>
+                            <a href="#"  class="bg-gray-700 text-green-400 ml-2 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600"  target="_blank" disabled >Under Construction</a>
+                        </div>
+                    </div>
+                </div>
+
+
+<!-- Money Manager -->
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <div class="lg:flex flex-row-reverse">
+                        <div class="lg:w-1/2">
+                            <img src="{% static 'img/MoneyManager.png' %}" alt="Photo Editor" class="w-full h-full object-cover">
+                        </div>
+                        <div class="lg:w-1/2 p-8">
+                            <h3 class="text-2xl font-semibold text-green-400 mb-4">Money Manager</h3>
+                            <p class="text-gray-300 mb-6">
+                                The Money Manager app simplifies finance management through an intuitive Python-based application. It offers a user-friendly interface and robust features for handling transactions, tracking loans, and maintaining a transaction history.
+                                <br>
+                                <br>
+                                <span>Based on: Windows Only</span>
+                                <br>
+                                <span>User Interface (UI) Libraries: Tkinter, Customtkinter, tkcalendar</span>
+                                <br>
+                                <span> Data Handling Libraries: time, datetime, math, timedelta, calendar, os, openpyxl, configparser</span>
+                                <br>
+                                <span>Feartures: (LoanTransaction , Income/Expences Transaction) Management</span>
+                            </p>
+                            <a href="https://0luv69.github.io/Money-Manager/"  class="bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600"  target="_blank">Documentation</a>
+                            <a href="https://github.com/0luv69/Money-Manager" class="inline-block bg-green-500 text-gray-900 ml-2 px-6 py-2 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600" target="_blank">View Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+<!-- Calculator-->
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <div class="lg:flex">
+                        <div class="lg:w-1/2">
+                            <img src="{% static 'img/Cacultor.png' %}" alt="MCQCHAMPS" class="w-full h-full object-cover">
+                        </div>
+                        <div class="lg:w-1/2 p-8">
+                            <h3 class="text-2xl font-semibold text-green-400 mb-4">(BIM & Apple) Calculator</h3>
+                            <p class="text-gray-300 mb-6">
+                                Learning Based Calculator -> BIM Calculator, Apple Based Calculator. Created using Tkinter, Python, To get knowledge on UI design.
+                                <br>
+                                <br>
+                                <span>Based on: Windows Only</span>
+                                <br>
+                                <span>Technologies: Tkinter, Python</span>
+                            </p>
+                            
+                            <a href="https://github.com/0luv69/BIM-calculator-app" class="inline-block bg-green-500 text-gray-900 px-6 py-2 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-400" target="_blank" disabled>Source Code: BIM</a>
+                            <a href="https://github.com/0luv69/Apple-Calculator-UI"  class="bg-gray-700 text-green-400 ml-2 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600"  target="_blank" disabled >Source Code: Apple Based</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- View more button to github  -->
+             <div class="m-8 mt-10 flex justify-center">
+<a href="https://github.com/0luv69"
+   target="_blank"
+   class="relative inline-block px-6 py-3 font-semibold text-white bg-green-600 rounded-lg shadow-2xl transition-all duration-300 border-2 border-green-600 transform hover:scale-105 hover:shadow-lg">
+    View all projects on GitHub
+   <span class="absolute inset-0 bg-transparent border-2 border-green-600 rounded-lg transition-transform duration-300 ease-out transform translate-x-2 translate-y-2 hover:translate-x-0 hover:translate-y-0"></span>
+</a>
+
+
+             </div>
+
+       
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <h2 class="text-4xl font-bold text-green-400 mb-8">Get in Touch</h2>
+            <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+                <form class="space-y-6" method="post" action="/contact/">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" type="text" name="name" placeholder="Name" required>
+                        <input class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <input class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" type="text" name="subject" placeholder="Subject" required>
+<textarea class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" name="message" placeholder="Your message" rows="5" required></textarea>
+                    <button class="w-full p-3 bg-green-500 text-gray-900 rounded-lg font-bold hover:bg-green-600 transition duration-300">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+
+
+
     </div>
 
     <script>
-      // Function to add 'active' class to the navbar links based on section in view
-      document.addEventListener("DOMContentLoaded", function () {
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll("nav a");
+        // Function to add 'active' class to the navbar links based on section in view
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-link");
 
-        const options = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.5,
-        };
+            const options = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.5,
+            };
 
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              navLinks.forEach((link) => {
-                link.classList.remove("text-green-400");
-                link.classList.add("text-gray-400");
-                if (
-                  link.getAttribute("href").substring(1) === entry.target.id
-                ) {
-                  link.classList.remove("text-gray-400");
-                  link.classList.add("text-green-400");
-                }
-              });
-            }
-          });
-        }, options);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute("id");
+                        navLinks.forEach((link) => {
+                            link.classList.remove("text-green-400");
+                            link.classList.add("text-gray-400");
+                            if (link.getAttribute("href") === `#${id}`) {
+                                link.classList.remove("text-gray-400");
+                                link.classList.add("text-green-400");
+                            }
+                        });
+                    }
+                });
+            }, options);
 
-        sections.forEach((section) => {
-          observer.observe(section);
+            sections.forEach((section) => {
+                observer.observe(section);
+            });
         });
-      });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
-  </body>
+</body>
+
 </html>
