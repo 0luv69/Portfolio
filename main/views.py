@@ -11,6 +11,9 @@ def home(request):
 def test(request):
     return render(request, 'pages/test.html', {})
 
+def t2(request):
+    return render(request, 'pages/t2.html', {})
+
 def contact(request):
     if request.method == 'POST':
         name = request.POST['name']
