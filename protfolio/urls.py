@@ -24,8 +24,8 @@ from main import views
 urlpatterns = [
     path('mujilover/', admin.site.urls),
     path('', views.home, name='home'),
-    path('test/', views.test, name='test'),
-    path('t2/', views.t2, name='t2'),
     path('contact/', views.contact, name='contact'),
+    # path('test/', views.test, name='test'),
+    # path('t2/', views.t2, name='t2'),
     # path('googleee23894d0f67f069.html/', views.about, name='about'),
 ]
