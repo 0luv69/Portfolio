@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 
 class IPAddressInfo(models.Model):
+    contact = models.OneToOneField('Contact', on_delete=models.CASCADE, null=True, blank=True)
     ip = models.GenericIPAddressField()
     network = models.CharField(max_length=250, blank=True, null=True)
     city = models.CharField(max_length=110, blank=True, null=True)
@@ -32,7 +33,6 @@ class Contact(models.Model):
     subject = models.CharField(max_length=255)
     message = models.TextField()
     ip_address = models.GenericIPAddressField(null=True, blank=True)
-    ip_address_info = models.OneToOneField(IPAddressInfo, on_delete=models.SET_NULL, null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
