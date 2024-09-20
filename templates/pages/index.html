@@ -458,6 +458,15 @@
         // flip the image
             const img = document.querySelector('#rounded-pic-me');
 
+            // onload of browser
+            window.onload = () => {
+                img.classList.add('flip-coin');
+                 img.addEventListener('animationend', () => {
+                img.classList.remove('flip-coin');
+                });
+
+            };
+
             // Add click event listener to the image
             img.addEventListener('click', () => {
                 // Add the flip animation class to the image
