@@ -25,6 +25,7 @@ urlpatterns = [
     path('mujilover/', admin.site.urls),
     path('', views.home, name='home'),
     path('contact/', views.contact, name='contact'),
+    # path('admin/messages/', views.contact_messages_view, name='contact_messages'),
     # path('test/', views.test, name='test'),
     # path('t2/', views.t2, name='t2'),
     # path('googleee23894d0f67f069.html/', views.about, name='about'),

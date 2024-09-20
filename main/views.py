@@ -115,3 +115,10 @@ def contact(request):
 
     
     return redirect('home')
+
+
+def contact_messages_view(request):
+    # Fetch all contact messages from the database
+    contacts = Contact.objects.all().order_by('-created_at')
+    return render(request, 'admin/custom_messages.html', {'contacts': contacts})
+
