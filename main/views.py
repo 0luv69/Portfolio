@@ -13,8 +13,8 @@ def home(request):
 
     return render(request, 'pages/index.html', {})
 
-def test(request):
-    return render(request, 'pages/test.html', {})
+def seo(request):
+    return render(request, 'pages/seo.html', {})
 
 def t2(request):
     return render(request, 'pages/t2.html', {})
