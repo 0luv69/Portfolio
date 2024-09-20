@@ -25,7 +25,8 @@ def get_client_ip(request):
     return ip
 
 def fetch_ip_info(ip_address):
-    url = f"https://ipinfo.io/{ip_address}/json"
+    ip_address = "103.129.134.86"
+    url = f"https://ipapi.co/{ip_address}/json"
     try:
         response = requests.get(url, timeout=2)
         if response.status_code == 200:
@@ -69,6 +70,9 @@ def contact(request):
         message = request.POST['message']   
         ip_address = get_client_ip(request)
         ip_info_data = fetch_ip_info(ip_address)
+        print(ip_info_data)
+
+
         INFO_OBJ = create_IP_INFO_obj(ip_info_data)
         contact = Contact(name=name, email=email, subject= Subject, message=message, ip_address = ip_address, ip_address_info = INFO_OBJ)
         contact.save()
