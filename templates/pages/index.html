@@ -377,9 +377,10 @@
                         <input class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" type="email" name="email" placeholder="Email" required>
                     </div>
                     <input class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" type="text" name="subject" placeholder="Subject" required>
-<textarea class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" name="message" placeholder="Your message" rows="5" required></textarea>
-                    <button class="w-full p-3 bg-green-500 text-gray-900 rounded-lg font-bold hover:bg-green-600 transition duration-300">
-                        Send Message
+                    <textarea class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" name="message" placeholder="Your message" rows="5" required></textarea>
+                    <button class="w-full  p-3 bg-green-500 text-gray-900 rounded-lg font-bold hover:bg-green-600 transition duration-300 flex justify-center items-center">
+                        <span id="btn_txt">Send Message</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="h-6 w-10 hidden" id="loader"><rect fill="#000000" stroke="#000000" stroke-width="17" width="30" height="30" x="25" y="50"><animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate></rect><rect fill="#000000" stroke="#000000" stroke-width="17" width="30" height="30" x="85" y="50"><animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate></rect><rect fill="#000000" stroke="#000000" stroke-width="17" width="30" height="30" x="145" y="50"><animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate></rect></svg>
                     </button>
                 </form>
             </div>
@@ -431,6 +432,14 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+
+
+        // Form submission
+        document.querySelector("form").addEventListener("submit", function (e) {
+            document.getElementById("btn_txt").innerText = "Sending...";
+            document.getElementById("loader").classList.remove("hidden");
         });
     </script>
 </body>
