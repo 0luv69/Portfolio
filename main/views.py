@@ -24,13 +24,21 @@ def get_client_ip(request):
         ip = request.META.get('REMOTE_ADDR')
     return ip
 
-def fetch_ip_info(ip_address):
-    url = f"https://ipapi.co/{ip_address}/json"
+def fetch_ip_info(ip_address, api_service ="ipapi.co", Can_Switch= True ):
+    url = f"https://{api_service}/{ip_address}/json"
     try:
         response = requests.get(url, timeout=2)
         if response.status_code == 200:
             return response.json()
-    except RequestException as e:...
+        else:
+            print("sifting the url to ipinfo.io from ipapi")
+            if Can_Switch:
+                return fetch_ip_info(ip_address, "ipinfo.io", False)
+            else:
+                return None
+    except RequestException as e:
+        print("Time out ......................... to get ip")
+        ...
     return None
 
 def create_IP_INFO_obj(ip_info_data):
@@ -69,9 +77,6 @@ def contact(request):
         message = request.POST['message']   
         ip_address = get_client_ip(request)
         ip_info_data = fetch_ip_info(ip_address)
-        print(ip_info_data)
-
-
         INFO_OBJ = create_IP_INFO_obj(ip_info_data)
         contact = Contact(name=name, email=email, subject= Subject, message=message, ip_address = ip_address, ip_address_info = INFO_OBJ)
         contact.save()
