@@ -3,6 +3,9 @@ from .models import *
 import requests
 from requests.exceptions import RequestException
 
+from django.conf import settings
+from django.core.mail import send_mail
+
 # Create your views here.
 # importing setting to check its value 
 
@@ -68,6 +71,28 @@ def create_IP_INFO_obj(ip_info_data):
     return ip_info
 
 
+def email_sending(email, datas):
+    # Construct the subject and message
+    subject = datas['subject']
+    email_from = settings.EMAIL_HOST_USER
+
+        # Create the email message
+    message = f'''
+        Hi, {datas['name']}
+
+        Email from: {email}
+        We received a Email from you thanks, we would loved to further have convercation, let admin get live to reply.
+
+
+        If you did not request a password reset, please ignore this email.
+
+        Thanks,
+        Rujal Baniya
+        For Your Security, Please Do Not Forward This Email, or Share This Link With Anyone.
+        '''
+    send_mail(subject, message, email_from, [email])
+
+
 def contact(request):
     if request.method == 'POST':
         name = request.POST['name']
@@ -80,5 +105,13 @@ def contact(request):
         INFO_OBJ = create_IP_INFO_obj(ip_info_data)
         contact = Contact(name=name, email=email, subject= Subject, message=message, ip_address = ip_address, ip_address_info = INFO_OBJ)
         contact.save()
+
+        datas = {
+            'name': name,
+            'subject': "Regarding the Talk"
+        }
+
+        # email_sending(email, datas)
+
     
     return redirect('home')
