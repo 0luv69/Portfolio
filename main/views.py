@@ -25,7 +25,6 @@ def get_client_ip(request):
     return ip
 
 def fetch_ip_info(ip_address):
-    ip_address = "103.129.134.86"
     url = f"https://ipapi.co/{ip_address}/json"
     try:
         response = requests.get(url, timeout=2)
