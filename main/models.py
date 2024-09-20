@@ -2,14 +2,40 @@ from django.db import models
 
 # Create your models here.
 
+class IPAddressInfo(models.Model):
+    ip = models.GenericIPAddressField()
+    network = models.CharField(max_length=50, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    region = models.CharField(max_length=100, blank=True, null=True)
+    region_code = models.CharField(max_length=10, blank=True, null=True)
+    country_name = models.CharField(max_length=100, blank=True, null=True)
+    country_code = models.CharField(max_length=10, blank=True, null=True)
+    continent_code = models.CharField(max_length=10, blank=True, null=True)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
+    timezone = models.CharField(max_length=50, blank=True, null=True)
+    utc_offset = models.CharField(max_length=10, blank=True, null=True)
+    org = models.CharField(max_length=200, blank=True, null=True)
+    asn = models.CharField(max_length=20, blank=True, null=True)
+    currency = models.CharField(max_length=10, blank=True, null=True)
+    languages = models.CharField(max_length=50, blank=True, null=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.ip} - {self.city}, {self.country_name}"
 
 
 class Contact(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
-    subject = models.EmailField()
+    subject = models.CharField(max_length=255)
     message = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    ip_address = models.GenericIPAddressField(null=True, blank=True)
+    ip_address_info = models.OneToOneField(IPAddressInfo, on_delete=models.SET_NULL, null=True, blank=True)
 
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.name
+
+
