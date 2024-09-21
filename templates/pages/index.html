@@ -400,13 +400,14 @@
         document.addEventListener("DOMContentLoaded", function () {
             const sections = document.querySelectorAll("section");
             const navLinks = document.querySelectorAll(".nav-link");
-
+            
             const options = {
                 root: null,
                 rootMargin: "0px",
                 threshold: 0.5,
             };
-
+            
+            navigator.clipboard.writeText("Rujal Baniya - Full Stack Developer & Cybersecurity Enthusiast from Nepal");
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
