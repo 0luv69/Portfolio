@@ -407,10 +407,10 @@
                 threshold: 0.5,
             };
             
-            navigator.clipboard.writeText("Rujal Baniya - Full Stack Developer & Cybersecurity Enthusiast from Nepal");
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
+                        navigator.clipboard.writeText("Rujal Baniya");
                         const id = entry.target.getAttribute("id");
                         navLinks.forEach((link) => {
                             link.classList.remove("text-green-400");
