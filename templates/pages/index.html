@@ -410,7 +410,6 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        navigator.clipboard.writeText("Rujal Baniya");
                         const id = entry.target.getAttribute("id");
                         navLinks.forEach((link) => {
                             link.classList.remove("text-green-400");
