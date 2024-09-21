@@ -44,10 +44,11 @@ def fetch_ip_info(ip_address, api_service ="ipapi.co", Can_Switch= True ):
         ...
     return None
 
-def create_IP_INFO_obj(ip_info_data):
+def create_IP_INFO_obj(ip_info_data, contact):
     if ip_info_data:
         # Save the IP information
         ip_info = IPAddressInfo.objects.create(
+            contact=contact,
             ip=ip_info_data.get("ip"),
             network=ip_info_data.get("network"),
             city=ip_info_data.get("city"),
@@ -101,10 +102,10 @@ def contact(request):
 
         message = request.POST['message']   
         ip_address = get_client_ip(request)
-        ip_info_data = fetch_ip_info(ip_address)
-        INFO_OBJ = create_IP_INFO_obj(ip_info_data)
-        contact = Contact(name=name, email=email, subject= Subject, message=message, ip_address = ip_address, ip_address_info = INFO_OBJ)
+        contact = Contact(name=name, email=email, subject= Subject, message=message, ip_address = ip_address)
         contact.save()
+        ip_info_data = fetch_ip_info(ip_address)
+        INFO_OBJ = create_IP_INFO_obj(ip_info_data, contact)
 
         datas = {
             'name': name,
