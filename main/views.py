@@ -5,6 +5,7 @@ from requests.exceptions import RequestException
 
 from django.conf import settings
 from django.core.mail import send_mail
+import time
 
 # Create your views here.
 # importing setting to check its value 
@@ -106,7 +107,6 @@ def contact(request):
         contact.save()
         ip_info_data = fetch_ip_info(ip_address)
         INFO_OBJ = create_IP_INFO_obj(ip_info_data, contact)
-
         datas = {
             'name': name,
             'subject': "Regarding the Talk"

@@ -912,10 +912,6 @@ select {
   height: 5rem;
 }
 
-.h-6 {
-  height: 1.5rem;
-}
-
 .h-64 {
   height: 16rem;
 }
@@ -928,12 +924,12 @@ select {
   height: 100vh;
 }
 
-.min-h-screen {
-  min-height: 100vh;
+.h-3 {
+  height: 0.75rem;
 }
 
-.w-10 {
-  width: 2.5rem;
+.min-h-screen {
+  min-height: 100vh;
 }
 
 .w-20 {
@@ -946,6 +942,10 @@ select {
 
 .w-full {
   width: 100%;
+}
+
+.w-6 {
+  width: 1.5rem;
 }
 
 .max-w-5xl {
@@ -1444,6 +1444,14 @@ select {
 }
 
 @media (min-width: 640px) {
+  .sm\:h-6 {
+    height: 1.5rem;
+  }
+
+  .sm\:w-10 {
+    width: 2.5rem;
+  }
+
   .sm\:flex-row {
     flex-direction: row;
   }
