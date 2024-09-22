@@ -20,6 +20,9 @@ def seo(request):
 def t2(request):
     return render(request, 'pages/t2.html', {})
 
+def test(request):
+    return render(request, 'pages/test.html', {})
+
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
