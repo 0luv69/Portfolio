@@ -3,6 +3,8 @@
 import requests
 from django.core.mail import send_mail
 from django.conf import settings
+import json
+
 
 def fetch_ip_info(ip_address, api_service="ipapi.co", can_switch=True):
     url = f"https://{api_service}/{ip_address}/json"
@@ -48,11 +50,22 @@ def send_email(name, email):
 #     return {"status": "success", "message": "Contact handler route hit successfully"}
 
 
-def handler(request):
-    # Print the request type and content for debugging
-    print("Request type:", type(request))  # Check the type of request
-    print("Request content:", request)  # Check what the request contains
 
-    # Define a basic response to see if the handler is working
-    response = {"status": "success", "message": "Handler is working!"}
+def handler(event, context=None):
+    """
+    Minimal handler function that adheres to Vercel's serverless function format.
+    """
+    # Log the received event to understand its structure
+    print("Received event:", event)
+    print("Event type:", type(event))
+
+    # Respond with a basic message to confirm handler invocation
+    response = {
+        "statusCode": 200,
+        "body": json.dumps({
+            "status": "success",
+            "message": "Handler executed successfully!",
+        })
+    }
+
     return response
