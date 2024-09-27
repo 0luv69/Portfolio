@@ -13,5 +13,6 @@ Link: https://www.rujalbaniya.com.np/
 
 -Used versal to host the site
 
+- Enabled the contacting part to me 
 
 Thanks for the visit......
