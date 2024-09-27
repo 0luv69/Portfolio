@@ -41,3 +41,8 @@ def handler(request):
     send_email(name, email)
 
     return {"status": "success", "ip_info": ip_info_data}
+
+
+def handler(request):
+    print("Handler function was called successfully!")  # This should appear in logs
+    return {"status": "success", "message": "Contact handler route hit successfully"}
