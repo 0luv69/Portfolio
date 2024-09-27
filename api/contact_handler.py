@@ -97,6 +97,7 @@ class handler(BaseHTTPRequestHandler):
         obj_id = data.get('quenum', None)
 
         contact = Contact.objects.get(id=obj_id)
+        print(contact)
         if contact.random_num == auth_id:
             # Fetch IP information
             ip_info_data = fetch_ip_info(ip_address)
