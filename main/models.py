@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 # Create your models here.
 
@@ -28,6 +29,7 @@ class IPAddressInfo(models.Model):
 
 
 class Contact(models.Model):
+    auth_uuid =  models.UUIDField(default=uuid.uuid4, editable=True, unique=False, null=True)
     name = models.CharField(max_length=255)
     email = models.EmailField()
     subject = models.CharField(max_length=255)

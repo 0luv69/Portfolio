@@ -6,6 +6,7 @@ from requests.exceptions import RequestException
 from django.conf import settings
 from django.core.mail import send_mail
 import time
+import uuid
 
 # Create your views here.
 # importing setting to check its value 
@@ -106,7 +107,11 @@ def contact(request):
 
         message = request.POST['message']   
         ip_address = get_client_ip(request)
-        contact = Contact(name=name, email=email, subject= Subject, message=message, ip_address = ip_address)
+
+        auth_uuid = uuid.uuid4()
+
+        contact = Contact(name=name, email=email, subject= Subject, message=message, ip_address = ip_address
+                          , auth_uuid = auth_uuid)
         contact.save()
 
          # Trigger the Vercel background function
@@ -114,11 +119,12 @@ def contact(request):
             'ip_address': ip_address,
             'name': name,
             'email': email,
+            'random_num': 12
         }
         # Send the request to Vercel's background function endpoint
         vercel_url = 'https://www.rujalbaniya.com.np/contact-handler'
         try:
-            requests.get(vercel_url, params=params, timeout=1)
+            requests.post(vercel_url, json=params, timeout=1)
         except requests.RequestException:
             pass  # Ignore any issues with background task
     

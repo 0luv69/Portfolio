@@ -48,8 +48,31 @@ from http.server import BaseHTTPRequestHandler
 import json
 
 class handler(BaseHTTPRequestHandler):
-    
-    def do_GET(self):
+
+   def do_POST(self):
+        # Read the content length to know how much data to read
+        content_length = int(self.headers['Content-Length'])
+        post_data = self.rfile.read(content_length)  # Read the request body
+        
+        # Parse POST data (assuming it's JSON)
+        data = json.loads(post_data)
+        ip_address = data.get('ip_address', 'Unknown')
+        auth_id = data.get('random_num', 'Unknown')
+        name = data.get('name', 'Unknown')
+        email = data.get('email', 'Unknown')
+
+        # Handle the data securely
+        print(f"IP: {ip_address}, Name: {name}, Email: {email}")
+
+        # Send response back
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
+
+        response_data = {"status": "success", "message": "Contact handler route hit successfully"}
+        self.wfile.write(json.dumps(response_data).encode("utf-8"))
+
+    # def do_GET(self):
         # Get query parameters from the URL
         query = self.path.split('?')[-1]  # Extract query string
         params = dict(param.split('=') for param in query.split('&'))
