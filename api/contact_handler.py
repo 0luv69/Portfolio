@@ -53,19 +53,39 @@ def send_email(name, email):
 
 def handler(event, context=None):
     """
-    Minimal handler function that adheres to Vercel's serverless function format.
+    Vercel-compatible handler function that extracts parameters from the event dictionary.
     """
-    # Log the received event to understand its structure
     print("Received event:", event)
-    print("Event type:", type(event))
 
-    # Respond with a basic message to confirm handler invocation
-    response = {
-        "statusCode": 200,
-        "body": json.dumps({
-            "status": "success",
-            "message": "Handler executed successfully!",
-        })
-    }
+    # Extract parameters if they exist in the event structure
+    try:
+        # If using queryStringParameters (common in AWS Lambda format)
+        ip_address = event.get('queryStringParameters', {}).get('ip_address', 'Unknown IP')
+        name = event.get('queryStringParameters', {}).get('name', 'Unknown Name')
+        email = event.get('queryStringParameters', {}).get('email', 'Unknown Email')
+
+        # Log the extracted parameters
+        print(f"Extracted IP Address: {ip_address}, Name: {name}, Email: {email}")
+        
+        # Respond with extracted parameters
+        response = {
+            "statusCode": 200,
+            "body": json.dumps({
+                "status": "success",
+                "message": "Handler executed successfully!",
+                "ip_address": ip_address,
+                "name": name,
+                "email": email
+            })
+        }
+    except Exception as e:
+        print(f"Error extracting parameters: {e}")
+        response = {
+            "statusCode": 500,
+            "body": json.dumps({
+                "status": "error",
+                "message": f"Failed to extract parameters: {str(e)}"
+            })
+        }
 
     return response
