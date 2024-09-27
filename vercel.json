@@ -4,6 +4,10 @@
       "src": "protfolio/wsgi.py",
       "use": "@vercel/python",
       "config": { "maxLambdaSize": "15mb", "runtime": "python3.12.2" }
+    },
+    {
+      "src": "api/contact_handler.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
