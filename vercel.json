@@ -16,12 +16,12 @@
       "dest": "/staticfiles/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "protfolio/wsgi.py"
-    },
-    {
       "src": "/contact-handler",
       "dest": "/api/contact_handler.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "protfolio/wsgi.py"
     }
   ]
 }
