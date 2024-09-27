@@ -44,66 +44,38 @@ def send_email(name, email):
 
 #     return {"status": "success", "ip_info": ip_info_data}
 
-
+from http.server import BaseHTTPRequestHandler
 import json
 
-def handler(request):
-    print("Handler function was called successfully!")
+class handler(BaseHTTPRequestHandler):
     
-    # Get query parameters (if needed)
-    ip_address = request.GET.get('ip_address', None)
-    name = request.GET.get('name', None)
-    email = request.GET.get('email', None)
+    def do_GET(self):
+        # Get query parameters from the URL
+        query = self.path.split('?')[-1]  # Extract query string
+        params = dict(param.split('=') for param in query.split('&'))
 
-    # You can perform additional processing here
-    print(f"IP: {ip_address}, Name: {name}, Email: {email}")
+        ip_address = params.get('ip_address', 'Unknown')
+        name = params.get('name', 'Unknown')
+        email = params.get('email', 'Unknown')
 
-    # Example response
-    return {
-        "statusCode": 200,
-        "body": json.dumps({
+        # Log the request parameters for debugging
+        print(f"IP: {ip_address}, Name: {name}, Email: {email}")
+
+        # Prepare the response data
+        response_data = {
             "status": "success",
-            "message": "Contact handler route hit successfully"
-        })
-    }
+            "message": "Contact handler route hit successfully",
+            "ip_address": ip_address,
+            "name": name,
+            "email": email
+        }
 
-
-# def handler(event, context=None):
-#     """
-#     Vercel-compatible handler function that extracts parameters from the event dictionary.
-#     """
-#     print("Received event:", event)
-
-#     # Extract parameters if they exist in the event structure
-#     try:
-#         # If using queryStringParameters (common in AWS Lambda format)
-#         ip_address = event.get('queryStringParameters', {}).get('ip_address', 'Unknown IP')
-#         name = event.get('queryStringParameters', {}).get('name', 'Unknown Name')
-#         email = event.get('queryStringParameters', {}).get('email', 'Unknown Email')
-
-#         # Log the extracted parameters
-#         print(f"Extracted IP Address: {ip_address}, Name: {name}, Email: {email}")
+        # Send HTTP status code
+        self.send_response(200)
         
-#         # Respond with extracted parameters
-#         response = {
-#             "statusCode": 200,
-#             "body": json.dumps({
-#                 "status": "success",
-#                 "message": "Handler executed successfully!",
-#                 "ip_address": ip_address,
-#                 "name": name,
-#                 "email": email
-#             })
-#         }
-#     except Exception as e:
-#         print(f"Error extracting parameters: {e}")
-#         response = {
-#             "statusCode": 500,
-#             "body": json.dumps({
-#                 "status": "error",
-#                 "message": f"Failed to extract parameters: {str(e)}"
-#             })
-#         }
+        # Set headers
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
 
-#     return response
-
+        # Write the response body
+        self.wfile.write(json.dumps(response_data).encode("utf-8"))
