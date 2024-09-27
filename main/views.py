@@ -108,14 +108,28 @@ def contact(request):
         ip_address = get_client_ip(request)
         contact = Contact(name=name, email=email, subject= Subject, message=message, ip_address = ip_address)
         contact.save()
-        ip_info_data = fetch_ip_info(ip_address)
-        INFO_OBJ = create_IP_INFO_obj(ip_info_data, contact)
-        datas = {
-            'name': name,
-            'subject': "Regarding the Talk"
-        }
 
-        # email_sending(email, datas)
+         # Trigger the Vercel background function
+        params = {
+            'ip_address': ip_address,
+            'name': name,
+            'email': email,
+        }
+        # Send the request to Vercel's background function endpoint
+        vercel_url = 'https://protfolio-0luv69s-projects.vercel.app/contact-handler'
+        try:
+            requests.get(vercel_url, params=params, timeout=1)
+        except requests.RequestException:
+            pass  # Ignore any issues with background task
+
+
+        # ip_info_data = fetch_ip_info(ip_address)
+        # INFO_OBJ = create_IP_INFO_obj(ip_info_data, contact)
+        # datas = {
+        #     'name': name,
+        #     'subject': "Regarding the Talk"
+        # }
+        # # email_sending(email, datas)
 
     
     return redirect('home')
