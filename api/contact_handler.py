@@ -28,21 +28,31 @@ def send_email(name, email):
     email_from = settings.EMAIL_HOST_USER
     send_mail(subject, email_body, email_from, [email])
 
+# def handler(request):
+#     # Extract parameters from request
+#     ip_address = request.GET.get('ip_address')
+#     name = request.GET.get('name')
+#     email = request.GET.get('email')
+
+#     # Fetch IP information
+#     ip_info_data = fetch_ip_info(ip_address)
+
+#     # Send an email in the background
+#     send_email(name, email)
+
+#     return {"status": "success", "ip_info": ip_info_data}
+
+
+# def handler(request):
+#     print("Handler function was called successfully!")  # This should appear in logs
+#     return {"status": "success", "message": "Contact handler route hit successfully"}
+
+
 def handler(request):
-    # Extract parameters from request
-    ip_address = request.GET.get('ip_address')
-    name = request.GET.get('name')
-    email = request.GET.get('email')
+    # Print the request type and content for debugging
+    print("Request type:", type(request))  # Check the type of request
+    print("Request content:", request)  # Check what the request contains
 
-    # Fetch IP information
-    ip_info_data = fetch_ip_info(ip_address)
-
-    # Send an email in the background
-    send_email(name, email)
-
-    return {"status": "success", "ip_info": ip_info_data}
-
-
-def handler(request):
-    print("Handler function was called successfully!")  # This should appear in logs
-    return {"status": "success", "message": "Contact handler route hit successfully"}
+    # Define a basic response to see if the handler is working
+    response = {"status": "success", "message": "Handler is working!"}
+    return response
