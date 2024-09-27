@@ -6,6 +6,37 @@ from django.conf import settings
 import json
 
 
+from main.models import *
+
+
+def create_IP_INFO_obj(ip_info_data, contact):
+    if ip_info_data:
+        # Save the IP information
+        ip_info = IPAddressInfo.objects.create(
+            contact=contact,
+            ip=ip_info_data.get("ip"),
+            network=ip_info_data.get("network"),
+            city=ip_info_data.get("city"),
+            region=ip_info_data.get("region"),
+            region_code=ip_info_data.get("region_code"),
+            country_name=ip_info_data.get("country_name"),
+            country_code=ip_info_data.get("country_code"),
+            continent_code=ip_info_data.get("continent_code"),
+            latitude=ip_info_data.get("latitude"),
+            longitude=ip_info_data.get("longitude"),
+            timezone=ip_info_data.get("timezone"),
+            utc_offset=ip_info_data.get("utc_offset"),
+            org=ip_info_data.get("org"),
+            asn=ip_info_data.get("asn"),
+            currency=ip_info_data.get("currency"),
+            languages=ip_info_data.get("languages"),
+        )
+    else:
+        ip_info = None
+    
+    return ip_info
+
+
 def fetch_ip_info(ip_address, api_service="ipapi.co", can_switch=True):
     url = f"https://{api_service}/{ip_address}/json"
     try:
@@ -16,6 +47,7 @@ def fetch_ip_info(ip_address, api_service="ipapi.co", can_switch=True):
             return fetch_ip_info(ip_address, "ipinfo.io", False)
     except requests.RequestException:
         return None
+
 
 def send_email(name, email):
     subject = f"Regarding the Talk"
@@ -29,6 +61,7 @@ def send_email(name, email):
     '''
     email_from = settings.EMAIL_HOST_USER
     send_mail(subject, email_body, email_from, [email])
+
 
 # def handler(request):
 #     # Extract parameters from request
@@ -56,13 +89,24 @@ class handler(BaseHTTPRequestHandler):
         
         # Parse POST data (assuming it's JSON)
         data = json.loads(post_data)
-        ip_address = data.get('ip_address', 'Unknown')
-        auth_id = data.get('random_num', 'Unknown')
-        name = data.get('name', 'Unknown')
-        email = data.get('email', 'Unknown')
+        ip_address = data.get('ip_address', None)
+        name = data.get('name', None)
+        email = data.get('email', None)
 
-        # Handle the data securely
-        print(f"IP: {ip_address}, Name: {name}, Email: {email}")
+        auth_id = data.get('random_num', None)
+        obj_id = data.get('quenum', None)
+
+        contact = Contact.objects.get(id=obj_id)
+        if contact.random_num == auth_id:
+            # Fetch IP information
+            ip_info_data = fetch_ip_info(ip_address)
+
+            INFO_OBJ = create_IP_INFO_obj(ip_info_data, contact)
+
+            # Send an email in the background
+            send_email(name, email)
+        else:
+            print("Authentication is wrong")
 
         # Send response back
         self.send_response(200)
@@ -72,33 +116,3 @@ class handler(BaseHTTPRequestHandler):
         response_data = {"status": "success", "message": "Contact handler route hit successfully"}
         self.wfile.write(json.dumps(response_data).encode("utf-8"))
 
-    # def do_GET(self):
-        # Get query parameters from the URL
-        query = self.path.split('?')[-1]  # Extract query string
-        params = dict(param.split('=') for param in query.split('&'))
-
-        ip_address = params.get('ip_address', 'Unknown')
-        name = params.get('name', 'Unknown')
-        email = params.get('email', 'Unknown')
-
-        # Log the request parameters for debugging
-        print(f"IP: {ip_address}, Name: {name}, Email: {email}")
-
-        # Prepare the response data
-        response_data = {
-            "status": "success",
-            "message": "Contact handler route hit successfully",
-            "ip_address": ip_address,
-            "name": name,
-            "email": email
-        }
-
-        # Send HTTP status code
-        self.send_response(200)
-        
-        # Set headers
-        self.send_header("Content-Type", "application/json")
-        self.end_headers()
-
-        # Write the response body
-        self.wfile.write(json.dumps(response_data).encode("utf-8"))

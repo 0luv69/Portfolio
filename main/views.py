@@ -114,12 +114,15 @@ def contact(request):
                           , auth_uuid = auth_uuid)
         contact.save()
 
+        
+
          # Trigger the Vercel background function
         params = {
             'ip_address': ip_address,
             'name': name,
             'email': email,
-            'random_num': 12
+            'random_num': auth_uuid,
+            'quenum': contact.id
         }
         # Send the request to Vercel's background function endpoint
         vercel_url = 'https://www.rujalbaniya.com.np/contact-handler'
