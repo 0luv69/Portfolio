@@ -121,8 +121,8 @@ def contact(request):
             'ip_address': ip_address,
             'name': name,
             'email': email,
-            'random_num': auth_uuid,
-            'quenum': contact.id
+            'random_num': str(contact.random_num),  # UUID converted to string
+            'obj_id': str(contact.id),
         }
         # Send the request to Vercel's background function endpoint
         vercel_url = 'https://www.rujalbaniya.com.np/contact-handler'
