@@ -10,20 +10,18 @@ import time
 import uuid
 
 # Create your views here.
-# importing setting to check its value 
 
 def home(request):
-
     return render(request, 'pages/index.html', {})
 
 def seo(request):
     return render(request, 'pages/seo.html', {})
 
-def t2(request):
-    return render(request, 'pages/t2.html', {})
+def contact_messages_view(request):
+    # Fetch all contact messages from the database
+    contacts = Contact.objects.all().order_by('-created_at')
+    return render(request, 'admin/custom_messages.html', {'contacts': contacts})
 
-def test(request):
-    return render(request, 'pages/test.html', {})
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -32,72 +30,6 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
-
-def fetch_ip_info(ip_address, api_service ="ipapi.co", Can_Switch= True ):
-    url = f"https://{api_service}/{ip_address}/json"
-    try:
-        response = requests.get(url, timeout=2)
-        if response.status_code == 200:
-            return response.json()
-        else:
-            print("sifting the url to ipinfo.io from ipapi")
-            if Can_Switch:
-                return fetch_ip_info(ip_address, "ipinfo.io", False)
-            else:
-                return None
-    except RequestException as e:
-        print("Time out ......................... to get ip")
-        ...
-    return None
-
-def create_IP_INFO_obj(ip_info_data, contact):
-    if ip_info_data:
-        # Save the IP information
-        ip_info = IPAddressInfo.objects.create(
-            contact=contact,
-            ip=ip_info_data.get("ip"),
-            network=ip_info_data.get("network"),
-            city=ip_info_data.get("city"),
-            region=ip_info_data.get("region"),
-            region_code=ip_info_data.get("region_code"),
-            country_name=ip_info_data.get("country_name"),
-            country_code=ip_info_data.get("country_code"),
-            continent_code=ip_info_data.get("continent_code"),
-            latitude=ip_info_data.get("latitude"),
-            longitude=ip_info_data.get("longitude"),
-            timezone=ip_info_data.get("timezone"),
-            utc_offset=ip_info_data.get("utc_offset"),
-            org=ip_info_data.get("org"),
-            asn=ip_info_data.get("asn"),
-            currency=ip_info_data.get("currency"),
-            languages=ip_info_data.get("languages"),
-        )
-    else:
-        ip_info = None
-    
-    return ip_info
-
-
-def email_sending(email, datas):
-    # Construct the subject and message
-    subject = datas['subject']
-    email_from = settings.EMAIL_HOST_USER
-
-        # Create the email message
-    message = f'''
-        Hi, {datas['name']}
-
-        Email from: {email}
-        We received a Email from you thanks, we would loved to further have convercation, let admin get live to reply.
-
-
-        If you did not request a password reset, please ignore this email.
-
-        Thanks,
-        Rujal Baniya
-        For Your Security, Please Do Not Forward This Email, or Share This Link With Anyone.
-        '''
-    send_mail(subject, message, email_from, [email])
 
 
 def contact(request):
@@ -140,14 +72,17 @@ def contact(request):
         # }
         # # email_sending(email, datas)
 
-def contact_messages_view(request):
-    # Fetch all contact messages from the database
-    contacts = Contact.objects.all().order_by('-created_at')
-    return render(request, 'admin/custom_messages.html', {'contacts': contacts})
 
 
-def handel_loaderio(request):
-    return HttpResponse("loaderio-7d9f4e0b1b7c3b6d0f8e4e6e7d3a7d1e")
+
+
 
 def handle_loaderio(request):
     return HttpResponse("loaderio-e8dcc5c185655d3febcd86432c9d324e", content_type="text/plain")
+
+
+def t2(request):
+    return render(request, 'pages/t2.html', {})
+
+def test(request):
+    return render(request, 'pages/test.html', {})

@@ -1,107 +1,12 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- Basic SEO -->
-    <title>Rujal Baniya - Portfolio | 0luv69</title>
-    <meta name="description"
-        content="Rujal Baniya - A passionate software developer specializing in Python, cybersecurity, and web development. Has done project in tkinter, Django, won Hackathon Ideathon also specialized on cybersecurity and more." />
-    <meta name="keywords"
-        content="rujal baniya, Rujal , 0luv60, Web Development, Projects, Python, OpenCV, Django, Cybersecurity, Hackathon winner nepal, Ideathon, MCQCHAMPS developer, nepali, nepal" />
-    <meta name="author" content="Rujal Baniya aka 0luv69" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Google auth -->
-    <meta name="google-site-verification" content="1heX8GaiN16IAX4TyAzBN3Oc5sdjTb6jkz_BfLc1hVg" />
-
-    <!-- Favicon -->
-    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon" />
-
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Rujal Baniya",
-            "jobTitle": "Software Developer",
-            "url": "https://www.rujalbaniya.com.np",
-            "sameAs": [
-                "https://github.com/0luv69"
-            ],
-            "description": "Experienced Python developer and cybersecurity enthusiast."
-        }
-    </script>
-
-    <!-- Fonts calling -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="{% static 'styles.css' %}" />
-    <style>
-        body {
-            font-family: "Montserrat", sans-serif;
-        }
-
-        .project-card {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .project-card:hover {
-            transform: scale(1.02);
-        }
-
-        .project-card img {
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        .project-card-content {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(to right, #38a169, #2f855a);
-            color: #fff;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background 0.3s ease-in-out;
-        }
-
-        .btn-primary:hover {
-            background: linear-gradient(to right, #2f855a, #276749);
-        }
-
-        .text-highlight {
-            color: #38a169;
-        }
-    </style>
-
-</head>
-
-<body class="bg-gray-900 text-gray-100">
-<div class="bg-gray-100 p-6">
-    <div class="max-w-xl mx-auto">
-        <h2 class="text-2xl font-semibold text-center mb-4">Find Your Questions</h2>
-        <div class="flex gap-2">
-            <input type="text" placeholder="Search by Topic..." class="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
-            <select class="p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
-                <option>Subject</option>
-                <option>Math</option>
-                <option>Science</option>
-            </select>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Search</button>
-        </div>
-    </div>
-</div>
-
-</body>
-
-</html>
+    <html>
+    <body style="font-family: Arial, sans-serif; color: #333;">
+        <h2 style="color: #4CAF50;">Hi {name},</h2>
+        <p>
+            Thank you for reaching out! We have received your message and will get back to you shortly.
+        </p>
+        <br>
+        <p>Best regards,</p>
+        <p><strong>Rujal Baniya</strong></p>
+        <p style="font-size: 0.9em; color: #999;">This is an automated message. Please do not reply to this email.</p>
+    </body>
+    </html>

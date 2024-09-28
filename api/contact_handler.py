@@ -5,7 +5,6 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'protfolio.settings')
 django.setup()  # Initialize Django
 
-from django.core.mail import send_mail
 from django.conf import settings
 from main.models import *  # Import your models
 
@@ -13,6 +12,11 @@ from main.models import *  # Import your models
 import requests
 from http.server import BaseHTTPRequestHandler
 import json
+
+
+from django.core.mail import EmailMultiAlternatives
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 
 
@@ -58,21 +62,59 @@ def fetch_ip_info(ip_address, api_service="ipapi.co", can_switch=True):
         return None
 
 
-def send_email(name, email):
-    subject = f"Regarding the Talk"
-    email_body = f'''
-        Hi {name},
-
-        Thank you for reaching out. We have received your message and will get back to you soon.
-
-        Regards,
-        Rujal Baniya
-    '''
+def send_email(name, email, topic):
+    subject = "Thank You for Contacting Us"
     email_from = settings.EMAIL_HOST_USER
+    to = [email]
+
+    # Context for rendering the HTML template
+    context = {
+        'name': name,
+        'topic': topic,
+        'logo_url': 'https://www.rujalbaniya.com.np/staticfiles/img/logo.png',  
+    }
+    # Render the HTML content using a template for better manageability
+    html_content = render_to_string('emails/contact_response.html', context)
+
+
+    # Plain text version (fallback)
+    text_content = f'''
+    Hi {name},
+
+
+    Thank you for reaching out to us.   We have received your message and will get back to you shortly.
+
+    We will have a great talk on {topic}.
+
+
+
+
+    *note*: This is an automated message. Please do wait I value your Time and Effort.
+
+
+    You can also reach me at
+    Email: baniyarujal@gmail.com
+
+    Github: https://www.github.com/0luv69
+    linkedin: https://www.linkedin.com/in/luv-79a89732a/
+
+
+    Best regards,
+    Rujal Baniya `aka Luv`
+
+    '''
+
+    
+    
+    msg = EmailMultiAlternatives(subject, text_content, email_from, to)
+    msg.attach_alternative(html_content, "text/html")
+    
     try:
-        send_mail(subject, email_body, email_from, [email])
+        msg.send()
     except Exception as e:
         print(f"Error sending email: {e}")
+    
+
 
 class handler(BaseHTTPRequestHandler):
 
@@ -109,7 +151,7 @@ class handler(BaseHTTPRequestHandler):
             INFO_OBJ = create_IP_INFO_obj(ip_info_data, contact)
 
             # Send an email in the background
-            send_email(name, email)
+            send_email(name, email, contact.subject)
         else:
             print("Authentication is wrong, Invalid random_num provided.")
 
