@@ -99,6 +99,8 @@ class handler(BaseHTTPRequestHandler):
             return
         
         # Authenticate using random_num (auth_uuid)
+        print(contact)
+        print(contact.auth_uuid, auth_id)
         if contact.auth_uuid == auth_id:
             # Fetch IP information
             ip_info_data = fetch_ip_info(ip_address)
