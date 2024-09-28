@@ -1,4 +1,7 @@
 # api/contact_handler.py
+import os
+import django
+
 from django.core.mail import send_mail
 from django.conf import settings
 from main.models import *  # Import your models
@@ -7,6 +10,10 @@ from main.models import *  # Import your models
 import requests
 from http.server import BaseHTTPRequestHandler
 import json
+
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'protfolio.settings')
+django.setup()  # Initialize Django
 
 # Function to create IP info object
 def create_IP_INFO_obj(ip_info_data, contact):
