@@ -1,14 +1,14 @@
 # api/contact_handler.py
-
-import requests
 from django.core.mail import send_mail
 from django.conf import settings
+from main.models import *  # Import your models
+
+
+import requests
+from http.server import BaseHTTPRequestHandler
 import json
 
-
-from main.models import *
-
-
+# Function to create IP info object
 def create_IP_INFO_obj(ip_info_data, contact):
     if ip_info_data:
         # Save the IP information
@@ -36,7 +36,7 @@ def create_IP_INFO_obj(ip_info_data, contact):
     
     return ip_info
 
-
+# Function to fetch IP info
 def fetch_ip_info(ip_address, api_service="ipapi.co", can_switch=True):
     url = f"https://{api_service}/{ip_address}/json"
     try:
@@ -45,7 +45,8 @@ def fetch_ip_info(ip_address, api_service="ipapi.co", can_switch=True):
             return response.json()
         elif can_switch:
             return fetch_ip_info(ip_address, "ipinfo.io", False)
-    except requests.RequestException:
+    except requests.RequestException as e:
+        print(f"Error fetching IP info: {e}")
         return None
 
 
@@ -60,25 +61,10 @@ def send_email(name, email):
         Rujal Baniya
     '''
     email_from = settings.EMAIL_HOST_USER
-    send_mail(subject, email_body, email_from, [email])
-
-
-# def handler(request):
-#     # Extract parameters from request
-#     ip_address = request.GET.get('ip_address')
-#     name = request.GET.get('name')
-#     email = request.GET.get('email')
-
-#     # Fetch IP information
-#     ip_info_data = fetch_ip_info(ip_address)
-
-#     # Send an email in the background
-#     send_email(name, email)
-
-#     return {"status": "success", "ip_info": ip_info_data}
-
-from http.server import BaseHTTPRequestHandler
-import json
+    try:
+        send_mail(subject, email_body, email_from, [email])
+    except Exception as e:
+        print(f"Error sending email: {e}")
 
 class handler(BaseHTTPRequestHandler):
 
@@ -86,9 +72,9 @@ class handler(BaseHTTPRequestHandler):
         # Read the content length to know how much data to read
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length)  # Read the request body
+        data = json.loads(post_data)
         
         # Parse POST data (assuming it's JSON)
-        data = json.loads(post_data)
         ip_address = data.get('ip_address', None)
         name = data.get('name', None)
         email = data.get('email', None)
@@ -96,18 +82,28 @@ class handler(BaseHTTPRequestHandler):
         auth_id = data.get('random_num', None)
         obj_id = data.get('obj_id', None)
 
-        contact = Contact.objects.get(id=obj_id)
+        try:
+            contact = Contact.objects.get(id=obj_id)
+        except Contact.DoesNotExist:
+            self.send_response(400)
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "error", "message": "Invalid contact ID"}).encode("utf-8"))
+            return
         
+        # Authenticate using random_num (auth_uuid)
         if contact.auth_uuid == auth_id:
             # Fetch IP information
             ip_info_data = fetch_ip_info(ip_address)
+            if not ip_info_data:
+                print("Failed to fetch IP information.")
 
+            # Create IP info object and link to contact
             INFO_OBJ = create_IP_INFO_obj(ip_info_data, contact)
 
             # Send an email in the background
             send_email(name, email)
         else:
-            print("Authentication is wrong")
+            print("Authentication is wrong, Invalid random_num provided.")
 
         # Send response back
         self.send_response(200)
@@ -116,4 +112,5 @@ class handler(BaseHTTPRequestHandler):
 
         response_data = {"status": "success", "message": "Contact handler route hit successfully"}
         self.wfile.write(json.dumps(response_data).encode("utf-8"))
+
 
