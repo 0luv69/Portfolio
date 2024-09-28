@@ -35,6 +35,6 @@ urlpatterns = [
 
 
 
-    # path('loaderio-e8dcc5c185655d3febcd86432c9d324e.txt', views.handle_loaderio, name='handle_loaderio'),
+    path('loaderio-e8dcc5c185655d3febcd86432c9d324e.txt', views.handle_loaderio, name='handle_loaderio'),
     # path('googleee23894d0f67f069.html/', views.about, name='about'),
 ]
