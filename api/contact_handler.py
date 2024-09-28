@@ -118,6 +118,14 @@ def send_email(name, email, topic):
 
 class handler(BaseHTTPRequestHandler):
 
+
+   def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
+        response_data = {"status": "sucess", "message": "This Rujal Baniya's Site, A passionate Full Stack Developer from Nepal, specializing in Python, cybersecurity, and web development. Have done project in tkinter, Django, won Hackathon, Ideathon also specialized on cybersecurity and more. Got once reconized by Nepal Government for my work. Here you can find my projects where I have worked on such as Photo editor, Student Health based Pariwar Application, Student Learning based Mcqchamps to learn tick and test mcq with ppt posting project in-build."}
+        self.wfile.write(json.dumps(response_data).encode("utf-8"))
+
    def do_POST(self):
         # Read the content length to know how much data to read
         content_length = int(self.headers['Content-Length'])

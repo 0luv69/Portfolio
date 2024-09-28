@@ -66,15 +66,6 @@ def contact(request):
     
     return redirect('home')
 
-        # ip_info_data = fetch_ip_info(ip_address)
-        # INFO_OBJ = create_IP_INFO_obj(ip_info_data, contact)
-        # datas = {
-        #     'name': name,
-        #     'subject': "Regarding the Talk"
-        # }
-        # # email_sending(email, datas)
-
-
 
 
 
