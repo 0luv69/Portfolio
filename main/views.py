@@ -24,8 +24,10 @@ def seo(request):
     return render(request, 'pages/seo.html', {})
 
 def contact_messages_view(request):
+    # if request.authenicated:print("safsad")
     # Fetch all contact messages from the database
-    contacts = Contact.objects.all().order_by('-created_at')
+    # contacts = Contact.objects.all().order_by('-created_at')
+    contacts=[]
     return render(request, 'admin/custom_messages.html', {'contacts': contacts})
 
 

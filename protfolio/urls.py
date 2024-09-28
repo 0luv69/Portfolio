@@ -23,14 +23,17 @@ from main import views
 
 urlpatterns = [
     path('mujilover/', admin.site.urls),
+    
     path('', views.home, name='home'),
-    path('contact/', views.contact, name='contact'),
     path('seo/', views.seo, name='seo'),
+
+
+    path('contact/', views.contact, name='contact'),
+    # path('contact/messages/', views.contact_messages_view, name='contact_messages'),
 
 
     # path('test/', views.test, name='test'),
     # path('t2/', views.t2, name='t2'),
-    # path('admin/messages/', views.contact_messages_view, name='contact_messages'),
 
 
 
