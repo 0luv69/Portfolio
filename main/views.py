@@ -9,6 +9,8 @@ from django.core.mail import send_mail
 import time
 import uuid
 
+
+
 # Create your views here.
 
 def home(request):
