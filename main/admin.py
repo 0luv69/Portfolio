@@ -1,5 +1,5 @@
 from django.contrib import admin
-from main.models import Contact, IPAddressInfo
+from main.models import Contact, IPAddressInfo, Project
 # Register your models here.
 
 
@@ -13,5 +13,12 @@ class IPAddressInfoAdmin(admin.ModelAdmin):
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'subject', 'created_at')
     search_fields = ('name', 'email', 'subject')
+    list_filter = ('created_at',)
+    readonly_fields = ('created_at',)
+
+@admin.register(Project)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description', 'btn1_text' , 'btn2_text', 'created_at')
+    search_fields = ('title', 'description')
     list_filter = ('created_at',)
     readonly_fields = ('created_at',)

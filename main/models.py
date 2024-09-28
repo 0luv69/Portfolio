@@ -41,3 +41,19 @@ class Contact(models.Model):
         return self.name
 
 
+class Project(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    image = models.ImageField(upload_to='img/projects/')
+    btn1_text = models.CharField(max_length=50)
+    btn1_url = models.URLField(null=True, blank=True)
+
+    btn2_text = models.CharField(max_length=50)
+    btn2_url = models.URLField(null=True, blank=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    prj_value = models.IntegerField(default=5)
+
+    def __str__(self):
+        return self.title
