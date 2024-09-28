@@ -173,6 +173,5 @@ class handler(BaseHTTPRequestHandler):
             self.send_response(500)
             self.end_headers()
             response_data = {"status": "error","error_msg": "No post request plz only get", "message": "This Rujal Baniya's Site, A passionate Full Stack Developer from Nepal, specializing in Python, cybersecurity, and web development. Have done project in tkinter, Django, won Hackathon, Ideathon also specialized on cybersecurity and more. Got once reconized by Nepal Government for my work. Here you can find my projects where I have worked on such as Photo editor, Student Health based Pariwar Application, Student Learning based Mcqchamps to learn tick and test mcq with ppt posting project in-build."}
-
             self.wfile.write(json.dumps(response_data).encode("utf-8"))
 
