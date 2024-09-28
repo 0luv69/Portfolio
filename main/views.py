@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import *
 import requests
 from requests.exceptions import RequestException
+from django.http import HttpResponse
 
 from django.conf import settings
 from django.core.mail import send_mail
@@ -144,3 +145,6 @@ def contact_messages_view(request):
     contacts = Contact.objects.all().order_by('-created_at')
     return render(request, 'admin/custom_messages.html', {'contacts': contacts})
 
+
+def handel_loaderio(request):
+    return HttpResponse("loaderio-7d9f4e0b1b7c3b6d0f8e4e6e7d3a7d1e")
