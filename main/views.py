@@ -148,3 +148,6 @@ def contact_messages_view(request):
 
 def handel_loaderio(request):
     return HttpResponse("loaderio-7d9f4e0b1b7c3b6d0f8e4e6e7d3a7d1e")
+
+def handle_loaderio(request):
+    return HttpResponse("loaderio-e8dcc5c185655d3febcd86432c9d324e", content_type="text/plain")

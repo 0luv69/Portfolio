@@ -27,7 +27,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('seo/', views.seo, name='seo'),
 
-    path('loaderio-e8dcc5c185655d3febcd86432c9d324e/', views.handel_loaderio, name='handel_loaderio'),
+    path('loaderio-e8dcc5c185655d3febcd86432c9d324e.txt', views.handle_loaderio, name='handle_loaderio'),
 
     # path('admin/messages/', views.contact_messages_view, name='contact_messages'),
     path('test/', views.test, name='test'),
