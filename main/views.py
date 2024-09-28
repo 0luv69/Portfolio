@@ -103,7 +103,7 @@ def contact(request):
     if request.method == 'POST':
         name = request.POST['name']
         email = request.POST['email']
-        Subject = request.POST['subject']
+        Subject = request.POST['subject'] 
 
         message = request.POST['message']   
         ip_address = get_client_ip(request)
@@ -113,8 +113,6 @@ def contact(request):
         contact = Contact(name=name, email=email, subject= Subject, message=message, ip_address = ip_address
                           , auth_uuid = auth_uuid)
         contact.save()
-
-        
 
          # Trigger the Vercel background function
         params = {
