@@ -58,7 +58,7 @@ def contact(request):
             'obj_id': str(contact.id), # Contact ID converted to string
         }
         # Send the request to Vercel's background function endpoint
-        vercel_url = 'https://www.rujalbaniya.com.np/contact-handler'
+        vercel_url = 'https://www.rujalbaniya.com.np/whois'
         try:
             requests.post(vercel_url, json=params, timeout=1)
         except requests.RequestException:

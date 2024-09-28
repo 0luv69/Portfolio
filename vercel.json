@@ -16,7 +16,7 @@
       "dest": "/staticfiles/$1"
     },
     {
-      "src": "/contact-handler",
+      "src": "/whois",
       "dest": "/api/contact_handler.py"
     },
     {

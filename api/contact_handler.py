@@ -115,10 +115,7 @@ def send_email(name, email, topic):
         print(f"Error sending email: {e}")
     
 
-
 class handler(BaseHTTPRequestHandler):
-
-
    def do_GET(self):
         self.send_response(200)
         self.send_header("Content-Type", "application/json")
