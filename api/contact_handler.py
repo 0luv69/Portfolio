@@ -127,49 +127,53 @@ class handler(BaseHTTPRequestHandler):
         self.wfile.write(json.dumps(response_data).encode("utf-8"))
 
    def do_POST(self):
-        # Read the content length to know how much data to read
-        content_length = int(self.headers['Content-Length'])
-        post_data = self.rfile.read(content_length)  # Read the request body
-        data = json.loads(post_data)
-        
-        # Parse POST data (assuming it's JSON)
-        ip_address = data.get('ip_address', None)
-        name = data.get('name', None)
-        email = data.get('email', None)
-
-        auth_id = data.get('random_num', None)
-        obj_id = data.get('obj_id', None)
-
         try:
-            contact = Contact.objects.get(id=obj_id)
-        except Contact.DoesNotExist:
-            self.send_response(400)
+            # Read the content length to know how much data to read
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length)  # Read the request body
+            data = json.loads(post_data)
+            
+            # Parse POST data (assuming it's JSON)
+            ip_address = data.get('ip_address', None)
+            name = data.get('name', None)
+            email = data.get('email', None)
+
+            auth_id = data.get('random_num', None)
+            obj_id = data.get('obj_id', None)
+
+            try:
+                contact = Contact.objects.get(id=obj_id)
+            except Contact.DoesNotExist:
+                self.send_response(400)
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "error", "message": "Invalid contact ID"}).encode("utf-8"))
+                return
+            
+            # Authenticate using random_num (auth_uuid)
+            if str(contact.auth_uuid) == auth_id:
+                # Fetch IP information
+                ip_info_data = fetch_ip_info(ip_address)
+                if not ip_info_data:
+                    print("Failed to fetch IP information.")
+
+                # Create IP info object and link to contact
+                INFO_OBJ = create_IP_INFO_obj(ip_info_data, contact)
+
+                # Send an email in the background
+                send_email(name, email, contact.subject)
+            else:
+                print("Authentication is wrong, Invalid random_num provided.")
+
+            # Send response back
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
             self.end_headers()
-            self.wfile.write(json.dumps({"status": "error", "message": "Invalid contact ID"}).encode("utf-8"))
-            return
-        
-        # Authenticate using random_num (auth_uuid)
-        if str(contact.auth_uuid) == auth_id:
-            # Fetch IP information
-            ip_info_data = fetch_ip_info(ip_address)
-            if not ip_info_data:
-                print("Failed to fetch IP information.")
 
-            # Create IP info object and link to contact
-            INFO_OBJ = create_IP_INFO_obj(ip_info_data, contact)
+            response_data = {"status": "success", "message": "Contact handler route hit successfully"}
+            self.wfile.write(json.dumps(response_data).encode("utf-8"))
 
-            # Send an email in the background
-            send_email(name, email, contact.subject)
-        else:
-            print("Authentication is wrong, Invalid random_num provided.")
-
-        # Send response back
-        self.send_response(200)
-        self.send_header("Content-Type", "application/json")
-        self.end_headers()
-
-        response_data = {"status": "success", "message": "Contact handler route hit successfully"}
-        self.wfile.write(json.dumps(response_data).encode("utf-8"))
-
-   
+        except Exception as e:
+            self.send_response(500)
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "error", "message": "No post request plz only get"}).encode("utf-8"))
 
