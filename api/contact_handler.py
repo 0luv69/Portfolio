@@ -163,14 +163,5 @@ class handler(BaseHTTPRequestHandler):
         response_data = {"status": "success", "message": "Contact handler route hit successfully"}
         self.wfile.write(json.dumps(response_data).encode("utf-8"))
 
-   def do_get(self):
-        self.send_response(200)
-        self.send_header("Content-Type", "application/json")
-        self.end_headers()
-
-        send_email("Kuldip Yadav", "kuldipgoit@gmail.com", "Want to learn something new")
-
-
-        response_data = {"status": "success", "message": "Contact handler route hit successfully"}
-        self.wfile.write(json.dumps(response_data).encode("utf-8"))
+   
 
