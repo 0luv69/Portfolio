@@ -51,9 +51,9 @@ class Project(models.Model):
     btn2_text = models.CharField(max_length=50)
     btn2_url = models.URLField(null=True, blank=True)
 
-    created_at = models.DateTimeField(auto_now_add=True)
 
     prj_value = models.IntegerField(default=5)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title

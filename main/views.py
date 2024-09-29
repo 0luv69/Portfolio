@@ -14,10 +14,11 @@ import uuid
 # Create your views here.
 
 def home(request):
-
-    # Fetch all projects from the database order by prj value
-    projects = Project.objects.all().order_by('-prj_value')
-
+    final_list= []
+    for i in range(5,0,-1):
+        particular_grp= Project.objects.filter(prj_value=i).order_by('?')
+        final_list.extend(list(particular_grp))
+    projects = final_list
     return render(request, 'pages/index.html', {'projects':projects})
 
 def seo(request):
