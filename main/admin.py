@@ -6,14 +6,14 @@ from main.models import Contact, IPAddressInfo, Project
 
 @admin.register(Project)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('contact','title', 'prj_value', 'btn1_text' , 'btn2_text', 'created_at')
+    list_display = ('title', 'prj_value', 'btn1_text' , 'btn2_text', 'created_at')
     search_fields = ('title', 'prj_value')
     list_filter = ('created_at','prj_value')
     readonly_fields = ('created_at',)
 
 @admin.register(IPAddressInfo)
 class IPAddressInfoAdmin(admin.ModelAdmin):
-    list_display = ('ip', 'city', 'country_name', 'created_at')
+    list_display = ('contact','ip', 'city', 'country_name', 'created_at')
     search_fields = ('ip', 'city', 'country_name')
     list_filter = ('country_name', 'city')
 
