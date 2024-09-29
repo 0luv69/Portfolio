@@ -253,20 +253,33 @@
                 <!-- Project Links -->
                 <div class="flex flex-col sm:flex-row gap-4">
                     {% if forloop.counter|divisibleby:2 %}
-                    <a 
-                    {% if project.btn1_text == 'Private Code' %}
-                    href="#" 
-                    class="text-center bg-red-400 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-red-200"
-                    {% else %}
-                        href="{{ project.btn1_url }}" 
-                        class="text-center bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600"
-                    {% endif %}
-                    
-                    target="_blank" rel="noopener noreferrer">{{ project.btn1_text }}</a>
+                     
+                    <a   {% if project.btn1_text == 'Private Code' %}
+                            href="#" 
+                            class="text-center bg-red-400 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-red-200"
+                        {% else %}
+                            href="{{ project.btn1_url }}" 
+                            class="text-center bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600"
+                        {% endif %}
+                        target="_blank" rel="noopener noreferrer">{{ project.btn1_text }}
+                    </a>
+
                     <a href="{{ project.btn2_url }}" class="text-center bg-green-500 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600" target="_blank">{{ project.btn2_text }}</a>
 
                     {% else %}
-                    <a href="{{ project.btn1_url }}" class="text-center bg-green-500 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600" target="_blank">{{ project.btn1_text }}</a>
+                    <a   {% if project.btn1_text == 'Private Code' %}
+                            href="#" 
+                            class="text-center bg-red-400 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-red-200"
+                        {% else %}
+                            href="{{ project.btn1_url }}" 
+                            class="text-center bg-green-500 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600"
+                        {% endif %}
+                        target="_blank" rel="noopener noreferrer">{{ project.btn1_text }}
+                    </a>
+                    
+                    
+                    
+                    
                     <a href="{{ project.btn2_url }}" class="text-center bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600" target="_blank" rel="noopener noreferrer">{{ project.btn2_text }}</a>
                     
                     {% endif %}
