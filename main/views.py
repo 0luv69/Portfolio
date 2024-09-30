@@ -25,10 +25,11 @@ def seo(request):
     return render(request, 'pages/seo.html', {})
 
 def contact_messages_view(request):
-    # if request.authenicated:print("safsad")
+    # only allow autheticated user
+    if not request.user.is_authenticated:
+        return redirect('home')
     # Fetch all contact messages from the database
-    # contacts = Contact.objects.all().order_by('-created_at')
-    contacts=[]
+    contacts = Contact.objects.all().order_by('-created_at')
     return render(request, 'admin/custom_messages.html', {'contacts': contacts})
 
 

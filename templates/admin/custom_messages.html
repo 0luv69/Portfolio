@@ -3,68 +3,60 @@
 <html lang="en">
 
 <head>
-        <!-- Favicon -->
-    <link
-      rel="icon"
-      href="{% static 'img/logo.png' %}"
-      type="image/x-icon"
-    />
-
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon" />
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Messages</title>
 
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
-
-
 </head>
 
-<body>
-    <div class="w-full h-12 bg-green-200 text-center py-2">
-        <span class="font-serif font-extrabold text-xl "> Contact Messages </span>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Header -->
+    <div class="w-full h-16 bg-green-600 text-center flex items-center justify-center shadow-lg">
+        <span class="font-serif font-bold text-white text-2xl">Contact Messages</span>
     </div>
 
-    <section>
-        <Table class="custom-table w-full text-left m-4">
-            <thead class="text-sm font-medium uppercase tracking-wider" >
-                <tr class="bg-slate-400">
-                    <th class="">SN</th>
-                    <th class="pl-2">Name & Email</th>
-                    <th class="pl-2">Subject</th>
-                    <th class="pl-2">Message</th>
-                    <th class="pl-2">from</th>
-                    <th class="pl-2">Date</th>
-                </tr>
-            </thead>
+    <!-- Table Section -->
+    <section class="max-w-7xl mx-auto mt-8 p-4">
+        <div class="overflow-x-auto">
+            <table class="min-w-full table-fixed border-collapse bg-white shadow-md rounded-lg">
+                <thead class="bg-slate-500 text-white text-sm font-semibold uppercase tracking-wider">
+                    <tr>
+                        <th class="p-3">SN</th>
+                        <th class="p-3">Name & Email</th>
+                        <th class="p-3">Subject</th>
+                        <th class="p-3">Message</th>
+                        <th class="p-3">From</th>
+                        <th class="p-3">Date</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                {% for contact in contacts%}
-                <tr class="border-b border-gray-700 hover:bg-gray-400 transition duration-150 ease-in-out">
-                    <td class="border-r border-gray-700">{{ forloop.counter }}</td>
-                    <td  class="border-r border-gray-700 pl-1">
-                        {{contact.name}}
-                        <br>
-                        {{contact.email}}
-                    </td>
-                    <td  class="border-r border-gray-700 pl-1">
-                        {{contact.subject}}
-                    </td>
-                    <td class="border-r border-gray-700 pl-1">
-                        {{contact.message}}
-                    </td>
-                    <td class="border-r border-gray-700 pl-1">
-                        {{contact.ip_address}}
-                    </td>
-                    <td class="border-r border-gray-700 pl-1">
-                        {{contact.created_at}}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </Table>
+                <tbody class="text-sm text-gray-700">
+                    {% for contact in contacts %}
+                    <tr class="hover:bg-gray-100 transition duration-150 ease-in-out contact" id="{{ contact.ip_address }}_{{ forloop.counter }}">
+                        <td class="p-3 text-center">{{ forloop.counter }}</td>
+                        <td class="p-3">
+                            {{ contact.name }}<br>
+                            <span class="text-gray-500">{{ contact.email }}</span>
+                        </td>
+                        <td class="p-3">{{ contact.subject }}</td>
+                        <td class="p-3 truncate max-w-xs">{{ contact.message }}</td>
+                        <td class="p-3">{{ contact.ip_address }}</td>
+                        <td class="p-3">{{ contact.created_at }}</td>
+                    </tr>
+                    {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
     </section>
-</body>
 
+</body>
 
 </html>
