@@ -5,26 +5,25 @@
 <head>
     <!-- Favicon -->
     <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon" />
-    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Messages</title>
-
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
 </head>
 
 <body class="bg-gray-100 text-gray-900">
 
     <!-- Header -->
-    <div class="w-full h-16 bg-green-600 text-center flex items-center justify-center shadow-lg">
-        <span class="font-serif font-bold text-white text-2xl">Contact Messages</span>
-    </div>
+    <header class="w-full h-16 bg-green-600 text-center flex items-center justify-center shadow-md">
+        <h1 class="font-serif font-bold text-white text-2xl">Contact Messages</h1>
+    </header>
 
     <!-- Table Section -->
     <section class="max-w-7xl mx-auto mt-8 p-4">
         <div class="overflow-x-auto">
-            <table class="min-w-full table-fixed border-collapse bg-white shadow-md rounded-lg">
+            <!-- Desktop View Table -->
+            <table class="min-w-full table-fixed border-collapse bg-white shadow-md rounded-lg hidden lg:table">
                 <thead class="bg-slate-500 text-white text-sm font-semibold uppercase tracking-wider">
                     <tr>
                         <th class="p-3">SN</th>
@@ -33,12 +32,13 @@
                         <th class="p-3">Message</th>
                         <th class="p-3">From</th>
                         <th class="p-3">Date</th>
+                        <th class="p-3">Actions</th>
                     </tr>
                 </thead>
 
                 <tbody class="text-sm text-gray-700">
                     {% for contact in contacts %}
-                    <tr class="hover:bg-gray-100 transition duration-150 ease-in-out contact" id="{{ contact.ip_address }}_{{ forloop.counter }}">
+                    <tr class="group hover:bg-gray-100 transition duration-150 ease-in-out">
                         <td class="p-3 text-center">{{ forloop.counter }}</td>
                         <td class="p-3">
                             {{ contact.name }}<br>
@@ -48,12 +48,54 @@
                         <td class="p-3 truncate max-w-xs">{{ contact.message }}</td>
                         <td class="p-3">{{ contact.ip_address }}</td>
                         <td class="p-3">{{ contact.created_at }}</td>
+
+                        <!-- Action Buttons -->
+                        <td class="p-3 text-center">
+                            <div class="space-x-2">
+                                <!-- Email Button with Hover Animation -->
+                                <a href="mailto:{{ contact.email }}" class="text-blue-600 hover:text-blue-800">
+                                    <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-700 transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                                        Email
+                                    </button>
+                                </a>
+                                <!-- Hide Button with Hover Animation -->
+                                <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-700 transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                                    Hide
+                                </button>
+                            </div>
+                        </td>
                     </tr>
                     {% endfor %}
-
-
                 </tbody>
             </table>
+
+            <!-- Mobile View Cards -->
+            <div class="lg:hidden space-y-4">
+                {% for contact in contacts %}
+                <div class="bg-white p-4 shadow-md rounded-lg group">
+                    <div class="font-bold text-lg">{{ forloop.counter }}. {{ contact.name }}</div>
+                    <p class="text-sm text-gray-500">{{ contact.email }}</p>
+                    <p class="mt-2"><strong>Subject:</strong> {{ contact.subject }}</p>
+                    <p class="mt-2"><strong>Message:</strong> {{ contact.message }}</p>
+                    <p class="mt-2"><strong>From:</strong> {{ contact.ip_address }}</p>
+                    <p class="mt-2"><strong>Date:</strong> {{ contact.created_at }}</p>
+
+                    <!-- Action Buttons (Mobile) -->
+                    <div class="mt-4 space-x-2">
+                        <!-- Email Button with Hover Animation -->
+                        <a href="mailto:{{ contact.email }}" class="text-blue-600 hover:text-blue-800">
+                            <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-700 transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                                Email
+                            </button>
+                        </a>
+                        <!-- Hide Button with Hover Animation -->
+                        <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-700 transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                            Hide
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </section>
 
