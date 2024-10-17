@@ -9,22 +9,21 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# security settings   
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.getenv('DEBUG')).lower() == 'true'
 PRODUCTION_ENV = str(os.getenv('PRODUCTION_ENV')).lower() == 'true'
 USE_SQLITE = str(os.getenv('USE_SQLITE')).lower() == 'true'
 
+
+
 ALLOWED_HOSTS = ["127.0.0.1", 'localhost']
-
-
 if PRODUCTION_ENV:
     ALLOWED_HOSTS += ['.vercel.app', "www.rujalbaniya.com.np", "rujalbaniya.com.np"]
 
+
+
 # Application definition
- 
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
