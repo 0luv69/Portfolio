@@ -9,6 +9,8 @@ from django.core.mail import send_mail
 import time
 import uuid
 
+from django.contrib import messages
+
 
 
 # Create your views here.
@@ -72,11 +74,8 @@ def contact(request):
             requests.post(vercel_url, json=params, timeout=1)
         except requests.RequestException:
             pass  # Ignore any issues with background task
-    
+        messages.success(request, 'Your message has been sent successfully. We will contact you soon.')
     return redirect('home')
-
-
-
 
 
 def handle_loaderio(request):
