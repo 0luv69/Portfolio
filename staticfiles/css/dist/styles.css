@@ -749,10 +749,6 @@ select {
   --tw-contain-style:  ;
 }
 
-.visible {
-  visibility: visible;
-}
-
 .static {
   position: static;
 }
@@ -785,8 +781,8 @@ select {
   left: 1rem;
 }
 
-.right-20 {
-  right: 5rem;
+.right-16 {
+  right: 4rem;
 }
 
 .top-0 {
