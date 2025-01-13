@@ -1,139 +1,16 @@
-<!-- Pariwar -->
-                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-                    <div class="lg:flex">
-                        <div class="lg:w-1/2">
-                            <img src="{% static 'img/projects/pariwar.png' %}" alt="Hackathon Winning pariwar app, Django, HTML, CSS, JavaScript, React, Node js" class="w-full h-full object-cover  transform transition-transform duration-300 hover:scale-105 cursor-grab">
-                        </div>
-                        <div class="lg:w-1/2 p-8">
-                            <h3 class="text-2xl font-semibold text-green-400 mb-4">Quiz Game: In C</h3>
-<p class="text-gray-300 mb-6">
-"Ko Bancha Karod Pati" is a Nepali version of the popular game show "Who Wants to Be a Millionaire?". Developed using the Tkinter library in Python, it features multiple-choice questions covering various topics related to Nepal. Users can log in using customizable usernames and passwords, dynamically answer questions, and win money based on correct responses.
-<br>
-<br>
-<span>Based on: Windows Based, Tkinter GUI used</span>
-<br>
-<span>Features: Dynamic MCQs, Login System, Real-Time Feedback, Accumulated Earnings Display, End-of-Game Summary</span>
-<br>
-<span>Goal: Learning Tkinter for GUI based GUi creations.</span>
-<br>
-</p>
-                            <!-- Code link -->
-                            <div class="flex flex-col sm:flex-row gap-4">
-                                <a href="https://github.com/0luv69/Hackathon_incodeble_iicquest_Pariwar" class="text-center bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600" target="_blank" rel="noopener noreferrer">View source code</a>
-                                <a href="https://pariwar.vercel.app/" class="text-center bg-green-500 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600" target="_blank">View Project</a>
-                            </div>  
-                          </div>
-                    </div>
-                </div>
-                
-<!-- Photo Edtior -->
-                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-                    <div class="lg:flex flex-row-reverse">
-                        <div class="lg:w-1/2">
-                            <img src="{% static 'img/projects/photoeditor.png' %}" alt="Photo Editor,Python Tkinter, Pillow and OpenCV " class="w-full h-full object-cover  transform transition-transform duration-300 hover:scale-105 cursor-grab">
-                        </div>
-                        <div class="lg:w-1/2 p-8">
-                            <h3 class="text-2xl font-semibold text-green-400 mb-4">Photo Editor</h3>
-                            <p class="text-gray-300 mb-6">
-                                Created an advanced photo editor using Python and OpenCV, featuring multiple filters, cropping, and image enhancement capabilities. This project demonstrates my proficiency in image processing and creating user-friendly interfaces for complex operations.
-
-                                <br>
-                                <br>
-                                <span>Based on: Windows Only</span>
-                                <br>
-                                <span>Technologies: Python, OpenCV, Tkinter</span>
-                                <br>
-                                <span>
-                                  Features: Color up, Filter, Corp, Remove BG, Draw etc....
-                                </span>
-                            </p>
-                            <div class="flex flex-col sm:flex-row gap-4">
-                                <a href="https://www.youtube.com/watch?v=srPU6JW-RRA" class="text-center bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600" target="_blank">Watch Demo Video</a>
-                                <a href="https://github.com/0luv69/photo-editor" class=" text-center bg-green-500 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600" target="_blank">View Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-<!-- Mcq Champs -->
-                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-                    <div class="lg:flex">
-                        <div class="lg:w-1/2">
-                            <img src="{% static 'img/projects/mcqchamps.png' %}" alt="MCQCHAMPS, Multiple Choice Questions" class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105 cursor-grab">
-                        </div>
-                        <div class="lg:w-1/2 p-8">
-                            <h3 class="text-2xl font-semibold text-green-400 mb-4">MCQCHAMPS</h3>
-                            <p class="text-gray-300 mb-6">
-                                Developed an interactive Multiple Choice Questions (MCQ) platform that allows users to test their knowledge on various subjects with real-time feedback.
-
-                                <br>
-                                <br>
-                                <span>MCQ: Study, take test </span>
-                                <br>
-                                <span>Technologies: Django, HTML, CSS, JavaScript, Tailwind</span>
-                                <br>
-                                <span>With: PPT post, post your presentation</span>
-                                <br>
-                                <span>Goal: Make my Friends more knowledgeable</span>
-                            </p>
-                              <div class="flex flex-col sm:flex-row gap-4">
-                                  <a href="#" class="text-center bg-red-400 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-red-200" target="_blank" disabled>Private Code</a>
-                                  <a href="#" class="text-center bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600" target="_blank" disabled>Under Construction</a>
-                              </div>
-                        </div>
-                    </div>
-                </div>
+<a {% if project.btn1_text=='Private Code' %} href="#"
+    class="text-center bg-red-400 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-red-200"
+    {% else %} href="{{ project.btn1_url }}"
+    class="text-center bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600"
+    {% endif %} target="_blank" rel="noopener noreferrer">{{ project.btn1_text }}
+</a>
 
 
-<!-- Money Manager -->
-                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-                    <div class="lg:flex flex-row-reverse">
-                        <div class="lg:w-1/2">
-                            <img src="{% static 'img/projects/MoneyManager.png' %}" alt="Photo Editor" class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105 cursor-grab">
-                        </div>
-                        <div class="lg:w-1/2 p-8">
-                            <h3 class="text-2xl font-semibold text-green-400 mb-4">Money Manager</h3>
-                            <p class="text-gray-300 mb-6">
-                                The Money Manager app simplifies finance management through an intuitive Python-based application. It offers a user-friendly interface and robust features for handling transactions, tracking loans, and maintaining a transaction history.
-                                <br>
-                                <br>
-                                <span>Based on: Windows Only</span>
-                                <br>
-                                <span>User Interface (UI) Libraries: Tkinter, Customtkinter, tkcalendar</span>
-                                <br>
-                                <span>Data Handling Libraries: time, datetime, math, timedelta, calendar, os, openpyxl, configparser</span>
-                                <br>
-                                <span>Feartures: (LoanTransaction , Income/Expences Transaction) Management</span>
-                            </p>
-                            <div class="flex flex-col sm:flex-row gap-4">
-                                <a href="https://0luv69.github.io/Money-Manager/" class="text-center bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600" target="_blank">Documentation</a>
-                                <a href="https://github.com/0luv69/Money-Manager" class="text-center bg-green-500 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600" target="_blank">View Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-<!-- Calculator-->
-                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-                    <div class="lg:flex">
-                        <div class="lg:w-1/2">
-                            <img src="{% static 'img/projects/Cacultor.png' %}" alt="MCQCHAMPS" class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105 cursor-grab">
-                        </div>
-                        <div class="lg:w-1/2 p-8">
-                            <h3 class="text-2xl font-semibold text-green-400 mb-4">(BIM & Apple) Calculator</h3>
-                            <p class="text-gray-300 mb-6">
-                                Learning Based Calculator -> BIM Calculator, Apple Based Calculator. Created using Tkinter, Python, To get knowledge on UI design.
-                                <br>
-                                <br>
-                                <span>Based on: Windows Only</span>
-                                <br>
-                                <span>Technologies: Tkinter, Python</span>
-                            </p>
-                            <!-- links -->
-                            <div class="flex flex-col sm:flex-row gap-4">
-                                <a href="https://github.com/0luv69/BIM-calculator-app" class="bg-green-500 text-center text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-400" target="_blank">Source Code: BIM</a>
-                                <a href="https://github.com/0luv69/Apple-Calculator-UI" class="bg-gray-700 text-center text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600" target="_blank">Source Code: Apple Based</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
+<a {% if project.btn1_text=='Private Code' %} href="#"
+    class="text-center bg-red-400 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-red-200"
+    {% else %} href="{{ project.btn1_url }}"
+    class="text-center bg-green-500 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600"
+    {% endif %} target="_blank" rel="noopener noreferrer">{{ project.btn1_text }}
+</a>
