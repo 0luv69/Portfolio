@@ -23,7 +23,7 @@
     />
     <meta
       name="keywords"
-      content="rujal baniya, Rujal , 0luv60, Web Development, Projects, Python, OpenCV, Django, Cybersecurity, Hackathon winner nepal, Ideathon, MCQCHAMPS devloper, nepali, nepal, Full Stack Developer ,Python Developer, Cybersecurity Enthusiast, Web Development , Freelance Developer, Project Showcase"
+      content="rujal baniya, Rujal , 0luv60,mcqchamps, mcq, nepalmcqs, nepalmcq, learnmcqs Web Development, Projects, Python, OpenCV, Django, Cybersecurity, Hackathon winner nepal, Ideathon, MCQCHAMPS devloper, nepali, nepal, Full Stack Developer ,Python Developer, Cybersecurity Enthusiast, Web Development , Freelance Developer, Project Showcase"
     />
         <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -56,21 +56,7 @@
     <style>
       body {
         font-family: "Montserrat", sans-serif;
-      }
-
-
-      @keyframes coin-flip {
-            0% {
-                transform: rotateY(0deg);
-            }
-            100% {
-                transform: rotateY(720deg);
-            }
-        }
-
-        .flip-coin {
-        animation: coin-flip .8s ease-in-out;
-        }
+      }  
     </style>
 
   </head>
@@ -134,28 +120,11 @@
     </div>
 {% endif %} -->
     <!-- Main Content -->
-    <div class="lg:ml-24 p-8 pb-24">
+    <main class="lg:ml-24 p-8 pb-24">
         <!-- Home Section -->
         <section id="home" class="min-h-screen flex flex-col justify-start pt-4 sm:pt-0 sm:justify-center items-center text-center">
-            <h1 class="text-5xl lg:text-7xl font-bold text-green-400 mb-4">
-                Rujal Baniya
-            </h1>
-            <p class="text-xl lg:text-2xl mb-8">
-                Python Programmer | Web Developer | Penetration Tester
-            </p>
-            <img src="{% static 'img/me.jpg' %}" id="rounded-pic-me" alt="Rujal Baniya - Full Stack Developer from Nepal" class="w-64 h-64 rounded-full shadow-lg mb-8 object-cover">
-            <!-- CTN BTNS  -->
-   
-            <div class="flex gap-3">           
-                <a href="#projects" class="bg-transparent  text-nowrap text-green-600 border-2 border-green-600 px-6 py-3 rounded-full font-semibold shadow-md transform transition duration-300 hover:scale-105 hover:bg-green-600 hover:text-white hover:shadow-lg">
-                        View Projects
-                </a>
-                <a href="#contact" class="bg-green-700 text-nowrap text-white px-7 py-3 rounded-full font-semibold shadow-md transform transition duration-300 hover:scale-105 hover:bg-green-500 hover:border-green-500 hover:text-white hover:shadow-lg">
-                    Contact Me
-                </a>
-            </div>
-            <!-- top fixed btns  -->
-             <div class="fixed top-4 right-14 z-20">
+             <!-- top fixed btns  -->
+             <div class="fixed top-4 right-20 z-20 ">
                  <a href="https://github.com/0luv69" target="_blank" class=" text-3xl sm:text-5xl text-white hover:text-green-500 transition duration-300">
                      <i class="fab fa-github"></i>
                  </a>
@@ -163,6 +132,30 @@
                      <i class="fab fa-linkedin"></i>
                  </a>
              </div>
+            
+            
+            <!-- Upper details  -->
+            <h1 class="text-5xl lg:text-7xl font-bold text-green-400 mb-4 opacity-0 animate-fadeInUp">
+                Rujal Baniya
+            </h1>
+            <p class="text-xl lg:text-2xl mb-8 opacity-0 animate-fadeInUp animate-delay-100">
+                Python Programmer | Web Developer | Penetration Tester
+            </p>
+
+
+            <img src="/staticfiles/img/me.jpg" id="rounded-pic-me" alt="Rujal Baniya - Full Stack Developer from Nepal" class="w-64 h-64 rounded-full shadow-lg mb-8 object-cover">
+            
+            
+            <!-- CTN BTNS  -->
+            <div class="flex gap-3   opacity-0 animate-fadeInUp animate-delay-300">           
+                <a href="#projects" class="bg-transparent  text-nowrap text-green-600 border-2 border-green-600 px-6 py-3 rounded-full font-semibold shadow-md transform transition duration-300 hover:scale-105 hover:bg-green-600 hover:text-white hover:shadow-lg">
+                        View Projects
+                </a>
+                <a href="#contact" class="bg-green-700 text-nowrap text-white px-7 py-3 rounded-full font-semibold shadow-md transform transition duration-300 hover:scale-105 hover:bg-green-500 hover:border-green-500 hover:text-white hover:shadow-lg">
+                    Contact Me
+                </a>
+            </div>
+           
         </section>
 
         <!-- About Section -->
@@ -180,12 +173,12 @@
                 <div class="space-y-6">
                     <div>
                         <h3 class="text-2xl font-semibold text-green-400 mb-2">Experience</h3>
-                        <p class="text-lg">Developed web applications using Django, created desktop applications with Python and Tkinter, and participated in numerous Hackathons & Ideathons. <br> <br>
- 
-                        I have also gained hands-on experience managing and deploying projects on GitHub, ensuring the efficient collaboration and version control of all project files. This practical experience has bolstered my capability to work in professional team settings.
-                        <br>
-                        In addition, I have taught to new aspiring programmers seminars on Python, Tkinter and cybersecurity.
-</p>
+                        <p class="text-lg">Developed web applications using Django, created desktop applications with Python and Tkinter, and participated in numerous Hackathons & Ideathons. 
+                            <br> <br>
+                            I have also gained hands-on experience managing and deploying projects on GitHub, ensuring the efficient collaboration and version control of all project files. This practical experience has bolstered my capability to work in professional team settings.
+                            <br>
+                            In addition, I have taught to new aspiring programmers seminars on Python, Tkinter and cybersecurity.
+                        </p>
                     </div>
                     <div>
                         <h3 class="text-2xl font-semibold text-green-400 mb-2">Education</h3>
@@ -200,114 +193,160 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="py-20">
+        <section id="skills" class="py-20 opacity-0 translate-y-10 transition-all duration-1000" data-aos="fade-up">
             <h2 class="text-4xl font-bold text-green-400 mb-8">Tech Stack</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="space-y-4">
-                    <div>
+                    <div class="skill-item" style="animation-delay: 0.2s">
                         <p class="text-lg font-semibold mb-2">Python</p>
-                        <div class="w-full bg-gray-700 rounded-full h-2.5">
-                            <div class="bg-green-400 h-2.5 rounded-full" style="width: 95%"></div>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="95"></div>
                         </div>
                     </div>
-                    <div>
+                    <div class="skill-item" style="animation-delay: 0.4s">
                         <p class="text-lg font-semibold mb-2">Cyber Security</p>
-                        <div class="w-full bg-gray-700 rounded-full h-2.5">
-                            <div class="bg-green-400 h-2.5 rounded-full" style="width: 85%"></div>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="85"></div>
                         </div>
                     </div>
-                    <div>
+
+                    <div class="skill-item" style="animation-delay: 0.6s">
                         <p class="text-lg font-semibold mb-2">Web Development</p>
-                        <div class="w-full bg-gray-700 rounded-full h-2.5">
-                            <div class="bg-green-400 h-2.5 rounded-full" style="width: 80%"></div>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="80"></div>
                         </div>
                     </div>
                 </div>
                 <div class="space-y-4">
-                    <div>
+                    <div class="skill-item" style="animation-delay: 0.8s">
                         <p class="text-lg font-semibold mb-2">Django</p>
-                        <div class="w-full bg-gray-700 rounded-full h-2.5">
-                            <div class="bg-green-400 h-2.5 rounded-full" style="width: 75%"></div>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="75"></div>
                         </div>
                     </div>
-                    <div>
+                    <div class="skill-item" style="animation-delay: 1s">
                         <p class="text-lg font-semibold mb-2">JavaScript</p>
-                        <div class="w-full bg-gray-700 rounded-full h-2.5">
-                            <div class="bg-green-400 h-2.5 rounded-full" style="width: 70%"></div>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="70"></div>
                         </div>
                     </div>
-                    <div>
+                    <div class="skill-item" style="animation-delay: 1.2s">
                         <p class="text-lg font-semibold mb-2">Git & GitHub</p>
-                        <div class="w-full bg-gray-700 rounded-full h-2.5">
-                            <div class="bg-green-400 h-2.5 rounded-full" style="width: 90%"></div>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="90"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <script>
+            // Add this to your existing script
+            const observerSkills = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    
+                    const bars = entry.target.querySelectorAll('.skill-bar');
+                    bars.forEach(bar => {
+                    const percent = bar.dataset.percent + '%';
+                    bar.style.setProperty('--percent', percent);
+                    bar.style.width = percent;
+                    });
+                    
+                    observerSkills.unobserve(entry.target);
+                }
+                });
+            }, {
+                threshold: 0.8 // Trigger at 50% visibility of the target
+            });
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const skillsSection = document.querySelector('#skills');
+                observerSkills.observe(skillsSection);
+            });
+        </script>
+
         <!-- Projects Section -->
         <section id="projects" class="py-20">
             <h2 class="text-4xl font-bold text-green-400 mb-12">Featured Projects</h2>
             <div class="space-y-16">
 
-{% for project in projects %}
-    <!-- Check if index is even or odd to alternate layout -->
-    <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-        <div class="lg:flex {% if forloop.counter|divisibleby:2 %} flex-row-reverse {% endif %}">
-            <!-- Project Image -->
-            <div class="lg:w-1/2">
-                <img src="{% static project.image %}" alt="{{ project.title }}" 
-                class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105 cursor-grab"
-                >
-            </div>
-            <!-- Project Details -->
-            <div class="lg:w-1/2 p-8">
-                <h3 class="text-2xl font-semibold text-green-400 mb-4">{{ project.title }}</h3>
-                <p class="text-gray-300 mb-6">
-                    {{ project.description|safe }}
-                </p>
-                <!-- Project Links -->
-                <div class="flex flex-col sm:flex-row gap-4">
-                    {% if forloop.counter|divisibleby:2 %}
-                     
-                    <a   {% if project.btn1_text == 'Private Code' %}
-                            href="#" 
-                            class="text-center bg-red-400 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-red-200"
-                        {% else %}
-                            href="{{ project.btn1_url }}" 
-                            class="text-center bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600"
-                        {% endif %}
-                        target="_blank" rel="noopener noreferrer">{{ project.btn1_text }}
-                    </a>
+            {% for project in projects %}
+                <!-- Check if index is even or odd to alternate layout -->
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <div class="lg:flex {% if forloop.counter|divisibleby:2 %} flex-row-reverse {% endif %}">
+                        <!-- Project Image -->
+                        <div class="lg:w-1/2">
+                            <img
+                            alt="{{ project.title }}" 
+                                data-src="{% static project.image %}"
+                            class="lazy  w-full h-full object-cover transform transition-transform duration-300 hover:scale-105 cursor-grab"
+                            >
+                        </div>
+                        <!-- Project Details -->
+                        <div class="lg:w-1/2 p-8">
+                            <h3 class="text-2xl font-semibold text-green-400 mb-4">{{ project.title }}</h3>
+                            <p class="text-gray-300 mb-6">
+                                {{ project.description|safe }}
+                            </p>
+                            <!-- Project Links -->
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                {% if forloop.counter|divisibleby:2 %}
+                                
+                                <a   {% if project.btn1_text == 'Private Code' %}
+                                        href="#" 
+                                        class="text-center bg-red-400 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-red-200"
+                                    {% else %}
+                                        href="{{ project.btn1_url }}" 
+                                        class="text-center bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600"
+                                    {% endif %}
+                                    target="_blank" rel="noopener noreferrer">{{ project.btn1_text }}
+                                </a>
 
-                    <a href="{{ project.btn2_url }}" class="text-center bg-green-500 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600" target="_blank">{{ project.btn2_text }}</a>
+                                <a href="{{ project.btn2_url }}" class="text-center bg-green-500 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600" target="_blank">{{ project.btn2_text }}</a>
 
-                    {% else %}
-                    <a   {% if project.btn1_text == 'Private Code' %}
-                            href="#" 
-                            class="text-center bg-red-400 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-red-200"
-                        {% else %}
-                            href="{{ project.btn1_url }}" 
-                            class="text-center bg-green-500 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600"
-                        {% endif %}
-                        target="_blank" rel="noopener noreferrer">{{ project.btn1_text }}
-                    </a>
-                    
-                    
-                    
-                    
-                    <a href="{{ project.btn2_url }}" class="text-center bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600" target="_blank" rel="noopener noreferrer">{{ project.btn2_text }}</a>
-                    
-                    {% endif %}
-                </div>  
-            </div>
-        </div>
-    </div>
-{% endfor %}
+                                {% else %}
+                                <a   {% if project.btn1_text == 'Private Code' %}
+                                        href="#" 
+                                        class="text-center bg-red-400 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-red-200"
+                                    {% else %}
+                                        href="{{ project.btn1_url }}" 
+                                        class="text-center bg-green-500 text-gray-900 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600"
+                                    {% endif %}
+                                    target="_blank" rel="noopener noreferrer">{{ project.btn1_text }}
+                                </a>
+                                
+                                
+                                
+                                
+                                <a href="{{ project.btn2_url }}" class="text-center bg-gray-700 text-green-400 px-6 py-3 rounded-full font-bold shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600" target="_blank" rel="noopener noreferrer">{{ project.btn2_text }}</a>
+                                
+                                {% endif %}
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
 
 
-            </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const lazyImages = document.querySelectorAll('img.lazy');
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                const img = entry.target;
+                                img.src = img.dataset.src;
+                                img.classList.remove('lazy');
+                                observer.unobserve(img);
+                            }
+                        });
+                    });
+                    lazyImages.forEach((img) => observer.observe(img));
+                });
+            </script>
 
             <!-- View more button to github  -->
              <div class="m-8 mt-10 flex justify-center">
@@ -341,10 +380,7 @@
                 </form>
             </div>
         </section>
-
-
-
-    </div>
+    </main>
 
     <script>
         // Function to add 'active' class to the navbar links based on section in view
