@@ -809,6 +809,14 @@ select {
   right: 3rem;
 }
 
+.right-8 {
+  right: 2rem;
+}
+
+.right-6 {
+  right: 1.5rem;
+}
+
 .z-20 {
   z-index: 20;
 }
@@ -1019,6 +1027,10 @@ select {
 
 .flex-col {
   flex-direction: column;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
 }
 
 .items-center {
