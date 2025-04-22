@@ -10,18 +10,15 @@ import time
 import uuid
 
 from django.contrib import messages
-
+from django.db.models.functions import Random
 
 
 # Create your views here.
 
 def home(request):
-    final_list= []
-    for i in range(5,0,-1):
-        particular_grp= Project.objects.filter(prj_value=i).order_by('?')
-        final_list.extend(list(particular_grp))
-    projects = final_list
-    return render(request, 'pages/index.html', {'projects':projects})
+    projects = []
+    projects = Project.objects.order_by('-prj_value')
+    return render(request, 'pages/index.html', {'projects': projects})
 
 def seo(request):
     return render(request, 'pages/seo.html', {})
@@ -82,8 +79,10 @@ def handle_loaderio(request):
     return HttpResponse("loaderio-e8dcc5c185655d3febcd86432c9d324e", content_type="text/plain")
 
 
-def t2(request):
-    return render(request, 'pages/t2.html', {})
+def second_one(request):
+    projects = Project.objects.order_by('-prj_value')
+
+    return render(request, 'others/another.html', {'projects': projects})
 
 def test(request):
-    return render(request, 'pages/test.html', {})
+    return render(request, 'others/test.html', {})

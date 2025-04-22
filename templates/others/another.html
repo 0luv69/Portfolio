@@ -1,0 +1,925 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon" />
+
+    <!-- Basic SEO -->
+    <title>Rujal Baniya - Portfolio | 0luv69</title>
+    <meta name="author" content="Rujal Baniya" />
+    <meta name="title" content="Rujal Baniya | Full Stack Developer & Cybersecurity Enthusiast from Nepal">
+    <meta name="description"
+        content="Rujal Baniya - A passionate Full Stack Developer from Nepal, specializing in Python, cybersecurity, and web development. Have done project in tkinter, Django, won Hackathon, Ideathon also specialized on cybersecurity and more. Got once reconized by Nepal Government for my work. Here you can find my projects where I have worked on such as Photo editor, Student Health based Pariwar Application, Student Learning based Mcqchamps to learn tick and test mcq with ppt posting project in-build." />
+    <meta name="keywords"
+        content="rujal baniya, Rujal , 0luv60,mcqchamps, mcq, nepalmcqs, nepalmcq, learnmcqs Web Development, Projects, Python, OpenCV, Django, Cybersecurity, Hackathon winner nepal, Ideathon, MCQCHAMPS devloper, nepali, nepal, Full Stack Developer ,Python Developer, Cybersecurity Enthusiast, Web Development , Freelance Developer, Project Showcase" />
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rujal Baniya",
+        "jobTitle": "Software Developer",
+        "url": "https://www.rujalbaniya.com.np",
+        "sameAs": [
+          "https://github.com/0luv69"
+        ],
+        "description": "Rujal Baniya - A passionate Full Stack Developer from Nepal, specializing in Python, cybersecurity, and web development. Have done project in tkinter, Django, won Hackathon, Ideathon also specialized on cybersecurity and more. Got once reconized by Nepal Government for my work. Here you can find my projects where I have worked on such as Photo editor, Student Health based Pariwar Application, Student Learning based Mcqchamps to learn tick and test mcq with ppt posting project in-build."
+      }
+    </script>
+
+    <!-- Google auth -->
+    <meta name="google-site-verification" content="1heX8GaiN16IAX4TyAzBN3Oc5sdjTb6jkz_BfLc1hVg" />
+    <meta name="msvalidate.01" content="27A29237EBD07F182CFBD5F6879A89F0" />
+
+    <!-- Fonts calling  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Style sheet calling -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --secondary: #1f2937;
+            --dark: #111827;
+            --light: #f9fafb;
+            --gray-light: #374151;
+            --gray-dark: #1f2937;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .section-padding {
+            padding: 6rem 0;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #10b981, #34d399);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-active {
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .nav-active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .hero-gradient {
+            background: radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, rgba(17, 24, 39, 0) 70%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.1), 0 10px 10px -5px rgba(16, 185, 129, 0.04);
+        }
+        
+        .skill-progress {
+            transition: width 1.5s ease-in-out;
+        }
+        
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.1), 0 10px 10px -5px rgba(16, 185, 129, 0.04);
+        }
+        
+        .project-image-container {
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+        
+        .project-image {
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            color: var(--primary);
+        }
+        
+        .contact-input {
+            background-color: var(--gray-dark);
+            border: 1px solid var(--gray-light);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+        }
+        
+        .profile-image {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+        
+        .profile-image:hover::before {
+            transform: translate(5px, 5px);
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .float-animation {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes flipCoin {
+            0% {
+                transform: rotateY(0);
+            }
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+        
+        .flip-coin {
+            animation: flipCoin 1s ease-in-out;
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.hidden {
+            transform: translateX(100%);
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gray-light);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-100">
+    <!-- Header with fixed navigation -->
+    <header class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-sm z-50 shadow-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center space-x-2">
+                    <img src="{% static 'img/logo.png' %}" alt="Rujal Baniya" class="w-10 h-10 rounded-full">
+                    <span class="text-xl font-bold gradient-text">Rujal Baniya</span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link nav-active text-sm uppercase font-medium tracking-wider transition-colors duration-300">Home</a>
+                    <a href="#about" class="nav-link text-gray-400 text-sm uppercase font-medium tracking-wider transition-colors duration-300 hover:text-white">About</a>
+                    <a href="#skills" class="nav-link text-gray-400 text-sm uppercase font-medium tracking-wider transition-colors duration-300 hover:text-white">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-400 text-sm uppercase font-medium tracking-wider transition-colors duration-300 hover:text-white">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-400 text-sm uppercase font-medium tracking-wider transition-colors duration-300 hover:text-white">Contact</a>
+                </nav>
+                
+                <!-- Social Icons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="https://github.com/0luv69" target="_blank" class="social-icon text-gray-400 hover:text-green-500 transition-all duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="social-icon text-gray-400 hover:text-green-500 transition-all duration-300">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-400 hover:text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-gray-800 z-50 shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <img src="{% static 'img/logo.png' %}" alt="Rujal Baniya" class="w-10 h-10 rounded-full">
+                <button id="close-menu" class="text-gray-400 hover:text-white focus:outline-none">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-6">
+                <a href="#home" class="mobile-nav-link text-green-500 font-medium">Home</a>
+                <a href="#about" class="mobile-nav-link text-gray-300 hover:text-green-500 transition-colors duration-300">About</a>
+                <a href="#skills" class="mobile-nav-link text-gray-300 hover:text-green-500 transition-colors duration-300">Skills</a>
+                <a href="#projects" class="mobile-nav-link text-gray-300 hover:text-green-500 transition-colors duration-300">Projects</a>
+                <a href="#contact" class="mobile-nav-link text-gray-300 hover:text-green-500 transition-colors duration-300">Contact</a>
+            </nav>
+            <div class="mt-8 flex space-x-4">
+                <a href="https://github.com/0luv69" target="_blank" class="text-gray-400 hover:text-green-500 transition-all duration-300">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="text-gray-400 hover:text-green-500 transition-all duration-300">
+                    <i class="fab fa-linkedin text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center pt-20 hero-gradient">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row items-center justify-between">
+                    <div class="lg:w-1/2 mb-10 lg:mb-0">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 opacity-0 fade-in-up">
+                            Hi, I'm <span class="gradient-text">Rujal Baniya</span>
+                        </h1>
+                        <p class="text-xl text-gray-300 mb-8 max-w-lg opacity-0 fade-in-up delay-100">
+                            A passionate <span class="text-green-500">Python Programmer</span>, <span class="text-green-500">Web Developer</span>, and <span class="text-green-500">Penetration Tester</span> from Nepal.
+                        </p>
+                        <div class="flex flex-wrap gap-4 opacity-0 fade-in-up delay-200">
+                            <a href="#projects" class="btn-primary px-8 py-3 rounded-full font-medium shadow-lg">
+                                View Projects
+                            </a>
+                            <a href="#contact" class="btn-outline px-8 py-3 rounded-full font-medium shadow-lg">
+                                Contact Me
+                            </a>
+                        </div>
+                        <div class="mt-12 flex items-center space-x-4 opacity-0 fade-in-up delay-300">
+                            <span class="text-gray-400">Find me on:</span>
+                            <a href="https://github.com/0luv69" target="_blank" class="social-icon text-gray-400 hover:text-green-500 transition-all duration-300">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="social-icon text-gray-400 hover:text-green-500 transition-all duration-300">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 flex justify-center">
+                        <div class="relative">
+                            <div class="profile-image float-animation">
+                                <img src="{% static 'img/me.jpg' %}" id="rounded-pic-me" alt="Rujal Baniya - Full Stack Developer from Nepal" class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-2xl border-4 border-gray-800">
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 bg-gray-800 px-6 py-2 rounded-full shadow-lg">
+                                <span class="text-green-500 font-semibold">Developer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section-padding bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="gradient-text">Me</span></h2>
+                    <div class="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <p class="text-lg leading-relaxed text-gray-300">
+                            I am an enthusiastic and dedicated software developer with a passion for Python programming, web
+                            development, and cybersecurity. I thrive on challenges and continuously seek opportunities to apply
+                            my skills in creative and impactful ways.
+                        </p>
+                        <p class="text-lg leading-relaxed text-gray-300">
+                            With a solid foundation in both frontend and backend technologies, I am eager to contribute to
+                            innovative projects and push the boundaries of what's possible in the digital realm. Additionally,
+                            I've been committed to ongoing learning, recently completing a comprehensive training course that
+                            deepened my expertise in Python and Django.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-3 mt-6">
+                            <span class="px-4 py-2 bg-gray-700 text-green-400 rounded-full text-sm font-medium">Python</span>
+                            <span class="px-4 py-2 bg-gray-700 text-green-400 rounded-full text-sm font-medium">Django</span>
+                            <span class="px-4 py-2 bg-gray-700 text-green-400 rounded-full text-sm font-medium">JavaScript</span>
+                            <span class="px-4 py-2 bg-gray-700 text-green-400 rounded-full text-sm font-medium">HTML/CSS</span>
+                            <span class="px-4 py-2 bg-gray-700 text-green-400 rounded-full text-sm font-medium">Cybersecurity</span>
+                            <span class="px-4 py-2 bg-gray-700 text-green-400 rounded-full text-sm font-medium">Penetration Testing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <div class="bg-gray-900 p-6 rounded-lg shadow-lg card-hover">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-briefcase text-green-500 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-green-400">Experience</h3>
+                            </div>
+                            <p class="text-gray-300">
+                                Developed web applications using Django, created desktop applications with Python
+                                and Tkinter, and participated in numerous Hackathons & Ideathons. I have also gained hands-on experience managing and deploying projects on GitHub, ensuring the
+                                efficient collaboration and version control of all project files.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-gray-900 p-6 rounded-lg shadow-lg card-hover">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-graduation-cap text-green-500 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-green-400">Education</h3>
+                            </div>
+                            <p class="text-gray-300">
+                                Currently pursuing a Bachelor's in Computer Science. Completed various online
+                                certifications in programming and cybersecurity.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-gray-900 p-6 rounded-lg shadow-lg card-hover">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-heart text-green-500 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-green-400">Interests</h3>
+                            </div>
+                            <p class="text-gray-300">
+                                I enjoy exploring new technologies and solving complex problems with innovative
+                                solutions. I'm passionate about cybersecurity and contributing to open-source projects.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section-padding">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="gradient-text">Skills</span></h2>
+                    <div class="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Here are my technical skills and proficiency levels in various technologies</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="space-y-8">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <h3 class="text-lg font-medium">Python</h3>
+                                <span class="text-green-400">95%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-progress bg-green-400 h-full rounded-full" data-width="95%" style="width: 0"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <h3 class="text-lg font-medium">Cyber Security</h3>
+                                <span class="text-green-400">85%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-progress bg-green-400 h-full rounded-full" data-width="85%" style="width: 0"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <h3 class="text-lg font-medium">Web Development</h3>
+                                <span class="text-green-400">80%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-progress bg-green-400 h-full rounded-full" data-width="80%" style="width: 0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <h3 class="text-lg font-medium">Django</h3>
+                                <span class="text-green-400">75%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-progress bg-green-400 h-full rounded-full" data-width="75%" style="width: 0"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <h3 class="text-lg font-medium">JavaScript</h3>
+                                <span class="text-green-400">70%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-progress bg-green-400 h-full rounded-full" data-width="70%" style="width: 0"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <h3 class="text-lg font-medium">Git & GitHub</h3>
+                                <span class="text-green-400">90%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-progress bg-green-400 h-full rounded-full" data-width="90%" style="width: 0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                    <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
+                        <i class="fab fa-python text-4xl text-green-400 mb-3"></i>
+                        <span class="text-sm font-medium">Python</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
+                        <i class="fab fa-html5 text-4xl text-green-400 mb-3"></i>
+                        <span class="text-sm font-medium">HTML5</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
+                        <i class="fab fa-css3-alt text-4xl text-green-400 mb-3"></i>
+                        <span class="text-sm font-medium">CSS3</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
+                        <i class="fab fa-js text-4xl text-green-400 mb-3"></i>
+                        <span class="text-sm font-medium">JavaScript</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
+                        <i class="fab fa-git-alt text-4xl text-green-400 mb-3"></i>
+                        <span class="text-sm font-medium">Git</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
+                        <i class="fab fa-github text-4xl text-green-400 mb-3"></i>
+                        <span class="text-sm font-medium">GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section-padding bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="gradient-text">Projects</span></h2>
+                    <div class="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Check out some of my recent work and personal projects</p>
+                </div>
+                
+                <div class="space-y-20">
+                    {% for project in projects %}
+                    <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-xl">
+                        <div class="lg:flex {% if forloop.counter|divisibleby:2 %} flex-row-reverse {% endif %}">
+                            <!-- Project Image -->
+                            <div class="lg:w-1/2 project-image-container">
+                                <img src="{% static project.image.url %}" alt="{{ project.title }}" data-src="{% static project.image %}" class="lazy project-image w-full h-full object-cover">
+                            </div>
+                            
+                            <!-- Project Details -->
+                            <div class="lg:w-1/2 p-8 flex flex-col justify-center">
+                                <span class="text-xs text-green-400 font-semibold uppercase tracking-wider mb-2">Featured Project</span>
+                                <h3 class="text-2xl font-bold text-white mb-4">{{ project.title }}</h3>
+                                <div class="text-gray-300 mb-6 prose prose-sm prose-invert">
+                                    {{ project.description|safe }}
+                                </div>
+                                
+                                <!-- Tech Stack -->
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-3 py-1 bg-gray-800 text-green-400 rounded-full text-xs font-medium">Python</span>
+                                    <span class="px-3 py-1 bg-gray-800 text-green-400 rounded-full text-xs font-medium">Django</span>
+                                    <span class="px-3 py-1 bg-gray-800 text-green-400 rounded-full text-xs font-medium">JavaScript</span>
+                                </div>
+                                
+                                <!-- Project Links -->
+                                <div class="flex flex-col sm:flex-row gap-4 mt-auto">
+                                    {% if forloop.counter|divisibleby:2 %}
+                                    <a {% if project.btn1_text == 'Private Code' %} href="#"
+                                        class="text-center bg-red-500 text-white px-6 py-3 rounded-lg font-medium shadow-lg transform transition duration-300 hover:scale-105 hover:bg-red-600"
+                                        {% else %} href="{{ project.btn1_url }}"
+                                        class="text-center bg-gray-700 text-green-400 px-6 py-3 rounded-lg font-medium shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600"
+                                        {% endif %} target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-github mr-2"></i>{{ project.btn1_text }}
+                                    </a>
+                                    <a href="{{ project.btn2_url }}"
+                                        class="text-center bg-green-500 text-white px-6 py-3 rounded-lg font-medium shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600"
+                                        target="_blank">
+                                        <i class="fas fa-external-link-alt mr-2"></i>{{ project.btn2_text }}
+                                    </a>
+                                    {% else %}
+                                    <a {% if project.btn1_text == 'Private Code' %} href="#"
+                                        class="text-center bg-red-500 text-white px-6 py-3 rounded-lg font-medium shadow-lg transform transition duration-300 hover:scale-105 hover:bg-red-600"
+                                        {% else %} href="{{ project.btn1_url }}"
+                                        class="text-center bg-green-500 text-white px-6 py-3 rounded-lg font-medium shadow-lg transform transition duration-300 hover:scale-105 hover:bg-green-600"
+                                        {% endif %} target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-github mr-2"></i>{{ project.btn1_text }}
+                                    </a>
+                                    <a href="{{ project.btn2_url }}"
+                                        class="text-center bg-gray-700 text-green-400 px-6 py-3 rounded-lg font-medium shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-600"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <i class="fas fa-external-link-alt mr-2"></i>{{ project.btn2_text }}
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- View more button to github -->
+                <div class="mt-16 text-center">
+                    <a href="https://github.com/0luv69" target="_blank" class="relative inline-block group">
+                        <span class="absolute inset-0 bg-gradient-to-r from-green-500 to-green-600 rounded-lg blur opacity-50 group-hover:opacity-100 transition-opacity duration-300"></span>
+                        <span class="relative block px-8 py-4 bg-gray-900 border border-green-500 rounded-lg font-medium text-white group-hover:bg-gray-800 transition-colors duration-300">
+                            <i class="fab fa-github mr-2"></i>View all projects on GitHub
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Get in <span class="gradient-text">Touch</span></h2>
+                    <div class="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Feel free to reach out for collaborations or just a friendly hello</p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-gray-800 rounded-xl shadow-2xl overflow-hidden">
+                        <div class="md:flex">
+                            <!-- Contact Info -->
+                            <div class="md:w-2/5 bg-gray-900 p-8">
+                                <h3 class="text-2xl font-bold text-green-400 mb-6">Contact Information</h3>
+                                <p class="text-gray-400 mb-8">Fill out the form and I will get back to you as soon as possible.</p>
+                                
+                                <div class="space-y-6">
+                                    <div class="flex items-start">
+                                        <div class="w-10 h-10 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-envelope text-green-500"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-gray-400">Email</p>
+                                            <p class="text-white">contact@rujalbaniya.com.np</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="w-10 h-10 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-map-marker-alt text-green-500"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-gray-400">Location</p>
+                                            <p class="text-white">Kathmandu, Nepal</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-12 flex space-x-4">
+                                    <a href="https://github.com/0luv69" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-gray-700 transition-all duration-300">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-gray-700 transition-all duration-300">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Contact Form -->
+                            <div class="md:w-3/5 p-8">
+                                <form class="space-y-6" method="post" action="/contact/">
+                                    {% csrf_token %}
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Name</label>
+                                            <input id="name" class="contact-input w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="text" name="name" placeholder="Your name" required>
+                                        </div>
+                                        <div>
+                                            <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                                            <input id="email" class="contact-input w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="email" name="email" placeholder="Your email" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="subject" class="block text-sm font-medium text-gray-400 mb-2">Subject</label>
+                                        <input id="subject" class="contact-input w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="text" name="subject" placeholder="Subject" required>
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                                        <textarea id="message" class="contact-input w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" name="message" placeholder="Your message" rows="5" required></textarea>
+                                    </div>
+                                    
+                                    <button type="submit" class="w-full p-4 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors duration-300 flex justify-center items-center">
+                                        <span id="btn_txt">Send Message</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="h-3 w-6 sm:h-6 sm:w-10 hidden" id="loader">
+                                            <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="25" y="50">
+                                                <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
+                                            </rect>
+                                            <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="85" y="50">
+                                                <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate>
+                                            </rect>
+                                            <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="145" y="50">
+                                                <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate>
+                                            </rect>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#home" class="flex items-center space-x-2">
+                        <img src="{% static 'img/logo.png' %}" alt="Rujal Baniya" class="w-10 h-10 rounded-full">
+                        <span class="text-xl font-bold gradient-text">Rujal Baniya</span>
+                    </a>
+                    <p class="text-gray-400 mt-2">Python Programmer | Web Developer | Penetration Tester</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://github.com/0luv69" target="_blank" class="text-gray-400 hover:text-green-500 transition-all duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="text-gray-400 hover:text-green-500 transition-all duration-300">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">&copy; {% now "Y" %} Rujal Baniya. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#home" class="text-gray-500 hover:text-green-500 transition-colors duration-300 text-sm">Back to top</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeMenuButton = document.getElementById('close-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('translate-x-full');
+            });
+            
+            closeMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.add('translate-x-full');
+            });
+            
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('translate-x-full');
+                });
+            });
+            
+            // Navigation active state
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-link");
+            const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+            
+            const options = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.5,
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute("id");
+                        
+                        // Desktop nav
+                        navLinks.forEach((link) => {
+                            link.classList.remove("nav-active", "text-green-500");
+                            link.classList.add("text-gray-400");
+                            
+                            if (link.getAttribute("href") === `#${id}`) {
+                                link.classList.remove("text-gray-400");
+                                link.classList.add("nav-active", "text-green-500");
+                            }
+                        });
+                        
+                        // Mobile nav
+                        mobileNavLinks.forEach((link) => {
+                            link.classList.remove("text-green-500");
+                            link.classList.add("text-gray-300");
+                            
+                            if (link.getAttribute("href") === `#${id}`) {
+                                link.classList.remove("text-gray-300");
+                                link.classList.add("text-green-500");
+                            }
+                        });
+                    }
+                });
+            }, options);
+            
+            sections.forEach((section) => {
+                observer.observe(section);
+            });
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Lazy loading images
+            const lazyImages = document.querySelectorAll('img.lazy');
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            lazyImages.forEach((img) => imageObserver.observe(img));
+            
+            // Animate skill bars when in view
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const bar = entry.target;
+                        const width = bar.dataset.width;
+                        bar.style.width = width;
+                        skillObserver.unobserve(bar);
+                    }
+                });
+            });
+            
+            skillBars.forEach((bar) => skillObserver.observe(bar));
+            
+            // Profile image flip animation
+            const profileImg = document.getElementById('rounded-pic-me');
+            
+            profileImg.addEventListener('click', () => {
+                profileImg.classList.add('flip-coin');
+                
+                profileImg.addEventListener('animationend', () => {
+                    profileImg.classList.remove('flip-coin');
+                }, { once: true });
+            });
+            
+            // Form submission
+            const contactForm = document.querySelector("form");
+            if (contactForm) {
+                contactForm.addEventListener("submit", function(e) {
+                    document.getElementById("btn_txt").innerText = "Sending...";
+                    document.getElementById("loader").classList.remove("hidden");
+                });
+            }
+        });
+    </script>
+</body>
+</html>

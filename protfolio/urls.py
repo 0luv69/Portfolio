@@ -32,8 +32,8 @@ urlpatterns = [
     # path('contact/messages/', views.contact_messages_view, name='contact_messages'),
 
 
-    # path('test/', views.test, name='test'),
-    # path('t2/', views.t2, name='t2'),
+    path('test/', views.test, name='test'),
+    path('t2/', views.second_one, name='t2'),
 
 
 
