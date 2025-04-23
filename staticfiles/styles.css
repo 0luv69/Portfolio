@@ -1556,6 +1556,10 @@ select {
   --tw-prose-td-borders: var(--tw-prose-invert-td-borders);
 }
 
+.visible {
+  visibility: visible;
+}
+
 .static {
   position: static;
 }
