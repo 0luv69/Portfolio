@@ -152,10 +152,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
-if PRODUCTION_ENV:
-    STATIC_URL = '/staticfiles/'
+STATIC_URL = '/staticfiles/'
 STATICFILES_DIRS= [os.path.join(BASE_DIR, 'public/static/'), os.path.join(BASE_DIR, 'theme', 'static', 'css', 'dist'),]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public/static/')

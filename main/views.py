@@ -78,10 +78,6 @@ def contact(request):
     return redirect('home')
 
 
-def handle_loaderio(request):
-    return HttpResponse("loaderio-e8dcc5c185655d3febcd86432c9d324e", content_type="text/plain")
-
-
 def second_one(request):
     return render(request, 'others/another.html', {})
 
