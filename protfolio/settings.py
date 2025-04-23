@@ -92,15 +92,15 @@ if USE_SQLITE:
 
 elif PRODUCTION_ENV:
     DATABASES = {
-    'default': dj_database_url.parse(
-        os.getenv("NEON_DB_URL"),
-        conn_max_age=600,  # Keeps connections open for reuse
-        ssl_require=True
-        )
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': str(os.getenv('PROD_NAME')),
+            'USER': 'postgres',
+            'PASSWORD': str(os.getenv('PROD_PASSWORD')),
+            'HOST': str(os.getenv('PROD_HOST')),
+            'PORT': str(os.getenv('PROD_PORT')),
+        }
     }
-
-    # Manually set default schema to 'public'
-    DATABASES['default']['OPTIONS'] = {'options': '-c search_path=first_s'}
      
 
 
