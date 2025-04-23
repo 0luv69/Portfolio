@@ -32,12 +32,13 @@ urlpatterns = [
     # path('contact/messages/', views.contact_messages_view, name='contact_messages'),
 
 
-    path('test/', views.test, name='test'),
-    path('t2/', views.second_one, name='t2'),
+    # path('test/', views.test, name='test'),
+    # path('t2/', views.second_one, name='t2'),
+
+
+    # path('import-projects/', views.import_projects_json, name='import-projects'),
 
 
 
 
-    path('loaderio-e8dcc5c185655d3febcd86432c9d324e.txt', views.handle_loaderio, name='handle_loaderio'),
-    # path('googleee23894d0f67f069.html/', views.about, name='about'),
 ]

@@ -101,6 +101,16 @@ elif PRODUCTION_ENV:
             'PORT': str(os.getenv('PROD_PORT')),
         }
     }
+
+else:
+    DATABASES = {
+        'default': dj_database_url.parse(
+        os.getenv('DATABASE_URL'),
+        conn_max_age=600,    # persistent connections
+        ssl_require=True     # Neon requires SSL
+        )
+    }
+
      
 
 
@@ -144,8 +154,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if PRODUCTION_ENV:
-    STATIC_URL = '/staticfiles/'
+# if PRODUCTION_ENV:
+#     STATIC_URL = '/staticfiles/'
 STATICFILES_DIRS= [os.path.join(BASE_DIR, 'public/static/'), os.path.join(BASE_DIR, 'theme', 'static', 'css', 'dist'),]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public/static/')

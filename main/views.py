@@ -87,3 +87,67 @@ def second_one(request):
 
 def test(request):
     return render(request, 'others/test.html', {})
+
+# main/views.py
+
+import json
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.dateparse import parse_datetime
+from .models import Project
+
+@csrf_exempt
+def import_projects_json(request):
+    if request.method != 'POST':
+        return JsonResponse({'status': 'error', 'message': 'Only POST method allowed.'}, status=405)
+
+    try:
+        body = request.body.decode('utf-8')
+        try:
+            # First, try the simple case: a single JSON array
+            data = json.loads(body)
+            if not isinstance(data, list):
+                raise ValueError("Expected a list of project entries.")
+        except ValueError as ve:
+            # Fallback: parse multiple JSON values concatenated together
+            decoder = json.JSONDecoder()
+            pos = 0
+            length = len(body)
+            data = []
+            while pos < length:
+                obj, idx = decoder.raw_decode(body, pos)
+                pos = idx
+                # if it's a list, extend; otherwise, append single object
+                if isinstance(obj, list):
+                    data.extend(obj)
+                else:
+                    data.append(obj)
+                # skip any whitespace/newlines between JSON values
+                while pos < length and body[pos] in ' \r\n\t':
+                    pos += 1
+
+        # Now `data` is a flat list of project dicts
+        for item in data:
+            fields = item['fields']
+            project, created = Project.objects.update_or_create(
+                pk=item['pk'],
+                defaults={
+                    'title':       fields['title'],
+                    'description': fields['description'],
+                    'btn1_text':   fields['btn1_text'],
+                    'btn1_url':    fields['btn1_url'],
+                    'btn2_text':   fields['btn2_text'],
+                    'btn2_url':    fields['btn2_url'],
+                    'prj_value':   fields['prj_value'],
+                    'created_at':  parse_datetime(fields['created_at']),
+                }
+            )
+            # If an image path was provided, assign it directly
+            if fields.get('image'):
+                project.image.name = fields['image']
+                project.save()
+
+        return JsonResponse({'status': 'success', 'message': 'Projects imported successfully.'})
+
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
