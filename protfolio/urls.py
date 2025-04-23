@@ -29,6 +29,8 @@ urlpatterns = [
 
 
     path('contact/', views.contact, name='contact'),
+
+    
     # path('contact/messages/', views.contact_messages_view, name='contact_messages'),
 
 
