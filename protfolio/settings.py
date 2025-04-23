@@ -154,8 +154,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# if PRODUCTION_ENV:
-#     STATIC_URL = '/staticfiles/'
+if PRODUCTION_ENV:
+    STATIC_URL = '/staticfiles/'
 STATICFILES_DIRS= [os.path.join(BASE_DIR, 'public/static/'), os.path.join(BASE_DIR, 'theme', 'static', 'css', 'dist'),]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public/static/')
