@@ -126,12 +126,94 @@
     .project-card {
         animation-delay: calc(var(--index) * 0.15s);
     }
+
+        #custom-cursor {
+            width: 16px;
+            height: 16px;
+            background-color: rgba(74, 222, 128, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+            pointer-events: none;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            z-index: 9999;
+        }
+
+        #cursor-trailer {
+            width: 36px;
+            height: 36px;
+            background-color: rgba(74, 222, 128, 0.1);
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: transform 0.1s;
+            z-index: 9998;
+        }
+
+
     </style>
 
 </head>
 
 
-<body class="bg-gray-900 text-gray-100"></body>
+<body class="bg-gray-900 text-gray-100">
+
+    
+    <!-- Interactive Cursor Effect -->
+    <div id="custom-cursor" class="fixed w-8 h-8 rounded-full pointer-events-none z-50 hidden md:block"></div>
+    <div id="cursor-trailer" class="fixed w-16 h-16 rounded-full pointer-events-none z-40 hidden md:block"></div>
+
+
+    <script>
+        // Custom cursor with trailing effect
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the cursor elements
+            const cursor = document.getElementById('custom-cursor');
+            const cursorTrailer = document.getElementById('cursor-trailer');
+            
+            if (cursor && cursorTrailer) {
+                // Update cursor position on mouse move
+                document.addEventListener('mousemove', function(e) {
+                    // Main cursor follows mouse position immediately
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                    
+                    // Cursor trailer follows with delay for trailing effect
+                    setTimeout(() => {
+                        cursorTrailer.style.left = e.clientX + 'px';
+                        cursorTrailer.style.top = e.clientY + 'px';
+                    }, 80); // 80ms delay creates the trail effect
+                });
+                
+                // Show/hide cursor when entering/leaving the window
+                document.addEventListener('mouseenter', function() {
+                    cursor.classList.remove('hidden');
+                    cursorTrailer.classList.remove('hidden');
+                });
+                
+                document.addEventListener('mouseleave', function() {
+                    cursor.classList.add('hidden');
+                    cursorTrailer.classList.add('hidden');
+                });
+                
+                // Change cursor style on interactive elements
+                const interactiveElements = document.querySelectorAll('a, button, .tech-icon');
+                interactiveElements.forEach(el => {
+                    el.addEventListener('mouseenter', () => {
+                        cursor.classList.add('scale-150', 'bg-green-500/20');
+                    });
+                    el.addEventListener('mouseleave', () => {
+                        cursor.classList.remove('scale-150', 'bg-green-500/20');
+                    });
+                });
+            }
+        });
+    </script>
+
+
+
 <!-- Sidebar for large screens -->
 <nav
     class="hidden lg:flex lg:flex-col lg:w-24 bg-gray-800 fixed top-0 left-0 h-full justify-center items-center space-y-6">
@@ -255,84 +337,87 @@
 
     </section>
 
- <!-- About Section -->
-<section id="about" class="section-padding bg-gray-900">
-    <div class="container mx-auto px-3 sm:px-4 md:px-6">
-        <div class="text-center mb-12 sm:mb-14 md:mb-16">
-            <h2 class="text-2xl xs:text-3xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
-                About <span class="gradient-text">Me</span>
-            </h2>
-            <div class="w-16 sm:w-20 md:w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
-            <div class="space-y-5 sm:space-y-6">
-                <p class="text-base xs:text-base sm:text-lg md:text-lg leading-relaxed text-gray-300">
-                    I am an enthusiastic and dedicated software developer with a passion for Python programming, web
-                    development, and cybersecurity. I thrive on challenges and continuously seek opportunities to apply
-                    my skills in creative and impactful ways.
-                </p>
-                <p class="text-base xs:text-base sm:text-lg md:text-lg leading-relaxed text-gray-300">
-                    With a solid foundation in both frontend and backend technologies, I am eager to contribute to
-                    innovative projects and push the boundaries of what's possible in the digital realm. Additionally,
-                    I've been committed to ongoing learning, recently completing a comprehensive training course that
-                    deepened my expertise in Python and Django.
-                </p>
-                
-                <div class="flex flex-wrap gap-2 sm:gap-3 mt-4 sm:mt-6">
-                    <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Python</span>
-                    <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Django</span>
-                    <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">JavaScript</span>
-                    <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">HTML/CSS</span>
-                    <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Cybersecurity</span>
-                    <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Penetration Testing</span>
-                </div>
+
+ 
+
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-gray-900">
+        <div class="container mx-auto px-3 sm:px-4 md:px-6">
+            <div class="text-center mb-12 sm:mb-14 md:mb-16">
+                <h2 class="text-2xl xs:text-3xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
+                    About <span class="gradient-text">Me</span>
+                </h2>
+                <div class="w-16 sm:w-20 md:w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
             </div>
             
-            <div class="space-y-6 sm:space-y-8">
-                <div class="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg card-hover">
-                    <div class="flex items-center mb-3 sm:mb-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
-                            <i class="fas fa-briefcase text-green-500 text-lg sm:text-xl"></i>
-                        </div>
-                        <h3 class="text-lg sm:text-xl font-semibold text-green-400">Experience</h3>
-                    </div>
-                    <p class="text-gray-300 text-sm sm:text-base">
-                        Developed web applications using Django, created desktop applications with Python
-                        and Tkinter, and participated in numerous Hackathons & Ideathons. I have also gained hands-on experience managing and deploying projects on GitHub, ensuring the
-                        efficient collaboration and version control of all project files.
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
+                <div class="space-y-5 sm:space-y-6">
+                    <p class="text-base xs:text-base sm:text-lg md:text-lg leading-relaxed text-gray-300">
+                        I am an enthusiastic and dedicated software developer with a passion for Python programming, web
+                        development, and cybersecurity. I thrive on challenges and continuously seek opportunities to apply
+                        my skills in creative and impactful ways.
                     </p>
+                    <p class="text-base xs:text-base sm:text-lg md:text-lg leading-relaxed text-gray-300">
+                        With a solid foundation in both frontend and backend technologies, I am eager to contribute to
+                        innovative projects and push the boundaries of what's possible in the digital realm. Additionally,
+                        I've been committed to ongoing learning, recently completing a comprehensive training course that
+                        deepened my expertise in Python and Django.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-2 sm:gap-3 mt-4 sm:mt-6">
+                        <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Python</span>
+                        <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Django</span>
+                        <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">JavaScript</span>
+                        <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">HTML/CSS</span>
+                        <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Cybersecurity</span>
+                        <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Penetration Testing</span>
+                    </div>
                 </div>
                 
-                <div class="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg card-hover">
-                    <div class="flex items-center mb-3 sm:mb-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
-                            <i class="fas fa-graduation-cap text-green-500 text-lg sm:text-xl"></i>
+                <div class="space-y-6 sm:space-y-8">
+                    <div class="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg card-hover">
+                        <div class="flex items-center mb-3 sm:mb-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
+                                <i class="fas fa-briefcase text-green-500 text-lg sm:text-xl"></i>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-semibold text-green-400">Experience</h3>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-semibold text-green-400">Education</h3>
+                        <p class="text-gray-300 text-sm sm:text-base">
+                            Developed web applications using Django, created desktop applications with Python
+                            and Tkinter, and participated in numerous Hackathons & Ideathons. I have also gained hands-on experience managing and deploying projects on GitHub, ensuring the
+                            efficient collaboration and version control of all project files.
+                        </p>
                     </div>
-                    <p class="text-gray-300 text-sm sm:text-base">
-                        Currently pursuing a Bachelor's in Computer Science. Completed various online
-                        certifications in programming and cybersecurity.
-                    </p>
-                </div>
-                
-                <div class="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg card-hover">
-                    <div class="flex items-center mb-3 sm:mb-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
-                            <i class="fas fa-heart text-green-500 text-lg sm:text-xl"></i>
+                    
+                    <div class="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg card-hover">
+                        <div class="flex items-center mb-3 sm:mb-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
+                                <i class="fas fa-graduation-cap text-green-500 text-lg sm:text-xl"></i>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-semibold text-green-400">Education</h3>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-semibold text-green-400">Interests</h3>
+                        <p class="text-gray-300 text-sm sm:text-base">
+                            Currently pursuing a Bachelor's in Computer Science. Completed various online
+                            certifications in programming and cybersecurity.
+                        </p>
                     </div>
-                    <p class="text-gray-300 text-sm sm:text-base">
-                        I enjoy exploring new technologies and solving complex problems with innovative
-                        solutions. I'm passionate about cybersecurity and contributing to open-source projects.
-                    </p>
+                    
+                    <div class="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg card-hover">
+                        <div class="flex items-center mb-3 sm:mb-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
+                                <i class="fas fa-heart text-green-500 text-lg sm:text-xl"></i>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-semibold text-green-400">Interests</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm sm:text-base">
+                            I enjoy exploring new technologies and solving complex problems with innovative
+                            solutions. I'm passionate about cybersecurity and contributing to open-source projects.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Skills Section -->
     <section id="skill-list" class="py-20 opacity-0 translate-y-10 transition-all duration-1000" data-aos="fade-up">
