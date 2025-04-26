@@ -569,100 +569,101 @@
     </section>
 
     <!-- Contact Section -->
-        <section id="contact" class="section-padding">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Get in <span class="gradient-text">Touch</span></h2>
-                    <div class="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
-                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Feel free to reach out for collaborations or just a friendly hello</p>
-                </div>
-                
-                <div class="max-w-4xl mx-auto">
-                    <div class="bg-gray-800 rounded-xl shadow-2xl overflow-hidden">
-                        <div class="md:flex">
-                            <!-- Contact Info -->
-                            <div class="md:w-2/5 bg-gray-900 p-8">
-                                <h3 class="text-2xl font-bold text-green-400 mb-6">Contact Information</h3>
-                                <p class="text-gray-400 mb-8">Fill out the form and I will get back to you as soon as possible.</p>
-                                
-                                <div class="space-y-6">
-                                    <div class="flex items-start">
-                                        <div class="w-10 h-10 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
-                                            <i class="fas fa-envelope text-green-500"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm text-gray-400">Email</p>
-                                            <p class="text-white">contact@rujalbaniya.com.np</p>
-                                        </div>
+    <section id="contact" class="section-padding">
+        <div class="container mx-auto px-3 sm:px-6">
+            <div class="text-center mb-8 sm:mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">Get in <span class="gradient-text">Touch</span></h2>
+                <div class="w-16 sm:w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
+                <p class="text-gray-400 mt-2 sm:mt-4 text-sm sm:text-base max-w-2xl mx-auto">Feel free to reach out for collaborations or just a friendly hello</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-800 rounded-xl shadow-2xl overflow-hidden">
+                    <div class="md:flex">
+                        <!-- Contact Info -->
+                        <div class="md:w-2/5 bg-gray-900 p-4 sm:p-6 md:p-8">
+                            <h3 class="text-xl sm:text-2xl font-bold text-green-400 mb-3 sm:mb-6">Contact Information</h3>
+                            <p class="text-gray-400 text-sm sm:text-base mb-4 sm:mb-8">Fill out the form and I will get back to you as soon as possible.</p>
+                            
+                            <div class="space-y-4 sm:space-y-6">
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
+                                        <i class="fas fa-envelope text-xs sm:text-base text-green-500"></i>
                                     </div>
-                                    
-                                    <div class="flex items-start">
-                                        <div class="w-10 h-10 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
-                                            <i class="fas fa-map-marker-alt text-green-500"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm text-gray-400">Location</p>
-                                            <p class="text-white">Kathmandu, Nepal</p>
-                                        </div>
+                                    <div>
+                                        <p class="text-xs sm:text-sm text-gray-400">Email</p>
+                                        <p class="text-white text-sm sm:text-base">contact@rujalbaniya.com.np</p>
                                     </div>
                                 </div>
                                 
-                                <div class="mt-12 flex space-x-4">
-                                    <a href="https://github.com/0luv69" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-gray-700 transition-all duration-300">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-gray-700 transition-all duration-300">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
+                                        <i class="fas fa-map-marker-alt text-xs sm:text-base text-green-500"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs sm:text-sm text-gray-400">Location</p>
+                                        <p class="text-white text-sm sm:text-base">Kathmandu, Nepal</p>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <!-- Contact Form -->
-                            <div class="md:w-3/5 p-8">
-                                <form class="space-y-6" method="post" action="/contact/">
-                                    {% csrf_token %}
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div>
-                                            <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Name</label>
-                                            <input id="name" class="contact-input w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="text" name="name" placeholder="Your name" required>
-                                        </div>
-                                        <div>
-                                            <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email</label>
-                                            <input id="email" class="contact-input w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="email" name="email" placeholder="Your email" required>
-                                        </div>
-                                    </div>
-                                    
-                                    <div>
-                                        <label for="subject" class="block text-sm font-medium text-gray-400 mb-2">Subject</label>
-                                        <input id="subject" class="contact-input w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="text" name="subject" placeholder="Subject" required>
-                                    </div>
-                                    
-                                    <div>
-                                        <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Message</label>
-                                        <textarea id="message" class="contact-input w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" name="message" placeholder="Your message" rows="5" required></textarea>
-                                    </div>
-                                    
-                                    <button type="submit" class="w-full p-4 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors duration-300 flex justify-center items-center">
-                                        <span id="btn_txt">Send Message</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="h-3 w-6 sm:h-6 sm:w-10 hidden" id="loader">
-                                            <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="25" y="50">
-                                                <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
-                                            </rect>
-                                            <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="85" y="50">
-                                                <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate>
-                                            </rect>
-                                            <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="145" y="50">
-                                                <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate>
-                                            </rect>
-                                        </svg>
-                                    </button>
-                                </form>
+                            <div class="mt-6 sm:mt-12 flex space-x-3 sm:space-x-4">
+                                <a href="https://github.com/0luv69" target="_blank" class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-gray-700 transition-all duration-300">
+                                    <i class="fab fa-github text-xs sm:text-base"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-gray-700 transition-all duration-300">
+                                    <i class="fab fa-linkedin-in text-xs sm:text-base"></i>
+                                </a>
                             </div>
+                        </div>
+                        
+                        <!-- Contact Form -->
+                        <div class="md:w-3/5 p-4 sm:p-6 md:p-8">
+                            <form class="space-y-4 sm:space-y-6" method="post" action="/contact/">
+                                {% csrf_token %}
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                                    <div>
+                                        <label for="name" class="block text-xs sm:text-sm font-medium text-gray-400 mb-1 sm:mb-2">Name</label>
+                                        <input id="name" class="contact-input w-full p-2 sm:p-3 text-sm sm:text-base bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="text" name="name" placeholder="Your name" required>
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-xs sm:text-sm font-medium text-gray-400 mb-1 sm:mb-2">Email</label>
+                                        <input id="email" class="contact-input w-full p-2 sm:p-3 text-sm sm:text-base bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="email" name="email" placeholder="Your email" required>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label for="subject" class="block text-xs sm:text-sm font-medium text-gray-400 mb-1 sm:mb-2">Subject</label>
+                                    <input id="subject" class="contact-input w-full p-2 sm:p-3 text-sm sm:text-base bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="text" name="subject" placeholder="Subject" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="message" class="block text-xs sm:text-sm font-medium text-gray-400 mb-1 sm:mb-2">Message</label>
+                                    <textarea id="message" class="contact-input w-full p-2 sm:p-3 text-sm sm:text-base bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" name="message" placeholder="Your message" rows="4" sm:rows="5" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="w-full p-3 sm:p-4 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors duration-300 flex justify-center items-center">
+                                    <span id="btn_txt" class="text-sm sm:text-base">Send Message</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="h-3 w-6 sm:h-6 sm:w-10 hidden" id="loader">
+                                        <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="25" y="50">
+                                            <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
+                                        </rect>
+                                        <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="85" y="50">
+                                            <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate>
+                                        </rect>
+                                        <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="145" y="50">
+                                            <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate>
+                                        </rect>
+                                    </svg>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+
 </main>
 
 <script>
