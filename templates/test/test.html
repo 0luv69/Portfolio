@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0luv69 | Creative Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --color-bg: #0c0c0c;
+            --color-text: #ffffff;
+            --color-accent: #00FFA3;
+            --color-secondary: #FF3D5A;
+            --color-tertiary: #3A86FF;
+            --font-display: 'Syne', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+            --easing: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        body {
+            font-family: var(--font-mono);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.4;
+            cursor: crosshair;
+            overflow-x: hidden;
+        }
+
+        /* Link Styles */
+        a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid;
+            padding-bottom: 2px;
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            padding: 40px;
+            overflow: hidden;
+        }
+        
+        .glitch {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.02);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .glitch::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+            animation: glitch-line 3s linear infinite;
+        }
+        
+        @keyframes glitch-line {
+            0% {
+                top: 0%;
+            }
+            50% {
+                top: 50%;
+            }
+            100% {
+                top: 100%;
+            }
+        }
+        
+        .date-time {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            font-size: 12px;
+            opacity: 0.5;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+        
+        .identity {
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            z-index: 100;
+            mix-blend-mode: difference;
+            display: flex;
+            align-items: center;
+        }
+        
+        .identity::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: var(--color-accent);
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .big-text {
+            position: absolute;
+            bottom: 100px;
+            left: 40px;
+            right: 40px;
+            font-family: var(--font-display);
+            font-size: clamp(40px, 12vw, 130px);
+            line-height: 0.9;
+            font-weight: 800;
+            text-transform: uppercase;
+            width: 90%;
+            z-index: 3;
+        }
+
+        .big-text span {
+            display: block;
+        }
+        
+        .accent {
+            -webkit-text-stroke: 2px var(--color-text);
+            color: transparent;
+        }
+        
+        .highlight {
+            color: var(--color-accent);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .noise-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            z-index: 0;
+        }
+        
+        /* Intro text animation */
+        .intro-text {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            max-width: 300px;
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.7;
+        }
+
+        /* About Section */
+        .about {
+            min-height: 100vh;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .about-text {
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .about-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .meta-item {
+            position: relative;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .meta-item h3 {
+            font-family: var(--font-display);
+            font-size: 50px;
+            font-weight: 800;
+            margin-bottom: 5px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-tertiary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .meta-item p {
+            font-size: 14px;
+            opacity: 0.7;
+            margin: 0;
+        }
+        
+        /* Image Container */
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+        
+        .image-reveal {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.1);
+            opacity: 0;
+            transition: transform 1.5s var(--easing), 
+                        opacity 1.5s var(--easing);
+            filter: grayscale(100%) contrast(1.2);
+        }
+        
+        .image-container.loaded .image-reveal {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .image-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .section-heading {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-heading span {
+            font-size: 16px;
+            font-weight: 700;
+            margin-right: 20px;
+            opacity: 0.5;
+        }
+        
+        .section-heading .line {
+            height: 1px;
+            background: var(--color-text);
+            flex-grow: 1;
+            opacity: 0.2;
+        }
+        
+        /* Color bar */
+        .color-bar {
+            height: 5px;
+            width: 100%;
+            display: flex;
+        }
+        
+        .color-bar .segment {
+            height: 100%;
+            flex-grow: 1;
+        }
+        
+        .color-bar .segment:nth-child(1) {
+            background: var(--color-accent);
+        }
+        
+        .color-bar .segment:nth-child(2) {
+            background: var(--color-secondary);
+        }
+        
+        .color-bar .segment:nth-child(3) {
+            background: var(--color-tertiary);
+        }
+        
+        /* Horizontal Project Slider */
+        .horizontal-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        
+        .horizontal-track {
+            display: flex;
+            position: absolute;
+            height: 80vh;
+            will-change: transform;
+            transition: transform 0.1s var(--easing);
+        }
+        
+        .horizontal-item {
+            width: 60vw;
+            min-width: 300px;
+            height: 100%;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .horizontal-item:first-child {
+            padding-left: 40px;
+        }
+        
+        .horizontal-item:last-child {
+            padding-right: 40px;
+        }
+        
+        .horizontal-image {
+            width: 100%;
+            height: 70%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .horizontal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s var(--easing);
+            filter: grayscale(100%);
+        }
+        
+        .horizontal-image:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+        
+        .horizontal-caption {
+            margin-top: 20px;
+        }
+        
+        .horizontal-caption h3 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .horizontal-caption p {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            text-transform: uppercase;
+            z-index: 10;
+            mix-blend-mode: difference;
+        }
+
+        .indicator-arrow {
+            width: 30px;
+            height: 30px;
+            border: 1px solid;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            padding: 10px 0;
+            background: var(--color-accent);
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 25s linear infinite;
+        }
+        
+        .marquee-content span {
+            font-family: var(--font-display);
+            font-size: 100px;
+            font-weight: 800;
+            margin: 0 20px;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            color: var(--color-bg);
+            mix-blend-mode: multiply;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin-top: 30px;
+            border: 1px solid var(--color-text);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background-color: transparent;
+        }
+        
+        .button::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: var(--color-accent);
+            z-index: -1;
+            transition: width 0.3s var(--easing);
+        }
+        
+        .button:hover {
+            color: var(--color-bg);
+            border-color: var(--color-accent);
+        }
+        
+        .button:hover::before {
+            width: 100%;
+        }
+        
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.15s ease-out, width 0.3s var(--easing), height 0.3s var(--easing), background-color 0.3s var(--easing);
+            opacity: 0;
+        }
+        
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s var(--easing), height 0.5s var(--easing), border-color 0.3s var(--easing);
+            opacity: 0;
+        }
+        
+        .split-section {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr;
+            height: 100vh;
+        }
+        
+        .split-left {
+            background: var(--color-bg);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .split-right {
+            background: var(--color-accent);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            color: var(--color-bg);
+        }
+        
+        /* Progress bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            z-index: 1000;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--color-accent);
+            width: 0%;
+            transition: width 0.1s;
+        }
+        
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+            }
+            
+            .cursor-dot, .cursor-outline {
+                opacity: 1;
+            }
+            
+            .split-section {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .about-meta {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero, .about {
+                padding: 20px;
+            }
+            
+            .identity, .date-time {
+                top: 20px;
+            }
+            
+            .identity {
+                left: 20px;
+            }
+            
+            .date-time {
+                right: 20px;
+            }
+            
+            .big-text {
+                bottom: 140px;
+                left: 20px;
+            }
+            
+            .marquee-content span {
+                font-size: 50px;
+            }
+            
+            .horizontal-item {
+                width: 90vw;
+            }
+            
+            .scroll-indicator {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .about-meta {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .intro-text {
+                bottom: 80px;
+                right: 20px;
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    
+    <div class="color-bar">
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+    </div>
+
+    <div class="identity">
+        0luv69
+    </div>
+    
+    <div class="date-time">
+        2025-07-17 15:44:16
+    </div>
+
+    <div class="scroll-indicator">
+        <span>Scroll</span>
+        <div class="indicator-arrow">
+            ↓
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="noise-bg"></div>
+        <div class="glitch"></div>
+        
+        <div class="big-text" id="hero-text">
+            <span>Creative</span>
+            <span><span class="highlight">Digital</span> Solutions</span>
+            <span class="accent">Since 2020</span>
+        </div>
+        
+        <div class="intro-text">
+            Full-stack developer specializing in creating exceptional digital experiences with a focus on minimalist design and clean code.
+        </div>
+    </section>
+
+    <div class="marquee-container">
+        <div class="marquee-content" id="marquee">
+            <span>Developer</span>
+            <span>Designer</span>
+            <span>Creative</span>
+            <span>Problem-solver</span>
+        </div>
+    </div>
+
+    <section class="about">
+        <div class="noise-bg"></div>
+        <div class="about-grid">
+            <div class="about-text">
+                <div class="section-heading">
+                    <span>01</span>
+                    <div class="line"></div>
+                </div>
+                <p>I craft digital experiences that merge form and function. With a minimalist approach, I create solutions that are visually striking yet intuitive and efficient.</p>
+                <p>My work spans front-end development, back-end architecture, and everything in between. Every project is an opportunity to push boundaries and challenge conventions.</p>
+                
+                <div class="about-meta">
+                    <div class="meta-item">
+                        <h3>5+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="meta-item">
+                        <h3>50+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="meta-item">
+                        <h3>30+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+                
+                <a href="#" class="button">Download CV</a>
+            </div>
+            
+            <div class="image-container" id="about-image">
+                <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="About Me" 
+                     class="image-reveal">
+            </div>
+        </div>
+    </section>
+
+    <section class="horizontal-section">
+        <div class="noise-bg"></div>
+        <div class="section-heading" style="position: absolute; top: 40px; left: 40px; right: 40px;">
+            <span>02</span>
+            <div class="line"></div>
+        </div>
+        
+        <div class="horizontal-track" id="horizontal-track">
+            <div class="horizontal-item">
+                <div class="horizontal-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="E-commerce Platform">
+                </div>
+                <div class="horizontal-caption">
+                    <h3>E-commerce Platform</h3>
+                    <p>Full-stack development with React, Node.js and MongoDB</p>
+                </div>
+            </div>
+            
+            <div class="horizontal-item">
+                <div class="horizontal-image">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Fitness App">
+                </div>
+                <div class="horizontal-caption">
+                    <h3>Fitness App</h3>
+                    <p>Mobile application with React Native and Firebase</p>
+                </div>
+            </div>
+            
+            <div class="horizontal-item">
+                <div class="horizontal-image">
+                    <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Analytics Dashboard">
+                </div>
+                <div class="horizontal-caption">
+                    <h3>Analytics Dashboard</h3>
+                    <p>Data visualization with Vue.js and D3.js</p>
+                </div>
+            </div>
+            
+            <div class="horizontal-item">
+                <div class="horizontal-image">
+                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Blog Platform">
+                </div>
+                <div class="horizontal-caption">
+                    <h3>Blog Platform</h3>
+                    <p>Content management system with Next.js and GraphQL</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="split-section">
+        <div class="split-left">
+            <div class="noise-bg"></div>
+            <div class="section-heading" style="position: absolute; top: 40px; left: 40px; right: 40px;">
+                <span>03</span>
+                <div class="line"></div>
+            </div>
+            <div style="max-width: 80%; text-align: center;">
+                <h2 style="font-family: var(--font-display); font-size: clamp(30px, 5vw, 60px); margin-bottom: 30px;">Let's create something<br><span class="highlight">amazing</span> together</h2>
+                <a href="#" class="button">Get in touch</a>
+            </div>
+        </div>
+        <div class="split-right">
+            <div style="max-width: 400px;">
+                <h3 style="font-family: var(--font-display); font-size: 36px; margin-bottom: 20px;">Contact</h3>
+                <p style="margin-bottom: 30px; opacity: 0.8;">Ready to start your next project? Reach out and let's discuss how I can help bring your vision to life.</p>
+                
+                <div style="margin-bottom: 10px;">
+                    <p style="font-size: 14px; margin-bottom: 5px;">Email</p>
+                    <a href="mailto:hello@0luv69.com" style="color: var(--color-bg); border-color: var(--color-bg);">hello@0luv69.com</a>
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <p style="font-size: 14px; margin-bottom: 5px;">Location</p>
+                    <p>San Francisco, CA</p>
+                </div>
+                
+                <div style="margin-top: 40px; display: flex; gap: 20px;">
+                    <a href="#" style="border: none;">Twitter</a>
+                    <a href="#" style="border: none;">GitHub</a>
+                    <a href="#" style="border: none;">Dribbble</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Image reveal animation
+        const aboutImage = document.getElementById('about-image');
+        
+        // Trigger animation when image enters viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('loaded');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        observer.observe(aboutImage);
+        
+        // Marquee duplication for seamless scrolling
+        const marquee = document.getElementById('marquee');
+        const marqueeContent = marquee.innerHTML;
+        marquee.innerHTML += marqueeContent;
+        
+        // Horizontal scrolling for projects section
+        const horizontalTrack = document.getElementById('horizontal-track');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        
+        // Set initial scroll position to show first item properly
+        window.addEventListener('load', () => {
+            horizontalTrack.style.transform = `translateX(0px)`;
+        });
+        
+        // Desktop horizontal scrolling with wheel
+        window.addEventListener('wheel', (e) => {
+            const horizontalSection = document.querySelector('.horizontal-section');
+            const rect = horizontalSection.getBoundingClientRect();
+            
+            // Check if horizontal section is in view
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                // Get the maximum scroll distance
+                const maxScroll = horizontalTrack.scrollWidth - window.innerWidth;
+                
+                // Get the current transform value
+                const transformMatrix = window.getComputedStyle(horizontalTrack).transform;
+                const matrix = new DOMMatrix(transformMatrix);
+                let currentTranslate = matrix.m41;
+                
+                // Calculate new position
+                let newTranslate = currentTranslate - e.deltaY;
+                
+                // Apply constraints
+                if (newTranslate > 0) newTranslate = 0;
+                if (newTranslate < -maxScroll) newTranslate = -maxScroll;
+                
+                // Apply the new position
+                horizontalTrack.style.transform = `translateX(${newTranslate}px)`;
+                
+                // Prevent vertical scrolling while in horizontal section
+                if (rect.top < 100 && rect.bottom > window.innerHeight - 100) {
+                    e.preventDefault();
+                }
+            }
+        }, { passive: false });
+        
+        // Scroll progress bar
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            document.getElementById('progress-bar').style.width = `${scrolled}%`;
+        });
+        
+        // Mouse cursor effect
+        if (window.innerWidth > 768) {
+            const cursorDot = document.getElementById('cursor-dot');
+            const cursorOutline = document.getElementById('cursor-outline');
+            
+            document.addEventListener('mousemove', (e) => {
+                cursorDot.style.left = `${e.clientX}px`;
+                cursorDot.style.top = `${e.clientY}px`;
+                
+                // Add a slight delay to the outline for a more fluid effect
+                setTimeout(() => {
+                    cursorOutline.style.left = `${e.clientX}px`;
+                    cursorOutline.style.top = `${e.clientY}px`;
+                }, 50);
+            });
+            
+            // Hover effect on interactive elements
+            const interactiveElements = document.querySelectorAll('a, .button, .horizontal-image');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorDot.style.width = '16px';
+                    cursorDot.style.height = '16px';
+                    cursorDot.style.backgroundColor = 'var(--color-secondary)';
+                    cursorOutline.style.width = '60px';
+                    cursorOutline.style.height = '60px';
+                    cursorOutline.style.borderColor = 'rgba(255, 61, 90, 0.5)';
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursorDot.style.width = '8px';
+                    cursorDot.style.height = '8px';
+                    cursorDot.style.backgroundColor = 'var(--color-accent)';
+                    cursorOutline.style.width = '40px';
+                    cursorOutline.style.height = '40px';
+                    cursorOutline.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                });
+            });
+        }
+        
+        // Hero text animation
+        const heroText = document.getElementById('hero-text');
+        setTimeout(() => {
+            heroText.style.opacity = '1';
+            heroText.style.transform = 'translateY(0)';
+        }, 500);
+        
+        // Check if device has touch capability and disable mouse follower
+        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+            document.getElementById('cursor-dot').style.display = 'none';
+            document.getElementById('cursor-outline').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
