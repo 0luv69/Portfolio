@@ -159,8 +159,6 @@
 
 
 <body class="bg-gray-900 text-gray-100">
-
-    
     <!-- Interactive Cursor Effect -->
     <div id="custom-cursor" class="fixed w-8 h-8 rounded-full pointer-events-none z-50 hidden md:block"></div>
     <div id="cursor-trailer" class="fixed w-16 h-16 rounded-full pointer-events-none z-40 hidden md:block"></div>
@@ -214,904 +212,904 @@
 
 
 
-<!-- Sidebar for large screens -->
-<nav
-    class="hidden lg:flex lg:flex-col lg:w-24 bg-gray-800 fixed top-0 left-0 h-full justify-center items-center space-y-6">
-    <a href="https://github.com/0luv69" target="_blank"><img src="{% static 'img/logo.png' %}" alt="luv 69"
-            class="rounded-full w-20 h-20 object-cover transform transition-transform duration-300 hover:scale-105 cursor-grab mb-6"></a>
-    <a href="#home" class="nav-link w-full text-center py-3 text-green-400 hover:text-white transition duration-300
-     flex justify-center items-center flex-col
-    ">
+    <!-- Sidebar for large screens -->
+    <nav
+        class="hidden lg:flex lg:flex-col lg:w-24 bg-gray-800 fixed top-0 left-0 h-full justify-center items-center space-y-6">
+        <a href="https://github.com/0luv69" target="_blank"><img src="{% static 'img/logo.png' %}" alt="luv 69"
+                class="rounded-full w-20 h-20 object-cover transform transition-transform duration-300 hover:scale-105 cursor-grab mb-6"></a>
+        <a href="#home" class="nav-link w-full text-center py-3 text-green-400 hover:text-white transition duration-300
+        flex justify-center items-center flex-col
+        ">
 
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px" y="0px" viewBox="0 0 122.88 112.07" style="enable-background:new 0 0 122.88 112.07"
-            xml:space="preserve" class="w-8 h-8 fill-current text-green-400 hover:text-white transition duration-300">
-            <style type="text/css">
-                .st0 {
-                    fill-rule: evenodd;
-                    clip-rule: evenodd;
-                }
-            </style>
-            <g>
-                <path class="st0"
-                    d="M61.44,0L0,60.18l14.99,7.87L61.04,19.7l46.85,48.36l14.99-7.87L61.44,0L61.44,0z M18.26,69.63L18.26,69.63 L61.5,26.38l43.11,43.25h0v0v42.43H73.12V82.09H49.49v29.97H18.26V69.63L18.26,69.63L18.26,69.63z" />
-            </g>
-        </svg>
-        <p class="text-xs mt-1">HOME</p>
-    </a>
-    <a href="#about"
-        class="nav-link w-full text-center py-3 text-gray-400 hover:text-green-400 transition duration-300">
-        <i class="fas fa-user text-2xl"></i>
-        <p class="text-xs mt-1">ABOUT</p>
-    </a>
-    <a href="#projects"
-        class="nav-link w-full text-center py-3 text-gray-400 hover:text-green-400 transition duration-300">
-        <i class="fas fa-eye text-2xl"></i>
-        <p class="text-xs mt-1">PROJECTS</p>
-    </a>
-    <a href="#contact"
-        class="nav-link w-full text-center py-3 text-gray-400 hover:text-green-400 transition duration-300">
-        <i class="fas fa-envelope text-2xl"></i>
-        <p class="text-xs mt-1">CONTACT</p>
-    </a>
-</nav>
-
-<!-- Navbar for small screens -->
-<div class="lg:hidden w-full bg-gray-800 text-white fixed bottom-0 z-50">
-    <nav class="flex justify-around py-3">
-        <a href="#home" class="nav-link text-white hover:text-green-400 transition duration-300">
-            <i class="fas fa-home text-2xl"></i>
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px" y="0px" viewBox="0 0 122.88 112.07" style="enable-background:new 0 0 122.88 112.07"
+                xml:space="preserve" class="w-8 h-8 fill-current text-green-400 hover:text-white transition duration-300">
+                <style type="text/css">
+                    .st0 {
+                        fill-rule: evenodd;
+                        clip-rule: evenodd;
+                    }
+                </style>
+                <g>
+                    <path class="st0"
+                        d="M61.44,0L0,60.18l14.99,7.87L61.04,19.7l46.85,48.36l14.99-7.87L61.44,0L61.44,0z M18.26,69.63L18.26,69.63 L61.5,26.38l43.11,43.25h0v0v42.43H73.12V82.09H49.49v29.97H18.26V69.63L18.26,69.63L18.26,69.63z" />
+                </g>
+            </svg>
+            <p class="text-xs mt-1">HOME</p>
         </a>
-        <a href="#about" class="nav-link text-white hover:text-green-400 transition duration-300">
+        <a href="#about"
+            class="nav-link w-full text-center py-3 text-gray-400 hover:text-green-400 transition duration-300">
             <i class="fas fa-user text-2xl"></i>
+            <p class="text-xs mt-1">ABOUT</p>
         </a>
-        <a href="#projects" class="nav-link text-white hover:text-green-400 transition duration-300">
+        <a href="#projects"
+            class="nav-link w-full text-center py-3 text-gray-400 hover:text-green-400 transition duration-300">
             <i class="fas fa-eye text-2xl"></i>
+            <p class="text-xs mt-1">PROJECTS</p>
         </a>
-        <a href="#contact" class="nav-link text-white hover:text-green-400 transition duration-300">
+        <a href="#contact"
+            class="nav-link w-full text-center py-3 text-gray-400 hover:text-green-400 transition duration-300">
             <i class="fas fa-envelope text-2xl"></i>
+            <p class="text-xs mt-1">CONTACT</p>
         </a>
     </nav>
-</div>
 
-<!-- Main Content -->
-<main class="lg:ml-24 p-8 pb-24">
-    <!-- hero Section -->
-    <section id="home"
-        class="min-h-screen flex flex-col justify-start pt-4 sm:pt-0 sm:justify-center items-center text-center hero-gradient">
-        <!-- top fixed btns  -->
-        <div class="fixed top-4 right-6 z-20 flex justify-between items-center flex-nowrap">
-            <a href="https://github.com/0luv69" target="_blank"
-                class=" text-3xl sm:text-5xl text-white hover:text-green-500 transition duration-300">
-                
+    <!-- Navbar for small screens -->
+    <div class="lg:hidden w-full bg-gray-800 text-white fixed bottom-0 z-50">
+        <nav class="flex justify-around py-3">
+            <a href="#home" class="nav-link text-white hover:text-green-400 transition duration-300">
+                <i class="fas fa-home text-2xl"></i>
             </a>
-            <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank"
-                class="text-3xl sm:text-5xl text-white hover:text-green-500 transition duration-300">
-                
+            <a href="#about" class="nav-link text-white hover:text-green-400 transition duration-300">
+                <i class="fas fa-user text-2xl"></i>
             </a>
-        </div>
-
-
-        <!-- Upper details  -->
-        <h1 class="text-5xl lg:text-7xl font-bold text-green-400 mb-4 opacity-0 animate-fadeInUp">
-            Rujal Baniya
-        </h1>
-        <p class="text-xl lg:text-2xl mb-8 opacity-0 animate-fadeInUp animate-delay-100">
-            Python Programmer | Web Developer | Penetration Tester
-        </p>
-
-
-        <img src="/staticfiles/img/me.jpg" id="rounded-pic-me" alt="Rujal Baniya - Full Stack Developer from Nepal"
-            class="w-64 h-64 rounded-full shadow-lg mb-8 object-cover">
-
-
-        <!-- CTN BTNS  -->
-        <div class="flex gap-3 opacity-0 animate-fadeInUp animate-delay-300">
-            <a href="#projects" class="btn-primary text-nowrap  px-8 py-3 rounded-full font-medium shadow-md transform transition duration-300 hover:scale-105 hover:bg-green-600 hover:text-white hover:shadow-lg">
-                View Projects
+            <a href="#projects" class="nav-link text-white hover:text-green-400 transition duration-300">
+                <i class="fas fa-eye text-2xl"></i>
             </a>
-            <a href="#contact" class="btn-outline text-nowrap px-8 py-3 rounded-full font-medium shadow-md transform transition duration-300 hover:scale-105 hover:bg-green-500 hover:border-green-500 hover:text-white hover:shadow-lg">
-                Contact Me
+            <a href="#contact" class="nav-link text-white hover:text-green-400 transition duration-300">
+                <i class="fas fa-envelope text-2xl"></i>
             </a>
-        </div>
+        </nav>
+    </div>
 
-        <div class="mt-12 flex items-center space-x-4 ">
-            <span class="text-gray-400">Find me on:</span>
-            <a href="https://github.com/0luv69" target="_blank" class="social-icon text-gray-400 hover:text-green-500 transition-all duration-300">
-                <svg id='GitHub_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'
-                class = "w-12 h-12 fill-current text-white hover:text-green-500 transition duration-300"  >
-                    <g transform="matrix(0.83 0 0 0.83 12 12)" >
-                        <path transform=" translate(-15, -14.82)" d="M 15 3 C 8.373 3 3 8.373 3 15 C 3 20.623 6.872 25.328 12.092 26.630000000000003 C 12.036 26.468 12 26.28 12 26.047 L 12 23.996000000000002 C 11.513 23.996000000000002 10.697 23.996000000000002 10.492 23.996000000000002 C 9.671000000000001 23.996000000000002 8.941 23.643 8.587000000000002 22.987000000000002 C 8.194 22.258000000000003 8.126000000000001 21.143 7.152000000000001 20.461000000000002 C 6.863000000000001 20.234 7.083000000000001 19.975 7.416000000000001 20.01 C 8.031 20.184 8.541 20.606 9.021 21.232000000000003 C 9.499 21.859 9.724 22.001 10.617 22.001 C 11.05 22.001 11.698 21.976000000000003 12.308000000000002 21.880000000000003 C 12.636000000000001 21.047000000000004 13.203000000000001 20.28 13.896 19.918000000000003 C 9.9 19.507 7.993000000000001 17.519000000000002 7.993000000000001 14.820000000000004 C 7.993000000000001 13.658000000000005 8.488000000000001 12.534000000000004 9.329 11.587000000000003 C 9.053 10.647 8.706 8.73 9.435 8 C 11.233 8 12.32 9.166 12.581 9.481 C 13.477 9.174 14.461 9 15.495 9 C 16.531 9 17.519 9.174 18.416999999999998 9.483 C 18.675 9.17 19.763 8 21.565 8 C 22.297 8.731 21.946 10.656 21.667 11.594 C 22.503 12.539 22.995 13.66 22.995 14.82 C 22.995 17.517 21.091 19.504 17.101 19.917 C 18.199 20.49 19 22.1 19 23.313 L 19 26.046999999999997 C 19 26.150999999999996 18.977 26.225999999999996 18.965 26.314999999999998 C 23.641 24.676 27 20.236 27 15 C 27 8.373 21.627 3 15 3 z" stroke-linecap="round" />
-                    </g>
-                </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="social-icon text-gray-400 hover:text-green-500 transition-all duration-300">
-                <svg id='LinkedIn_24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'
-                class = "w-12 h-12 fill-current text-white hover:text-green-500 transition duration-300"  >
-                    <g transform="matrix(0.91 0 0 0.91 12 12)" >
-                        <path  transform=" translate(-16, -16)" d="M 7.5 5 C 6.132813 5 5 6.132813 5 7.5 L 5 24.5 C 5 25.867188 6.132813 27 7.5 27 L 24.5 27 C 25.867188 27 27 25.867188 27 24.5 L 27 7.5 C 27 6.132813 25.867188 5 24.5 5 Z M 7.5 7 L 24.5 7 C 24.785156 7 25 7.214844 25 7.5 L 25 24.5 C 25 24.785156 24.785156 25 24.5 25 L 7.5 25 C 7.214844 25 7 24.785156 7 24.5 L 7 7.5 C 7 7.214844 7.214844 7 7.5 7 Z M 10.4375 8.71875 C 9.488281 8.71875 8.71875 9.488281 8.71875 10.4375 C 8.71875 11.386719 9.488281 12.15625 10.4375 12.15625 C 11.386719 12.15625 12.15625 11.386719 12.15625 10.4375 C 12.15625 9.488281 11.386719 8.71875 10.4375 8.71875 Z M 19.46875 13.28125 C 18.035156 13.28125 17.082031 14.066406 16.6875 14.8125 L 16.625 14.8125 L 16.625 13.5 L 13.8125 13.5 L 13.8125 23 L 16.75 23 L 16.75 18.3125 C 16.75 17.074219 16.996094 15.875 18.53125 15.875 C 20.042969 15.875 20.0625 17.273438 20.0625 18.375 L 20.0625 23 L 23 23 L 23 17.78125 C 23 15.226563 22.457031 13.28125 19.46875 13.28125 Z M 9 13.5 L 9 23 L 11.96875 23 L 11.96875 13.5 Z" stroke-linecap="round" />
-                    </g>
-                </svg>
-            </a>
-        </div>
-
-    </section>
-
-
- 
-
-    <!-- About Section -->
-    <section id="about" class="section-padding bg-gray-900">
-        <div class="container mx-auto px-3 sm:px-4 md:px-6">
-            <div class="text-center mb-12 sm:mb-14 md:mb-16">
-                <h2 class="text-2xl xs:text-3xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
-                    About <span class="gradient-text">Me</span>
-                </h2>
-                <div class="w-16 sm:w-20 md:w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
-                <div class="space-y-5 sm:space-y-6">
-                    <p class="text-base xs:text-base sm:text-lg md:text-lg leading-relaxed text-gray-300">
-                        I am an enthusiastic and dedicated software developer with a passion for Python programming, web
-                        development, and cybersecurity. I thrive on challenges and continuously seek opportunities to apply
-                        my skills in creative and impactful ways.
-                    </p>
-                    <p class="text-base xs:text-base sm:text-lg md:text-lg leading-relaxed text-gray-300">
-                        With a solid foundation in both frontend and backend technologies, I am eager to contribute to
-                        innovative projects and push the boundaries of what's possible in the digital realm. Additionally,
-                        I've been committed to ongoing learning, recently completing a comprehensive training course that
-                        deepened my expertise in Python and Django.
-                    </p>
+    <!-- Main Content -->
+    <main class="lg:ml-24 p-8 pb-24">
+        <!-- hero Section -->
+        <section id="home"
+            class="min-h-screen flex flex-col justify-start pt-4 sm:pt-0 sm:justify-center items-center text-center hero-gradient">
+            <!-- top fixed btns  -->
+            <div class="fixed top-4 right-6 z-20 flex justify-between items-center flex-nowrap">
+                <a href="https://github.com/0luv69" target="_blank"
+                    class=" text-3xl sm:text-5xl text-white hover:text-green-500 transition duration-300">
                     
-                    <div class="flex flex-wrap gap-2 sm:gap-3 mt-4 sm:mt-6">
-                        <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Python</span>
-                        <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Django</span>
-                        <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">JavaScript</span>
-                        <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">HTML/CSS</span>
-                        <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Cybersecurity</span>
-                        <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Penetration Testing</span>
-                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank"
+                    class="text-3xl sm:text-5xl text-white hover:text-green-500 transition duration-300">
+                    
+                </a>
+            </div>
+
+
+            <!-- Upper details  -->
+            <h1 class="text-5xl lg:text-7xl font-bold text-green-400 mb-4 opacity-0 animate-fadeInUp">
+                Rujal Baniya
+            </h1>
+            <p class="text-xl lg:text-2xl mb-8 opacity-0 animate-fadeInUp animate-delay-100">
+                Python Programmer | Web Developer | Penetration Tester
+            </p>
+
+
+            <img src="/staticfiles/img/me.jpg" id="rounded-pic-me" alt="Rujal Baniya - Full Stack Developer from Nepal"
+                class="w-64 h-64 rounded-full shadow-lg mb-8 object-cover">
+
+
+            <!-- CTN BTNS  -->
+            <div class="flex gap-3 opacity-0 animate-fadeInUp animate-delay-300">
+                <a href="#projects" class="btn-primary text-nowrap  px-8 py-3 rounded-full font-medium shadow-md transform transition duration-300 hover:scale-105 hover:bg-green-600 hover:text-white hover:shadow-lg">
+                    View Projects
+                </a>
+                <a href="#contact" class="btn-outline text-nowrap px-8 py-3 rounded-full font-medium shadow-md transform transition duration-300 hover:scale-105 hover:bg-green-500 hover:border-green-500 hover:text-white hover:shadow-lg">
+                    Contact Me
+                </a>
+            </div>
+
+            <div class="mt-12 flex items-center space-x-4 ">
+                <span class="text-gray-400">Find me on:</span>
+                <a href="https://github.com/0luv69" target="_blank" class="social-icon text-gray-400 hover:text-green-500 transition-all duration-300">
+                    <svg id='GitHub_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'
+                    class = "w-12 h-12 fill-current text-white hover:text-green-500 transition duration-300"  >
+                        <g transform="matrix(0.83 0 0 0.83 12 12)" >
+                            <path transform=" translate(-15, -14.82)" d="M 15 3 C 8.373 3 3 8.373 3 15 C 3 20.623 6.872 25.328 12.092 26.630000000000003 C 12.036 26.468 12 26.28 12 26.047 L 12 23.996000000000002 C 11.513 23.996000000000002 10.697 23.996000000000002 10.492 23.996000000000002 C 9.671000000000001 23.996000000000002 8.941 23.643 8.587000000000002 22.987000000000002 C 8.194 22.258000000000003 8.126000000000001 21.143 7.152000000000001 20.461000000000002 C 6.863000000000001 20.234 7.083000000000001 19.975 7.416000000000001 20.01 C 8.031 20.184 8.541 20.606 9.021 21.232000000000003 C 9.499 21.859 9.724 22.001 10.617 22.001 C 11.05 22.001 11.698 21.976000000000003 12.308000000000002 21.880000000000003 C 12.636000000000001 21.047000000000004 13.203000000000001 20.28 13.896 19.918000000000003 C 9.9 19.507 7.993000000000001 17.519000000000002 7.993000000000001 14.820000000000004 C 7.993000000000001 13.658000000000005 8.488000000000001 12.534000000000004 9.329 11.587000000000003 C 9.053 10.647 8.706 8.73 9.435 8 C 11.233 8 12.32 9.166 12.581 9.481 C 13.477 9.174 14.461 9 15.495 9 C 16.531 9 17.519 9.174 18.416999999999998 9.483 C 18.675 9.17 19.763 8 21.565 8 C 22.297 8.731 21.946 10.656 21.667 11.594 C 22.503 12.539 22.995 13.66 22.995 14.82 C 22.995 17.517 21.091 19.504 17.101 19.917 C 18.199 20.49 19 22.1 19 23.313 L 19 26.046999999999997 C 19 26.150999999999996 18.977 26.225999999999996 18.965 26.314999999999998 C 23.641 24.676 27 20.236 27 15 C 27 8.373 21.627 3 15 3 z" stroke-linecap="round" />
+                        </g>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="social-icon text-gray-400 hover:text-green-500 transition-all duration-300">
+                    <svg id='LinkedIn_24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'
+                    class = "w-12 h-12 fill-current text-white hover:text-green-500 transition duration-300"  >
+                        <g transform="matrix(0.91 0 0 0.91 12 12)" >
+                            <path  transform=" translate(-16, -16)" d="M 7.5 5 C 6.132813 5 5 6.132813 5 7.5 L 5 24.5 C 5 25.867188 6.132813 27 7.5 27 L 24.5 27 C 25.867188 27 27 25.867188 27 24.5 L 27 7.5 C 27 6.132813 25.867188 5 24.5 5 Z M 7.5 7 L 24.5 7 C 24.785156 7 25 7.214844 25 7.5 L 25 24.5 C 25 24.785156 24.785156 25 24.5 25 L 7.5 25 C 7.214844 25 7 24.785156 7 24.5 L 7 7.5 C 7 7.214844 7.214844 7 7.5 7 Z M 10.4375 8.71875 C 9.488281 8.71875 8.71875 9.488281 8.71875 10.4375 C 8.71875 11.386719 9.488281 12.15625 10.4375 12.15625 C 11.386719 12.15625 12.15625 11.386719 12.15625 10.4375 C 12.15625 9.488281 11.386719 8.71875 10.4375 8.71875 Z M 19.46875 13.28125 C 18.035156 13.28125 17.082031 14.066406 16.6875 14.8125 L 16.625 14.8125 L 16.625 13.5 L 13.8125 13.5 L 13.8125 23 L 16.75 23 L 16.75 18.3125 C 16.75 17.074219 16.996094 15.875 18.53125 15.875 C 20.042969 15.875 20.0625 17.273438 20.0625 18.375 L 20.0625 23 L 23 23 L 23 17.78125 C 23 15.226563 22.457031 13.28125 19.46875 13.28125 Z M 9 13.5 L 9 23 L 11.96875 23 L 11.96875 13.5 Z" stroke-linecap="round" />
+                        </g>
+                    </svg>
+                </a>
+            </div>
+
+        </section>
+
+
+    
+
+        <!-- About Section -->
+        <section id="about" class="section-padding bg-gray-900">
+            <div class="container mx-auto px-3 sm:px-4 md:px-6">
+                <div class="text-center mb-12 sm:mb-14 md:mb-16">
+                    <h2 class="text-2xl xs:text-3xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
+                        About <span class="gradient-text">Me</span>
+                    </h2>
+                    <div class="w-16 sm:w-20 md:w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
                 </div>
                 
-                <div class="space-y-6 sm:space-y-8">
-                    <div class="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg card-hover">
-                        <div class="flex items-center mb-3 sm:mb-4">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
-                                <i class="fas fa-briefcase text-green-500 text-lg sm:text-xl"></i>
-                            </div>
-                            <h3 class="text-lg sm:text-xl font-semibold text-green-400">Experience</h3>
-                        </div>
-                        <p class="text-gray-300 text-sm sm:text-base">
-                            Developed web applications using Django, created desktop applications with Python
-                            and Tkinter, and participated in numerous Hackathons & Ideathons. I have also gained hands-on experience managing and deploying projects on GitHub, ensuring the
-                            efficient collaboration and version control of all project files.
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
+                    <div class="space-y-5 sm:space-y-6">
+                        <p class="text-base xs:text-base sm:text-lg md:text-lg leading-relaxed text-gray-300">
+                            I am an enthusiastic and dedicated software developer with a passion for Python programming, web
+                            development, and cybersecurity. I thrive on challenges and continuously seek opportunities to apply
+                            my skills in creative and impactful ways.
                         </p>
+                        <p class="text-base xs:text-base sm:text-lg md:text-lg leading-relaxed text-gray-300">
+                            With a solid foundation in both frontend and backend technologies, I am eager to contribute to
+                            innovative projects and push the boundaries of what's possible in the digital realm. Additionally,
+                            I've been committed to ongoing learning, recently completing a comprehensive training course that
+                            deepened my expertise in Python and Django.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 sm:gap-3 mt-4 sm:mt-6">
+                            <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Python</span>
+                            <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Django</span>
+                            <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">JavaScript</span>
+                            <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">HTML/CSS</span>
+                            <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Cybersecurity</span>
+                            <span class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-green-400 rounded-full text-xs sm:text-sm font-medium">Penetration Testing</span>
+                        </div>
                     </div>
                     
-                    <div class="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg card-hover">
-                        <div class="flex items-center mb-3 sm:mb-4">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
-                                <i class="fas fa-graduation-cap text-green-500 text-lg sm:text-xl"></i>
+                    <div class="space-y-6 sm:space-y-8">
+                        <div class="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg card-hover">
+                            <div class="flex items-center mb-3 sm:mb-4">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
+                                    <i class="fas fa-briefcase text-green-500 text-lg sm:text-xl"></i>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-semibold text-green-400">Experience</h3>
                             </div>
-                            <h3 class="text-lg sm:text-xl font-semibold text-green-400">Education</h3>
+                            <p class="text-gray-300 text-sm sm:text-base">
+                                Developed web applications using Django, created desktop applications with Python
+                                and Tkinter, and participated in numerous Hackathons & Ideathons. I have also gained hands-on experience managing and deploying projects on GitHub, ensuring the
+                                efficient collaboration and version control of all project files.
+                            </p>
                         </div>
-                        <p class="text-gray-300 text-sm sm:text-base">
-                            Currently pursuing a Bachelor's in Computer Science. Completed various online
-                            certifications in programming and cybersecurity.
-                        </p>
-                    </div>
-                    
-                    <div class="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg card-hover">
-                        <div class="flex items-center mb-3 sm:mb-4">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
-                                <i class="fas fa-heart text-green-500 text-lg sm:text-xl"></i>
+                        
+                        <div class="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg card-hover">
+                            <div class="flex items-center mb-3 sm:mb-4">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
+                                    <i class="fas fa-graduation-cap text-green-500 text-lg sm:text-xl"></i>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-semibold text-green-400">Education</h3>
                             </div>
-                            <h3 class="text-lg sm:text-xl font-semibold text-green-400">Interests</h3>
+                            <p class="text-gray-300 text-sm sm:text-base">
+                                Currently pursuing a Bachelor's in Computer Science. Completed various online
+                                certifications in programming and cybersecurity.
+                            </p>
                         </div>
-                        <p class="text-gray-300 text-sm sm:text-base">
-                            I enjoy exploring new technologies and solving complex problems with innovative
-                            solutions. I'm passionate about cybersecurity and contributing to open-source projects.
-                        </p>
+                        
+                        <div class="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg card-hover">
+                            <div class="flex items-center mb-3 sm:mb-4">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
+                                    <i class="fas fa-heart text-green-500 text-lg sm:text-xl"></i>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-semibold text-green-400">Interests</h3>
+                            </div>
+                            <p class="text-gray-300 text-sm sm:text-base">
+                                I enjoy exploring new technologies and solving complex problems with innovative
+                                solutions. I'm passionate about cybersecurity and contributing to open-source projects.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="skill-list" class="py-20 opacity-0 translate-y-10 transition-all duration-1000" data-aos="fade-up">
-        <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="gradient-text">Skills</span></h2>
-                    <div class="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
-                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Here are my technical skills and proficiency levels in various technologies</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="space-y-4">
-                <div class="skill-item" style="animation-delay: 0.2s">
-                    <p class="text-lg font-semibold mb-2">Python</p>
-                    <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
-                        <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="95"></div>
+        <!-- Skills Section -->
+        <section id="skill-list" class="py-20 opacity-0 translate-y-10 transition-all duration-1000" data-aos="fade-up">
+            <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="gradient-text">Skills</span></h2>
+                        <div class="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
+                        <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Here are my technical skills and proficiency levels in various technologies</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <div class="skill-item" style="animation-delay: 0.2s">
+                        <p class="text-lg font-semibold mb-2">Python</p>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" style="animation-delay: 0.4s">
+                        <p class="text-lg font-semibold mb-2">Cyber Security</p>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="85"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item" style="animation-delay: 0.6s">
+                        <p class="text-lg font-semibold mb-2">Web Development</p>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="80"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-item" style="animation-delay: 0.4s">
-                    <p class="text-lg font-semibold mb-2">Cyber Security</p>
-                    <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
-                        <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="85"></div>
+                <div class="space-y-4">
+                    <div class="skill-item" style="animation-delay: 0.8s">
+                        <p class="text-lg font-semibold mb-2">Django</p>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="75"></div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="skill-item" style="animation-delay: 0.6s">
-                    <p class="text-lg font-semibold mb-2">Web Development</p>
-                    <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
-                        <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="80"></div>
+                    <div class="skill-item" style="animation-delay: 1s">
+                        <p class="text-lg font-semibold mb-2">JavaScript</p>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="70"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" style="animation-delay: 1.2s">
+                        <p class="text-lg font-semibold mb-2">Git & GitHub</p>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="90"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="space-y-4">
-                <div class="skill-item" style="animation-delay: 0.8s">
-                    <p class="text-lg font-semibold mb-2">Django</p>
-                    <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
-                        <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="75"></div>
+
+            <div class="mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                        <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
+                            <i class="fab fa-python text-4xl text-green-400 mb-3"></i>
+                            <span class="text-sm font-medium">Python</span>
+                        </div>
+                        <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
+                            <i class="fab fa-html5 text-4xl text-green-400 mb-3"></i>
+                            <span class="text-sm font-medium">HTML5</span>
+                        </div>
+                        <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
+                            <i class="fab fa-css3-alt text-4xl text-green-400 mb-3"></i>
+                            <span class="text-sm font-medium">CSS3</span>
+                        </div>
+                        <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
+                            <i class="fab fa-js text-4xl text-green-400 mb-3"></i>
+                            <span class="text-sm font-medium">JavaScript</span>
+                        </div>
+                        <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
+                            <i class="fab fa-git-alt text-4xl text-green-400 mb-3"></i>
+                            <span class="text-sm font-medium">Git</span>
+                        </div>
+                        <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
+                            <i class="fab fa-github text-4xl text-green-400 mb-3"></i>
+                            <span class="text-sm font-medium">GitHub</span>
+                        </div>
+                    </div>
+        </section>
+
+        <script>
+            // Add this to your existing script
+            const observerSkills = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+
+                        const bars = entry.target.querySelectorAll('.skill-bar');
+                        bars.forEach(bar => {
+                            const percent = bar.dataset.percent + '%';
+                            bar.style.setProperty('--percent', percent);
+                            bar.style.width = percent;
+                        });
+
+                        observerSkills.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger at 50% visibility of the target
+            });
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const skillsSection = document.querySelector('#skill-list');
+                observerSkills.observe(skillsSection);
+            });
+        </script>
+
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="gradient-text">Projects</span></h2>
+                        <div class="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
+                        <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Check out some of my recent work and personal projects</p>
+            </div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                
+                <div class="project-card mb-24 rounded-xl overflow-hidden bg-gray-800/90 shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <div class="opacity-0 translate-y-10 transition-all duration-1000 animate-fadeInUp 
+                                
+                                lg:flex">
+                        
+                        <!-- Project Image Container -->
+                        <div class="lg:w-1/2 relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                            <img alt="MCQCHAMPS" data-src="/staticfiles/img/projects/mcqchamps.png" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 cursor-pointer" loading="lazy" src="/staticfiles/img/projects/mcqchamps.png">
+                        </div>
+                        
+                        <!-- Project Details Container -->
+                        <div class="lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
+                            <!-- Project Header -->
+                            <div>
+                                <span class="inline-block px-3 py-1 text-xs font-semibold text-green-400 uppercase tracking-wider mb-3 bg-gray-700/50 rounded-full">Featured Project</span>
+                                <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">MCQCHAMPS</h3>
+                                
+                                <!-- Project Description -->
+                                <div class="text-gray-300 mb-6 prose prose-sm prose-invert max-w-none">
+                                    <p class="text-gray-300 mb-6">    Developed an interactive Multiple Choice Questions (MCQ) platform that allows users to test their knowledge on various subjects with real-time feedback.    <br>    <br>    <span>MCQ: Study, take test </span>    <br>    <span>Technologies: Django, HTML, CSS, JavaScript, Tailwind</span>    <br>    <span>With: PPT post, post your presentation</span>    <br>    <span>Goal: Make my Friends more knowledgeable</span></p>
+                                </div>
+                            </div>
+                            
+                            <!-- Tech Stack Tags -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Python</span>
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Django</span>
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">JavaScript</span>
+                            </div>
+                            
+                            <!-- Project Links -->
+                            <div class="flex flex-col sm:flex-row gap-4 mt-2">
+                                
+                                <!-- Code Link -->
+                                <a href="#" class="group relative text-center bg-gray-900 text-white px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-800 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github mr-2"></i>
+                                    <span>Private Code</span>
+                                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                                </a>
+                                
+                                <!-- Demo Link -->
+                                <a href="http://mcqchamps.com/" class="group relative text-center bg-gray-700 text-green-400 px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-600 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    <span>View Site</span>
+                                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                                </a>
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-item" style="animation-delay: 1s">
-                    <p class="text-lg font-semibold mb-2">JavaScript</p>
-                    <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
-                        <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="70"></div>
+                
+                <div class="project-card mb-24 rounded-xl overflow-hidden bg-gray-800/90 shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <div class="opacity-0 translate-y-10 transition-all duration-1000 animate-fadeInUp 
+                                lg:flex-row-reverse 
+                                lg:flex">
+                        
+                        <!-- Project Image Container -->
+                        <div class="lg:w-1/2 relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                            <img alt="Photo Editor" data-src="/staticfiles/img/projects/photoeditor.png" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 cursor-pointer" loading="lazy" src="/staticfiles/img/projects/photoeditor.png">
+                        </div>
+                        
+                        <!-- Project Details Container -->
+                        <div class="lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
+                            <!-- Project Header -->
+                            <div>
+                                <span class="inline-block px-3 py-1 text-xs font-semibold text-green-400 uppercase tracking-wider mb-3 bg-gray-700/50 rounded-full">Featured Project</span>
+                                <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">Photo Editor</h3>
+                                
+                                <!-- Project Description -->
+                                <div class="text-gray-300 mb-6 prose prose-sm prose-invert max-w-none">
+                                    <p class="text-gray-300 mb-6">                                Created an advanced photo editor using Python and OpenCV, featuring multiple filters, cropping, and image enhancement capabilities. This project demonstrates my proficiency in image processing and creating user-friendly interfaces for complex operations.                                <br>                                <br>                                <span>Based on: Windows Only</span>                                <br>                                <span>Technologies: Python, OpenCV, Tkinter</span>                                <br>                                <span>                                  Features: Color up, Filter, Corp, Remove BG, Draw etc....                                </span>                            </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Tech Stack Tags -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Python</span>
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Django</span>
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">JavaScript</span>
+                            </div>
+                            
+                            <!-- Project Links -->
+                            <div class="flex flex-col sm:flex-row gap-4 mt-2">
+                                
+                                <!-- Code Link -->
+                                <a href="https://www.youtube.com/watch?v=srPU6JW-RRA" class="group relative text-center bg-gray-700 text-green-400 px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-600 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github mr-2"></i>
+                                    <span>Watch Demo Video</span>
+                                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                                </a>
+                                
+                                <!-- Demo Link -->
+                                <a href="https://github.com/0luv69/photo-editor" class="group relative text-center bg-green-600 text-white px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-green-700 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    <span>View Source Code</span>
+                                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                                </a>
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-item" style="animation-delay: 1.2s">
-                    <p class="text-lg font-semibold mb-2">Git & GitHub</p>
-                    <div class="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
-                        <div class="bg-green-400 h-2.5 rounded-full w-0 skill-bar" data-percent="90"></div>
+                
+                <div class="project-card mb-24 rounded-xl overflow-hidden bg-gray-800/90 shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <div class="opacity-0 translate-y-10 transition-all duration-1000 animate-fadeInUp 
+                                
+                                lg:flex">
+                        
+                        <!-- Project Image Container -->
+                        <div class="lg:w-1/2 relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                            <img alt="Hackathon Winning: Pariwar" data-src="/staticfiles/img/projects/pariwar.png" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 cursor-pointer" loading="lazy" src="/staticfiles/img/projects/pariwar.png">
+                        </div>
+                        
+                        <!-- Project Details Container -->
+                        <div class="lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
+                            <!-- Project Header -->
+                            <div>
+                                <span class="inline-block px-3 py-1 text-xs font-semibold text-green-400 uppercase tracking-wider mb-3 bg-gray-700/50 rounded-full">Featured Project</span>
+                                <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">Hackathon Winning: Pariwar</h3>
+                                
+                                <!-- Project Description -->
+                                <div class="text-gray-300 mb-6 prose prose-sm prose-invert max-w-none">
+                                    <p class="text-gray-300 mb-6">    Pariwar is a web application designed to facilitate communication and support within families and extended family networks. It provides a platform where individuals, especially students who may find it challenging to communicate directly with their parents, can seek advice and support from other family members or individuals playing familial roles.    <br>    <br>    <span>Group Project: Incodeable</span>    <br>    <span>Won: Incodeble IICQuest Hackathon</span>    <br>    <span>Technologies: Django, HTML, CSS, JavaScript, React, Node js.......</span>    <br></p>
+                                </div>
+                            </div>
+                            
+                            <!-- Tech Stack Tags -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Python</span>
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Django</span>
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">JavaScript</span>
+                            </div>
+                            
+                            <!-- Project Links -->
+                            <div class="flex flex-col sm:flex-row gap-4 mt-2">
+                                
+                                <!-- Code Link -->
+                                <a href="https://github.com/0luv69/Hackathon_incodeble_iicquest_Pariwar" class="group relative text-center bg-green-600 text-white px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-green-700 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github mr-2"></i>
+                                    <span>View source code</span>
+                                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                                </a>
+                                
+                                <!-- Demo Link -->
+                                <a href="None" class="group relative text-center bg-gray-700 text-green-400 px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-600 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    <span>View Project</span>
+                                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card mb-24 rounded-xl overflow-hidden bg-gray-800/90 shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <div class="opacity-0 translate-y-10 transition-all duration-1000 animate-fadeInUp 
+                                lg:flex-row-reverse 
+                                lg:flex">
+                        
+                        <!-- Project Image Container -->
+                        <div class="lg:w-1/2 relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                            <img alt="Quiz Game: In C" data-src="/staticfiles/img/projects/Computer.png" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 cursor-pointer" loading="lazy" src="/staticfiles/img/projects/Computer.png">
+                        </div>
+                        
+                        <!-- Project Details Container -->
+                        <div class="lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
+                            <!-- Project Header -->
+                            <div>
+                                <span class="inline-block px-3 py-1 text-xs font-semibold text-green-400 uppercase tracking-wider mb-3 bg-gray-700/50 rounded-full">Featured Project</span>
+                                <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">Quiz Game: In C</h3>
+                                
+                                <!-- Project Description -->
+                                <div class="text-gray-300 mb-6 prose prose-sm prose-invert max-w-none">
+                                    <p class="text-gray-300 mb-6">    The Quiz Game is a simple command-line program written in C. It allows users to play a quiz game, login/signup to their account, and for administrators to manage quiz questions. Users can play the quiz, view their scores, and administrators can add/remove quiz questions.    <br>    <br>    <span>Based on: Command Line</span>    <br>    <span>Quiz: Play, (log/sign)-in, add, remove, check score, store in file.... </span>    <br>    <span>Storing: In byte 2 files, one for `user` another for `Quiz` </span>    <br>    <br><span><b>Features</b>: User Authentication, Quiz Game, Admin Panel, Help Page, Score Tracking</span></p>
+                                </div>
+                            </div>
+                            
+                            <!-- Tech Stack Tags -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Python</span>
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Django</span>
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">JavaScript</span>
+                            </div>
+                            
+                            <!-- Project Links -->
+                            <div class="flex flex-col sm:flex-row gap-4 mt-2">
+                                
+                                <!-- Code Link -->
+                                <a href="https://github.com/0luv69/C--Quiz-game" class="group relative text-center bg-gray-700 text-green-400 px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-600 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github mr-2"></i>
+                                    <span>View source code</span>
+                                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                                </a>
+                                
+                                <!-- Demo Link -->
+                                <a href="https://www.youtube.com/watch?v=bB9kG4WijVQ" class="group relative text-center bg-green-600 text-white px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-green-700 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    <span>Watch Demo Video</span>
+                                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card mb-24 rounded-xl overflow-hidden bg-gray-800/90 shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <div class="opacity-0 translate-y-10 transition-all duration-1000 animate-fadeInUp 
+                                
+                                lg:flex">
+                        
+                        <!-- Project Image Container -->
+                        <div class="lg:w-1/2 relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                            <img alt="Money Manager" data-src="/staticfiles/img/projects/MoneyManager.png" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 cursor-pointer" loading="lazy" src="/staticfiles/img/projects/MoneyManager.png">
+                        </div>
+                        
+                        <!-- Project Details Container -->
+                        <div class="lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
+                            <!-- Project Header -->
+                            <div>
+                                <span class="inline-block px-3 py-1 text-xs font-semibold text-green-400 uppercase tracking-wider mb-3 bg-gray-700/50 rounded-full">Featured Project</span>
+                                <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">Money Manager</h3>
+                                
+                                <!-- Project Description -->
+                                <div class="text-gray-300 mb-6 prose prose-sm prose-invert max-w-none">
+                                    <p class="text-gray-300 mb-6">    The Money Manager app simplifies finance management through an intuitive Python-based application. It offers a user-friendly interface and robust features for handling transactions, tracking loans, and maintaining a transaction history.    <br>    <br>    <span>Based on: Windows Only</span>    <br>    <span>User Interface (UI) Libraries: Tkinter, Customtkinter, tkcalendar</span>    <br>    <span> Data Handling Libraries: time, datetime, math, timedelta, calendar, os, openpyxl, configparser</span>    <br>    <span>Feartures: (LoanTransaction , Income/Expences Transaction) Management</span></p>
+                                </div>
+                            </div>
+                            
+                            <!-- Tech Stack Tags -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Python</span>
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Django</span>
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">JavaScript</span>
+                            </div>
+                            
+                            <!-- Project Links -->
+                            <div class="flex flex-col sm:flex-row gap-4 mt-2">
+                                
+                                <!-- Code Link -->
+                                <a href="https://0luv69.github.io/Money-Manager/" class="group relative text-center bg-green-600 text-white px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-green-700 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github mr-2"></i>
+                                    <span>Documentation</span>
+                                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                                </a>
+                                
+                                <!-- Demo Link -->
+                                <a href="https://github.com/0luv69/Money-Manager" class="group relative text-center bg-gray-700 text-green-400 px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-600 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    <span>View Source Code</span>
+                                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card mb-24 rounded-xl overflow-hidden bg-gray-800/90 shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <div class="opacity-0 translate-y-10 transition-all duration-1000 animate-fadeInUp 
+                                lg:flex-row-reverse 
+                                lg:flex">
+                        
+                        <!-- Project Image Container -->
+                        <div class="lg:w-1/2 relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                            <img alt="(BIM &amp; Apple) Calculator" data-src="/staticfiles/img/projects/Cacultor.png" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 cursor-pointer" loading="lazy" src="/staticfiles/img/projects/Cacultor.png">
+                        </div>
+                        
+                        <!-- Project Details Container -->
+                        <div class="lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
+                            <!-- Project Header -->
+                            <div>
+                                <span class="inline-block px-3 py-1 text-xs font-semibold text-green-400 uppercase tracking-wider mb-3 bg-gray-700/50 rounded-full">Featured Project</span>
+                                <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">(BIM &amp; Apple) Calculator</h3>
+                                
+                                <!-- Project Description -->
+                                <div class="text-gray-300 mb-6 prose prose-sm prose-invert max-w-none">
+                                    <p class="text-gray-300 mb-6">    Learning Based Calculator -&gt; BIM Calculator, Apple Based Calculator. Created using Tkinter, Python, To get knowledge on UI design.    <br>    <br>    <span>Based on: Windows Only</span>    <br>    <span>Technologies: Tkinter, Python</span></p>
+                                </div>
+                            </div>
+                            
+                            <!-- Tech Stack Tags -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Python</span>
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Django</span>
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">JavaScript</span>
+                            </div>
+                            
+                            <!-- Project Links -->
+                            <div class="flex flex-col sm:flex-row gap-4 mt-2">
+                                
+                                <!-- Code Link -->
+                                <a href="https://github.com/0luv69/BIM-calculator-app" class="group relative text-center bg-gray-700 text-green-400 px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-600 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github mr-2"></i>
+                                    <span>Source Code: BIM</span>
+                                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                                </a>
+                                
+                                <!-- Demo Link -->
+                                <a href="https://github.com/0luv69/Apple-Calculator-UI" class="group relative text-center bg-green-600 text-white px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-green-700 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    <span>Source Code: Apple Based</span>
+                                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card mb-24 rounded-xl overflow-hidden bg-gray-800/90 shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <div class="opacity-0 translate-y-10 transition-all duration-1000 animate-fadeInUp 
+                                
+                                lg:flex">
+                        
+                        <!-- Project Image Container -->
+                        <div class="lg:w-1/2 relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                            <img alt="Ko Bancha Karod Pati" data-src="/staticfiles/img/projects/kbc_1.png" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 cursor-pointer" loading="lazy" src="/staticfiles/img/projects/kbc_1.png">
+                        </div>
+                        
+                        <!-- Project Details Container -->
+                        <div class="lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
+                            <!-- Project Header -->
+                            <div>
+                                <span class="inline-block px-3 py-1 text-xs font-semibold text-green-400 uppercase tracking-wider mb-3 bg-gray-700/50 rounded-full">Featured Project</span>
+                                <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">Ko Bancha Karod Pati</h3>
+                                
+                                <!-- Project Description -->
+                                <div class="text-gray-300 mb-6 prose prose-sm prose-invert max-w-none">
+                                    <p class="text-gray-300 mb-6">"Ko Bancha Karod Pati" is a Nepali version of the popular game show "Who Wants to Be a Millionaire?". Developed using the Tkinter library in Python, it features multiple-choice questions covering various topics related to Nepal. Users can log in using customizable usernames and passwords, dynamically answer questions, and win money based on correct responses.<br><br><span>Based on: Windows Based, Tkinter GUI used</span><br><span>Features: Dynamic MCQs, Login System, Real-Time Feedback, Accumulated Earnings Display, End-of-Game Summary</span><br><span>Goal: Learning Tkinter for GUI based GUi creations.</span><br></p>
+                                </div>
+                            </div>
+                            
+                            <!-- Tech Stack Tags -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Python</span>
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Django</span>
+                                <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">JavaScript</span>
+                            </div>
+                            
+                            <!-- Project Links -->
+                            <div class="flex flex-col sm:flex-row gap-4 mt-2">
+                                
+                                <!-- Code Link -->
+                                <a href="https://github.com/0luv69/Ko-banxa-Karod-Pati" class="group relative text-center bg-green-600 text-white px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-green-700 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github mr-2"></i>
+                                    <span>View source code</span>
+                                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                                </a>
+                                
+                                <!-- Demo Link -->
+                                <a href="https://www.youtube.com/watch?v=zDar6Nhq2lg" class="group relative text-center bg-gray-700 text-green-400 px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-600 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    <span>Watch Demo Video</span>
+                                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const lazyImages = document.querySelectorAll('img.lazy');
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    const img = entry.target;
+                                    img.src = img.dataset.src;
+                                    img.classList.remove('lazy');
+                                    observer.unobserve(img);
+                                }
+                            });
+                        });
+                        lazyImages.forEach((img) => observer.observe(img));
+                    });
+                </script>
+
+            <!-- View more button to github -->
+            <div class="mt-16 text-center">
+                <a href="https://github.com/0luv69" target="_blank" class="relative inline-block group">
+                    <span class="absolute inset-0 bg-gradient-to-r from-green-500 to-green-600 rounded-lg blur opacity-50 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    <span class="relative block px-8 py-4 bg-gray-900 border border-green-500 rounded-lg font-medium text-white group-hover:bg-gray-800 transition-colors duration-300">
+                        <i class="fab fa-github mr-2"></i>View all projects on GitHub
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding">
+            <div class="container mx-auto px-3 sm:px-6">
+                <div class="text-center mb-8 sm:mb-16">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">Get in <span class="gradient-text">Touch</span></h2>
+                    <div class="w-16 sm:w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
+                    <p class="text-gray-400 mt-2 sm:mt-4 text-sm sm:text-base max-w-2xl mx-auto">Feel free to reach out for collaborations or just a friendly hello</p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-gray-800 rounded-xl shadow-2xl overflow-hidden">
+                        <div class="md:flex">
+                            <!-- Contact Info -->
+                            <div class="md:w-2/5 bg-gray-900 p-4 sm:p-6 md:p-8">
+                                <h3 class="text-xl sm:text-2xl font-bold text-green-400 mb-3 sm:mb-6">Contact Information</h3>
+                                <p class="text-gray-400 text-sm sm:text-base mb-4 sm:mb-8">Fill out the form and I will get back to you as soon as possible.</p>
+                                
+                                <div class="space-y-4 sm:space-y-6">
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 sm:w-10 sm:h-10 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
+                                            <i class="fas fa-envelope text-xs sm:text-base text-green-500"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs sm:text-sm text-gray-400">Email</p>
+                                            <p class="text-white text-sm sm:text-base">baniyarujal@gmail.com</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 sm:w-10 sm:h-10 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
+                                            <i class="fas fa-map-marker-alt text-xs sm:text-base text-green-500"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs sm:text-sm text-gray-400">Location</p>
+                                            <p class="text-white text-sm sm:text-base">Kathmandu, Nepal</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6 sm:mt-12 flex space-x-3 sm:space-x-4">
+                                    <a href="https://github.com/0luv69" target="_blank" class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-gray-700 transition-all duration-300">
+                                        <i class="fab fa-github text-xs sm:text-base"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-gray-700 transition-all duration-300">
+                                        <i class="fab fa-linkedin-in text-xs sm:text-base"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Contact Form -->
+                            <div class="md:w-3/5 p-4 sm:p-6 md:p-8">
+                                <form class="space-y-4 sm:space-y-6" method="post" action="/contact/">
+                                    {% csrf_token %}
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                                        <div>
+                                            <label for="name" class="block text-xs sm:text-sm font-medium text-gray-400 mb-1 sm:mb-2">Name</label>
+                                            <input id="name" class="contact-input w-full p-2 sm:p-3 text-sm sm:text-base bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="text" name="name" placeholder="Your name" required>
+                                        </div>
+                                        <div>
+                                            <label for="email" class="block text-xs sm:text-sm font-medium text-gray-400 mb-1 sm:mb-2">Email</label>
+                                            <input id="email" class="contact-input w-full p-2 sm:p-3 text-sm sm:text-base bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="email" name="email" placeholder="Your email" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="subject" class="block text-xs sm:text-sm font-medium text-gray-400 mb-1 sm:mb-2">Subject</label>
+                                        <input id="subject" class="contact-input w-full p-2 sm:p-3 text-sm sm:text-base bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="text" name="subject" placeholder="Subject" required>
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="message" class="block text-xs sm:text-sm font-medium text-gray-400 mb-1 sm:mb-2">Message</label>
+                                        <textarea id="message" class="contact-input w-full p-2 sm:p-3 text-sm sm:text-base bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" name="message" placeholder="Your message" rows="4" sm:rows="5" required></textarea>
+                                    </div>
+                                    
+                                    <button type="submit" class="w-full p-3 sm:p-4 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors duration-300 flex justify-center items-center">
+                                        <span id="btn_txt" class="text-sm sm:text-base">Send Message</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="h-3 w-6 sm:h-6 sm:w-10 hidden" id="loader">
+                                            <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="25" y="50">
+                                                <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
+                                            </rect>
+                                            <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="85" y="50">
+                                                <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate>
+                                            </rect>
+                                            <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="145" y="50">
+                                                <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate>
+                                            </rect>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-         <div class="mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                    <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
-                        <i class="fab fa-python text-4xl text-green-400 mb-3"></i>
-                        <span class="text-sm font-medium">Python</span>
-                    </div>
-                    <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
-                        <i class="fab fa-html5 text-4xl text-green-400 mb-3"></i>
-                        <span class="text-sm font-medium">HTML5</span>
-                    </div>
-                    <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
-                        <i class="fab fa-css3-alt text-4xl text-green-400 mb-3"></i>
-                        <span class="text-sm font-medium">CSS3</span>
-                    </div>
-                    <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
-                        <i class="fab fa-js text-4xl text-green-400 mb-3"></i>
-                        <span class="text-sm font-medium">JavaScript</span>
-                    </div>
-                    <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
-                        <i class="fab fa-git-alt text-4xl text-green-400 mb-3"></i>
-                        <span class="text-sm font-medium">Git</span>
-                    </div>
-                    <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg card-hover">
-                        <i class="fab fa-github text-4xl text-green-400 mb-3"></i>
-                        <span class="text-sm font-medium">GitHub</span>
-                    </div>
-                </div>
-    </section>
+    </main>
 
     <script>
-        // Add this to your existing script
-        const observerSkills = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
+        // Function to add 'active' class to the navbar links based on section in view
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-link");
 
-                    const bars = entry.target.querySelectorAll('.skill-bar');
-                    bars.forEach(bar => {
-                        const percent = bar.dataset.percent + '%';
-                        bar.style.setProperty('--percent', percent);
-                        bar.style.width = percent;
-                    });
+            const options = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.5,
+            };
 
-                    observerSkills.unobserve(entry.target);
-                }
+            // navigator.clipboard.writeText("Rujal Baniya");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute("id");
+                        navLinks.forEach((link) => {
+                            link.classList.remove("text-green-400");
+                            link.classList.add("text-gray-400");
+                            if (link.getAttribute("href") === `#${id}`) {
+                                link.classList.remove("text-gray-400");
+                                link.classList.add("text-green-400");
+                            }
+                        });
+                    }
+                });
+            }, options);
+
+            sections.forEach((section) => {
+                observer.observe(section);
             });
-        }, {
-            threshold: 0.1 // Trigger at 50% visibility of the target
         });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const skillsSection = document.querySelector('#skill-list');
-            observerSkills.observe(skillsSection);
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+
+
+        // Form submission
+        document.querySelector("form").addEventListener("submit", function (e) {
+            document.getElementById("btn_txt").innerText = "Sending...";
+            document.getElementById("loader").classList.remove("hidden");
+        });
+
+
+        // flip the image
+        const img = document.querySelector('#rounded-pic-me');
+
+        // onload of browser
+        window.onload = () => {
+            img.classList.add('flip-coin');
+            img.addEventListener('animationend', () => {
+                img.classList.remove('flip-coin');
+            });
+
+        };
+
+        // Add click event listener to the image
+        img.addEventListener('click', () => {
+            // Add the flip animation class to the image
+            img.classList.add('flip-coin');
+
+            // Remove the animation class after it's completed to allow re-triggering
+            img.addEventListener('animationend', () => {
+                img.classList.remove('flip-coin');
+            });
         });
     </script>
 
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20">
-        <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="gradient-text">Projects</span></h2>
-                    <div class="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
-                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Check out some of my recent work and personal projects</p>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            
-            <div class="project-card mb-24 rounded-xl overflow-hidden bg-gray-800/90 shadow-xl hover:shadow-2xl transition-all duration-500">
-                <div class="opacity-0 translate-y-10 transition-all duration-1000 animate-fadeInUp 
-                             
-                            lg:flex">
-                    
-                    <!-- Project Image Container -->
-                    <div class="lg:w-1/2 relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                        <img alt="MCQCHAMPS" data-src="/staticfiles/img/projects/mcqchamps.png" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 cursor-pointer" loading="lazy" src="/staticfiles/img/projects/mcqchamps.png">
-                    </div>
-                    
-                    <!-- Project Details Container -->
-                    <div class="lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
-                        <!-- Project Header -->
-                        <div>
-                            <span class="inline-block px-3 py-1 text-xs font-semibold text-green-400 uppercase tracking-wider mb-3 bg-gray-700/50 rounded-full">Featured Project</span>
-                            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">MCQCHAMPS</h3>
-                            
-                            <!-- Project Description -->
-                            <div class="text-gray-300 mb-6 prose prose-sm prose-invert max-w-none">
-                                <p class="text-gray-300 mb-6">    Developed an interactive Multiple Choice Questions (MCQ) platform that allows users to test their knowledge on various subjects with real-time feedback.    <br>    <br>    <span>MCQ: Study, take test </span>    <br>    <span>Technologies: Django, HTML, CSS, JavaScript, Tailwind</span>    <br>    <span>With: PPT post, post your presentation</span>    <br>    <span>Goal: Make my Friends more knowledgeable</span></p>
-                            </div>
-                        </div>
-                        
-                        <!-- Tech Stack Tags -->
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Python</span>
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Django</span>
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">JavaScript</span>
-                        </div>
-                        
-                        <!-- Project Links -->
-                        <div class="flex flex-col sm:flex-row gap-4 mt-2">
-                            
-                            <!-- Code Link -->
-                            <a href="#" class="group relative text-center bg-gray-900 text-white px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-800 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github mr-2"></i>
-                                <span>Private Code</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                            </a>
-                            
-                            <!-- Demo Link -->
-                            <a href="http://mcqchamps.com/" class="group relative text-center bg-gray-700 text-green-400 px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-600 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                <span>View Site</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card mb-24 rounded-xl overflow-hidden bg-gray-800/90 shadow-xl hover:shadow-2xl transition-all duration-500">
-                <div class="opacity-0 translate-y-10 transition-all duration-1000 animate-fadeInUp 
-                            lg:flex-row-reverse 
-                            lg:flex">
-                    
-                    <!-- Project Image Container -->
-                    <div class="lg:w-1/2 relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                        <img alt="Photo Editor" data-src="/staticfiles/img/projects/photoeditor.png" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 cursor-pointer" loading="lazy" src="/staticfiles/img/projects/photoeditor.png">
-                    </div>
-                    
-                    <!-- Project Details Container -->
-                    <div class="lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
-                        <!-- Project Header -->
-                        <div>
-                            <span class="inline-block px-3 py-1 text-xs font-semibold text-green-400 uppercase tracking-wider mb-3 bg-gray-700/50 rounded-full">Featured Project</span>
-                            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">Photo Editor</h3>
-                            
-                            <!-- Project Description -->
-                            <div class="text-gray-300 mb-6 prose prose-sm prose-invert max-w-none">
-                                <p class="text-gray-300 mb-6">                                Created an advanced photo editor using Python and OpenCV, featuring multiple filters, cropping, and image enhancement capabilities. This project demonstrates my proficiency in image processing and creating user-friendly interfaces for complex operations.                                <br>                                <br>                                <span>Based on: Windows Only</span>                                <br>                                <span>Technologies: Python, OpenCV, Tkinter</span>                                <br>                                <span>                                  Features: Color up, Filter, Corp, Remove BG, Draw etc....                                </span>                            </p>
-                            </div>
-                        </div>
-                        
-                        <!-- Tech Stack Tags -->
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Python</span>
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Django</span>
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">JavaScript</span>
-                        </div>
-                        
-                        <!-- Project Links -->
-                        <div class="flex flex-col sm:flex-row gap-4 mt-2">
-                            
-                            <!-- Code Link -->
-                            <a href="https://www.youtube.com/watch?v=srPU6JW-RRA" class="group relative text-center bg-gray-700 text-green-400 px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-600 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github mr-2"></i>
-                                <span>Watch Demo Video</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                            </a>
-                            
-                            <!-- Demo Link -->
-                            <a href="https://github.com/0luv69/photo-editor" class="group relative text-center bg-green-600 text-white px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-green-700 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                <span>View Source Code</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card mb-24 rounded-xl overflow-hidden bg-gray-800/90 shadow-xl hover:shadow-2xl transition-all duration-500">
-                <div class="opacity-0 translate-y-10 transition-all duration-1000 animate-fadeInUp 
-                             
-                            lg:flex">
-                    
-                    <!-- Project Image Container -->
-                    <div class="lg:w-1/2 relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                        <img alt="Hackathon Winning: Pariwar" data-src="/staticfiles/img/projects/pariwar.png" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 cursor-pointer" loading="lazy" src="/staticfiles/img/projects/pariwar.png">
-                    </div>
-                    
-                    <!-- Project Details Container -->
-                    <div class="lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
-                        <!-- Project Header -->
-                        <div>
-                            <span class="inline-block px-3 py-1 text-xs font-semibold text-green-400 uppercase tracking-wider mb-3 bg-gray-700/50 rounded-full">Featured Project</span>
-                            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">Hackathon Winning: Pariwar</h3>
-                            
-                            <!-- Project Description -->
-                            <div class="text-gray-300 mb-6 prose prose-sm prose-invert max-w-none">
-                                <p class="text-gray-300 mb-6">    Pariwar is a web application designed to facilitate communication and support within families and extended family networks. It provides a platform where individuals, especially students who may find it challenging to communicate directly with their parents, can seek advice and support from other family members or individuals playing familial roles.    <br>    <br>    <span>Group Project: Incodeable</span>    <br>    <span>Won: Incodeble IICQuest Hackathon</span>    <br>    <span>Technologies: Django, HTML, CSS, JavaScript, React, Node js.......</span>    <br></p>
-                            </div>
-                        </div>
-                        
-                        <!-- Tech Stack Tags -->
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Python</span>
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Django</span>
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">JavaScript</span>
-                        </div>
-                        
-                        <!-- Project Links -->
-                        <div class="flex flex-col sm:flex-row gap-4 mt-2">
-                            
-                            <!-- Code Link -->
-                            <a href="https://github.com/0luv69/Hackathon_incodeble_iicquest_Pariwar" class="group relative text-center bg-green-600 text-white px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-green-700 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github mr-2"></i>
-                                <span>View source code</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                            </a>
-                            
-                            <!-- Demo Link -->
-                            <a href="None" class="group relative text-center bg-gray-700 text-green-400 px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-600 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                <span>View Project</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card mb-24 rounded-xl overflow-hidden bg-gray-800/90 shadow-xl hover:shadow-2xl transition-all duration-500">
-                <div class="opacity-0 translate-y-10 transition-all duration-1000 animate-fadeInUp 
-                            lg:flex-row-reverse 
-                            lg:flex">
-                    
-                    <!-- Project Image Container -->
-                    <div class="lg:w-1/2 relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                        <img alt="Quiz Game: In C" data-src="/staticfiles/img/projects/Computer.png" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 cursor-pointer" loading="lazy" src="/staticfiles/img/projects/Computer.png">
-                    </div>
-                    
-                    <!-- Project Details Container -->
-                    <div class="lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
-                        <!-- Project Header -->
-                        <div>
-                            <span class="inline-block px-3 py-1 text-xs font-semibold text-green-400 uppercase tracking-wider mb-3 bg-gray-700/50 rounded-full">Featured Project</span>
-                            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">Quiz Game: In C</h3>
-                            
-                            <!-- Project Description -->
-                            <div class="text-gray-300 mb-6 prose prose-sm prose-invert max-w-none">
-                                <p class="text-gray-300 mb-6">    The Quiz Game is a simple command-line program written in C. It allows users to play a quiz game, login/signup to their account, and for administrators to manage quiz questions. Users can play the quiz, view their scores, and administrators can add/remove quiz questions.    <br>    <br>    <span>Based on: Command Line</span>    <br>    <span>Quiz: Play, (log/sign)-in, add, remove, check score, store in file.... </span>    <br>    <span>Storing: In byte 2 files, one for `user` another for `Quiz` </span>    <br>    <br><span><b>Features</b>: User Authentication, Quiz Game, Admin Panel, Help Page, Score Tracking</span></p>
-                            </div>
-                        </div>
-                        
-                        <!-- Tech Stack Tags -->
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Python</span>
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Django</span>
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">JavaScript</span>
-                        </div>
-                        
-                        <!-- Project Links -->
-                        <div class="flex flex-col sm:flex-row gap-4 mt-2">
-                            
-                            <!-- Code Link -->
-                            <a href="https://github.com/0luv69/C--Quiz-game" class="group relative text-center bg-gray-700 text-green-400 px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-600 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github mr-2"></i>
-                                <span>View source code</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                            </a>
-                            
-                            <!-- Demo Link -->
-                            <a href="https://www.youtube.com/watch?v=bB9kG4WijVQ" class="group relative text-center bg-green-600 text-white px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-green-700 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                <span>Watch Demo Video</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card mb-24 rounded-xl overflow-hidden bg-gray-800/90 shadow-xl hover:shadow-2xl transition-all duration-500">
-                <div class="opacity-0 translate-y-10 transition-all duration-1000 animate-fadeInUp 
-                             
-                            lg:flex">
-                    
-                    <!-- Project Image Container -->
-                    <div class="lg:w-1/2 relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                        <img alt="Money Manager" data-src="/staticfiles/img/projects/MoneyManager.png" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 cursor-pointer" loading="lazy" src="/staticfiles/img/projects/MoneyManager.png">
-                    </div>
-                    
-                    <!-- Project Details Container -->
-                    <div class="lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
-                        <!-- Project Header -->
-                        <div>
-                            <span class="inline-block px-3 py-1 text-xs font-semibold text-green-400 uppercase tracking-wider mb-3 bg-gray-700/50 rounded-full">Featured Project</span>
-                            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">Money Manager</h3>
-                            
-                            <!-- Project Description -->
-                            <div class="text-gray-300 mb-6 prose prose-sm prose-invert max-w-none">
-                                <p class="text-gray-300 mb-6">    The Money Manager app simplifies finance management through an intuitive Python-based application. It offers a user-friendly interface and robust features for handling transactions, tracking loans, and maintaining a transaction history.    <br>    <br>    <span>Based on: Windows Only</span>    <br>    <span>User Interface (UI) Libraries: Tkinter, Customtkinter, tkcalendar</span>    <br>    <span> Data Handling Libraries: time, datetime, math, timedelta, calendar, os, openpyxl, configparser</span>    <br>    <span>Feartures: (LoanTransaction , Income/Expences Transaction) Management</span></p>
-                            </div>
-                        </div>
-                        
-                        <!-- Tech Stack Tags -->
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Python</span>
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Django</span>
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">JavaScript</span>
-                        </div>
-                        
-                        <!-- Project Links -->
-                        <div class="flex flex-col sm:flex-row gap-4 mt-2">
-                            
-                            <!-- Code Link -->
-                            <a href="https://0luv69.github.io/Money-Manager/" class="group relative text-center bg-green-600 text-white px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-green-700 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github mr-2"></i>
-                                <span>Documentation</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                            </a>
-                            
-                            <!-- Demo Link -->
-                            <a href="https://github.com/0luv69/Money-Manager" class="group relative text-center bg-gray-700 text-green-400 px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-600 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                <span>View Source Code</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card mb-24 rounded-xl overflow-hidden bg-gray-800/90 shadow-xl hover:shadow-2xl transition-all duration-500">
-                <div class="opacity-0 translate-y-10 transition-all duration-1000 animate-fadeInUp 
-                            lg:flex-row-reverse 
-                            lg:flex">
-                    
-                    <!-- Project Image Container -->
-                    <div class="lg:w-1/2 relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                        <img alt="(BIM &amp; Apple) Calculator" data-src="/staticfiles/img/projects/Cacultor.png" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 cursor-pointer" loading="lazy" src="/staticfiles/img/projects/Cacultor.png">
-                    </div>
-                    
-                    <!-- Project Details Container -->
-                    <div class="lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
-                        <!-- Project Header -->
-                        <div>
-                            <span class="inline-block px-3 py-1 text-xs font-semibold text-green-400 uppercase tracking-wider mb-3 bg-gray-700/50 rounded-full">Featured Project</span>
-                            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">(BIM &amp; Apple) Calculator</h3>
-                            
-                            <!-- Project Description -->
-                            <div class="text-gray-300 mb-6 prose prose-sm prose-invert max-w-none">
-                                <p class="text-gray-300 mb-6">    Learning Based Calculator -&gt; BIM Calculator, Apple Based Calculator. Created using Tkinter, Python, To get knowledge on UI design.    <br>    <br>    <span>Based on: Windows Only</span>    <br>    <span>Technologies: Tkinter, Python</span></p>
-                            </div>
-                        </div>
-                        
-                        <!-- Tech Stack Tags -->
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Python</span>
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Django</span>
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">JavaScript</span>
-                        </div>
-                        
-                        <!-- Project Links -->
-                        <div class="flex flex-col sm:flex-row gap-4 mt-2">
-                            
-                            <!-- Code Link -->
-                            <a href="https://github.com/0luv69/BIM-calculator-app" class="group relative text-center bg-gray-700 text-green-400 px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-600 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github mr-2"></i>
-                                <span>Source Code: BIM</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                            </a>
-                            
-                            <!-- Demo Link -->
-                            <a href="https://github.com/0luv69/Apple-Calculator-UI" class="group relative text-center bg-green-600 text-white px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-green-700 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                <span>Source Code: Apple Based</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card mb-24 rounded-xl overflow-hidden bg-gray-800/90 shadow-xl hover:shadow-2xl transition-all duration-500">
-                <div class="opacity-0 translate-y-10 transition-all duration-1000 animate-fadeInUp 
-                             
-                            lg:flex">
-                    
-                    <!-- Project Image Container -->
-                    <div class="lg:w-1/2 relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                        <img alt="Ko Bancha Karod Pati" data-src="/staticfiles/img/projects/kbc_1.png" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 cursor-pointer" loading="lazy" src="/staticfiles/img/projects/kbc_1.png">
-                    </div>
-                    
-                    <!-- Project Details Container -->
-                    <div class="lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
-                        <!-- Project Header -->
-                        <div>
-                            <span class="inline-block px-3 py-1 text-xs font-semibold text-green-400 uppercase tracking-wider mb-3 bg-gray-700/50 rounded-full">Featured Project</span>
-                            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">Ko Bancha Karod Pati</h3>
-                            
-                            <!-- Project Description -->
-                            <div class="text-gray-300 mb-6 prose prose-sm prose-invert max-w-none">
-                                <p class="text-gray-300 mb-6">"Ko Bancha Karod Pati" is a Nepali version of the popular game show "Who Wants to Be a Millionaire?". Developed using the Tkinter library in Python, it features multiple-choice questions covering various topics related to Nepal. Users can log in using customizable usernames and passwords, dynamically answer questions, and win money based on correct responses.<br><br><span>Based on: Windows Based, Tkinter GUI used</span><br><span>Features: Dynamic MCQs, Login System, Real-Time Feedback, Accumulated Earnings Display, End-of-Game Summary</span><br><span>Goal: Learning Tkinter for GUI based GUi creations.</span><br></p>
-                            </div>
-                        </div>
-                        
-                        <!-- Tech Stack Tags -->
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Python</span>
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">Django</span>
-                            <span class="px-3 py-1 bg-gray-700/70 text-green-400 rounded-full text-xs font-medium hover:bg-gray-600/70 transition-colors duration-300">JavaScript</span>
-                        </div>
-                        
-                        <!-- Project Links -->
-                        <div class="flex flex-col sm:flex-row gap-4 mt-2">
-                            
-                            <!-- Code Link -->
-                            <a href="https://github.com/0luv69/Ko-banxa-Karod-Pati" class="group relative text-center bg-green-600 text-white px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-green-700 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github mr-2"></i>
-                                <span>View source code</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                            </a>
-                            
-                            <!-- Demo Link -->
-                            <a href="https://www.youtube.com/watch?v=zDar6Nhq2lg" class="group relative text-center bg-gray-700 text-green-400 px-5 py-3 rounded-lg font-medium shadow-lg transition duration-300 hover:bg-gray-600 flex items-center justify-center" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                <span>Watch Demo Video</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-
-            <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                    const lazyImages = document.querySelectorAll('img.lazy');
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach((entry) => {
-                            if (entry.isIntersecting) {
-                                const img = entry.target;
-                                img.src = img.dataset.src;
-                                img.classList.remove('lazy');
-                                observer.unobserve(img);
-                            }
-                        });
-                    });
-                    lazyImages.forEach((img) => observer.observe(img));
-                });
-            </script>
-
-        <!-- View more button to github -->
-        <div class="mt-16 text-center">
-            <a href="https://github.com/0luv69" target="_blank" class="relative inline-block group">
-                <span class="absolute inset-0 bg-gradient-to-r from-green-500 to-green-600 rounded-lg blur opacity-50 group-hover:opacity-100 transition-opacity duration-300"></span>
-                <span class="relative block px-8 py-4 bg-gray-900 border border-green-500 rounded-lg font-medium text-white group-hover:bg-gray-800 transition-colors duration-300">
-                    <i class="fab fa-github mr-2"></i>View all projects on GitHub
-                </span>
-            </a>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section-padding">
-        <div class="container mx-auto px-3 sm:px-6">
-            <div class="text-center mb-8 sm:mb-16">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">Get in <span class="gradient-text">Touch</span></h2>
-                <div class="w-16 sm:w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
-                <p class="text-gray-400 mt-2 sm:mt-4 text-sm sm:text-base max-w-2xl mx-auto">Feel free to reach out for collaborations or just a friendly hello</p>
-            </div>
-            
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-gray-800 rounded-xl shadow-2xl overflow-hidden">
-                    <div class="md:flex">
-                        <!-- Contact Info -->
-                        <div class="md:w-2/5 bg-gray-900 p-4 sm:p-6 md:p-8">
-                            <h3 class="text-xl sm:text-2xl font-bold text-green-400 mb-3 sm:mb-6">Contact Information</h3>
-                            <p class="text-gray-400 text-sm sm:text-base mb-4 sm:mb-8">Fill out the form and I will get back to you as soon as possible.</p>
-                            
-                            <div class="space-y-4 sm:space-y-6">
-                                <div class="flex items-start">
-                                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
-                                        <i class="fas fa-envelope text-xs sm:text-base text-green-500"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-xs sm:text-sm text-gray-400">Email</p>
-                                        <p class="text-white text-sm sm:text-base">baniyarujal@gmail.com</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-start">
-                                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-3 sm:mr-4">
-                                        <i class="fas fa-map-marker-alt text-xs sm:text-base text-green-500"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-xs sm:text-sm text-gray-400">Location</p>
-                                        <p class="text-white text-sm sm:text-base">Kathmandu, Nepal</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="mt-6 sm:mt-12 flex space-x-3 sm:space-x-4">
-                                <a href="https://github.com/0luv69" target="_blank" class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-gray-700 transition-all duration-300">
-                                    <i class="fab fa-github text-xs sm:text-base"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-gray-700 transition-all duration-300">
-                                    <i class="fab fa-linkedin-in text-xs sm:text-base"></i>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Contact Form -->
-                        <div class="md:w-3/5 p-4 sm:p-6 md:p-8">
-                            <form class="space-y-4 sm:space-y-6" method="post" action="/contact/">
-                                {% csrf_token %}
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                                    <div>
-                                        <label for="name" class="block text-xs sm:text-sm font-medium text-gray-400 mb-1 sm:mb-2">Name</label>
-                                        <input id="name" class="contact-input w-full p-2 sm:p-3 text-sm sm:text-base bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="text" name="name" placeholder="Your name" required>
-                                    </div>
-                                    <div>
-                                        <label for="email" class="block text-xs sm:text-sm font-medium text-gray-400 mb-1 sm:mb-2">Email</label>
-                                        <input id="email" class="contact-input w-full p-2 sm:p-3 text-sm sm:text-base bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="email" name="email" placeholder="Your email" required>
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <label for="subject" class="block text-xs sm:text-sm font-medium text-gray-400 mb-1 sm:mb-2">Subject</label>
-                                    <input id="subject" class="contact-input w-full p-2 sm:p-3 text-sm sm:text-base bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" type="text" name="subject" placeholder="Subject" required>
-                                </div>
-                                
-                                <div>
-                                    <label for="message" class="block text-xs sm:text-sm font-medium text-gray-400 mb-1 sm:mb-2">Message</label>
-                                    <textarea id="message" class="contact-input w-full p-2 sm:p-3 text-sm sm:text-base bg-gray-700 border border-gray-600 rounded-lg focus:outline-none" name="message" placeholder="Your message" rows="4" sm:rows="5" required></textarea>
-                                </div>
-                                
-                                <button type="submit" class="w-full p-3 sm:p-4 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors duration-300 flex justify-center items-center">
-                                    <span id="btn_txt" class="text-sm sm:text-base">Send Message</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="h-3 w-6 sm:h-6 sm:w-10 hidden" id="loader">
-                                        <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="25" y="50">
-                                            <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
-                                        </rect>
-                                        <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="85" y="50">
-                                            <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate>
-                                        </rect>
-                                        <rect fill="#ffffff" stroke="#ffffff" stroke-width="17" width="30" height="30" x="145" y="50">
-                                            <animate attributeName="y" calcMode="spline" dur="1.7" values="50;120;50;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate>
-                                        </rect>
-                                    </svg>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-</main>
-
-<script>
-    // Function to add 'active' class to the navbar links based on section in view
-    document.addEventListener("DOMContentLoaded", function () {
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll(".nav-link");
-
-        const options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.5,
-        };
-
-        // navigator.clipboard.writeText("Rujal Baniya");
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute("id");
-                    navLinks.forEach((link) => {
-                        link.classList.remove("text-green-400");
-                        link.classList.add("text-gray-400");
-                        if (link.getAttribute("href") === `#${id}`) {
-                            link.classList.remove("text-gray-400");
-                            link.classList.add("text-green-400");
-                        }
-                    });
-                }
-            });
-        }, options);
-
-        sections.forEach((section) => {
-            observer.observe(section);
-        });
-    });
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-
-
-
-    // Form submission
-    document.querySelector("form").addEventListener("submit", function (e) {
-        document.getElementById("btn_txt").innerText = "Sending...";
-        document.getElementById("loader").classList.remove("hidden");
-    });
-
-
-    // flip the image
-    const img = document.querySelector('#rounded-pic-me');
-
-    // onload of browser
-    window.onload = () => {
-        img.classList.add('flip-coin');
-        img.addEventListener('animationend', () => {
-            img.classList.remove('flip-coin');
-        });
-
-    };
-
-    // Add click event listener to the image
-    img.addEventListener('click', () => {
-        // Add the flip animation class to the image
-        img.classList.add('flip-coin');
-
-        // Remove the animation class after it's completed to allow re-triggering
-        img.addEventListener('animationend', () => {
-            img.classList.remove('flip-coin');
-        });
-    });
-</script>
 </body>
-
 </html>

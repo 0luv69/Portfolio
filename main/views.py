@@ -21,7 +21,7 @@ def home(request):
         particular_grp= Project.objects.filter(prj_value=i).order_by('?')
         final_list.extend(list(particular_grp))
     projects = final_list
-    return render(request, 'pages/static-index.html', {'projects':projects})
+    return render(request, 'pages/index.html', {'projects':projects})
 
 def seo(request):
     return render(request, 'pages/seo.html', {})
