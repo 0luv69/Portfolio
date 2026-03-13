@@ -1,0 +1,409 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon" />
+
+    <title>Rujal Baniya | Software Developer</title>
+    <meta name="author" content="Rujal Baniya" />
+    <meta name="title" content="Rujal Baniya | Full Stack Developer & Cybersecurity Enthusiast">
+    <meta name="description" content="Rujal Baniya - A passionate Full Stack Developer from Nepal, specializing in Python, cybersecurity, and web development. Explore my projects and contact me for collaboration." />
+    <meta name="keywords" content="Rujal Baniya, Full Stack Developer, Python, Django, Cybersecurity, Nepal, Portfolio" />
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rujal Baniya",
+        "jobTitle": "Software Developer",
+        "url": "https://www.rujalbaniya.com.np",
+        "sameAs": ["https://github.com/0luv69"]
+      }
+    </script>
+
+    <!-- Tailwind CSS (Using CDN to guarantee the new custom design renders perfectly) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#050505',
+                        surface: '#111111',
+                        border: '#222222',
+                        accent: '#10b981', // Premium Green
+                        muted: '#888888',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Premium Styling */
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background-color: #10b981;
+            color: #000000;
+        }
+
+        /* Minimal Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #222222; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #333333; }
+
+        /* Custom Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            filter: blur(4px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* Glassmorphism Navigation */
+        .glass-dock {
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Input Auto-fill fix for Dark Theme */
+        input:-webkit-autofill,
+        textarea:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px #111111 inset !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased overflow-x-hidden relative">
+
+    <!-- Floating Glass Navigation (Desktop Left, Mobile Bottom) -->
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 lg:left-8 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 z-50 glass-dock px-6 py-4 lg:py-8 lg:px-4 rounded-full flex lg:flex-col gap-6 lg:gap-8 shadow-2xl">
+        <a href="#home" class="nav-item text-muted hover:text-white transition-colors duration-300 relative group">
+            <i class="fas fa-home text-lg"></i>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-surface border border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none">Home</span>
+        </a>
+        <a href="#about" class="nav-item text-muted hover:text-white transition-colors duration-300 relative group">
+            <i class="fas fa-user text-lg"></i>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-surface border border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none">About</span>
+        </a>
+        <a href="#projects" class="nav-item text-muted hover:text-white transition-colors duration-300 relative group">
+            <i class="fas fa-layer-group text-lg"></i>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-surface border border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none">Work</span>
+        </a>
+        <a href="#contact" class="nav-item text-muted hover:text-white transition-colors duration-300 relative group">
+            <i class="fas fa-envelope text-lg"></i>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-surface border border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none">Contact</span>
+        </a>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-5xl mx-auto px-6 lg:px-12 pt-12 pb-32">
+
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[90vh] flex flex-col justify-center relative reveal">
+            <!-- Decorative minimal glow -->
+            <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-accent opacity-[0.03] blur-[100px] rounded-full pointer-events-none"></div>
+
+            <div class="flex items-center gap-6 mb-8">
+                <img src="{% static 'img/me.jpg' %}" alt="Rujal Baniya" class="w-16 h-16 rounded-full object-cover grayscale hover:grayscale-0 transition duration-500 border border-border">
+                <div class="flex gap-4">
+                    <a href="https://github.com/0luv69" target="_blank" class="text-muted hover:text-white transition"><i class="fab fa-github text-xl"></i></a>
+                    <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="text-muted hover:text-white transition"><i class="fab fa-linkedin text-xl"></i></a>
+                </div>
+            </div>
+
+            <h1 class="font-heading text-5xl sm:text-7xl font-semibold tracking-tight text-white mb-6 leading-tight">
+                Software Developer.<br>
+                <span class="text-muted">Cybersecurity Enthusiast.</span>
+            </h1>
+            
+            <p class="text-lg text-muted font-light max-w-2xl mb-10 leading-relaxed">
+                I build secure, scalable digital experiences. Focused on writing clean code, discovering vulnerabilities, and creating systems that solve real problems.
+            </p>
+
+            <div class="flex items-center gap-4">
+                <a href="#projects" class="bg-white text-black px-6 py-3 rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
+                    View Work
+                </a>
+                <a href="#contact" class="bg-surface border border-border text-white px-6 py-3 rounded-lg font-medium text-sm hover:border-muted transition-colors">
+                    Get in touch
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 border-t border-border reveal">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                <div class="md:col-span-4">
+                    <h2 class="font-heading text-2xl font-medium text-white mb-2">About</h2>
+                    <p class="text-sm text-muted uppercase tracking-widest">Profile & Background</p>
+                </div>
+                <div class="md:col-span-8 space-y-8 text-muted font-light leading-relaxed">
+                    <p class="text-lg text-white">
+                        I am a developer from Nepal with a deep passion for creating efficient backend architectures and securing digital infrastructure.
+                    </p>
+                    <p>
+                        My journey bridges the gap between software development and cybersecurity. From developing complex web applications using Django to participating in hackathons and exploring penetration testing, I am driven by the challenge of building things that are both powerful and safe.
+                    </p>
+
+                    <!-- Minimal Experience / Education Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6">
+                        <div class="p-6 bg-surface border border-border rounded-xl">
+                            <i class="fas fa-briefcase text-accent mb-4 text-xl"></i>
+                            <h3 class="text-white font-medium mb-2">Experience</h3>
+                            <p class="text-sm text-muted">Full-stack web apps, desktop tools, and competitive problem solving.</p>
+                        </div>
+                        <div class="p-6 bg-surface border border-border rounded-xl">
+                            <i class="fas fa-graduation-cap text-accent mb-4 text-xl"></i>
+                            <h3 class="text-white font-medium mb-2">Education</h3>
+                            <p class="text-sm text-muted">Bachelor's in Computer Science. Certified in Python & Security.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Arsenal (Skills) -->
+        <section class="py-24 border-t border-border reveal">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                <div class="md:col-span-4">
+                    <h2 class="font-heading text-2xl font-medium text-white mb-2">Expertise</h2>
+                    <p class="text-sm text-muted uppercase tracking-widest">Technologies</p>
+                </div>
+                <div class="md:col-span-8">
+                    <!-- Ultra thin, premium skill bars -->
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between mb-2 text-sm">
+                                <span class="text-white font-medium">Python & Django</span>
+                                <span class="text-muted">90%</span>
+                            </div>
+                            <div class="w-full bg-surface h-[2px] rounded-full overflow-hidden">
+                                <div class="bg-white h-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2 text-sm">
+                                <span class="text-white font-medium">Cybersecurity & Pen Testing</span>
+                                <span class="text-muted">85%</span>
+                            </div>
+                            <div class="w-full bg-surface h-[2px] rounded-full overflow-hidden">
+                                <div class="bg-white h-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2 text-sm">
+                                <span class="text-white font-medium">Frontend (HTML, CSS, JS)</span>
+                                <span class="text-muted">80%</span>
+                            </div>
+                            <div class="w-full bg-surface h-[2px] rounded-full overflow-hidden">
+                                <div class="bg-white h-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2 text-sm">
+                                <span class="text-white font-medium">Git, Version Control & DevOps</span>
+                                <span class="text-muted">85%</span>
+                            </div>
+                            <div class="w-full bg-surface h-[2px] rounded-full overflow-hidden">
+                                <div class="bg-white h-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 border-t border-border reveal">
+            <div class="mb-16">
+                <h2 class="font-heading text-2xl font-medium text-white mb-2">Selected Work</h2>
+                <p class="text-sm text-muted uppercase tracking-widest">Recent Projects</p>
+            </div>
+
+            <div class="space-y-6">
+                {% for project in projects %}
+                <div class="group block relative p-6 sm:p-8 bg-surface border border-border rounded-2xl hover:border-muted transition-colors duration-300">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                        
+                        <!-- Project Details -->
+                        <div class="md:col-span-7 order-2 md:order-1">
+                            <h3 class="text-2xl font-heading font-medium text-white mb-3 group-hover:text-accent transition-colors">{{ project.title }}</h3>
+                            <div class="text-muted font-light text-sm leading-relaxed mb-6">
+                                {{ project.description|safe|truncatewords_html:30 }}
+                            </div>
+                            
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="px-3 py-1 bg-dark border border-border text-gray-300 rounded-md text-xs font-medium">Python</span>
+                                <span class="px-3 py-1 bg-dark border border-border text-gray-300 rounded-md text-xs font-medium">Django</span>
+                            </div>
+                            
+                            <!-- Links -->
+                            <div class="flex items-center gap-4">
+                                <a href="{{ project.btn2_url }}" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-white hover:text-accent transition-colors">
+                                    Live Demo <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                                </a>
+                                {% if project.btn1_text != 'Private Code' %}
+                                <a href="{{ project.btn1_url }}" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-muted hover:text-white transition-colors">
+                                    View Source
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Minimal Project Image -->
+                        <div class="md:col-span-5 order-1 md:order-2 overflow-hidden rounded-xl bg-dark border border-border aspect-[4/3] relative">
+                            <img alt="{{ project.title }}" src="{% static project.image %}" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="pt-8 flex justify-center">
+                    <a href="https://github.com/0luv69" target="_blank" class="px-6 py-3 bg-surface border border-border rounded-lg text-sm font-medium hover:border-white transition-colors">
+                        View all repositories <i class="fab fa-github ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 border-t border-border reveal">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                <div class="md:col-span-4">
+                    <h2 class="font-heading text-2xl font-medium text-white mb-2">Contact</h2>
+                    <p class="text-sm text-muted uppercase tracking-widest">Let's Talk</p>
+                </div>
+                <div class="md:col-span-8">
+                    <p class="text-muted font-light mb-8">
+                        Have a question, a project idea, or just want to connect? Drop a message below and I'll get back to you as soon as possible.
+                    </p>
+                    
+                    <form class="space-y-6" method="post" action="/contact/">
+                        {% csrf_token %}
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="relative">
+                                <input id="name" type="text" name="name" required class="w-full bg-surface border-b border-border px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition duration-300 rounded-t-md" placeholder="Your Name">
+                            </div>
+                            <div class="relative">
+                                <input id="email" type="email" name="email" required class="w-full bg-surface border-b border-border px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition duration-300 rounded-t-md" placeholder="Your Email">
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <input id="subject" type="text" name="subject" required class="w-full bg-surface border-b border-border px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition duration-300 rounded-t-md" placeholder="Subject">
+                        </div>
+                        
+                        <div class="relative">
+                            <textarea id="message" name="message" rows="4" required class="w-full bg-surface border-b border-border px-4 py-3 text-sm text-white focus:outline-none focus:border-accent transition duration-300 rounded-t-md resize-none" placeholder="Your Message"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="bg-white text-black px-8 py-3 rounded-lg font-medium text-sm hover:bg-accent hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
+                            <span id="btn_txt">Send Message</span>
+                            <i id="btn_icon" class="fas fa-paper-plane text-xs group-hover:translate-x-1 transition-transform"></i>
+                            <!-- Inline Minimal SVG Loader -->
+                            <svg class="animate-spin h-4 w-4 text-white hidden" id="loader" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </button>
+                    </form>
+
+                    <div class="mt-12 pt-8 border-t border-border flex items-center justify-between text-sm text-muted">
+                        <p>&copy; 2024 Rujal Baniya.</p>
+                        <p>Kathmandu, Nepal</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Smooth Reveal Animation on Scroll
+        document.addEventListener("DOMContentLoaded", () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Reveal only once
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+            reveals.forEach(reveal => revealObserver.observe(reveal));
+
+            // Active Navigation Highlighting
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-item");
+
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute("id");
+                        navLinks.forEach(link => {
+                            link.classList.remove("text-white", "scale-110");
+                            link.classList.add("text-muted");
+                            if (link.getAttribute("href") === `#${id}`) {
+                                link.classList.remove("text-muted");
+                                link.classList.add("text-white", "scale-110");
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            sections.forEach(section => navObserver.observe(section));
+        });
+
+        // Form Submission visual feedback (Peek-End Rule)
+        document.querySelector("form").addEventListener("submit", function (e) {
+            const btnTxt = document.getElementById("btn_txt");
+            const btnIcon = document.getElementById("btn_icon");
+            const loader = document.getElementById("loader");
+            const btn = this.querySelector('button[type="submit"]');
+
+            btnTxt.innerText = "Sending...";
+            btnIcon.classList.add("hidden");
+            loader.classList.remove("hidden");
+            
+            // Note: Since this is standard form submission, the page will reload.
+            // If you use AJAX/Fetch later, you can add a success state here.
+        });
+    </script>
+</body>
+</html>

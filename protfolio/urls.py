@@ -1,24 +1,10 @@
-"""
-URL configuration for protfolio project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
 from main import views
 
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -34,8 +20,10 @@ urlpatterns = [
     # path('contact/messages/', views.contact_messages_view, name='contact_messages'),
 
 
-    path('test/', views.test, name='test'),
-    # path('t2/', views.second_one, name='t2'),
+    path('t1/', views.temp1, name='temp1'),
+    path('t2/', views.temp2, name='temp2'),
+    path('t3/', views.temp3, name='temp3'),
+    path('t4/', views.temp4, name='temp4'),
 
 
     # path('import-projects/', views.import_projects_json, name='import-projects'),
@@ -44,3 +32,8 @@ urlpatterns = [
 
 
 ]
+
+
+print("DEBUG MODE: Serving media files from MEDIA_URL", settings.DEBUG)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

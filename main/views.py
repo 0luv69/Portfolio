@@ -23,6 +23,50 @@ def home(request):
     projects = final_list
     return render(request, 'pages/index.html', {'projects':projects})
 
+
+def temp1(request):
+    final_list= []
+    for i in range(5,0,-1):
+        particular_grp= Project.objects.filter(prj_value=i).order_by('?')
+        final_list.extend(list(particular_grp))
+    projects = final_list
+    return render(request, 'pages/temp-1.html', {'projects':projects})
+
+def temp2(request):
+    final_list= []
+    for i in range(5,0,-1):
+        particular_grp= Project.objects.filter(prj_value=i).order_by('?')
+        final_list.extend(list(particular_grp))
+    projects = final_list
+    return render(request, 'pages/temp-2.html', {'projects':projects})
+
+
+def temp3(request):
+    final_list= []
+    for i in range(5,0,-1):
+        particular_grp= Project.objects.filter(prj_value=i).order_by('?')
+        final_list.extend(list(particular_grp))
+    projects = final_list
+    return render(request, 'pages/temp-3.html', {'projects':projects})
+
+
+def temp4(request):
+    final_list= []
+    for i in range(5,0,-1):
+        particular_grp= Project.objects.filter(prj_value=i).order_by('?')
+        final_list.extend(list(particular_grp))
+    projects = final_list
+    return render(request, 'pages/temp-4.html', {'projects':projects})
+
+
+
+
+
+
+
+
+
+
 def seo(request):
     return render(request, 'pages/seo.html', {})
 
@@ -78,11 +122,7 @@ def contact(request):
     return redirect('home')
 
 
-def second_one(request):
-    return render(request, 'others/another.html', {})
 
-def test(request):
-    return render(request, 'others/test.html', {})
 
 # main/views.py
 

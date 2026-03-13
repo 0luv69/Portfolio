@@ -1,0 +1,426 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#030303]">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon" />
+
+    <title>Rujal Baniya &mdash; Software Engineer</title>
+    <meta name="author" content="Rujal Baniya" />
+    <meta name="title" content="Rujal Baniya | Full Stack Developer & Cybersecurity Enthusiast">
+    <meta name="description" content="Rujal Baniya - A passionate Full Stack Developer from Nepal, specializing in Python, cybersecurity, and web development." />
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rujal Baniya",
+        "jobTitle": "Software Developer",
+        "url": "https://www.rujalbaniya.com.np",
+        "sameAs": ["https://github.com/0luv69"]
+      }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#030303',
+                        surface: '#0d0d0d',
+                        surfaceHover: '#141414',
+                        border: 'rgba(255, 255, 255, 0.08)',
+                        accent: '#10b981', // Premium Minimal Green
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Manrope', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: 0, transform: 'translateY(20px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Premium Noise Texture Overlay */
+        .noise-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Base Typography & Selection */
+        body {
+            background-color: #030303;
+            color: #a3a3a3;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::selection { background-color: rgba(16, 185, 129, 0.3); color: #fff; }
+
+        /* Minimal Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #444; }
+
+        /* Text Gradients */
+        .text-gradient {
+            background: linear-gradient(180deg, #ffffff 0%, #737373 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glass Cards (Bento Box style) */
+        .bento-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .bento-card:hover {
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        /* Floating Header */
+        .glass-header {
+            background: rgba(3, 3, 3, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Reveal Animation Class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Spotlight Glow Effect for Mouse Tracking */
+        #glow {
+            position: fixed;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            transition: opacity 0.5s ease;
+        }
+    </style>
+</head>
+
+<body class="font-sans relative">
+    
+    <!-- Ambient Effects -->
+    <div class="noise-bg"></div>
+    <div id="glow" class="hidden md:block opacity-0"></div>
+
+    <!-- Minimal Floating Top Navigation -->
+    <header class="fixed top-0 w-full z-40 glass-header">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#home" class="font-display font-bold text-white tracking-tight flex items-center gap-2 group">
+                <div class="w-2 h-2 rounded-full bg-accent group-hover:shadow-[0_0_10px_rgba(16,185,129,0.8)] transition-all"></div>
+                Rujal.
+            </a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a>
+                <a href="#projects" class="text-gray-400 hover:text-white transition-colors">Work</a>
+                <a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+            </nav>
+            <a href="https://github.com/0luv69" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-github text-xl"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 pt-32 pb-32 max-w-6xl mx-auto px-6">
+
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[75vh] flex flex-col justify-center items-center text-center reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-surface mb-8">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                </span>
+                <span class="text-xs font-medium text-gray-300 tracking-wide uppercase">Available for new opportunities</span>
+            </div>
+
+            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6">
+                <span class="text-gradient">Engineering digital</span><br>
+                <span class="text-white">excellence.</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-400 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                I am Rujal Baniya, a Full-Stack Developer & Cybersecurity enthusiast building secure, scalable, and elegant systems.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center gap-4">
+                <a href="#projects" class="w-full sm:w-auto px-8 py-3.5 bg-white text-black rounded-full font-medium text-sm hover:scale-105 transition-transform duration-300">
+                    Explore Work
+                </a>
+                <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 bg-surface border border-border text-white rounded-full font-medium text-sm hover:bg-surfaceHover transition-colors duration-300">
+                    Get in touch
+                </a>
+            </div>
+        </section>
+
+        <!-- Bento Grid: About & Skills -->
+        <section id="about" class="pt-24 reveal">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- About Intro (Spans 2 cols) -->
+                <div class="md:col-span-2 bento-card p-8 md:p-10 flex flex-col justify-between">
+                    <div>
+                        <i class="fas fa-quote-left text-accent text-2xl mb-6 opacity-50"></i>
+                        <h2 class="font-display text-2xl md:text-3xl text-white font-semibold mb-4 leading-snug">
+                            Bridging the gap between robust software architecture and impenetrable security.
+                        </h2>
+                        <p class="text-gray-400 font-light leading-relaxed">
+                            With a strong foundation in Python and Django, I specialize in crafting seamless web experiences while ensuring that the underlying infrastructure remains secure against modern threats. 
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-border flex items-center gap-4">
+                        <img src="/staticfiles/img/me.jpg" alt="Rujal Baniya" class="w-12 h-12 rounded-full grayscale border border-border object-cover">
+                        <div>
+                            <p class="text-white font-medium text-sm">Rujal Baniya</p>
+                            <p class="text-xs text-gray-500">Kathmandu, Nepal</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education / Quick Stats -->
+                <div class="bento-card p-8 md:p-10 flex flex-col gap-6">
+                    <div class="flex-1">
+                        <h3 class="text-gray-400 text-sm font-medium uppercase tracking-widest mb-4">Education</h3>
+                        <p class="text-white font-display font-medium text-lg">BSc. Computer Science</p>
+                        <p class="text-gray-500 text-sm mt-1">Specialized in Programming & Security</p>
+                    </div>
+                    <div class="flex-1 pt-6 border-t border-border">
+                        <h3 class="text-gray-400 text-sm font-medium uppercase tracking-widest mb-4">Focus</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-surfaceHover border border-border rounded-md text-xs text-gray-300">Backend</span>
+                            <span class="px-3 py-1 bg-surfaceHover border border-border rounded-md text-xs text-gray-300">Pen-Testing</span>
+                            <span class="px-3 py-1 bg-surfaceHover border border-border rounded-md text-xs text-gray-300">System Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Area (Spans full width) -->
+                <div class="md:col-span-3 bento-card p-8 md:p-10">
+                    <h3 class="text-gray-400 text-sm font-medium uppercase tracking-widest mb-8 text-center">Core Technologies</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-16 h-16 rounded-2xl bg-surface border border-border flex items-center justify-center mb-4 group-hover:border-accent transition-colors duration-300">
+                                <i class="fab fa-python text-2xl text-gray-300 group-hover:text-white transition-colors"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white">Python</span>
+                        </div>
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-16 h-16 rounded-2xl bg-surface border border-border flex items-center justify-center mb-4 group-hover:border-accent transition-colors duration-300">
+                                <i class="fas fa-server text-2xl text-gray-300 group-hover:text-white transition-colors"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white">Django</span>
+                        </div>
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-16 h-16 rounded-2xl bg-surface border border-border flex items-center justify-center mb-4 group-hover:border-accent transition-colors duration-300">
+                                <i class="fas fa-shield-halved text-2xl text-gray-300 group-hover:text-white transition-colors"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white">Cybersecurity</span>
+                        </div>
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-16 h-16 rounded-2xl bg-surface border border-border flex items-center justify-center mb-4 group-hover:border-accent transition-colors duration-300">
+                                <i class="fab fa-js text-2xl text-gray-300 group-hover:text-white transition-colors"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="pt-32 reveal">
+            <h2 class="font-display text-4xl text-white font-bold tracking-tight mb-12">Selected Work</h2>
+
+            <div class="space-y-10">
+                {% for project in projects %}
+                <article class="group bento-card overflow-hidden flex flex-col md:flex-row items-stretch p-2">
+                    
+                    <!-- Minimal Card Image -->
+                    <div class="w-full md:w-1/2 aspect-[4/3] md:aspect-auto md:h-[350px] rounded-xl overflow-hidden relative bg-[#0a0a0a]">
+                        <img alt="{{ project.title }}" data-src="{% static project.image %}" class="lazy w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out" loading="lazy">
+                        <div class="absolute inset-0 border border-white/5 rounded-xl z-10 pointer-events-none"></div>
+                    </div>
+
+                    <!-- Card Info -->
+                    <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                        <h3 class="font-display text-2xl text-white font-semibold mb-4">{{ project.title }}</h3>
+                        <div class="text-gray-400 text-sm font-light leading-relaxed mb-8 prose prose-invert">
+                            {{ project.description|safe|truncatewords_html:35 }}
+                        </div>
+                        
+                        <div class="mt-auto flex items-center gap-4">
+                            <a href="{{ project.btn2_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 bg-white text-black text-xs font-semibold rounded-full hover:bg-gray-200 transition-colors">
+                                View Live <i class="fas fa-arrow-up-right-from-square ml-2 opacity-70"></i>
+                            </a>
+                            
+                            {% if project.btn1_text != 'Private Code' %}
+                            <a href="{{ project.btn1_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 bg-transparent border border-border text-white text-xs font-semibold rounded-full hover:bg-surfaceHover transition-colors">
+                                <i class="fab fa-github mr-2"></i> Source
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="https://github.com/0luv69" target="_blank" class="inline-flex items-center text-sm font-medium text-gray-400 hover:text-white transition-colors border-b border-transparent hover:border-white pb-0.5">
+                    Explore all projects on GitHub <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="pt-32 pb-16 reveal">
+            <div class="bento-card p-8 md:p-16 relative overflow-hidden">
+                <!-- Abstract minimal circles -->
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-accent opacity-5 blur-[80px] rounded-full pointer-events-none"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
+                    <div>
+                        <h2 class="font-display text-4xl text-white font-bold tracking-tight mb-4">Let's build something together.</h2>
+                        <p class="text-gray-400 font-light mb-8 max-w-md">
+                            Feel free to reach out if you're looking for a developer, have a question, or simply want to connect.
+                        </p>
+                        <div class="space-y-4">
+                            <a href="mailto:baniyarujal@gmail.com" class="flex items-center gap-4 text-gray-300 hover:text-white transition-colors">
+                                <div class="w-10 h-10 rounded-full bg-surface border border-border flex items-center justify-center">
+                                    <i class="fas fa-envelope text-sm"></i>
+                                </div>
+                                <span class="text-sm font-medium">baniyarujal@gmail.com</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="flex items-center gap-4 text-gray-300 hover:text-white transition-colors">
+                                <div class="w-10 h-10 rounded-full bg-surface border border-border flex items-center justify-center">
+                                    <i class="fab fa-linkedin text-sm"></i>
+                                </div>
+                                <span class="text-sm font-medium">LinkedIn Profile</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Clean Form -->
+                    <form method="post" action="/contact/" class="space-y-5">
+                        {% csrf_token %}
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <input id="name" type="text" name="name" required placeholder="Name" class="w-full bg-surface border border-border rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-gray-400 transition-colors">
+                            <input id="email" type="email" name="email" required placeholder="Email" class="w-full bg-surface border border-border rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-gray-400 transition-colors">
+                        </div>
+                        <input id="subject" type="text" name="subject" required placeholder="Subject" class="w-full bg-surface border border-border rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-gray-400 transition-colors">
+                        <textarea id="message" name="message" rows="4" required placeholder="Message" class="w-full bg-surface border border-border rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-gray-400 transition-colors resize-none"></textarea>
+                        
+                        <button type="submit" class="w-full py-3.5 bg-white text-black rounded-xl font-semibold text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-2">
+                            <span id="btn_txt">Send Message</span>
+                            <svg class="animate-spin h-4 w-4 text-black hidden" id="loader" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Minimal Footer -->
+        <footer class="border-t border-border pt-8 mt-12 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 font-medium">
+            <p>&copy; 2024 Rujal Baniya. All rights reserved.</p>
+            <p class="mt-2 md:mt-0">Designed & Built with precision.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // 1. Mouse Glow Tracking Effect
+        const glow = document.getElementById('glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+        document.addEventListener('mouseenter', () => glow.classList.remove('opacity-0'));
+        document.addEventListener('mouseleave', () => glow.classList.add('opacity-0'));
+
+        // 2. Scroll Reveal Animations
+        document.addEventListener("DOMContentLoaded", () => {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Optional: remove unobserve if you want elements to hide/show repeatedly
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+            reveals.forEach(reveal => observer.observe(reveal));
+        });
+
+        // 3. Lazy Load Images
+        document.addEventListener("DOMContentLoaded", () => {
+            const lazyImages = document.querySelectorAll('img.lazy');
+            const imageObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        obs.unobserve(img);
+                    }
+                });
+            });
+            lazyImages.forEach(img => imageObserver.observe(img));
+        });
+
+        // 4. Form Submit Loading State
+        document.querySelector("form").addEventListener("submit", function () {
+            const btnTxt = document.getElementById("btn_txt");
+            const loader = document.getElementById("loader");
+            btnTxt.innerText = "Sending...";
+            loader.classList.remove("hidden");
+        });
+    </script>
+</body>
+</html>

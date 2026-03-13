@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rujal Baniya - Portfolio | 0luv69</title>
+    <meta name="author" content="Rujal Baniya" />
+    <meta name="description" content="Rujal Baniya - A passionate Full Stack Developer from Nepal, specializing in Python, cybersecurity, and web development." />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    
+    <!-- Tailwind CSS (via CDN for static preview, replace with your local if configured) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --accent-green: #10b981;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafafa;
+            color: #111827;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .logo-text {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* 1 Second Preloader Animation */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background-color: #ffffff;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideUpOut 0.8s cubic-bezier(0.65, 0, 0.35, 1) 1s forwards;
+        }
+
+        @keyframes slideUpOut {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100%); opacity: 0; visibility: hidden; pointer-events: none; }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 1.2s forwards;
+        }
+
+        .fade-in-up.delay-1 { animation-delay: 1.4s; }
+        .fade-in-up.delay-2 { animation-delay: 1.6s; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Subtle interactions */
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.05);
+        }
+        
+        .project-image-container img {
+            transition: transform 0.7s ease;
+        }
+        .project-card:hover .project-image-container img {
+            transform: scale(1.03);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fafafa; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-green); }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-green-200 selection:text-green-900">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <h1 class="logo-text text-6xl font-bold text-gray-900 tracking-tighter">rb<span class="text-green-500">.</span></h1>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="logo-text text-2xl font-bold tracking-tighter text-gray-900">rb<span class="text-green-500">.</span></a>
+            <div class="space-x-8 hidden md:block text-sm font-medium text-gray-600">
+                <a href="#about" class="hover:text-green-500 transition-colors">About</a>
+                <a href="#projects" class="hover:text-green-500 transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-green-500 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 max-w-6xl mx-auto px-6">
+        
+        <!-- Minimal Hero Section -->
+        <section id="about" class="min-h-[70vh] flex flex-col justify-center py-20">
+            <div class="max-w-3xl fade-in-up">
+                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 leading-tight mb-6 tracking-tight">
+                    Hi, I'm Rujal. <br/>
+                    <span class="text-gray-400">Software Developer.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-10 max-w-2xl">
+                    I build premium, robust, and secure digital experiences. Specializing in Python, Django, and modern web technologies with a strong focus on cybersecurity.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#projects" class="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-500 transition-colors duration-300">See my work</a>
+                    <a href="https://github.com/0luv69" target="_blank" class="px-6 py-3 rounded-lg font-medium text-gray-600 border border-gray-200 hover:border-gray-900 hover:text-gray-900 transition-colors duration-300 flex items-center gap-2">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <section class="py-16 border-y border-gray-100 fade-in-up delay-1">
+            <p class="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-8">Technologies I Work With</p>
+            <div class="flex flex-wrap gap-8 items-center opacity-70">
+                <!-- Python -->
+                <div class="flex items-center gap-2 text-gray-700 hover:text-green-600 transition-colors">
+                    <i class="fab fa-python text-3xl"></i>
+                    <span class="font-medium text-sm">Python</span>
+                </div>
+                <!-- Django (Using an icon or text since no native FA Django icon exists) -->
+                <div class="flex items-center gap-2 text-gray-700 hover:text-green-600 transition-colors">
+                    <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.536 21.603c-2.863 0-5.405-1.121-7.234-3.13l1.838-2.072c1.373 1.517 3.327 2.456 5.396 2.456 4.148 0 7.525-3.376 7.525-7.524s-3.377-7.524-7.525-7.524c-2.069 0-4.023.939-5.396 2.456l-1.838-2.071c1.829-2.009 4.371-3.13 7.234-3.13 5.663 0 10.27 4.607 10.27 10.269 0 5.663-4.607 10.27-10.27 10.27zm-7.65-8.08H1.365V6.444h2.521v7.08z"/></svg>
+                    <span class="font-medium text-sm">Django</span>
+                </div>
+                <!-- JavaScript -->
+                <div class="flex items-center gap-2 text-gray-700 hover:text-green-600 transition-colors">
+                    <i class="fab fa-js text-3xl"></i>
+                    <span class="font-medium text-sm">JavaScript</span>
+                </div>
+                <!-- HTML/CSS -->
+                <div class="flex items-center gap-2 text-gray-700 hover:text-green-600 transition-colors">
+                    <i class="fab fa-html5 text-3xl"></i>
+                    <i class="fab fa-css3-alt text-3xl"></i>
+                    <span class="font-medium text-sm">Web</span>
+                </div>
+                <!-- Security -->
+                <div class="flex items-center gap-2 text-gray-700 hover:text-green-600 transition-colors">
+                    <i class="fas fa-shield-alt text-3xl"></i>
+                    <span class="font-medium text-sm">Cybersecurity</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section (Gulamoff Inspired) -->
+        <section id="projects" class="py-24 fade-in-up delay-2">
+            <h2 class="text-3xl font-bold mb-12 tracking-tight">Selected Work</h2>
+            
+            <div class="flex flex-col gap-16">
+                
+                <!-- Static Project Card 1 -->
+                <article class="project-card flex flex-col md:flex-row bg-white rounded-2xl border border-gray-100 overflow-hidden group">
+                    
+                    <!-- Image Container -->
+                    <div class="project-image-container md:w-1/2 bg-gray-100 relative overflow-hidden h-64 md:h-auto border-b md:border-b-0 md:border-r border-gray-100">
+                        <!-- Project Type Tag (Absolute) -->
+                        <div class="absolute top-4 left-4 z-10">
+                            <span class="bg-white/90 backdrop-blur-sm text-gray-800 text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
+                                Full Stack Application
+                            </span>
+                        </div>
+                        <!-- Placeholder Image (Update with static image later) -->
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                             alt="MCQ Champs Platform" 
+                             class="w-full h-full object-cover">
+                    </div>
+
+                    <!-- Content Container -->
+                    <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">MCQ Champs</h3>
+                        <p class="text-gray-600 mb-8 leading-relaxed">
+                            A comprehensive student learning platform designed to facilitate MCQ practice and testing. Features include built-in presentation posting, progress tracking, and secure user authentication.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="px-3 py-1 bg-gray-50 text-gray-600 rounded text-xs font-medium border border-gray-100">Django</span>
+                            <span class="px-3 py-1 bg-gray-50 text-gray-600 rounded text-xs font-medium border border-gray-100">Python</span>
+                            <span class="px-3 py-1 bg-gray-50 text-gray-600 rounded text-xs font-medium border border-gray-100">PostgreSQL</span>
+                        </div>
+
+                        <div class="flex gap-4 mt-auto">
+                            <a href="#" class="text-gray-900 font-medium hover:text-green-500 transition-colors inline-flex items-center gap-2 text-sm">
+                                View Live <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 font-medium hover:text-gray-900 transition-colors inline-flex items-center gap-2 text-sm">
+                                Source Code <i class="fab fa-github text-base"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Additional static cards can be copied and pasted here later -->
+
+            </div>
+        </section>
+
+        <!-- Minimal Footer -->
+        <footer id="contact" class="py-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-gray-500">© 2026 Rujal Baniya. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="mailto:baniyarujal@gmail.com" class="text-gray-400 hover:text-gray-900 transition-colors">
+                    <span class="sr-only">Email</span>
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+                <a href="https://github.com/0luv69" target="_blank" class="text-gray-400 hover:text-gray-900 transition-colors">
+                    <span class="sr-only">GitHub</span>
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="text-gray-400 hover:text-gray-900 transition-colors">
+                    <span class="sr-only">LinkedIn</span>
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                </a>
+            </div>
+        </footer>
+
+    </main>
+</body>
+</html>

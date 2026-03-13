@@ -1,0 +1,449 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#050505]">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon" />
+
+    <title>Rujal Baniya &mdash; Creative Developer</title>
+    <meta name="author" content="Rujal Baniya" />
+    <meta name="title" content="Rujal Baniya | Full Stack Developer & Cybersecurity">
+    <meta name="description" content="Rujal Baniya - A passionate Full Stack Developer from Nepal, specializing in Python, cybersecurity, and web development." />
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rujal Baniya",
+        "jobTitle": "Software Developer",
+        "url": "https://www.rujalbaniya.com.np",
+        "sameAs": ["https://github.com/0luv69"]
+      }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Premium Fonts: Syne for display, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Setup */
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-syne { font-family: 'Syne', sans-serif; }
+
+        ::selection { background-color: #10b981; color: #000; }
+
+        /* Minimal Scrollbar */
+        ::-webkit-scrollbar { width: 0px; } /* Hidden for seamless experience */
+
+        /* Outline Text Effect */
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+        }
+        .text-outline:hover {
+            color: #ffffff;
+        }
+
+        /* "One Section Seen" Stacking Effect */
+        .stack-section {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 -20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* Initial Page Load Curtain */
+        #preloader {
+            transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        /* Slide Up Text Animation */
+        .text-mask { overflow: hidden; }
+        .text-slide-up {
+            transform: translateY(100%);
+            opacity: 0;
+            animation: slideUpAnim 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes slideUpAnim {
+            0% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Custom Project Hover Image */
+        .project-row { border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .hover-img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 350px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.8);
+            transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .project-row:hover .hover-img {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* Infinite Marquee */
+        .marquee-inner {
+            display: flex;
+            width: 200%;
+            animation: marquee 15s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Glass UI Navigation */
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .nav-link.active {
+            color: #10b981;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-[#10b981] selection:text-black">
+
+    <!-- 1. Page Load Curtain -->
+    <div id="preloader" class="fixed inset-0 bg-[#10b981] z-[100] flex items-center justify-center origin-top">
+        <div class="font-syne text-black text-5xl md:text-7xl font-bold animate-pulse">RB.</div>
+    </div>
+
+    <!-- Minimal Header / Socials -->
+    <header class="fixed top-0 w-full z-[60] p-6 md:p-10 flex justify-end items-center mix-blend-difference text-white pointer-events-none">
+        <div class="flex gap-6 pointer-events-auto">
+            <a href="https://github.com/0luv69" target="_blank" class="hover:text-[#10b981] transition"><i class="fab fa-github text-xl"></i></a>
+            <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="hover:text-[#10b981] transition"><i class="fab fa-linkedin text-xl"></i></a>
+        </div>
+    </header>
+
+    <!-- Glass UI Sidebar (Desktop Left) -->
+    <nav class="hidden lg:flex lg:flex-col lg:w-20 glass-nav fixed top-1/2 -translate-y-1/2 left-6 h-auto py-8 rounded-full justify-center items-center space-y-8 z-[60] shadow-2xl">
+        <a href="#home" class="nav-link w-full text-center text-gray-500 hover:text-white transition duration-300 flex flex-col items-center group active">
+            <i class="fas fa-dot-circle text-[10px] mb-2 group-hover:scale-150 transition-transform"></i>
+            <span class="text-[9px] tracking-widest uppercase font-medium rotate-180" style="writing-mode: vertical-rl;">Home</span>
+        </a>
+        <a href="#about" class="nav-link w-full text-center text-gray-500 hover:text-white transition duration-300 flex flex-col items-center group">
+            <i class="fas fa-dot-circle text-[10px] mb-2 group-hover:scale-150 transition-transform"></i>
+            <span class="text-[9px] tracking-widest uppercase font-medium rotate-180" style="writing-mode: vertical-rl;">About</span>
+        </a>
+        <a href="#projects" class="nav-link w-full text-center text-gray-500 hover:text-white transition duration-300 flex flex-col items-center group">
+            <i class="fas fa-dot-circle text-[10px] mb-2 group-hover:scale-150 transition-transform"></i>
+            <span class="text-[9px] tracking-widest uppercase font-medium rotate-180" style="writing-mode: vertical-rl;">Work</span>
+        </a>
+        <a href="#contact" class="nav-link w-full text-center text-gray-500 hover:text-white transition duration-300 flex flex-col items-center group">
+            <i class="fas fa-dot-circle text-[10px] mb-2 group-hover:scale-150 transition-transform"></i>
+            <span class="text-[9px] tracking-widest uppercase font-medium rotate-180" style="writing-mode: vertical-rl;">Contact</span>
+        </a>
+    </nav>
+
+    <!-- Navbar for small screens (Bottom) -->
+    <div class="lg:hidden w-[90%] left-[5%] glass-nav rounded-full fixed bottom-6 z-[60] shadow-2xl">
+        <nav class="flex justify-around py-4">
+            <a href="#home" class="nav-link text-gray-500 hover:text-[#10b981] transition duration-300 active"><i class="fas fa-home text-xl"></i></a>
+            <a href="#about" class="nav-link text-gray-500 hover:text-[#10b981] transition duration-300"><i class="fas fa-user text-xl"></i></a>
+            <a href="#projects" class="nav-link text-gray-500 hover:text-[#10b981] transition duration-300"><i class="fas fa-layer-group text-xl"></i></a>
+            <a href="#contact" class="nav-link text-gray-500 hover:text-[#10b981] transition duration-300"><i class="fas fa-envelope text-xl"></i></a>
+        </nav>
+    </div>
+
+    <!-- Main Wrapper (Added lg:ml-24 padding for desktop sidebar clearance) -->
+    <main class="relative lg:ml-32">
+
+        <!-- 2. HERO SECTION (Sticky 1) -->
+        <section id="home" class="stack-section bg-[#050505] flex flex-col justify-end p-6 md:p-12 pb-12 z-[1]">
+            <div class="flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full">
+                
+                <p class="text-[#10b981] font-medium tracking-widest uppercase mb-4 text-sm text-slide-up" style="animation-delay: 1.2s;">Full Stack Developer</p>
+                
+                <div class="text-mask">
+                    <h1 class="font-syne text-[12vw] md:text-[8vw] leading-[0.9] font-extrabold uppercase tracking-tighter text-slide-up" style="animation-delay: 1.3s;">
+                        Creative
+                    </h1>
+                </div>
+                <div class="text-mask">
+                    <h1 class="font-syne text-[12vw] md:text-[8vw] leading-[0.9] font-extrabold uppercase tracking-tighter text-outline text-slide-up" style="animation-delay: 1.4s;">
+                        Engineering
+                    </h1>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-end max-w-7xl mx-auto w-full text-gray-400 text-sm font-light uppercase tracking-widest text-slide-up pb-20 lg:pb-0" style="animation-delay: 1.6s;">
+                <p>Based in Kathmandu, Nepal</p>
+                <div class="flex flex-col items-center gap-2">
+                    <p>Scroll</p>
+                    <div class="w-px h-12 bg-gray-600 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-full bg-[#10b981] -translate-y-full animate-[slideDown_1.5s_infinite]"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <style>
+                @keyframes slideDown {
+                    0% { transform: translateY(-100%); }
+                    100% { transform: translateY(100%); }
+                }
+            </style>
+        </section>
+
+        <!-- 3. ABOUT SECTION (Sticky 2) -->
+        <section id="about" class="stack-section bg-[#111111] z-[2] flex items-center">
+            <div class="max-w-7xl mx-auto w-full p-6 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+                
+                <div class="relative">
+                    <h2 class="font-syne text-5xl md:text-7xl font-bold leading-tight mb-6">
+                        Bridging <br><span class="text-[#10b981]">Logic</span> & <br>Security.
+                    </h2>
+                    <img src="/staticfiles/img/me.jpg" alt="Rujal Baniya" class="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover grayscale opacity-50 absolute -bottom-10 right-10 mix-blend-screen">
+                </div>
+
+                <div class="space-y-8">
+                    <p class="text-lg md:text-2xl text-gray-300 font-light leading-relaxed">
+                        I am Rujal Baniya. I build scalable digital ecosystems utilizing <strong class="text-white font-medium">Python & Django</strong>, while ensuring robust defenses through <strong class="text-white font-medium">Penetration Testing & Cybersecurity</strong> practices.
+                    </p>
+                    
+                    <!-- Technologies -->
+                    <div class="pt-8 border-t border-gray-800">
+                        <p class="text-sm text-gray-500 uppercase tracking-widest mb-4">Core Arsenal</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 border border-gray-700 rounded-full text-sm hover:border-[#10b981] hover:text-[#10b981] transition-colors cursor-default">Python</span>
+                            <span class="px-4 py-2 border border-gray-700 rounded-full text-sm hover:border-[#10b981] hover:text-[#10b981] transition-colors cursor-default">Django</span>
+                            <span class="px-4 py-2 border border-gray-700 rounded-full text-sm hover:border-[#10b981] hover:text-[#10b981] transition-colors cursor-default">JavaScript</span>
+                            <span class="px-4 py-2 border border-gray-700 rounded-full text-sm hover:border-[#10b981] hover:text-[#10b981] transition-colors cursor-default">Cybersecurity</span>
+                            <span class="px-4 py-2 border border-gray-700 rounded-full text-sm hover:border-[#10b981] hover:text-[#10b981] transition-colors cursor-default">Git</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PROJECTS SECTION (Normal Flow so all projects fit) -->
+        <section id="projects" class="relative bg-[#080808] z-[3] py-24 md:py-32 min-h-screen pb-40 lg:pb-32">
+            
+            <!-- Infinite Marquee Header -->
+            <div class="overflow-hidden whitespace-nowrap mb-24 border-y border-gray-800 py-4 opacity-30 pointer-events-none">
+                <div class="marquee-inner font-syne text-[5vw] font-bold uppercase tracking-tighter flex gap-8 text-outline">
+                    <span>Selected Works &middot; Selected Works &middot; Selected Works &middot; Selected Works &middot;</span>
+                    <span>Selected Works &middot; Selected Works &middot; Selected Works &middot; Selected Works &middot;</span>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto w-full px-6 md:px-12">
+                
+                <div class="flex flex-col w-full border-t border-gray-800">
+                    {% for project in projects %}
+                    <!-- Interactive Hover Row -->
+                    <div class="project-row relative py-8 md:py-12 group cursor-pointer" onmousemove="moveImage(event, this)">
+                        
+                        <!-- Floating Image (Follows cursor) -->
+                        <img src="{% static project.image %}" alt="{{ project.title }}" class="hover-img lazy" loading="lazy">
+
+                        <div class="relative z-20 flex flex-col md:flex-row md:items-center justify-between gap-4 pointer-events-none">
+                            <div class="flex-1">
+                                <span class="text-xs text-[#10b981] uppercase tracking-widest font-medium mb-2 block">0{{ forloop.counter }}</span>
+                                <h3 class="font-syne text-4xl md:text-5xl font-bold text-gray-300 group-hover:text-white transition-colors">{{ project.title }}</h3>
+                            </div>
+                            
+                            <div class="flex-1 md:text-right hidden md:block">
+                                <p class="text-gray-500 font-light text-sm max-w-sm ml-auto line-clamp-2">
+                                    {{ project.description|safe|striptags }}
+                                </p>
+                            </div>
+
+                            <div class="pointer-events-auto flex items-center gap-4 mt-4 md:mt-0">
+                                <a href="{{ project.btn2_url }}" target="_blank" class="w-12 h-12 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
+                                    <i class="fas fa-arrow-right -rotate-45"></i>
+                                </a>
+                                {% if project.btn1_text != 'Private Code' %}
+                                <a href="{{ project.btn1_url }}" target="_blank" class="w-12 h-12 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="mt-20 text-center">
+                    <a href="https://github.com/0luv69" target="_blank" class="font-syne font-bold text-lg uppercase tracking-wider text-gray-400 hover:text-white transition-colors border-b border-[#10b981] pb-1">
+                        View GitHub Archive
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CONTACT SECTION (Sticky Footer, Big Impact) -->
+        <section id="contact" class="stack-section bg-[#10b981] z-[4] flex flex-col justify-center items-center p-6 md:p-12 pb-32 lg:pb-12 text-black">
+            
+            <div class="max-w-4xl mx-auto w-full text-center mb-12">
+                <h2 class="font-syne text-[10vw] md:text-[8vw] font-black uppercase leading-none tracking-tighter mb-4">
+                    Let's Talk.
+                </h2>
+                <p class="text-xl font-medium opacity-80">Open for opportunities and collaborations.</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto w-full bg-black text-white p-8 md:p-12 rounded-3xl shadow-2xl relative z-10">
+                <form method="post" action="/contact/" class="space-y-6">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-widest text-gray-400 font-medium">Name</label>
+                            <input type="text" name="name" required class="w-full bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-[#10b981] transition-colors">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-widest text-gray-400 font-medium">Email</label>
+                            <input type="email" name="email" required class="w-full bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-[#10b981] transition-colors">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs uppercase tracking-widest text-gray-400 font-medium">Subject</label>
+                        <input type="text" name="subject" required class="w-full bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-[#10b981] transition-colors">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs uppercase tracking-widest text-gray-400 font-medium">Message</label>
+                        <textarea name="message" rows="3" required class="w-full bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-[#10b981] transition-colors resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-[#10b981] text-black py-4 rounded-xl font-bold uppercase tracking-widest text-sm hover:bg-white transition-colors flex items-center justify-center gap-3">
+                        <span id="btn_txt">Send Message</span>
+                        <i id="btn_icon" class="fas fa-paper-plane"></i>
+                        <!-- Simple Spinner -->
+                        <svg class="animate-spin h-5 w-5 hidden" id="loader" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Footer Meta -->
+            <div class="absolute bottom-6 lg:bottom-6 bottom-24 w-full px-6 md:px-12 flex justify-between items-center text-xs font-semibold opacity-70 lg:pr-32">
+                <p>&copy; 2024 Rujal Baniya.</p>
+                <a href="#home" class="hover:underline">Back to top &uarr;</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // 1. Page Load Preloader Animation
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                preloader.style.transform = 'translateY(-100%)';
+            }, 800); // 800ms delay to show the "RB." logo
+        });
+
+        // 2. Custom Image Follow Cursor for Projects
+        function moveImage(e, rowElement) {
+            const img = rowElement.querySelector('.hover-img');
+            if(!img) return;
+            
+            // Get mouse position relative to the row
+            const rect = rowElement.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Update image position (transform translates -50% -50% in CSS to center it)
+            img.style.left = `${x}px`;
+            img.style.top = `${y}px`;
+        }
+
+        // 3. Form Submit Loading State
+        document.querySelector("form").addEventListener("submit", function () {
+            const btnTxt = document.getElementById("btn_txt");
+            const btnIcon = document.getElementById("btn_icon");
+            const loader = document.getElementById("loader");
+            
+            btnTxt.innerText = "Sending...";
+            btnIcon.classList.add("hidden");
+            loader.classList.remove("hidden");
+        });
+
+        // 4. Lazy Loading Fallback
+        document.addEventListener("DOMContentLoaded", () => {
+            const lazyImages = document.querySelectorAll('img.lazy');
+            const imageObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if(img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                        }
+                        obs.unobserve(img);
+                    }
+                });
+            });
+            lazyImages.forEach(img => imageObserver.observe(img));
+
+            // 5. Active Navbar Link highlighting using Intersection Observer
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            };
+
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Remove active from all
+                        navLinks.forEach(link => {
+                            link.classList.remove('text-[#10b981]', 'active');
+                            link.classList.add('text-gray-500');
+                        });
+                        // Add active to current
+                        const id = entry.target.getAttribute('id');
+                        const activeLinks = document.querySelectorAll(`.nav-link[href="#${id}"]`);
+                        activeLinks.forEach(activeLink => {
+                            activeLink.classList.remove('text-gray-500');
+                            activeLink.classList.add('text-[#10b981]', 'active');
+                        });
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                navObserver.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
