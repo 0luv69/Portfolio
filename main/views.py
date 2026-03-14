@@ -18,16 +18,26 @@ from django.contrib import messages
 def home(request):
     final_list= []
     for i in range(5,0,-1):
-        particular_grp= Project.objects.filter(prj_value=i).order_by('?')
+        particular_grp= Project.objects.filter(sort_order=i).order_by('?')
         final_list.extend(list(particular_grp))
     projects = final_list
-    return render(request, 'pages/index.html', {'projects':projects})
+    technologies = Technology.objects.all().order_by('-order')
+    return render(request, 'pages/index.html', {'projects':projects, 'technologies': technologies})
+
+
+def temp0(request):
+    final_list= []
+    for i in range(5,0,-1):
+        particular_grp= Project.objects.filter(sort_order=i).order_by('?')
+        final_list.extend(list(particular_grp))
+    projects = final_list
+    return render(request, 'pages/old.html', {'projects':projects})
 
 
 def temp1(request):
     final_list= []
     for i in range(5,0,-1):
-        particular_grp= Project.objects.filter(prj_value=i).order_by('?')
+        particular_grp= Project.objects.filter(sort_order=i).order_by('?')
         final_list.extend(list(particular_grp))
     projects = final_list
     return render(request, 'pages/temp-1.html', {'projects':projects})
@@ -35,7 +45,7 @@ def temp1(request):
 def temp2(request):
     final_list= []
     for i in range(5,0,-1):
-        particular_grp= Project.objects.filter(prj_value=i).order_by('?')
+        particular_grp= Project.objects.filter(sort_order=i).order_by('?')
         final_list.extend(list(particular_grp))
     projects = final_list
     return render(request, 'pages/temp-2.html', {'projects':projects})
@@ -44,7 +54,7 @@ def temp2(request):
 def temp3(request):
     final_list= []
     for i in range(5,0,-1):
-        particular_grp= Project.objects.filter(prj_value=i).order_by('?')
+        particular_grp= Project.objects.filter(sort_order=i).order_by('?')
         final_list.extend(list(particular_grp))
     projects = final_list
     return render(request, 'pages/temp-3.html', {'projects':projects})
@@ -53,7 +63,7 @@ def temp3(request):
 def temp4(request):
     final_list= []
     for i in range(5,0,-1):
-        particular_grp= Project.objects.filter(prj_value=i).order_by('?')
+        particular_grp= Project.objects.filter(sort_order=i).order_by('?')
         final_list.extend(list(particular_grp))
     projects = final_list
     return render(request, 'pages/temp-4.html', {'projects':projects})
@@ -124,66 +134,31 @@ def contact(request):
 
 
 
-# main/views.py
-
-import json
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.dateparse import parse_datetime
 from .models import Project
 
-@csrf_exempt
-def import_projects_json(request):
-    if request.method != 'POST':
-        return JsonResponse({'status': 'error', 'message': 'Only POST method allowed.'}, status=405)
 
-    try:
-        body = request.body.decode('utf-8')
-        try:
-            # First, try the simple case: a single JSON array
-            data = json.loads(body)
-            if not isinstance(data, list):
-                raise ValueError("Expected a list of project entries.")
-        except ValueError as ve:
-            # Fallback: parse multiple JSON values concatenated together
-            decoder = json.JSONDecoder()
-            pos = 0
-            length = len(body)
-            data = []
-            while pos < length:
-                obj, idx = decoder.raw_decode(body, pos)
-                pos = idx
-                # if it's a list, extend; otherwise, append single object
-                if isinstance(obj, list):
-                    data.extend(obj)
-                else:
-                    data.append(obj)
-                # skip any whitespace/newlines between JSON values
-                while pos < length and body[pos] in ' \r\n\t':
-                    pos += 1
+def project_list_json(request):
+    projects = Project.objects.all().order_by("-created_at")
 
-        # Now `data` is a flat list of project dicts
-        for item in data:
-            fields = item['fields']
-            project, created = Project.objects.update_or_create(
-                pk=item['pk'],
-                defaults={
-                    'title':       fields['title'],
-                    'description': fields['description'],
-                    'btn1_text':   fields['btn1_text'],
-                    'btn1_url':    fields['btn1_url'],
-                    'btn2_text':   fields['btn2_text'],
-                    'btn2_url':    fields['btn2_url'],
-                    'prj_value':   fields['prj_value'],
-                    'created_at':  parse_datetime(fields['created_at']),
-                }
-            )
-            # If an image path was provided, assign it directly
-            if fields.get('image'):
-                project.image.name = fields['image']
-                project.save()
+    data = []
 
-        return JsonResponse({'status': 'success', 'message': 'Projects imported successfully.'})
+    for p in projects:
+        data.append({
+            "id": p.id,
+            "title": p.title,
+            "description": p.description,
+            "image": p.image.url if p.image else None,
+            "btn1_text": p.btn1_text,
+            "btn1_url": p.btn1_url,
+            "btn2_text": p.btn2_text,
+            "btn2_url": p.btn2_url,
+            "sort_order": p.sort_order,
+            "created_at": p.created_at,
+        })
 
-    except Exception as e:
-        return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+    return JsonResponse({
+        "status": "ok",
+        "count": len(data),
+        "projects": data
+    })

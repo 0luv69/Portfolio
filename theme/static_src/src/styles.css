@@ -3,6 +3,18 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', system-ui, sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+
+.slidebar-design::-webkit-scrollbar { width: 3px; }
+.slidebar-design::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.06); border-radius: 3px; }
+
+
+
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -75,3 +87,13 @@
   animation: fillBar 1.5s ease-out forwards;
   animation-delay: calc(var(--delay) + 0.5s);
 }
+
+
+
+
+
+
+
+
+
+

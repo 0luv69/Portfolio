@@ -149,83 +149,15 @@
             </div>
         </section>
 
-
         <!-- Projects Section -->
         <section id="projects" class="pt-32 reveal">
             <h2 class="font-display text-4xl text-white font-bold tracking-tight mb-12">Selected Work</h2>
 
             <div class="space-y-10 projectCards">
                 {% for each_project in projects %}
-                <div class="eachPrjCards flex items-center relative w-full max-w-5xl mx-auto bg-[#2a2a2a] rounded-[2.5rem] p-16 shadow-2xl">
-                    <!-- 3D Images Side -->
-                    <div class="relative w-5/12 shrink-0">
-                        <div class="perspective relative w-full z-10">
-
-                            <!-- (Right Tilt) -->
-                            <div class="browser tilt-right bg-[#111] rounded-lg overflow-hidden border border-white/5 cursor-pointer shadow-[0_2px_4px_#00000003,0_4px_8px_#00000005,0_8px_16px_#0000000a,0_16px_32px_#0000000f,0_10px_40px_rgba(0,0,0,0.3)]">
-                                <div class="flex items-center justify-between h-7 px-4 bg-[#f1f1f1] border-b border-[#e5e5e5]">
-                                    <!-- Traffic lights -->
-                                    <svg fill="none" height="9" viewBox="0 0 38 9" width="38" xmlns="http://www.w3.org/2000/svg">
-                                        <path clip-rule="evenodd" d="M8.95993 4.75774C8.95993 7.04672 7.10434 8.90232 4.81535 8.90232C2.52637 8.90232 0.670776 7.04672 0.670776 4.75774C0.670776 2.46875 2.52637 0.613159 4.81535 0.613159C7.10434 0.613159 8.95993 2.46875 8.95993 4.75774ZM23.2491 4.75774C23.2491 7.04672 21.3935 8.90232 19.1045 8.90232C16.8156 8.90232 14.96 7.04672 14.96 4.75774C14.96 2.46875 16.8156 0.613159 19.1045 0.613159C21.3935 0.613159 23.2491 2.46875 23.2491 4.75774ZM33.3937 8.90232C35.6827 8.90232 37.5383 7.04672 37.5383 4.75774C37.5383 2.46875 35.6827 0.613159 33.3937 0.613159C31.1047 0.613159 29.2491 2.46875 29.2491 4.75774C29.2491 7.04672 31.1047 8.90232 33.3937 8.90232Z" fill="#a0a0a0" fill-rule="evenodd"/>
-                                    </svg>
-                                    <!-- URL bar -->
-                                    <div class="bg-[#e2e2e2] rounded px-6 py-0.5 text-[10px] text-[#555] flex items-center justify-center min-w-[120px]">
-                                        {{ each_project.title }}
-                                    </div>
-                                    <!-- Placeholder right icon -->
-                                    <div class="w-12"></div>
-                                </div>
-                                <div class="screen">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
-                                        alt="Back App View"
-                                        class="w-full h-auto block pointer-events-none align-middle"
-                                    />
-                                </div>
-                            </div>
-
-                            <!-- (Left Tilt) -->
-                            <div class="browser tilt-left bg-[#111] rounded-lg overflow-hidden border border-white/5 cursor-pointer shadow-[0_2px_4px_#00000003,0_4px_8px_#00000005,0_8px_16px_#0000000a,0_16px_32px_#0000000f,0_10px_40px_rgba(0,0,0,0.3)]">
-                                <div class="flex items-center justify-between h-7 px-4 bg-[#f1f1f1] border-b border-[#e5e5e5]">
-                                    <svg fill="none" height="9" viewBox="0 0 38 9" width="38" xmlns="http://www.w3.org/2000/svg">
-                                        <path clip-rule="evenodd" d="M8.95993 4.75774C8.95993 7.04672 7.10434 8.90232 4.81535 8.90232C2.52637 8.90232 0.670776 7.04672 0.670776 4.75774C0.670776 2.46875 2.52637 0.613159 4.81535 0.613159C7.10434 0.613159 8.95993 2.46875 8.95993 4.75774ZM23.2491 4.75774C23.2491 7.04672 21.3935 8.90232 19.1045 8.90232C16.8156 8.90232 14.96 7.04672 14.96 4.75774C14.96 2.46875 16.8156 0.613159 19.1045 0.613159C21.3935 0.613159 23.2491 2.46875 23.2491 4.75774ZM33.3937 8.90232C35.6827 8.90232 37.5383 7.04672 37.5383 4.75774C37.5383 2.46875 35.6827 0.613159 33.3937 0.613159C31.1047 0.613159 29.2491 2.46875 29.2491 4.75774C29.2491 7.04672 31.1047 8.90232 33.3937 8.90232Z" fill="#a0a0a0" fill-rule="evenodd"/>
-                                    </svg>
-                                    <div class="bg-[#e2e2e2] rounded px-6 py-0.5 text-[10px] text-[#555] flex items-center justify-center min-w-[120px]">
-                                        {{ each_project.title }}
-                                    </div>
-                                    <div class="w-12"></div>
-                                </div>
-                                <div class="screen">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80"
-                                        alt="Front App View"
-                                        class="w-full h-auto block pointer-events-none align-middle"
-                                    />
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Text Content side -->
-                    <div class="text-white pl-12 z-10 w-7/12">
-                        <h3 class="text-4xl font-bold mb-6 tracking-wide">{{ each_project.title }}</h3>
-                        <p class="text-gray-300 text-lg leading-relaxed mb-8 max-w-lg">
-                            {{ each_project.short_summary }}
-                        </p>
-
-                        <div class="flex items-center gap-8 font-semibold text-lg">
-                            <a href="#" class="flex items-center gap-2 hover:text-gray-300 transition-colors">
-                                See Live
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                </svg>
-                            </a>
-                            <a href="#" class="hover:text-gray-300 transition-colors">Project Showcase</a>
-                        </div>
-                    </div>
-                
-                </div>
+                    {{ each_project.title }}
+                    {% include "pages/project_card.html" with project=each_project %}
+              
                 {% endfor %} 
             </div>
 

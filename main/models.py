@@ -1,5 +1,8 @@
 from django.db import models
 import uuid
+from django.core.validators import MaxLengthValidator
+from django.utils.text import slugify
+
 
 # Create your models here.
 
@@ -41,21 +44,91 @@ class Contact(models.Model):
         return self.name
 
 
+
+class Technology(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    logo_type = models.CharField(max_length=20, choices=[("image", "Image"), ("svg", "SVG")], default="image")
+    logo_image = models.ImageField(upload_to="technology_logos/", blank=True, null=True)
+    svg = models.TextField(help_text="Inline SVG markup or SVG path/URL", blank=True, null=True)
+    short_description = models.CharField(max_length=30)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["order", "name"]
+
+    def __str__(self):
+        return self.name
+
+
 class Project(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField()
-    image = models.ImageField(upload_to='img/projects/')
-    btn1_text = models.CharField(max_length=50)
-    btn1_url = models.URLField(null=True, blank=True)
-
-    btn2_text = models.CharField(max_length=50)
-    btn2_url = models.URLField(null=True, blank=True)
-
-
-    prj_value = models.IntegerField(default=5)
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=220, unique=True, blank=True)
+    short_summary = models.CharField(max_length=180)
+    full_description = models.TextField()
+    role = models.CharField(max_length=120, blank=True)
+    duration = models.CharField(max_length=120, blank=True)
+    featured = models.BooleanField(default=False)
+    is_published = models.BooleanField(default=True)
+    sort_order = models.PositiveIntegerField(default=0)
+    technologies = models.ManyToManyField(Technology, related_name="projects", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
- 
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["sort_order", "-created_at"]
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.title
+
+
+class ProjectLink(models.Model):
+    class LinkType(models.TextChoices):
+        WEBSITE = "website", "Website"
+        GITHUB = "github", "GitHub"
+        DOCUMENTATION = "documentation", "Documentation"
+        DEMO = "demo", "Live Demo"
+        DEMO_VIDEO = "demo_video", "Demo Video"
+        OTHER = "other", "Other"
+
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="links")
+    link_type = models.CharField(max_length=20, choices=LinkType.choices, default=LinkType.WEBSITE)
+    label = models.CharField(max_length=80, blank=True)
+    url = models.URLField()
+    sort_order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["sort_order", "id"]
+
+    def __str__(self):
+        return f"{self.project.title} - {self.link_type}"
+
+
+class ProjectMedia(models.Model):
+    class MediaType(models.TextChoices):
+        DESKTOP_IMAGE = "desktop_image", "Desktop Image"
+        MOBILE_IMAGE = "mobile_image", "Mobile Image"
+        GIF_VIDEO = "gif_video", "GIF/Video"
+        OTHER = "other", "Other"
+
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="media_items")
+    media_type = models.CharField(max_length=20, choices=MediaType.choices, default=MediaType.OTHER)
+    image = models.ImageField(upload_to="projects/images/", blank=True, null=True)
+    file = models.FileField(upload_to="projects/media/", blank=True, null=True)
+    external_url = models.URLField(blank=True)
+    alt_text = models.CharField(max_length=120, blank=True)
+    caption = models.CharField(max_length=200, blank=True)
+    sort_order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["sort_order", "id"]
+
+    def __str__(self):
+        return f"{self.project.title} - {self.media_type}"
+
 
 
