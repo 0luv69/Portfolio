@@ -1,210 +1,360 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Deo - Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Caveat for cursive, Poppins for sans-serif -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Professional Portfolio | About &amp; Contact</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#0d7ff2",
-                        "background-light": "#f5f7f8",
-                        "background-dark": "#101922",
-                    },
-                    fontFamily: {
-                        "display": ["Inter"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
-            },
+    <style>
+        :root {
+            --bg-color: #F8F6F0;
+            --text-dark: #1E3D3D;
+            --accent-yellow: #F7B733;
+            --white: #FFFFFF;
         }
-    </script>
-<style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
         }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        /* --- Left Section --- */
+        .left-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+            z-index: 2;
+        }
+
+        .hero-text .greeting {
+            font-family: 'Caveat', cursive;
+            font-size: 3.5rem;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        .hero-text .name {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            line-height: 1.1;
+        }
+
+        .experience-social {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .experience {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .experience .years {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1;
+        }
+
+        .experience .exp-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-icons a {
+            color: var(--accent-yellow);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .social-icons a:hover {
+            opacity: 0.8;
+        }
+
+        /* --- Center Section --- */
+        .center-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 4px solid var(--accent-yellow);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Align image to bottom */
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .profile-img {
+            width: 90%;
+            height: auto;
+            object-fit: cover;
+            /* Replace with your transparent PNG of the person */
+        }
+
+        /* Decorative Dashed Arrow */
+        .dashed-arrow {
+            position: absolute;
+            top: 20%;
+            left: -25%;
+            width: 200px;
+            height: auto;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* --- Right Section --- */
+        .right-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4rem;
+            text-align: right;
+            position: relative;
+            z-index: 2;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            max-width: 300px;
+            margin-top: -8rem;
+        }
+
+        /* Reviews Card */
+        .reviews-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+            position: absolute;
+            right: 40px;
+            top: 40%;
+            width: 240px;
+            z-index: 10;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .stars {
+            color: var(--accent-yellow);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .card-body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+
+        .avatars {
+            display: flex;
+        }
+
+        .avatars img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid var(--white);
+            margin-left: -10px;
+            object-fit: cover;
+        }
+        .avatars img:first-child {
+            margin-left: 0;
+        }
+
+        .rating {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .role-wrapper {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .role-creative {
+            font-family: 'Caveat', cursive;
+            font-size: 3rem;
+            color: var(--text-dark);
+            line-height: 0.8;
+            margin-right: 40px;
+        }
+
+        .role-designer {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+                gap: 4rem;
+                text-align: center;
+            }
+            .left-section, .right-section {
+                align-items: center;
+                text-align: center;
+            }
+            .description {
+                margin-top: 0;
+            }
+            .reviews-card {
+                position: relative;
+                top: auto;
+                right: auto;
+            }
+            .dashed-arrow {
+                display: none;
+            }
         }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
-<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-<div class="layout-container flex h-full grow flex-col">
-<!-- Navigation -->
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 md:px-20 py-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
-<div class="flex items-center gap-3">
-<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
-<span class="material-symbols-outlined">terminal</span>
-</div>
-<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-tight">Portfolio</h2>
-</div>
-<div class="flex flex-1 justify-end gap-8 items-center">
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium" href="#">Home</a>
-<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium" href="#">Projects</a>
-<a class="text-primary text-sm font-bold" href="#">About</a>
-<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium" href="#contact">Contact</a>
-</nav>
-<div class="bg-primary/10 rounded-full p-1 border border-primary/20">
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="Professional headshot portrait of a man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDm4ZsRqrruSgCIHYh4cPGNJKBz9MBs5QUaydaSnXz32G34kGG_WOnf2YTKgIM27SNCN4lbeK0cdPond1roixlTTZwWN_MzC1QUh9pTQYMqHg7sEOdC7QsDxRc-JtZX4dSnVa9u8YgwKg3WmG6_PESA8gVTkR2GhvXMXbLsmpSRCMqM4Di229a_tZ05GURhtG6Q0w5LSk4QsKn98x1D7hdJunchFTI5UFoypXckDFJ74fErfQ9jNsbhe1j9rkLX39VGAVWt-6DO8IM");'></div>
-</div>
-</div>
-</header>
-<main class="flex-1 flex flex-col items-center">
-<div class="w-full max-w-[1024px] px-6 md:px-10 py-12">
-<!-- Bio Section -->
-<section class="flex flex-col md:flex-row gap-12 items-start mb-20">
-<div class="w-full md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left gap-6">
-<div class="relative">
-<div class="bg-primary/20 absolute -inset-4 rounded-full blur-2xl"></div>
-<div class="relative bg-center bg-no-repeat aspect-square bg-cover rounded-3xl shadow-2xl size-64" data-alt="High resolution professional portrait photo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBj5CEKAhTt52SWWyEursZDZqABQMtJLLD9OcSlJf2fQkrAe4JGFSw_5oRsEpQu2QrI9SvGLMvekIMIE-uxVglFySnqS8CYJByD9fux7ZzAUvesJSi7tIHlGoS8-Qto151BnylVKLSzksoNxGu1-RZgoqtowY4AA9pk-ujevPAYrBI3SdC2wVoqueTrjnmW0Pe38H5JKiB1kaod3MrRvxBzMwqRavSczZnklDoYmRemg17eIFTLNxwAEuh1-ZezyIB7e_VTK7DbWho");'></div>
-</div>
-<div class="space-y-2">
-<h1 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">Alex Rivera</h1>
-<p class="text-primary font-semibold text-lg">Senior Creative Developer</p>
-<p class="text-slate-500 dark:text-slate-400 flex items-center justify-center md:justify-start gap-1">
-<span class="material-symbols-outlined text-sm">location_on</span>
-                                    New York, NY
-                                </p>
-</div>
-<div class="flex gap-4">
-<a class="p-2 bg-slate-200 dark:bg-slate-800 rounded-lg hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">public</span>
-</a>
-<a class="p-2 bg-slate-200 dark:bg-slate-800 rounded-lg hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">code</span>
-</a>
-<a class="p-2 bg-slate-200 dark:bg-slate-800 rounded-lg hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">mail</span>
-</a>
-</div>
-</div>
-<div class="w-full md:w-2/3 space-y-8">
-<div>
-<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">About Me</h2>
-<p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
-                                    I am a results-driven developer and designer with over 10 years of experience in crafting digital experiences that resonate with users. I believe in the power of simplicity and the importance of accessible design. 
-                                </p>
-<p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mt-4">
-                                    My journey started in graphic design, which gave me a keen eye for aesthetics, before I transitioned into full-stack development to bring those designs to life. Today, I lead cross-functional teams to build scalable products that solve real-world problems.
-                                </p>
-</div>
-<div>
-<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Skills &amp; Tools</h3>
-<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl">
-<span class="material-symbols-outlined text-primary">palette</span>
-<span class="font-medium">UI/UX Design</span>
-</div>
-<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl">
-<span class="material-symbols-outlined text-primary">code</span>
-<span class="font-medium">TypeScript</span>
-</div>
-<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl">
-<span class="material-symbols-outlined text-primary">layers</span>
-<span class="font-medium">React / Next.js</span>
-</div>
-<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl">
-<span class="material-symbols-outlined text-primary">database</span>
-<span class="font-medium">PostgreSQL</span>
-</div>
-<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl">
-<span class="material-symbols-outlined text-primary">cloud</span>
-<span class="font-medium">AWS / Vercel</span>
-</div>
-<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl">
-<span class="material-symbols-outlined text-primary">token</span>
-<span class="font-medium">Figma</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<hr class="border-slate-200 dark:border-slate-800 mb-20"/>
-<!-- Contact Section -->
-<section class="grid md:grid-cols-2 gap-16 items-start" id="contact">
-<div class="space-y-6">
-<h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Get in Touch</h2>
-<p class="text-slate-600 dark:text-slate-400 text-lg">
-                                Have a project in mind or just want to say hi? I'm always open to discussing new opportunities and ideas.
-                            </p>
-<div class="space-y-4 pt-4">
-<div class="flex items-start gap-4">
-<div class="size-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-<span class="material-symbols-outlined">alternate_email</span>
-</div>
-<div>
-<p class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Email</p>
-<p class="text-lg text-slate-900 dark:text-white">hello@alexrivera.com</p>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<div class="size-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-<span class="material-symbols-outlined">call</span>
-</div>
-<div>
-<p class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Phone</p>
-<p class="text-lg text-slate-900 dark:text-white">+1 (555) 123-4567</p>
-</div>
-</div>
-</div>
-<div class="pt-8">
-<p class="text-sm font-bold text-slate-900 dark:text-white uppercase mb-4">Follow Me</p>
-<div class="flex gap-4">
-<a class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-primary dark:hover:border-primary transition-colors shadow-sm" href="#">
-<span class="text-sm font-medium">LinkedIn</span>
-</a>
-<a class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-primary dark:hover:border-primary transition-colors shadow-sm" href="#">
-<span class="text-sm font-medium">Twitter</span>
-</a>
-<a class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-primary dark:hover:border-primary transition-colors shadow-sm" href="#">
-<span class="text-sm font-medium">Dribbble</span>
-</a>
-</div>
-</div>
-</div>
-<div class="bg-white dark:bg-slate-800/30 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl">
-<form action="#" class="space-y-6" method="POST">
-<div class="space-y-2">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300" for="name">Full Name</label>
-<input class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-primary focus:border-primary dark:text-white outline-none transition-all" id="name" name="name" placeholder="John Doe" type="text"/>
-</div>
-<div class="space-y-2">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300" for="email">Email Address</label>
-<input class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-primary focus:border-primary dark:text-white outline-none transition-all" id="email" name="email" placeholder="john@example.com" type="email"/>
-</div>
-<div class="space-y-2">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300" for="message">Your Message</label>
-<textarea class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-primary focus:border-primary dark:text-white outline-none transition-all resize-none" id="message" name="message" placeholder="Tell me about your project..." rows="5"></textarea>
-</div>
-<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-lg transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2" type="submit">
-                                    Send Message
-                                    <span class="material-symbols-outlined text-sm">send</span>
-</button>
-</form>
-</div>
-</section>
-</div>
-</main>
-<!-- Footer -->
-<footer class="border-t border-slate-200 dark:border-slate-800 py-10 px-6 md:px-20 text-center">
-<p class="text-slate-500 dark:text-slate-500 text-sm">
-                    © 2024 Alex Rivera Portfolio. All rights reserved. Built with passion and precision.
-                </p>
-</footer>
-</div>
-</div>
-</body></html>
+<body>
+
+    <div class="container">
+        
+        <!-- Left Column -->
+        <div class="left-section">
+            <div class="hero-text">
+                <h1 class="greeting">Hy! I Am</h1>
+                <h2 class="name">John Deo.</h2>
+            </div>
+
+            <div class="experience-social">
+                <div class="experience">
+                    <span class="years">08</span>
+                    <span class="exp-text">YEARS<br>EXPERIENCE</span>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Column (Image) -->
+        <div class="center-section">
+            <!-- SVG for the dashed arrow pointing left -->
+            <svg class="dashed-arrow" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M190 20 C 140 -10, 80 50, 10 70" stroke="#1E3D3D" stroke-width="2" stroke-dasharray="6 6" fill="transparent"/>
+                <path d="M15 63 L 5 72 L 17 78" stroke="#1E3D3D" stroke-width="2" fill="transparent" />
+            </svg>
+
+            <div class="image-wrapper">
+                <!-- Replace with actual transparent portrait image -->
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=60" alt="John Deo" class="profile-img" style="border-radius: 50%; margin-bottom: 20px;">
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-section">
+            <p class="description">I design beautifully simple things,<br>and I love what i do.</p>
+            
+            <div class="reviews-card">
+                <div class="card-header">
+                    <span>12k Reviews On</span>
+                    <span class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                </div>
+                <div class="card-body">
+                    <div class="avatars">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Reviewer">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Reviewer">
+                        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Reviewer">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Reviewer">
+                        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Reviewer">
+                    </div>
+                    <span class="rating">4.9</span>
+                </div>
+            </div>
+
+            <div class="role-wrapper">
+                <span class="role-creative">Creative</span>
+                <span class="role-designer">Designer.</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

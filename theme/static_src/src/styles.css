@@ -7,7 +7,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Inter', system-ui, sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+body { font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
 
 .slidebar-design::-webkit-scrollbar { width: 3px; }
 .slidebar-design::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.06); border-radius: 3px; }
@@ -127,25 +127,18 @@ body { font-family: 'Inter', system-ui, sans-serif; background: #000; color: #ff
 /* ── Default (even card) tilt pair ───────────────────── */
 .tilt-right {
   position: relative;
-  margin-top: -8em;
+  margin-top: -9em;
   transform: rotateX(18deg) rotateY(-16deg) rotate(8deg) translate(-2%);
   z-index: 5;
   width: 110%;
 }
-
-@media (min-width: 1024px) {
-  .tilt-right {
-    margin-top: -12em;
-  }
-}
-
 
 
 
 .tilt-left {
   position: absolute;
   left: -25%;
-  top: -70%;
+  top: 20%;
   transform: rotateX(26deg) rotateY(22deg) rotate(-12deg) translate(2%);
   z-index: 10;
   width: 110%;
@@ -160,8 +153,8 @@ body { font-family: 'Inter', system-ui, sans-serif; background: #000; color: #ff
  
 .tilt-left.tilt-mirror {
   left: auto;
-  right: -35%;
-  top: 50%;
+  right: -25%;
+  top: 20%;
   transform: rotateX(26deg) rotateY(-22deg) rotate(12deg) translate(-2%);
   z-index: 10;
 }
@@ -179,12 +172,35 @@ body { font-family: 'Inter', system-ui, sans-serif; background: #000; color: #ff
   z-index: 20;
 }
  
+
+
+@media (max-width: 600px) {
+  .tilt-right {
+    margin-top: -6em;
+    width: 90%;
+    left: 4.5em;
+  }
+  .tilt-left {
+    width: 90%;
+    left: -12%;
+  }
+
+  .tilt-right.tilt-mirror {
+    left: -1.5em;
+  }
+
+  .tilt-left.tilt-mirror {
+    right: -12%;
+  }
+}
+
 /* ── Mobile: extra bottom clearance for 3D overflow ─── */
 @media (max-width: 1023px) {
   .prj-card__media {
     padding-bottom: 3rem;
   }
 }
+
  
 /* ════════════════════════════════════════════════════════
    COLOUR PALETTE — cycles every 6 cards

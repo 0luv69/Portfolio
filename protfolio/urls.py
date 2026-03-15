@@ -11,17 +11,9 @@ urlpatterns = [
     path('mujilover/', admin.site.urls),
     
     path('', views.home, name='home'),
-    path('seo/', views.seo, name='seo'),
-
-
-    path('contact/', views.contact, name='contact'),
-
-
-
-
-
     path('details/<slug:slug>/', views.home, name='project_detail'),
-
+    path('seo/', views.seo, name='seo'),
+    path('contact/', views.contact, name='contact'),
     
     # path('contact/messages/', views.contact_messages_view, name='contact_messages'),
 

@@ -1,32 +1,268 @@
-{% comment %} {# ============================================================
-   _project_card_inner.html
-   Called by project_card.html with resolved palette vars.
-
-   Context expected:
-     project        — Project model instance
-     bg             — card background hex  e.g. "#26997b"
-     text           — primary text hex     e.g. "#f4fbf7"
-     muted          — muted/secondary rgba
-     badge_bg       — tech badge background rgba
-     badge_border   — tech badge border rgba
-     forloop        — the parent forloop object (for counter0)
-   ============================================================ #} {% endcomment %}
-
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% comment %} {# Grab first two media items regardless of type #} {% endcomment %}
-{% with media_list=project.media_items.all %}
-{% with img_a=media_list.0 img_b=media_list.1 %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% comment %} {# Even index (0,2,4…) → media LEFT,  text RIGHT
-   Odd  index (1,3,5…) → text  LEFT,  media RIGHT  #} {% endcomment %}
-{% if forloop.counter0|divisibleby:2 %}
-  {% with media_first=True %}
-    {% include "pages/_project_card_layout.html" with project=project bg=bg text=text muted=muted badge_bg=badge_bg badge_border=badge_border img_a=img_a img_b=img_b media_first=True %}
-  {% endwith %}
-{% else %}
-  {% include "pages/_project_card_layout.html" with project=project bg=bg text=text muted=muted badge_bg=badge_bg badge_border=badge_border img_a=img_a img_b=img_b media_first=False %}
-{% endif %}
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon" />
 
-{% endwith %}
-{% endwith %}
+    <title>Rujal Baniya - Portfolio | 0luv69</title>
+    <meta name="author" content="Rujal Baniya" />
+    <meta name="title" content="Rujal Baniya | Full Stack Developer & Cybersecurity Enthusiast from Nepal">
+    <meta name="description"
+        content="Rujal Baniya - A passionate Full Stack Developer from Nepal, specializing in Python, cybersecurity, and web development." />
+    <meta name="keywords"
+        content="rujal baniya, Rujal , 0luv60,mcqchamps, mcq, nepalmcqs, nepalmcq, learnmcqs Web Development, Projects, Python, OpenCV, Django, Cybersecurity" />
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rujal Baniya",
+        "jobTitle": "Software Developer",
+        "url": "https://www.rujalbaniya.com.np",
+        "sameAs": [
+          "https://github.com/0luv69"
+        ]
+      }
+    </script>
+
+    <!-- Google auth -->
+    <meta name="google-site-verification" content="1heX8GaiN16IAX4TyAzBN3Oc5sdjTb6jkz_BfLc1hVg" />
+    <meta name="msvalidate.01" content="27A29237EBD07F182CFBD5F6879A89F0" />
+
+    <!-- Fonts calling  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Style sheet calling -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+
+    <!-- Theme Styles & Fallbacks -->
+    <style>
+        body { 
+            transition: background-color 0.3s ease, color 0.3s ease; 
+        }
+        
+        /* Explicit Dark Mode Fallbacks in case Tailwind 'class' mode is disabled */
+        html.dark body { 
+            background-color: #0a0a0a !important; 
+            color: #ffffff !important; 
+        }
+        html.dark .bg-surface { background-color: #121212 !important; border-color: #27272a !important; }
+        html.dark .bg-slate-50 { background-color: #0a0a0a !important; }
+        html.dark .text-slate-900 { color: #ffffff !important; }
+        html.dark .text-slate-600 { color: #a1a1aa !important; }
+        html.dark nav { background-color: rgba(0, 0, 0, 0.4) !important; border-color: rgba(255, 255, 255, 0.1) !important; }
+        html.dark .nav-item span { background-color: #1a1a1a !important; border-color: #333 !important; color: #fff !important; }
+        html.dark .bento-card { background-color: #121212 !important; border-color: #27272a !important; }
+        html.dark input, html.dark textarea { background-color: #1a1a1a !important; color: #fff !important; border-color: #333 !important; }
+        html.dark .bg-black { background-color: #ffffff !important; color: #000000 !important; }
+        html.dark .bg-white { background-color: #121212 !important; color: #ffffff !important; border-color: #333 !important; }
+        html.dark .bg-gray-200 { background-color: #252525 !important; }
+    </style>
+
+    <!-- Pre-load theme script to prevent flickering -->
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-900 transition-colors duration-300">
+
+    <!-- 1. Page Load Curtain -->
+    <div id="preloader" class="fixed inset-0 bg-green-50 flex items-center justify-center z-[100] transition-transform duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)]">
+        <h1 class="logo-text text-6xl font-bold text-gray-900 tracking-tighter">LUV<span class="text-green-500">.</span></h1>
+    </div>
+
+    <!-- Floating Glass Navigation (Desktop Left, Mobile Bottom) -->
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 lg:left-8 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 z-50 bg-white/30 backdrop-blur-xl border border-gray-200/50 shadow-[0_8px_32px_rgba(0,0,0,0.1)] px-6 py-4 lg:py-8 lg:px-4 rounded-full flex lg:flex-col gap-6 lg:gap-8 transition-all duration-300">
+        <a href="#home" class="nav-item text-slate-600 hover:text-black transition-colors duration-300 relative group">
+            <i class="fas fa-home text-lg"></i>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white border border-gray-200 px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Home</span>
+        </a>
+        <a href="#projects" class="nav-item text-slate-600 hover:text-black transition-colors duration-300 relative group">
+            <i class="fas fa-layer-group text-lg"></i>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white border border-gray-200 px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Work</span>
+        </a>
+        <a href="#skills" class="nav-item text-slate-600 hover:text-black transition-colors duration-300 relative group">
+            <i class="fas fa-tools text-lg"></i>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white border border-gray-200 px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Skills</span>
+        </a>
+        <a href="#contact" class="nav-item text-slate-600 hover:text-black transition-colors duration-300 relative group">
+            <i class="fas fa-envelope text-lg"></i>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white border border-gray-200 px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Contact</span>
+        </a>
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="nav-item text-slate-600 hover:text-yellow-500 transition-colors duration-300 relative group mt-auto lg:pt-4 lg:border-t lg:border-gray-300/50">
+            <i class="fas fa-moon text-lg" id="theme-icon"></i>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white border border-gray-200 px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Theme</span>
+        </button>
+    </nav>
+
+    <main class="pt-24 max-w-6xl mx-auto px-6">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[70vh] flex flex-col justify-center py-20">
+            <div class="flex flex-wrap items-center gap-6 font-playwrite font-semibold text-gray-400 my-4">
+                <p>Idea</p>
+                <p>Build</p>
+                <div class="relative flex items-center">
+                    <p class="text-[#94a3b8]">Ship</p>
+                </div>
+            </div>
+
+            <div class="max-w-3xl fade-in-up">
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight">
+                    Hi, I'm Rujal <span class="text-green-500 text-3xl">(aka) LUV</span>, <br/>
+                    <span>Software Developer.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-500 leading-relaxed mb-10 max-w-2xl">
+                    I build premium, robust, and secure digital experiences. Specializing in Python, Django, and modern web technologies with a strong focus on cybersecurity.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center gap-4">
+                    <a href="#projects" class="w-full sm:w-auto px-8 py-3.5 bg-black text-white rounded-full font-medium text-sm hover:scale-105 transition-transform duration-300">
+                        Explore Work
+                    </a>
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 bg-white border border-gray-300 text-black rounded-full font-medium text-sm hover:bg-gray-100 transition-colors duration-300">
+                        Get in touch
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="pt-32 reveal">
+            <h2 class="font-display text-4xl font-bold tracking-tight mb-12">Selected Work</h2>
+
+            <div class="space-y-10 projectCards">
+                {% for each_project in projects %}
+                    {% include "pages/project_card.html" with project=each_project loop_index=forloop.counter0 %}
+                {% endfor %} 
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="https://github.com/0luv69" target="_blank" class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-black transition-colors border-b border-transparent hover:border-black pb-0.5">
+                    Explore all projects on GitHub <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="pt-32 pb-20 px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="mb-16">
+                    <span class="text-xs font-medium tracking-[0.3em] text-gray-500 uppercase mb-4 block">Capabilities</span>
+                    <h2 class="font-serif text-4xl font-light tracking-tight">
+                        Tools & Technologies
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8">
+                    {% for technology in technologies %}
+                    <div class="group relative flex flex-col items-center gap-3" title="{{ technology.short_description }}">
+                        <div class="w-16 h-16 rounded-2xl bg-gray-200 flex items-center justify-center transition-all duration-300 hover:scale-105">
+                            <img src="{% static technology.logo_image %}" 
+                                alt="{{ technology.name }}" 
+                                class="w-8 h-8 object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                            />
+                        </div>
+                        <span class="text-[11px] text-gray-500 font-medium tracking-wide group-hover:text-black transition-colors">
+                            {{ technology.name }}
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="pt-32 pb-16 reveal hidden">
+            <div class="bento-card bg-white p-8 md:p-16 relative overflow-hidden border border-gray-200 rounded-3xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
+                    <div>
+                        <h2 class="font-display text-4xl font-bold tracking-tight mb-4">Let's build something together.</h2>
+                        <p class="text-gray-500 font-light mb-8 max-w-md">
+                            Feel free to reach out if you're looking for a developer, have a question, or simply want to connect.
+                        </p>
+                        <div class="space-y-4">
+                            <a href="mailto:baniyarujal@gmail.com" class="flex items-center gap-4 text-gray-600 hover:text-black transition-colors">
+                                <div class="w-10 h-10 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center">
+                                    <i class="fas fa-envelope text-sm"></i>
+                                </div>
+                                <span class="text-sm font-medium">baniyarujal@gmail.com</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Clean Form -->
+                    <form method="post" action="/contact/" class="space-y-5">
+                        {% csrf_token %}
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <input id="name" type="text" name="name" required placeholder="Name" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm placeholder-gray-500 focus:outline-none transition-colors">
+                            <input id="email" type="email" name="email" required placeholder="Email" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm placeholder-gray-500 focus:outline-none transition-colors">
+                        </div>
+                        <input id="subject" type="text" name="subject" required placeholder="Subject" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm placeholder-gray-500 focus:outline-none transition-colors">
+                        <textarea id="message" name="message" rows="4" required placeholder="Message" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm placeholder-gray-500 focus:outline-none transition-colors resize-none"></textarea>
+                        
+                        <button type="submit" class="w-full py-3.5 bg-black text-white rounded-xl font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+                            <span id="btn_txt">Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // 1. Page Load Preloader Animation
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                preloader.style.transform = 'translateY(-100%)';
+            }, 800);
+        });
+
+        // 2. Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
+
+        // Function to update icon
+        function updateIcon() {
+            if (htmlElement.classList.contains('dark')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
+
+        // Initial Icon state
+        updateIcon();
+
+        // Click Event for Toggling
+        themeToggleBtn.addEventListener('click', function() {
+            htmlElement.classList.toggle('dark');
+            updateIcon();
+
+            // Save preference to localStorage
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
