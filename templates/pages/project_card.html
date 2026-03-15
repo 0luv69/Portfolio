@@ -1,451 +1,399 @@
-{% load static %}
 {% comment %}
-  partials/project_card.html
-  Include with:
-    include "partials/project_card.html" with project=each_project
-  Expects: project (Project model instance), forloop (auto from for loop)
-  Fields: title, short_summary, role, duration, featured,
-          technologies.all, links.all, media_items.all
+  ╔══════════════════════════════════════════════════════════╗
+  ║           REUSABLE PROJECT CARD PARTIAL                  ║
+  ║                                                          ║
+  ║  Usage in index.html:                                    ║
+  ║  <div class="space-y-10 projectCards">                   ║
+  ║    {% for each_project in projects %}                    ║
+  ║      {% include "pages/project_card.html"                ║
+  ║         with project=each_project                        ║
+  ║              loop_index=forloop.counter0 %}              ║
+  ║    {% endfor %}                                          ║
+  ║  </div>                                                  ║
+  ║                                                          ║
+  ║  Color palette (cycles by loop_index mod 6):             ║
+  ║    0 → bg:#26997b  text:#f4fbf7  (teal)                  ║
+  ║    1 → bg:#ffca16  text:#5c3d05  (amber)                 ║
+  ║    2 → bg:#262626  text:#dddddd  (dark)                  ║
+  ║    3 → bg:#1b3a5c  text:#e8f0fb  (navy)                  ║
+  ║    4 → bg:#7c1f3a  text:#fde8ef  (crimson)               ║
+  ║    5 → bg:#3b2a6e  text:#ede8ff  (violet)                ║
+  ╚══════════════════════════════════════════════════════════╝
 {% endcomment %}
 
-<article
-  class="pc-card{% if forloop.counter|divisibleby:2 %} pc-card--reverse{% endif %}"
-  style="
-    --pc-bg:     {% cycle '#1d2b1d' '#171e2e' '#2b1c1c' '#1a1a2e' %};
-    --pc-accent: {% cycle '#4ade80' '#60a5fa' '#fb7185' '#a78bfa' %};
-  "
->
+{% with idx=loop_index|default:0 %}
 
-  {% comment %} {# ──────────────────────────────────────────────
-     MEDIA SIDE  (two 3-D tilted browser mockups)
-  ────────────────────────────────────────────── #} {% endcomment %}
-  <div class="pc-media">
-    <div class="pc-perspective">
-      {% with all_media=project.media_items.all %}
+<div class="prj-card w-full" data-index="{{ idx }}">
 
-        {# Back browser – tilt-right – desktop_image #}
-        <div class="pc-browser pc-browser--back">
-          <div class="pc-browser__bar">
-            <svg fill="none" height="9" viewBox="0 0 38 9" width="38">
-              <path clip-rule="evenodd" fill="#b0b0b0" fill-rule="evenodd"
-                d="M8.96 4.76a4.15 4.15 0 1 1-8.29 0 4.15 4.15 0 0 1 8.29 0Zm14.29
-                   0a4.15 4.15 0 1 1-8.29 0 4.15 4.15 0 0 1 8.29 0Zm10.25 4.14a4.15
-                   4.15 0 1 0 0-8.29 4.15 4.15 0 0 0 0 8.29Z"/>
+  {% comment %}
+    Layout logic:
+    - Mobile/Tablet  → always flex-col (media top, content bottom)
+    - Desktop (lg+)  → even idx: media-LEFT  content-RIGHT
+                       odd  idx: content-LEFT media-RIGHT  (flex-row-reverse)
+  {% endcomment %}
+
+  <div class="prj-card__inner
+              relative w-full max-w-5xl mx-auto
+              rounded-[2.5rem] shadow-2xl
+              flex flex-col
+              {% if idx|divisibleby:2 %}lg:flex-row{% else %}lg:flex-row-reverse{% endif %}
+              lg:items-center
+              p-6 sm:p-7 lg:p-8
+              overflow-visible">
+
+    {% comment %} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        MEDIA SIDE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ {% endcomment %}
+    <div class="prj-card__media
+                relative w-full lg:w-5/12 shrink-0
+                mb-16 sm:mb-20 lg:mb-0
+                flex items-center justify-center
+                min-h-[200px] sm:min-h-[240px] lg:min-h-[260px]">
+
+      <div class="perspective relative w-full max-w-[340px] sm:max-w-[380px] mx-auto z-10">
+
+        {% with media_list=project.media_items.all %}
+        {% with media1=media_list.0 media2=media_list.1 %}
+
+        {% comment %} ── MOCK #1 (back, higher) ── {% endcomment %}
+        {% if media1 %}
+        <div class="browser {% if idx|divisibleby:2 %}tilt-right{% else %}tilt-right tilt-mirror{% endif %}
+                    bg-[#111] rounded-lg overflow-hidden
+                    border border-white/5 cursor-pointer
+                    shadow-[0_2px_4px_#00000003,0_4px_8px_#00000005,0_8px_16px_#0000000a,0_16px_32px_#0000000f,0_10px_40px_rgba(0,0,0,0.3)]">
+
+          <div class="flex items-center justify-between h-7 px-4 bg-white/10 backdrop-blur-md border-b border-[#e5e5e5]">
+            <svg fill="none" height="9" viewBox="0 0 38 9" width="38" xmlns="http://www.w3.org/2000/svg">
+              <path clip-rule="evenodd" fill="#a0a0a0" fill-rule="evenodd" d="M8.95993 4.75774C8.95993 7.04672 7.10434 8.90232 4.81535 8.90232C2.52637 8.90232 0.670776 7.04672 0.670776 4.75774C0.670776 2.46875 2.52637 0.613159 4.81535 0.613159C7.10434 0.613159 8.95993 2.46875 8.95993 4.75774ZM23.2491 4.75774C23.2491 7.04672 21.3935 8.90232 19.1045 8.90232C16.8156 8.90232 14.96 7.04672 14.96 4.75774C14.96 2.46875 16.8156 0.613159 19.1045 0.613159C21.3935 0.613159 23.2491 2.46875 23.2491 4.75774ZM33.3937 8.90232C35.6827 8.90232 37.5383 7.04672 37.5383 4.75774C37.5383 2.46875 35.6827 0.613159 33.3937 0.613159C31.1047 0.613159 29.2491 2.46875 29.2491 4.75774C29.2491 7.04672 31.1047 8.90232 33.3937 8.90232Z" />
             </svg>
-            <span class="pc-browser__url">{{ project.title|truncatechars:26 }}</span>
-            <div style="width:38px"></div>
-          </div>
-          <div class="pc-browser__screen">
-            {% for media in all_media %}{% if media.media_type == 'desktop_image' %}{% if forloop.first %}
-              {% if media.image %}<img src="{{ media.image.url }}" alt="{{ media.alt_text|default:project.title }}" loading="lazy">
-              {% elif media.external_url %}<img src="{{ media.external_url }}" alt="{{ media.alt_text|default:project.title }}" loading="lazy">
-              {% endif %}
-            {% endif %}{% endif %}{% empty %}
-              <div class="pc-placeholder">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0H3"/>
-                </svg>
-                <span>{{ project.title }}</span>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-
-        {# Front browser – tilt-left – mobile_image #}
-        <div class="pc-browser pc-browser--front">
-          <div class="pc-browser__bar">
-            <svg fill="none" height="9" viewBox="0 0 38 9" width="38">
-              <path clip-rule="evenodd" fill="#b0b0b0" fill-rule="evenodd"
-                d="M8.96 4.76a4.15 4.15 0 1 1-8.29 0 4.15 4.15 0 0 1 8.29 0Zm14.29
-                   0a4.15 4.15 0 1 1-8.29 0 4.15 4.15 0 0 1 8.29 0Zm10.25 4.14a4.15
-                   4.15 0 1 0 0-8.29 4.15 4.15 0 0 0 0 8.29Z"/>
+            <div class="bg-[#e2e2e2] rounded px-3 py-0.5 text-[10px] text-[#555] truncate w-[40%] text-center">
+              {{ project.title }}
+            </div>
+            <svg class="browser-buttons" fill="none" height="12" viewBox="0 0 47 12" width="47" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#a0a0a0" fill-rule="evenodd" d="M2.96875 11.4382C2.49414 11.4382 2.13525 11.3181 1.89209 11.0779C1.64893 10.8376 1.52734 10.4817 1.52734 10.01V5.68579C1.52734 5.21704 1.64893 4.86255 1.89209 4.62231C2.13525 4.37915 2.49414 4.25757 2.96875 4.25757H4.16846V5.12329H3.02148C2.81641 5.12329 2.65967 5.17749 2.55127 5.28589C2.4458 5.39136 2.39307 5.55103 2.39307 5.76489V9.9353C2.39307 10.1492 2.4458 10.3088 2.55127 10.4143C2.65967 10.5227 2.81641 10.5769 3.02148 10.5769H7.97412C8.17627 10.5769 8.33154 10.5227 8.43994 10.4143C8.55127 10.3088 8.60693 10.1492 8.60693 9.9353V5.76489C8.60693 5.55103 8.55127 5.39136 8.43994 5.28589C8.33154 5.17749 8.17627 5.12329 7.97412 5.12329H6.83594V4.25757H8.03125C8.50586 4.25757 8.86475 4.37915 9.10791 4.62231C9.35107 4.86255 9.47266 5.21704 9.47266 5.68579V10.01C9.47266 10.4788 9.35107 10.8333 9.10791 11.0735C8.86475 11.3167 8.50586 11.4382 8.03125 11.4382H2.96875ZM5.5 7.93579C5.38867 7.93579 5.29199 7.89624 5.20996 7.81714C5.13086 7.73804 5.09131 7.64429 5.09131 7.53589V3.1106L5.12646 2.45581L4.84961 2.77661L4.23438 3.43579C4.16406 3.51489 4.07324 3.55444 3.96191 3.55444C3.85938 3.55444 3.77295 3.52222 3.70264 3.45776C3.63525 3.39038 3.60156 3.30542 3.60156 3.20288C3.60156 3.10913 3.63818 3.02271 3.71143 2.9436L5.18799 1.52417C5.24365 1.47144 5.29639 1.43481 5.34619 1.41431C5.396 1.3938 5.44727 1.38354 5.5 1.38354C5.55273 1.38354 5.604 1.3938 5.65381 1.41431C5.70361 1.43481 5.75488 1.47144 5.80762 1.52417L7.28418 2.9436C7.36035 3.02271 7.39844 3.10913 7.39844 3.20288C7.39844 3.30542 7.36182 3.39038 7.28857 3.45776C7.21826 3.52222 7.1333 3.55444 7.03369 3.55444C6.92529 3.55444 6.83447 3.51489 6.76123 3.43579L6.146 2.77661L5.87354 2.45581L5.90869 3.1106V7.53589C5.90869 7.64429 5.86768 7.73804 5.78564 7.81714C5.70654 7.89624 5.61133 7.93579 5.5 7.93579Z"></path>
+              <path fill="#a0a0a0" fill-rule="evenodd" d="M19.3218 6.77563C19.3218 6.64087 19.3701 6.52515 19.4668 6.42847C19.5635 6.32886 19.6792 6.27905 19.814 6.27905H22.5078V3.5896C22.5078 3.45483 22.5562 3.33911 22.6528 3.24243C22.7495 3.14575 22.8652 3.09741 23 3.09741C23.1377 3.09741 23.2549 3.14575 23.3516 3.24243C23.4482 3.33911 23.4966 3.45483 23.4966 3.5896V6.27905H26.186C26.3208 6.27905 26.4365 6.32886 26.5332 6.42847C26.6299 6.52515 26.6782 6.64087 26.6782 6.77563C26.6782 6.91333 26.6299 7.03052 26.5332 7.1272C26.4365 7.22095 26.3208 7.26782 26.186 7.26782H23.4966V9.96606C23.4966 10.0979 23.4482 10.2122 23.3516 10.3088C23.2549 10.4055 23.1377 10.4539 23 10.4539C22.8652 10.4539 22.7495 10.4055 22.6528 10.3088C22.5562 10.2122 22.5078 10.0979 22.5078 9.96606V7.26782H19.814C19.6792 7.26782 19.5635 7.22095 19.4668 7.1272C19.3701 7.03052 19.3218 6.91333 19.3218 6.77563Z"></path>
+              <path fill="#a0a0a0" fill-rule="evenodd" d="M37.6777 9.40356C37.2031 9.40356 36.8442 9.28345 36.6011 9.04321C36.3579 8.80298 36.2363 8.44702 36.2363 7.97534V3.49731C36.2363 3.02563 36.3579 2.66968 36.6011 2.42944C36.8442 2.18921 37.2031 2.06909 37.6777 2.06909H42.1294C42.604 2.06909 42.9629 2.19067 43.2061 2.43384C43.4492 2.67407 43.5708 3.02856 43.5708 3.49731V4.53003H42.7051V3.57202C42.7051 3.35815 42.6509 3.19849 42.5425 3.09302C42.4341 2.98462 42.2788 2.93042 42.0767 2.93042H37.7305C37.5254 2.93042 37.3687 2.98462 37.2603 3.09302C37.1548 3.19849 37.1021 3.35815 37.1021 3.57202V7.90063C37.1021 8.1145 37.1548 8.27563 37.2603 8.38403C37.3687 8.4895 37.5254 8.54224 37.7305 8.54224H38.8511V9.40356H37.6777ZM39.8662 11.4954C39.3916 11.4954 39.0327 11.3752 38.7896 11.135C38.5464 10.8948 38.4248 10.5388 38.4248 10.0671V5.58472C38.4248 5.11597 38.5464 4.76147 38.7896 4.52124C39.0327 4.27808 39.3916 4.15649 39.8662 4.15649H44.3179C44.7925 4.15649 45.1514 4.27808 45.3945 4.52124C45.6377 4.7644 45.7593 5.1189 45.7593 5.58472V10.0671C45.7593 10.5359 45.6377 10.8904 45.3945 11.1306C45.1514 11.3738 44.7925 11.4954 44.3179 11.4954H39.8662ZM39.9189 10.634H44.2651C44.4673 10.634 44.6226 10.5798 44.731 10.4714C44.8394 10.366 44.8936 10.2063 44.8936 9.99243V5.66382C44.8936 5.44995 44.8394 5.29028 44.731 5.18481C44.6226 5.07642 44.4673 5.02222 44.2651 5.02222H39.9189C39.7139 5.02222 39.5571 5.07642 39.4487 5.18481C39.3403 5.29028 39.2861 5.44995 39.2861 5.66382V9.99243C39.2861 10.2063 39.3403 10.366 39.4487 10.4714C39.5571 10.5798 39.7139 10.634 39.9189 10.634Z"></path>
             </svg>
-            <span class="pc-browser__url">{{ project.title|truncatechars:26 }}</span>
-            <div style="width:38px"></div>
           </div>
-          <div class="pc-browser__screen">
-            {% for media in all_media %}{% if media.media_type == 'mobile_image' %}{% if forloop.first %}
-              {% if media.image %}<img src="{{ media.image.url }}" alt="{{ media.alt_text|default:project.title }}" loading="lazy">
-              {% elif media.external_url %}<img src="{{ media.external_url }}" alt="{{ media.alt_text|default:project.title }}" loading="lazy">
-              {% endif %}
-            {% endif %}{% endif %}{% empty %}
-              <div class="pc-placeholder pc-placeholder--mobile">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 8.25h3"/>
-                </svg>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
 
-      {% endwith %}
-    </div>
-  </div>
-  {% comment %} {# /pc-media #} {% endcomment %}
-
-
-  {% comment %} {# ──────────────────────────────────────────────
-     CONTENT SIDE
-  ────────────────────────────────────────────── #} {% endcomment %}
-  <div class="pc-content">
-
-    {% comment %} {# Badges: featured / role / duration #} {% endcomment %}
-    <div class="pc-badges">
-      {% if project.featured %}
-        <span class="pc-badge pc-badge--featured">
-          <svg viewBox="0 0 20 20" fill="currentColor" width="11" height="11"><path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.83-4.401Z" clip-rule="evenodd"/></svg>
-          Featured
-        </span>
-      {% endif %}
-      {% if project.role %}<span class="pc-badge pc-badge--role">{{ project.role }}</span>{% endif %}
-      {% if project.duration %}
-        <span class="pc-badge pc-badge--duration">
-          <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="11" height="11"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-          {{ project.duration }}
-        </span>
-      {% endif %}
-    </div>
-
-    {% comment %} {# Title #} {% endcomment %}
-    <h3 class="pc-title">{{ project.title }}</h3>
-
-    {% comment %} {# Short summary #} {% endcomment %}
-    <p class="pc-summary">{{ project.short_summary }}</p>
-
-    {% comment %} {# Tech stack #} {% endcomment %}
-    {% with techs=project.technologies.all %}
-      {% if techs %}
-        <div class="pc-techs">
-          {% for tech in techs %}
-            <span class="pc-tech" title="{{ tech.name }}: {{ tech.short_description }}">
-              {% if tech.logo_type == 'svg' and tech.svg %}
-                <span class="pc-tech__icon">{{ tech.svg|safe }}</span>
-              {% elif tech.logo_image %}
-                <img class="pc-tech__img" src="{{ tech.logo_image.url }}" alt="{{ tech.name }}" width="14" height="14" loading="lazy">
-              {% endif %}
-              
-            </span>
-          {% endfor %}
-        </div>
-      {% endif %}
-    {% endwith %}
-
-    {% comment %} {# Project links #} {% endcomment %}
-    {% with links=project.links.all %}
-      {% if links %}
-        <div class="pc-links">
-          {% for link in links %}
-            <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
-               class="pc-link pc-link--{{ link.link_type }}">
-              {% if link.link_type == 'github' %}
-                <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z"/></svg>
-              {% elif link.link_type == 'demo_video' %}
-                <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="15" height="15"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"/></svg>
-              {% elif link.link_type == 'documentation' %}
-                <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="15" height="15"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>
+          <div class="screen bg-[#1a1a1a]">
+            {% if media1 %}
+              {% if media1.media_type == "gif_video" %}
+                {% comment %} ── GIF / Video type ── {% endcomment %}
+                {% if media1.file %}
+                  {% with fname=media1.file.url %}
+                    {% if ".gif" in fname %}
+                      <img src="{{ fname }}" alt="{{ media1.alt_text|default:project.title }}"
+                           class="w-full h-auto block pointer-events-none" loading="lazy">
+                    {% else %}
+                      <video class="w-full h-auto block pointer-events-none"
+                             autoplay loop muted playsinline preload="metadata">
+                        <source src="{{ fname }}">
+                      </video>
+                    {% endif %}
+                  {% endwith %}
+                {% elif media1.external_url %}
+                  {% with eurl=media1.external_url %}
+                    {% if ".gif" in eurl %}
+                      <img src="{{ eurl }}" alt="{{ media1.alt_text|default:project.title }}"
+                           class="w-full h-auto block pointer-events-none" loading="lazy">
+                    {% else %}
+                      <video class="w-full h-auto block pointer-events-none"
+                             autoplay loop muted playsinline preload="metadata">
+                        <source src="{{ eurl }}">
+                      </video>
+                    {% endif %}
+                  {% endwith %}
+                {% else %}
+                  <div class="w-full h-36 flex items-center justify-center bg-[#222] text-[#555] text-xs">No media</div>
+                {% endif %}
               {% else %}
-                <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="15" height="15"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                {% comment %} ── Image types: desktop_image / mobile_image / other ── {% endcomment %}
+                {% if media1.image %}
+                  <img src="{{ media1.image.url }}" alt="{{ media1.alt_text|default:project.title }}"
+                       class="w-full h-auto block pointer-events-none" loading="lazy">
+                {% elif media1.file %}
+                  <img src="{{ media1.file.url }}" alt="{{ media1.alt_text|default:project.title }}"
+                       class="w-full h-auto block pointer-events-none" loading="lazy">
+                {% elif media1.external_url %}
+                  <img src="{{ media1.external_url }}" alt="{{ media1.alt_text|default:project.title }}"
+                       class="w-full h-auto block pointer-events-none" loading="lazy">
+                {% else %}
+                  <div class="w-full h-36 flex items-center justify-center bg-[#222] text-[#555] text-xs">No image</div>
+                {% endif %}
               {% endif %}
-              {{ link.label|default:link.get_link_type_display }}
-              {% if link.link_type == 'website' or link.link_type == 'demo' %}
-                <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="13" height="13" class="pc-link__arrow"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
-              {% endif %}
-            </a>
-          {% endfor %}
+            {% else %}
+              <div class="w-full h-36 flex items-center justify-center bg-[#222] text-[#555] text-xs">No image</div>
+            {% endif %}
+          </div>
         </div>
+
+        {% endif%}
+
+        {% comment %} ── MOCK #2 (front, lower) ── {% endcomment %}
+        {% if media2 %}
+        <div class="browser {% if idx|divisibleby:2 %}tilt-left{% else %}tilt-left tilt-mirror{% endif %}
+                    bg-[#111] rounded-lg overflow-hidden
+                    border border-white/5 cursor-pointer
+                    shadow-[0_2px_4px_#00000003,0_4px_8px_#00000005,0_8px_16px_#0000000a,0_16px_32px_#0000000f,0_10px_40px_rgba(0,0,0,0.3)]">
+
+          <div class="flex items-center justify-between h-7 px-4 bg-[#f1f1f1] border-b border-[#e5e5e5]">
+            <svg fill="none" height="9" viewBox="0 0 38 9" width="38" xmlns="http://www.w3.org/2000/svg">
+              <path clip-rule="evenodd" d="M8.95993 4.75774C8.95993 7.04672 7.10434 8.90232 4.81535 8.90232C2.52637 8.90232 0.670776 7.04672 0.670776 4.75774C0.670776 2.46875 2.52637 0.613159 4.81535 0.613159C7.10434 0.613159 8.95993 2.46875 8.95993 4.75774ZM23.2491 4.75774C23.2491 7.04672 21.3935 8.90232 19.1045 8.90232C16.8156 8.90232 14.96 7.04672 14.96 4.75774C14.96 2.46875 16.8156 0.613159 19.1045 0.613159C21.3935 0.613159 23.2491 2.46875 23.2491 4.75774ZM33.3937 8.90232C35.6827 8.90232 37.5383 7.04672 37.5383 4.75774C37.5383 2.46875 35.6827 0.613159 33.3937 0.613159C31.1047 0.613159 29.2491 2.46875 29.2491 4.75774C29.2491 7.04672 31.1047 8.90232 33.3937 8.90232Z" fill="#a0a0a0" fill-rule="evenodd"/>
+            </svg>
+            <div class="bg-[#e2e2e2] rounded px-3 py-0.5 text-[10px] text-[#555] truncate max-w-[130px] text-center">
+              {{ project.title }} 
+            </div>
+            <svg class="browser-buttons" fill="none" height="12" viewBox="0 0 47 12" width="47" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#a0a0a0" fill-rule="evenodd" d="M2.96875 11.4382C2.49414 11.4382 2.13525 11.3181 1.89209 11.0779C1.64893 10.8376 1.52734 10.4817 1.52734 10.01V5.68579C1.52734 5.21704 1.64893 4.86255 1.89209 4.62231C2.13525 4.37915 2.49414 4.25757 2.96875 4.25757H4.16846V5.12329H3.02148C2.81641 5.12329 2.65967 5.17749 2.55127 5.28589C2.4458 5.39136 2.39307 5.55103 2.39307 5.76489V9.9353C2.39307 10.1492 2.4458 10.3088 2.55127 10.4143C2.65967 10.5227 2.81641 10.5769 3.02148 10.5769H7.97412C8.17627 10.5769 8.33154 10.5227 8.43994 10.4143C8.55127 10.3088 8.60693 10.1492 8.60693 9.9353V5.76489C8.60693 5.55103 8.55127 5.39136 8.43994 5.28589C8.33154 5.17749 8.17627 5.12329 7.97412 5.12329H6.83594V4.25757H8.03125C8.50586 4.25757 8.86475 4.37915 9.10791 4.62231C9.35107 4.86255 9.47266 5.21704 9.47266 5.68579V10.01C9.47266 10.4788 9.35107 10.8333 9.10791 11.0735C8.86475 11.3167 8.50586 11.4382 8.03125 11.4382H2.96875ZM5.5 7.93579C5.38867 7.93579 5.29199 7.89624 5.20996 7.81714C5.13086 7.73804 5.09131 7.64429 5.09131 7.53589V3.1106L5.12646 2.45581L4.84961 2.77661L4.23438 3.43579C4.16406 3.51489 4.07324 3.55444 3.96191 3.55444C3.85938 3.55444 3.77295 3.52222 3.70264 3.45776C3.63525 3.39038 3.60156 3.30542 3.60156 3.20288C3.60156 3.10913 3.63818 3.02271 3.71143 2.9436L5.18799 1.52417C5.24365 1.47144 5.29639 1.43481 5.34619 1.41431C5.396 1.3938 5.44727 1.38354 5.5 1.38354C5.55273 1.38354 5.604 1.3938 5.65381 1.41431C5.70361 1.43481 5.75488 1.47144 5.80762 1.52417L7.28418 2.9436C7.36035 3.02271 7.39844 3.10913 7.39844 3.20288C7.39844 3.30542 7.36182 3.39038 7.28857 3.45776C7.21826 3.52222 7.1333 3.55444 7.03369 3.55444C6.92529 3.55444 6.83447 3.51489 6.76123 3.43579L6.146 2.77661L5.87354 2.45581L5.90869 3.1106V7.53589C5.90869 7.64429 5.86768 7.73804 5.78564 7.81714C5.70654 7.89624 5.61133 7.93579 5.5 7.93579Z"></path>
+              <path fill="#a0a0a0" fill-rule="evenodd" d="M19.3218 6.77563C19.3218 6.64087 19.3701 6.52515 19.4668 6.42847C19.5635 6.32886 19.6792 6.27905 19.814 6.27905H22.5078V3.5896C22.5078 3.45483 22.5562 3.33911 22.6528 3.24243C22.7495 3.14575 22.8652 3.09741 23 3.09741C23.1377 3.09741 23.2549 3.14575 23.3516 3.24243C23.4482 3.33911 23.4966 3.45483 23.4966 3.5896V6.27905H26.186C26.3208 6.27905 26.4365 6.32886 26.5332 6.42847C26.6299 6.52515 26.6782 6.64087 26.6782 6.77563C26.6782 6.91333 26.6299 7.03052 26.5332 7.1272C26.4365 7.22095 26.3208 7.26782 26.186 7.26782H23.4966V9.96606C23.4966 10.0979 23.4482 10.2122 23.3516 10.3088C23.2549 10.4055 23.1377 10.4539 23 10.4539C22.8652 10.4539 22.7495 10.4055 22.6528 10.3088C22.5562 10.2122 22.5078 10.0979 22.5078 9.96606V7.26782H19.814C19.6792 7.26782 19.5635 7.22095 19.4668 7.1272C19.3701 7.03052 19.3218 6.91333 19.3218 6.77563Z"></path>
+              <path fill="#a0a0a0" fill-rule="evenodd" d="M37.6777 9.40356C37.2031 9.40356 36.8442 9.28345 36.6011 9.04321C36.3579 8.80298 36.2363 8.44702 36.2363 7.97534V3.49731C36.2363 3.02563 36.3579 2.66968 36.6011 2.42944C36.8442 2.18921 37.2031 2.06909 37.6777 2.06909H42.1294C42.604 2.06909 42.9629 2.19067 43.2061 2.43384C43.4492 2.67407 43.5708 3.02856 43.5708 3.49731V4.53003H42.7051V3.57202C42.7051 3.35815 42.6509 3.19849 42.5425 3.09302C42.4341 2.98462 42.2788 2.93042 42.0767 2.93042H37.7305C37.5254 2.93042 37.3687 2.98462 37.2603 3.09302C37.1548 3.19849 37.1021 3.35815 37.1021 3.57202V7.90063C37.1021 8.1145 37.1548 8.27563 37.2603 8.38403C37.3687 8.4895 37.5254 8.54224 37.7305 8.54224H38.8511V9.40356H37.6777ZM39.8662 11.4954C39.3916 11.4954 39.0327 11.3752 38.7896 11.135C38.5464 10.8948 38.4248 10.5388 38.4248 10.0671V5.58472C38.4248 5.11597 38.5464 4.76147 38.7896 4.52124C39.0327 4.27808 39.3916 4.15649 39.8662 4.15649H44.3179C44.7925 4.15649 45.1514 4.27808 45.3945 4.52124C45.6377 4.7644 45.7593 5.1189 45.7593 5.58472V10.0671C45.7593 10.5359 45.6377 10.8904 45.3945 11.1306C45.1514 11.3738 44.7925 11.4954 44.3179 11.4954H39.8662ZM39.9189 10.634H44.2651C44.4673 10.634 44.6226 10.5798 44.731 10.4714C44.8394 10.366 44.8936 10.2063 44.8936 9.99243V5.66382C44.8936 5.44995 44.8394 5.29028 44.731 5.18481C44.6226 5.07642 44.4673 5.02222 44.2651 5.02222H39.9189C39.7139 5.02222 39.5571 5.07642 39.4487 5.18481C39.3403 5.29028 39.2861 5.44995 39.2861 5.66382V9.99243C39.2861 10.2063 39.3403 10.366 39.4487 10.4714C39.5571 10.5798 39.7139 10.634 39.9189 10.634Z"></path>
+            </svg>
+          </div>
+
+          <div class="screen bg-[#1a1a1a]">
+            {% if media2 %}
+              {% if media2.media_type == "gif_video" %}
+                {% comment %} ── GIF / Video ── {% endcomment %}
+                {% if media2.file %}
+                
+                  {% with fname=media2.file.url %}
+                    {% if ".gif" in fname %}
+                      <img src="{{ fname }}" alt="{{ media2.alt_text|default:project.title }}"
+                           class="w-full h-auto block pointer-events-none" loading="lazy">
+                    {% else %}
+                      <video class="w-full h-auto block pointer-events-none"
+                             autoplay loop muted playsinline preload="metadata">
+                        <source src="{{ fname }}">
+                      </video>
+                    {% endif %}
+                  {% endwith %}
+                {% elif media2.external_url %}
+                  {% with eurl=media2.external_url %}
+                    {% if ".gif" in eurl %}
+                      <img src="{{ eurl }}" alt="{{ media2.alt_text|default:project.title }}"
+                           class="w-full h-auto block pointer-events-none" loading="lazy">
+                    {% else %}
+                      <video class="w-full h-auto block pointer-events-none"
+                             autoplay loop muted playsinline preload="metadata">
+                        <source src="{{ eurl }}">
+                      </video>
+                    {% endif %}
+                  {% endwith %}
+                {% else %}
+                  <div class="w-full h-36 flex items-center justify-center bg-[#222] text-[#555] text-xs">No media</div>
+                {% endif %}
+              {% else %}
+                {% comment %} ── Image types: desktop_image / mobile_image / other ── {% endcomment %}
+                {% if media2.image %}
+                  <img src="{{ media2.image.url }}" alt="{{ media2.alt_text|default:project.title }}"
+                       class="w-full h-auto block pointer-events-none" loading="lazy">
+                {% elif media2.file %}
+                  <img src="{{ media2.file.url }}" alt="{{ media2.alt_text|default:project.title }}"
+                       class="w-full h-auto block pointer-events-none" loading="lazy">
+                {% elif media2.external_url %}
+                  <img src="{{ media2.external_url }}" alt="{{ media2.alt_text|default:project.title }}"
+                       class="w-full h-auto block pointer-events-none" loading="lazy">
+                {% else %}
+                  <div class="w-full h-36 flex items-center justify-center bg-[#222] text-[#555] text-xs">No image</div>
+                {% endif %}
+              {% endif %}
+
+            {% elif media1 %}
+              {% comment %} ── Fallback: repeat media1 at 70% opacity ── {% endcomment %}
+              {% if media1.media_type == "gif_video" %}
+                {% if media1.file %}
+                  {% with fname=media1.file.url %}
+                    {% if ".gif" in fname %}
+                      <img src="{{ fname }}" alt="{{ media1.alt_text|default:project.title }}"
+                           class="w-full h-auto block pointer-events-none opacity-70" loading="lazy">
+                    {% else %}
+                      <video class="w-full h-auto block pointer-events-none opacity-70"
+                             autoplay loop muted playsinline preload="metadata">
+                        <source src="{{ fname }}">
+                      </video>
+                    {% endif %}
+                  {% endwith %}
+                {% elif media1.external_url %}
+                  {% with eurl=media1.external_url %}
+                    {% if ".gif" in eurl %}
+                      <img src="{{ eurl }}" alt="{{ media1.alt_text|default:project.title }}"
+                           class="w-full h-auto block pointer-events-none opacity-70" loading="lazy">
+                    {% else %}
+                      <video class="w-full h-auto block pointer-events-none opacity-70"
+                             autoplay loop muted playsinline preload="metadata">
+                        <source src="{{ eurl }}">
+                      </video>
+                    {% endif %}
+                  {% endwith %}
+                {% else %}
+                  <div class="w-full h-36 flex items-center justify-center bg-[#222] text-[#555] text-xs">No media</div>
+                {% endif %}
+              {% else %}
+                {% if media1.image %}
+                  <img src="{{ media1.image.url }}" alt="{{ media1.alt_text|default:project.title }}"
+                       class="w-full h-auto block pointer-events-none opacity-70" loading="lazy">
+                {% elif media1.file %}
+                  <img src="{{ media1.file.url }}" alt="{{ media1.alt_text|default:project.title }}"
+                       class="w-full h-auto block pointer-events-none opacity-70" loading="lazy">
+                {% elif media1.external_url %}
+                  <img src="{{ media1.external_url }}" alt="{{ media1.alt_text|default:project.title }}"
+                       class="w-full h-auto block pointer-events-none opacity-70" loading="lazy">
+                {% else %}
+                  <div class="w-full h-36 flex items-center justify-center bg-[#222] text-[#555] text-xs">No image</div>
+                {% endif %}
+              {% endif %}
+
+            {% else %}
+              <div class="w-full h-36 flex items-center justify-center bg-[#222] text-[#555] text-xs">No image</div>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+
+        {% endwith %}
+        {% endwith %}
+
+      </div>
+    </div>
+
+    {% comment %} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        CONTENT SIDE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ {% endcomment %}
+    <div class="prj-card__content z-10 w-full lg:w-7/12
+                {% if idx|divisibleby:2 %}lg:pl-12{% else %}lg:pr-12{% endif %}">
+
+      {% comment %} Title {% endcomment %}
+      <h3 class="prj-card__title  text-3xl sm:text-4xl font-bold mb-10 tracking-wide leading-tight">
+        {{ project.title }}
+      </h3>
+
+      {% comment %} Role as subtitle {% endcomment %}
+      {% if project.role %}
+      <p class="prj-card__role text-sm font-medium mb-4 opacity-60 uppercase tracking-widest">
+        {{ project.role }}{% if project.duration %} &nbsp;·&nbsp; {{ project.duration }}{% endif %}
+      </p>
       {% endif %}
-    {% endwith %}
+
+      {% comment %} Short summary {% endcomment %}
+      <p class="prj-card__summary text-base sm:text-lg leading-relaxed mb-7 max-w-lg opacity-90">
+        {{ project.short_summary }}
+      </p>
+
+      {% comment %} ── Tech stack badges ── {% endcomment %}
+      {% if project.technologies.all %}
+      <div class="prj-card__tech flex flex-wrap gap-2 mb-8 hidden" role="list" aria-label="Technologies used">
+        {% for tech in project.technologies.all %}
+        <div class="tech-badge group relative"
+             role="listitem"
+             title="{{ tech.name }}: {{ tech.short_description }}">
+
+          {% comment %} Badge pill — shows only icon, expands on hover to show name {% endcomment %}
+          <div class="tech-badge__pill
+                      flex items-center gap-0 overflow-hidden
+                      rounded-xl border border-current border-opacity-20
+                      px-2.5 py-2
+                      transition-all duration-300 ease-out
+                      cursor-default select-none
+                      bg-black/10 backdrop-blur-sm
+                      group-hover:gap-1.5 group-hover:pr-3">
+
+            <span class="tech-badge__logo shrink-0 w-5 h-5 flex items-center justify-center">
+              {% if tech.logo_type == "svg" and tech.svg %}
+                <span class="block w-5 h-5 [&>svg]:w-5 [&>svg]:h-5 [&>svg]:fill-current">{{ tech.svg|safe }}</span>
+              {% elif tech.logo_type == "image" and tech.logo_image %}
+                <img src="{{ tech.logo_image.url }}" alt="{{ tech.name }}" class="w-5 h-5 object-contain" loading="lazy">
+              {% else %}
+                <span class="text-[11px] font-black leading-none">{{ tech.name|slice:":2"|upper }}</span>
+              {% endif %}
+            </span>
+
+            <span class="tech-badge__name
+                         text-xs font-semibold whitespace-nowrap
+                         max-w-0 opacity-0
+                         group-hover:max-w-[140px] group-hover:opacity-100
+                         transition-all duration-300 ease-out overflow-hidden">
+              {{ tech.name }}
+            </span>
+          </div>
+
+          {% comment %} Tooltip for mobile / small hover area {% endcomment %}
+          <div class="tech-tooltip
+                      absolute bottom-full left-1/2 -translate-x-1/2 mb-2
+                      bg-black/90 text-white text-[11px] font-medium
+                      px-2.5 py-1 rounded-lg whitespace-nowrap
+                      opacity-0 group-hover:opacity-100 pointer-events-none
+                      transition-opacity duration-200 z-50
+                      hidden sm:block lg:hidden">
+            {{ tech.name }}: {{ tech.short_description }}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% comment %} ── Links ── {% endcomment %}
+      <div class="prj-card__links flex flex-wrap items-center gap-x-8 gap-y-3 font-semibold text-base sm:text-lg">
+
+        {% for link in project.links.all %}
+          {% if link.link_type == "website" or link.link_type == "demo" %}
+          <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
+             class="prj-link prj-link--primary inline-flex items-center gap-2 hover:opacity-70 transition-opacity">
+            {{ link.label|default:"See Live" }}
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+
+          {% elif link.link_type == "github" %}
+          <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
+             class="prj-link inline-flex items-center gap-2 hover:opacity-70 transition-opacity">
+            <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            {{ link.label|default:"GitHub" }}
+          </a>
+
+          {% elif link.link_type == "documentation" %}
+          <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
+             class="prj-link inline-flex items-center gap-2 hover:opacity-70 transition-opacity">
+            <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            {{ link.label|default:"Docs" }}
+          </a>
+
+          {% elif link.link_type == "demo_video" %}
+          <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
+             class="prj-link inline-flex items-center gap-2 hover:opacity-70 transition-opacity">
+            <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            {{ link.label|default:"Demo Video" }}
+          </a>
+
+          {% else %}
+          <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
+             class="prj-link hover:opacity-70 transition-opacity">
+            {{ link.label|default:link.get_link_type_display }}
+          </a>
+          {% endif %}
+        {% endfor %}
+
+        {% comment %} Project Showcase — links to detail page {% endcomment %}
+        {% if project.slug %}
+        <a href="/projects/{{ project.slug }}/"
+           class="prj-link hover:opacity-70 transition-opacity">
+          Project Showcase
+        </a>
+        {% endif %}
+
+      </div>
+
+    </div>
 
   </div>
+</div>
 
-</article>
-
-{% comment %} 
-{# ══════════════════════════════════════════════════════════════════
-   STYLES — rendered only once (on the first card in the loop).
-   Tip: move this <style> block to your base styles.css instead.
-   ══════════════════════════════════════════════════════════════════ #} {% endcomment %}
-{% if forloop.first %}
-<style>
-/* ─── Card shell ──────────────────────────────────────────────── */
-.pc-card {
-  display: grid;
-  grid-template-columns: 5fr 6fr;
-  align-items: center;
-  gap: 3.5rem;
-  background: var(--pc-bg, #1d2b1d);
-  border-radius: 2.5rem;
-  padding: 3.5rem 4rem;
-  margin-bottom: 2rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow:
-    0 1px 2px rgba(0,0,0,.25),
-    0 4px 12px rgba(0,0,0,.35),
-    0 20px 60px rgba(0,0,0,.3);
-}
-
-/* inner border */
-.pc-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  border: 1px solid rgba(255,255,255,.06);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ambient glow */
-.pc-card::after {
-  content: '';
-  position: absolute;
-  top: -80px; left: 15%;
-  width: 70%; height: 160px;
-  background: var(--pc-accent, #4ade80);
-  opacity: .055;
-  filter: blur(70px);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-/* reverse: text LEFT, image RIGHT */
-.pc-card--reverse {
-  grid-template-columns: 6fr 5fr;
-}
-.pc-card--reverse .pc-media  { order: 2; }
-.pc-card--reverse .pc-content { order: 1; }
-
-/* ─── Media column ────────────────────────────────────────────── */
-.pc-media { position: relative; z-index: 2; }
-
-.pc-perspective {
-  perspective: 1000px;
-  position: relative;
-  width: 100%;
-}
-
-/* ─── Browser mockup ──────────────────────────────────────────── */
-.pc-browser {
-  background: #0f0f0f;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.06);
-  box-shadow: 0 2px 4px rgba(0,0,0,.08), 0 8px 20px rgba(0,0,0,.25), 0 24px 60px rgba(0,0,0,.4);
-  transition: transform .55s cubic-bezier(.45,0,.55,1), box-shadow .55s cubic-bezier(.45,0,.55,1);
-  -webkit-backdrop-filter: blur(.5em);
-  backdrop-filter: blur(.5em);
-}
-
-.pc-browser__bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 28px;
-  padding: 0 12px;
-  background: #efefef;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.pc-browser__url {
-  background: #e2e2e2;
-  border-radius: 4px;
-  padding: 2px 12px;
-  font-size: 10px;
-  color: #555;
-  max-width: 150px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-family: monospace;
-}
-
-.pc-browser__screen {
-  display: block;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.pc-browser__screen img {
-  width: 100%;
-  height: auto;
-  display: block;
-  pointer-events: none;
-  object-fit: cover;
-}
-
-/* tilt positions */
-.pc-browser--back {
-  position: relative;
-  margin-top: -7em;
-  transform: rotateX(18deg) rotateY(-16deg) rotate(8deg) translateX(-2%);
-  z-index: 5;
-  width: 108%;
-}
-.pc-browser--front {
-  position: absolute;
-  left: -33%;
-  top: 50%;
-  transform: rotateX(26deg) rotateY(22deg) rotate(-12deg) translateX(2%);
-  z-index: 10;
-  width: 108%;
-}
-.pc-browser--back:hover {
-  transform: rotateX(0) rotateY(0) rotate(0) translate(-4%, -4%) scale(1.04);
-  box-shadow: 0 32px 80px rgba(0,0,0,.55);
-}
-.pc-browser--front:hover {
-  transform: rotateX(0) rotateY(0) rotate(0) translate(-8%, 0%) scale(1.04);
-  box-shadow: 0 32px 80px rgba(0,0,0,.55);
-}
-
-/* placeholder when no image uploaded */
-.pc-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: .75rem;
-  padding: 3.5rem 1.5rem;
-  color: rgba(255,255,255,.15);
-  font-size: .7rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-.pc-placeholder svg { width: 36px; height: 36px; opacity: .5; }
-.pc-placeholder--mobile { padding: 4.5rem 1.5rem; }
-
-/* ─── Content column ──────────────────────────────────────────── */
-.pc-content {
-  color: #fff;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-}
-
-/* badges */
-.pc-badges { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1.25rem; }
-
-.pc-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: .3rem;
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-  padding: .28rem .8rem;
-  border-radius: 999px;
-  line-height: 1;
-}
-.pc-badge--featured  { background: var(--pc-accent, #4ade80); color: #000; }
-.pc-badge--role      { background: rgba(255,255,255,.08); color: rgba(255,255,255,.65); border: 1px solid rgba(255,255,255,.12); }
-.pc-badge--duration  { background: transparent; color: rgba(255,255,255,.35); border: 1px solid rgba(255,255,255,.08); }
-
-/* title */
-.pc-title {
-  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -.03em;
-  color: #fff;
-  margin: 0 0 1rem;
-}
-
-/* summary */
-.pc-summary {
-  font-size: .975rem;
-  line-height: 1.75;
-  color: rgba(255,255,255,.5);
-  max-width: 46ch;
-  margin: 0 0 1.5rem;
-}
-
-/* tech pills */
-.pc-techs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 2rem; }
-
-.pc-tech {
-  display: inline-flex;
-  align-items: center;
-  gap: .35rem;
-  font-size: .7rem;
-  font-weight: 500;
-  padding: .3rem .75rem;
-  border-radius: 6px;
-  background: rgba(255,255,255,.05);
-  color: rgba(255,255,255,.55);
-  border: 1px solid rgba(255,255,255,.09);
-  transition: background .2s, color .2s, border-color .2s;
-  cursor: default;
-}
-.pc-tech:hover { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.18); }
-.pc-tech__img  { width: 14px; height: 14px; object-fit: contain; border-radius: 2px; flex-shrink: 0; }
-.pc-tech__icon { display: flex; align-items: center; width: 14px; height: 14px; flex-shrink: 0; }
-.pc-tech__icon svg, .pc-tech__icon img { width: 100%; height: 100%; }
-
-/* links */
-.pc-links { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
-
-.pc-link {
-  display: inline-flex;
-  align-items: center;
-  gap: .45rem;
-  font-size: .85rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 999px;
-  transition: gap .25s ease, opacity .2s ease, color .2s ease;
-  white-space: nowrap;
-}
-
-/* primary pill */
-.pc-link--website,
-.pc-link--demo {
-  background: var(--pc-accent, #4ade80);
-  color: #000;
-  padding: .65rem 1.6rem;
-}
-.pc-link--website:hover,
-.pc-link--demo:hover { opacity: .85; gap: .7rem; }
-
-.pc-link__arrow { transition: transform .25s ease; }
-.pc-link--website:hover .pc-link__arrow,
-.pc-link--demo:hover   .pc-link__arrow { transform: translateX(3px); }
-
-/* secondary underline */
-.pc-link--github,
-.pc-link--documentation,
-.pc-link--demo_video,
-.pc-link--other {
-  color: rgba(255,255,255,.55);
-  padding: .65rem 0;
-  border-bottom: 1px solid rgba(255,255,255,.18);
-  border-radius: 0;
-}
-.pc-link--github:hover,
-.pc-link--documentation:hover,
-.pc-link--demo_video:hover,
-.pc-link--other:hover { color: #fff; border-color: #fff; gap: .7rem; }
-
-/* ─── Responsive ──────────────────────────────────────────────── */
-@media (max-width: 960px) {
-  .pc-card,
-  .pc-card--reverse {
-    grid-template-columns: 1fr;
-    padding: 2.5rem 2rem;
-  }
-  .pc-card--reverse .pc-media,
-  .pc-card--reverse .pc-content { order: unset; }
-  .pc-media { max-width: 420px; width: 100%; margin: 0 auto; }
-  .pc-browser--back { margin-top: -5em; }
-  .pc-summary { max-width: 100%; }
-}
-
-@media (max-width: 520px) {
-  .pc-card { padding: 2rem 1.25rem; border-radius: 1.75rem; }
-  .pc-title { font-size: 1.6rem; }
-  .pc-browser--back { margin-top: -4em; }
-}
-</style>
-{% endif %}
+{% endwith %}

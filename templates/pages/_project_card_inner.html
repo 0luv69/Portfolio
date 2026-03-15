@@ -1,0 +1,32 @@
+{% comment %} {# ============================================================
+   _project_card_inner.html
+   Called by project_card.html with resolved palette vars.
+
+   Context expected:
+     project        — Project model instance
+     bg             — card background hex  e.g. "#26997b"
+     text           — primary text hex     e.g. "#f4fbf7"
+     muted          — muted/secondary rgba
+     badge_bg       — tech badge background rgba
+     badge_border   — tech badge border rgba
+     forloop        — the parent forloop object (for counter0)
+   ============================================================ #} {% endcomment %}
+
+{% load static %}
+
+{% comment %} {# Grab first two media items regardless of type #} {% endcomment %}
+{% with media_list=project.media_items.all %}
+{% with img_a=media_list.0 img_b=media_list.1 %}
+
+{% comment %} {# Even index (0,2,4…) → media LEFT,  text RIGHT
+   Odd  index (1,3,5…) → text  LEFT,  media RIGHT  #} {% endcomment %}
+{% if forloop.counter0|divisibleby:2 %}
+  {% with media_first=True %}
+    {% include "pages/_project_card_layout.html" with project=project bg=bg text=text muted=muted badge_bg=badge_bg badge_border=badge_border img_a=img_a img_b=img_b media_first=True %}
+  {% endwith %}
+{% else %}
+  {% include "pages/_project_card_layout.html" with project=project bg=bg text=text muted=muted badge_bg=badge_bg badge_border=badge_border img_a=img_a img_b=img_b media_first=False %}
+{% endif %}
+
+{% endwith %}
+{% endwith %}

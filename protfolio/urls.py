@@ -16,6 +16,12 @@ urlpatterns = [
 
     path('contact/', views.contact, name='contact'),
 
+
+
+
+
+    path('details/<slug:slug>/', views.home, name='project_detail'),
+
     
     # path('contact/messages/', views.contact_messages_view, name='contact_messages'),
 
