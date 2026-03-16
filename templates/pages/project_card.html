@@ -1,3 +1,4 @@
+{% load static %}
 {% with idx=loop_index|default:0 %}
 
 <div class="prj-card w-full" data-index="{{ idx }}">
@@ -63,12 +64,12 @@
                 {% elif media1.external_url %}
                   {% with eurl=media1.external_url %}
                     {% if ".gif" in eurl %}
-                      <img src="{{ eurl }}" alt="{{ media1.alt_text|default:project.title }}"
+                      <img src="{% static  eurl  %}" alt="{{ media1.alt_text|default:project.title }}"
                            class="w-full h-auto block pointer-events-none" loading="lazy">
                     {% else %}
                       <video class="w-full h-auto block pointer-events-none"
                              autoplay loop muted playsinline preload="metadata">
-                        <source src="{{ eurl }}">
+                        <source src="{% static  eurl%}">
                       </video>
                     {% endif %}
                   {% endwith %}
@@ -78,13 +79,13 @@
               {% else %}
                 {% comment %} ── Image types: desktop_image / mobile_image / other ── {% endcomment %}
                 {% if media1.image %}
-                  <img src="{{ media1.image.url }}" alt="{{ media1.alt_text|default:project.title }}"
+                  <img src="{% static media1.image.url %}" alt="{{ media1.alt_text|default:project.title }}"
                        class="w-full h-auto block pointer-events-none" loading="lazy">
                 {% elif media1.file %}
-                  <img src="{{ media1.file.url }}" alt="{{ media1.alt_text|default:project.title }}"
+                  <img src="{% static media1.file.url %}" alt="{{ media1.alt_text|default:project.title }}"
                        class="w-full h-auto block pointer-events-none" loading="lazy">
                 {% elif media1.external_url %}
-                  <img src="{{ media1.external_url }}" alt="{{ media1.alt_text|default:project.title }}"
+                  <img src="{% static media1.external_url  %}" alt="{{ media1.alt_text|default:project.title }}"
                        class="w-full h-auto block pointer-events-none" loading="lazy">
                 {% else %}
                   <div class="w-full h-36 flex items-center justify-center bg-[#222] text-[#555] text-xs">No image</div>
@@ -139,12 +140,12 @@
                 {% elif media2.external_url %}
                   {% with eurl=media2.external_url %}
                     {% if ".gif" in eurl %}
-                      <img src="{{ eurl }}" alt="{{ media2.alt_text|default:project.title }}"
+                      <img src="{% static eurl %}" alt="{{ media2.alt_text|default:project.title }}"
                            class="w-full h-auto block pointer-events-none" loading="lazy">
                     {% else %}
                       <video class="w-full h-auto block pointer-events-none"
                              autoplay loop muted playsinline preload="metadata">
-                        <source src="{{ eurl }}">
+                        <source src="{% static eurl %}{{ eurl }}">
                       </video>
                     {% endif %}
                   {% endwith %}
@@ -154,13 +155,13 @@
               {% else %}
                 {% comment %} ── Image types: desktop_image / mobile_image / other ── {% endcomment %}
                 {% if media2.image %}
-                  <img src="{{ media2.image.url }}" alt="{{ media2.alt_text|default:project.title }}"
+                  <img src="{% static media2.image.url %}" alt="{{ media2.alt_text|default:project.title }}"
                        class="w-full h-auto block pointer-events-none" loading="lazy">
                 {% elif media2.file %}
-                  <img src="{{ media2.file.url }}" alt="{{ media2.alt_text|default:project.title }}"
+                  <img src="{% static media2.file.url %}" alt="{{ media2.alt_text|default:project.title }}"
                        class="w-full h-auto block pointer-events-none" loading="lazy">
                 {% elif media2.external_url %}
-                  <img src="{{ media2.external_url }}" alt="{{ media2.alt_text|default:project.title }}"
+                  <img src="{% static media2.external_url %}" alt="{{ media2.alt_text|default:project.title }}"
                        class="w-full h-auto block pointer-events-none" loading="lazy">
                 {% else %}
                   <div class="w-full h-36 flex items-center justify-center bg-[#222] text-[#555] text-xs">No image</div>
@@ -173,24 +174,24 @@
                 {% if media1.file %}
                   {% with fname=media1.file.url %}
                     {% if ".gif" in fname %}
-                      <img src="{{ fname }}" alt="{{ media1.alt_text|default:project.title }}"
+                      <img src="{% static fname %}" alt="{{ media1.alt_text|default:project.title }}"
                            class="w-full h-auto block pointer-events-none opacity-70" loading="lazy">
                     {% else %}
                       <video class="w-full h-auto block pointer-events-none opacity-70"
                              autoplay loop muted playsinline preload="metadata">
-                        <source src="{{ fname }}">
+                        <source src="{% static fname %}{{ fname }}">
                       </video>
                     {% endif %}
                   {% endwith %}
                 {% elif media1.external_url %}
                   {% with eurl=media1.external_url %}
                     {% if ".gif" in eurl %}
-                      <img src="{{ eurl }}" alt="{{ media1.alt_text|default:project.title }}"
+                      <img src="{% static eurl %}" alt="{{ media1.alt_text|default:project.title }}"
                            class="w-full h-auto block pointer-events-none opacity-70" loading="lazy">
                     {% else %}
                       <video class="w-full h-auto block pointer-events-none opacity-70"
                              autoplay loop muted playsinline preload="metadata">
-                        <source src="{{ eurl }}">
+                        <source src="{% static eurl %}{{ eurl }}">
                       </video>
                     {% endif %}
                   {% endwith %}
@@ -199,13 +200,13 @@
                 {% endif %}
               {% else %}
                 {% if media1.image %}
-                  <img src="{{ media1.image.url }}" alt="{{ media1.alt_text|default:project.title }}"
+                  <img src="{% static media1.image.url %}" alt="{{ media1.alt_text|default:project.title }}"
                        class="w-full h-auto block pointer-events-none opacity-70" loading="lazy">
                 {% elif media1.file %}
-                  <img src="{{ media1.file.url }}" alt="{{ media1.alt_text|default:project.title }}"
+                  <img src="{% static media1.file.url %}" alt="{{ media1.alt_text|default:project.title }}"
                        class="w-full h-auto block pointer-events-none opacity-70" loading="lazy">
                 {% elif media1.external_url %}
-                  <img src="{{ media1.external_url }}" alt="{{ media1.alt_text|default:project.title }}"
+                  <img src="{% static media1.external_url %}" alt="{{ media1.alt_text|default:project.title }}"
                        class="w-full h-auto block pointer-events-none opacity-70" loading="lazy">
                 {% else %}
                   <div class="w-full h-36 flex items-center justify-center bg-[#222] text-[#555] text-xs">No image</div>
