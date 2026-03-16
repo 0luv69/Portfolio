@@ -52,12 +52,12 @@
                 {% if media1.file %}
                   {% with fname=media1.file.url %}
                     {% if ".gif" in fname %}
-                      <img src="{{ fname }}" alt="{{ media1.alt_text|default:project.title }}"
+                      <img src="{% static fname %}" alt="{{ media1.alt_text|default:project.title }}"
                            class="w-full h-auto block pointer-events-none" loading="lazy">
                     {% else %}
                       <video class="w-full h-auto block pointer-events-none"
                              autoplay loop muted playsinline preload="metadata">
-                        <source src="{{ fname }}">
+                        <source src="{% static fname %}">
                       </video>
                     {% endif %}
                   {% endwith %}
@@ -128,12 +128,12 @@
                 
                   {% with fname=media2.file.url %}
                     {% if ".gif" in fname %}
-                      <img src="{{ fname }}" alt="{{ media2.alt_text|default:project.title }}"
+                      <img src="{% static fname %}" alt="{{ media2.alt_text|default:project.title }}"
                            class="w-full h-auto block pointer-events-none" loading="lazy">
                     {% else %}
                       <video class="w-full h-auto block pointer-events-none"
                              autoplay loop muted playsinline preload="metadata">
-                        <source src="{{ fname }}">
+                        <source src="{% static fname %}">
                       </video>
                     {% endif %}
                   {% endwith %}
@@ -145,7 +145,7 @@
                     {% else %}
                       <video class="w-full h-auto block pointer-events-none"
                              autoplay loop muted playsinline preload="metadata">
-                        <source src="{% static eurl %}{{ eurl }}">
+                        <source src="{% static eurl %}">
                       </video>
                     {% endif %}
                   {% endwith %}
