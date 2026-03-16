@@ -1,3 +1,5 @@
+import random
+
 from django.shortcuts import render, redirect
 from .models import *
 import requests
@@ -15,6 +17,12 @@ from django.contrib import messages
 
 # Create your views here.
 
+video_list = [
+    "vid/fire1.mp4",
+    "vid/love-anger.mp4",
+    "vid/love.mp4"
+]
+
 def home(request):
     final_list= []
     for i in range(5,0,-1):
@@ -22,7 +30,8 @@ def home(request):
         final_list.extend(list(particular_grp))
     projects = final_list
     technologies = Technology.objects.all().order_by('-order')
-    return render(request, 'pages/index.html', {'projects':projects, 'technologies': technologies})
+    selected_video_url = random.choice(video_list)
+    return render(request, 'pages/index.html', {'projects':projects, 'technologies': technologies, 'video_list': video_list, 'selected_video_url':  selected_video_url})
 
 
 def temp0(request):
