@@ -75,19 +75,19 @@
     <nav class="fixed bottom-6 lg:max-h-[21rem] left-1/2 -translate-x-1/2 lg:left-8 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 z-50 bg-white/30 dark:bg-black/30 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] px-6 py-4 lg:py-8 lg:px-4 rounded-full flex lg:flex-col gap-6 lg:gap-8 transition-all duration-300">
         <a href="#home" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
             <i class="fas fa-home text-lg"></i>
-            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Home</span>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Home</span>
         </a>
         <a href="#projects" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
             <i class="fas fa-layer-group text-lg"></i>
-            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Work</span>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Work</span>
         </a>
         <a href="#skills" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
             <i class="fas fa-tools text-lg"></i>
-            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Skills</span>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Skills</span>
         </a>
         <a href="#contact" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
             <i class="fas fa-envelope text-lg"></i>
-            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Contact</span>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black  dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Contact</span>
         </a>
         <!-- Theme Toggle Button -->
         <button id="theme-toggle" class="nav-item text-slate-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors duration-300 relative group mt-auto lg:pt-1 lg:border-t lg:border-gray-300/50 dark:lg:border-gray-700/50">
@@ -99,10 +99,10 @@
 
     <main class="pt-10 lg:pt-24 max-w-6xl mx-auto px-6">
         <!-- Hero Section -->
-        <section id="home" class="min-h-[70vh] flex flex-col justify-center py-0 lg-py-20 lg:flex-row lg:justify-between lg:items-center lg:text-left">
+        <section id="home" class="min-h-[70vh] flex flex-col justify-center py-12 lg:py-20 lg:flex-row lg:justify-between lg:items-center gap-10 lg:gap-0">
             
             <!-- left column -->
-            <div class="relative left-section flex-1 flex flex-col gap-6 lg:gap-24 z-20 items-center text-center lg:items-start lg:text-left">
+            <div class="left-section relative flex-1 flex flex-col gap-6 lg:gap-24 z-20 items-center text-center lg:items-start lg:text-left order-2 lg:order-1">
                 
                 <div>
                     <div class="flex flex-wrap items-center gap-6 text-xl font-semibold text-muted-foreground ~/lg:~text-sm/lg ~/lg:~mb-4/8  my-4 font-">
@@ -172,11 +172,10 @@
 
        
             <!-- Center Column (Image) -->
-            <div class="center-section flex-1 flex justify-center items-center relative z-10">
+            <div class="center-section flex-1 flex justify-center items-center relative z-10 order-1 lg:order-2">
              
                 <!-- Flipping Profile Image Wrapper -->
-                <div id="profile-flipper" class="image-wrapper relative w-[350px] h-[350px] cursor-pointer group perspective-1000 shadow-[0_20px_40px_rgba(0,0,0,0.05)] rounded-full">
-                    
+                <div id="profile-flipper" class="image-wrapper relative w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] lg:w-[350px] lg:h-[350px] cursor-pointer perspective-1000 shadow-[0_20px_40px_rgba(0,0,0,0.05)] rounded-full">
                     <!-- Added id="flip-inner" to target the spin animation -->
                     <div id="flip-inner" class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d]">
                         <!-- Front Face (Image 1) -->
@@ -196,18 +195,13 @@
                             </div>
                         </div>
                     </div>
-
-                
                 </div>
             </div>
 
-
-
-
             <!-- Right Column -->
-            <div class="right-section flex-1 flex flex-col items-center gap-16 text-center relative z-20 lg:items-end lg:text-right">
+            <div class="right-section flex-1 flex flex-col items-center gap-8 lg:gap-16 text-center relative z-20 lg:items-end lg:text-right order-3">
             
-                <div class="description-block mt-[-8rem] lg:mt-0 max-w-[300px] text-center lg:text-right">
+                <div class="description-block max-w-[300px] text-center lg:text-right">
 
                     <!-- small decorative label -->
                     <span class="inline-block font-caveat font-bold text-sm text-[#F7B733] tracking-widest uppercase mb-1 opacity-70">
@@ -242,7 +236,7 @@
 
                 </div>
 
-                <div class="role-wrapper mt-auto flex flex-col items-center lg:items-end relative">
+                <div class="role-wrapper flex flex-col items-center lg:items-end relative">
                     <span
                         id="dynamic-creative"
                         class="text-[#F7B733] role-creative text-start font-caveat text-[3rem] font-bold  leading-[0.8] mr-0 lg:mr-10 transition-all duration-300"
