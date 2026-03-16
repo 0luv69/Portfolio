@@ -1,95 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Deo - Portfolio</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .font-caveat { font-family: 'Caveat', cursive; }
-        .font-poppins { font-family: 'Poppins', sans-serif; }
-    </style>
-</head>
-<body class="bg-[#F8F6F0] font-poppins text-[#1E3D3D] min-h-screen flex items-center justify-center overflow-x-hidden">
-
-    <div class="container max-w-[1200px] w-full px-8 py-8 flex flex-col gap-16 text-center relative lg:flex-row lg:justify-between lg:items-center lg:text-left">
-            
-    <!-- Left Column -->
-    <div class="left-section flex-1 flex flex-col gap-24 z-20 items-center text-center lg:items-start lg:text-left">
-            <div class="hero-text">
-                <h1 class="greeting font-caveat text-[3.5rem] text-[#1E3D3D] leading-[1.2]">Hy! I Am</h1>
-                <h2 class="name text-[4.5rem] font-bold text-[#F7B733] leading-[1.1]">John Deo.</h2>
-            </div>
-
-            <div class="experience-social flex flex-col gap-16">
-                <div class="experience flex items-center gap-2.5">
-                    <span class="years text-[3.5rem] font-bold text-[#1E3D3D] leading-none">08</span>
-                    <span class="exp-text text-sm font-semibold text-[#1E3D3D] leading-[1.3]">YEARS<br>EXPERIENCE</span>
-                </div>
-                
-                <div class="social-icons flex gap-6">
-                    <a href="#" class="text-[#F7B733] text-lg hover:opacity-80"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-[#F7B733] text-lg hover:opacity-80"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-[#F7B733] text-lg hover:opacity-80"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-[#F7B733] text-lg hover:opacity-80"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
+<!-- Center Column (Flip Card) -->
+<div class="center-section flex-1 flex justify-center items-center">
+  <div class="flip-card-scene" id="profileFlipCard">
+    
+    <div class="flip-card-inner" id="flipInner">
+      
+      <!-- FRONT: Profile Image -->
+      <div class="flip-card-face flip-card-front">
+        <div class="image-wrapper">
+          <img src="{% static 'img/me.png' %}" alt="John Deo" class="select-none profile-img">
         </div>
+      </div>
 
-        <!-- Center Column (Image) -->
-        <div class="center-section flex-1 flex justify-center items-center relative">
-            <!-- SVG for the dashed arrow pointing left -->
-            <svg class="dashed-arrow absolute top-[20%] left-[-25%] w-[200px] h-auto pointer-events-none z-0 lg:hidden" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M190 20 C 140 -10, 80 50, 10 70" stroke="#1E3D3D" stroke-width="2" stroke-dasharray="6 6" fill="transparent"/>
-                <path d="M15 63 L 5 72 L 17 78" stroke="#1E3D3D" stroke-width="2" fill="transparent" />
-            </svg>
-
-            <div class="image-wrapper relative w-[450px] h-[450px] rounded-full bg-white border-4 border-[#F7B733] flex justify-center items-end overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.05)]">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=60" alt="John Deo" class="profile-img w-[90%] h-auto object-cover rounded-full mb-5">
-            </div>
+      <!-- BACK: Video -->
+      <div class="flip-card-face flip-card-back">
+        <div class="video-wrapper">
+          <iframe
+            id="videoFrame"
+            src=""
+            data-src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1"
+            title="Profile Video"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+          </iframe>
+          <div class="video-label">▶ My Story</div>
         </div>
+      </div>
 
-        <!-- Right Column -->
-        <div class="right-section flex-1 flex flex-col items-center gap-16 text-center relative z-20 lg:items-end lg:text-right">
-            <p class="description text-base font-medium text-[#1E3D3D] max-w-[300px] mt-[-8rem] lg:mt-0">I design beautifully simple things,<br>and I love what i do.</p>
-            
-            <div class="reviews-card bg-white p-6 rounded-xl shadow-[0_15px_30px_rgba(0,0,0,0.06)] flex flex-col gap-2.5 text-left absolute right-10 top-[40%] w-[240px] z-10 lg:relative lg:top-auto lg:right-auto">
-                <div class="card-header flex justify-between items-center font-semibold text-base">
-                    <span>12k Reviews On</span>
-                    <span class="stars text-[#F7B733] text-sm tracking-widest">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </span>
-                </div>
-                <div class="card-body flex items-center justify-between mt-1.5">
-                    <div class="avatars flex">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Reviewer" class="w-8 h-8 rounded-full border-2 border-white ml-0 object-cover">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Reviewer" class="w-8 h-8 rounded-full border-2 border-white ml-[-10px] object-cover">
-                        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Reviewer" class="w-8 h-8 rounded-full border-2 border-white ml-[-10px] object-cover">
-                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Reviewer" class="w-8 h-8 rounded-full border-2 border-white ml-[-10px] object-cover">
-                        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Reviewer" class="w-8 h-8 rounded-full border-2 border-white ml-[-10px] object-cover">
+    </div><!-- /flip-card-inner -->
+
+    <!-- Tap hint badge -->
+    <div class="flip-hint" id="flipHint">tap to flip</div>
+
+  </div><!-- /flip-card-scene -->
+</div>
+
+
+
+
+            <!-- Center Column (Image) -->
+            <div class="center-section flex-1 flex justify-center items-center relative z-10">
+                <!-- SVG Dashed Arrow -->
+                <svg class="dashed-arrow absolute top-[37%] left-[-45%] w-[200px] h-auto pointer-events-none z-0 hidden lg:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600.000000 257.000000"> 
+                    <!-- (Keep your existing svg paths here) -->
+                </svg>
+
+                <!-- Flipping Profile Image Wrapper -->
+                <div id="profile-flipper" class="image-wrapper relative w-[450px] h-[450px] cursor-pointer group perspective-1000 shadow-[0_20px_40px_rgba(0,0,0,0.05)] rounded-full" onclick="this.classList.toggle('flipped')">
+                    
+                    <!-- Added id="flip-inner" to target the spin animation -->
+                    <div id="flip-inner" class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d]">
+                        <!-- Front Face (Image 1) -->
+                        <div class="absolute w-full h-full bg-white border-4 border-[#F7B733] flex justify-center items-end rounded-full overflow-hidden [backface-visibility:hidden]">
+                            <img src="{% static 'img/me.png' %}" alt="John Deo" class="profile-img w-[90%] h-auto object-cover rounded-full mb-5 pointer-events-none">
+                        </div>
+                        
+                        <!-- Back Face (Image 2) -->
+                        <div class="absolute w-full h-full bg-[#1E3D3D] border-4 border-[#F7B733] flex justify-center items-end rounded-full overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                            <img src="{% static 'img/image2.png' %}" alt="Alternative Profile" class="profile-img w-[90%] h-auto object-cover rounded-full mb-5 pointer-events-none">
+                        </div>
                     </div>
-                    <span class="rating text-xl font-bold text-[#1E3D3D]">4.9</span>
+
                 </div>
             </div>
-
-            <div class="role-wrapper mt-auto flex flex-col items-center lg:items-end">
-                <span class="role-creative font-caveat text-[3rem] text-[#1E3D3D] leading-[0.8] mr-0 lg:mr-10">Creative</span>
-                <span class="role-designer text-[2rem] font-bold text-[#1E3D3D]">Designer.</span>
-            </div>
-        </div>
-
-    </div>
-
-</body>
-</html>

@@ -56,10 +56,15 @@
 
         .font-caveat { font-family: 'Caveat', cursive; }
         .font-poppins { font-family: 'Poppins', sans-serif; }
+
+
+
     </style>
 </head>
 
-<body class="bg-[#FFF8F0] dark:bg-[#0a0a0a] text-slate-900 dark:text-white transition-colors duration-300">
+<body 
+     style="user-select: none;"
+    class="bg-[#FFF8F0] dark:bg-[#0a0a0a] text-slate-900 dark:text-white transition-colors duration-300">
 
     <!-- 1. Page Load Curtain -->
     <div id="preloader" class="fixed inset-0 bg-[#F5E9D8] flex items-center justify-center z-[100] transition-transform duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)]">
@@ -92,52 +97,39 @@
         </button>
     </nav>
 
-    <main class="pt-24 max-w-6xl mx-auto px-6">
+    <main class="pt-10 lg:pt-24 max-w-6xl mx-auto px-6">
         <!-- Hero Section -->
-        <section id="home" class="min-h-[70vh] flex flex-col justify-center py-20 lg:flex-row lg:justify-between lg:items-center lg:text-left">
+        <section id="home" class="min-h-[70vh] flex flex-col justify-center py-0 lg-py-20 lg:flex-row lg:justify-between lg:items-center lg:text-left">
             
-
-            <div class="left-section flex-1 flex flex-col gap-24 z-20 items-center text-center lg:items-start lg:text-left">
+            <!-- left column -->
+            <div class="relative left-section flex-1 flex flex-col gap-6 lg:gap-24 z-20 items-center text-center lg:items-start lg:text-left">
                 
                 <div>
                     <div class="flex flex-wrap items-center gap-6 text-xl font-semibold text-muted-foreground ~/lg:~text-sm/lg ~/lg:~mb-4/8  my-4 font-">
-                        <p>Idea</p>
-                        <svg class="w-8 h-auto text-muted-foreground" preserveAspectRatio="xMaxYMid meet" viewBox="0 0 151 84" fill="currentColor"><path d="M68.1 41.35c-17.996-.146-35.992-.263-53.988-.46-3.587-.04-7.18-.321-10.752-.672a2.954 2.954 0 0 1-2.532-2.166c-.293-.919.727-2.222 1.945-2.414 1.181-.186 2.357-.474 3.544-.546 7.583-.46 15.165-1.11 22.755-1.247 15.593-.28 31.19-.35 46.787-.368 14.797-.017 29.595.168 44.392.202 2.376.006 4.754-.294 7.126-.506a.972.972 0 0 0 .684-.627c.042-.366-.066-.984-.31-1.115-4.547-2.472-9.038-5.073-13.714-7.278-10.877-5.132-21.081-11.425-31.278-17.74-1.676-1.037-3.432-2.091-4.108-4.15-.123-.375-.315-1.017-.158-1.142A4.631 4.631 0 0 1 80.472.03a4.28 4.28 0 0 1 2.305.368 150.117 150.117 0 0 1 7.556 3.653c17.718 9.25 35.43 18.511 53.136 27.782 6.688 3.479 9.867 6.852 1.838 14.5-2.313 2.205-4.653 4.406-7.168 6.366a4668.43 4668.43 0 0 1-35.121 27.137 38.132 38.132 0 0 1-5.095 3.085c-1.159.629-2.318.256-3.319-.498-1.1-.83-1.784-3.244-1.404-4.305.843-2.356 2.523-4.085 4.328-5.65a2230.126 2230.126 0 0 1 20.953-17.95c4.563-3.882 9.174-7.706 13.73-11.596.225-.191.236-.787.145-1.145a1.03 1.03 0 0 0-.718-.63c-2.382-.155-4.767-.354-7.15-.342-18.797.1-37.593.223-56.39.372l.002.173Z"/></svg>
-                        <p>Build</p>
-                        <svg class="w-8 h-auto text-muted-foreground" preserveAspectRatio="xMaxYMid meet" viewBox="0 0 151 84" fill="currentColor"><path d="M68.1 41.35c-17.996-.146-35.992-.263-53.988-.46-3.587-.04-7.18-.321-10.752-.672a2.954 2.954 0 0 1-2.532-2.166c-.293-.919.727-2.222 1.945-2.414 1.181-.186 2.357-.474 3.544-.546 7.583-.46 15.165-1.11 22.755-1.247 15.593-.28 31.19-.35 46.787-.368 14.797-.017 29.595.168 44.392.202 2.376.006 4.754-.294 7.126-.506a.972.972 0 0 0 .684-.627c.042-.366-.066-.984-.31-1.115-4.547-2.472-9.038-5.073-13.714-7.278-10.877-5.132-21.081-11.425-31.278-17.74-1.676-1.037-3.432-2.091-4.108-4.15-.123-.375-.315-1.017-.158-1.142A4.631 4.631 0 0 1 80.472.03a4.28 4.28 0 0 1 2.305.368 150.117 150.117 0 0 1 7.556 3.653c17.718 9.25 35.43 18.511 53.136 27.782 6.688 3.479 9.867 6.852 1.838 14.5-2.313 2.205-4.653 4.406-7.168 6.366a4668.43 4668.43 0 0 1-35.121 27.137 38.132 38.132 0 0 1-5.095 3.085c-1.159.629-2.318.256-3.319-.498-1.1-.83-1.784-3.244-1.404-4.305.843-2.356 2.523-4.085 4.328-5.65a2230.126 2230.126 0 0 1 20.953-17.95c4.563-3.882 9.174-7.706 13.73-11.596.225-.191.236-.787.145-1.145a1.03 1.03 0 0 0-.718-.63c-2.382-.155-4.767-.354-7.15-.342-18.797.1-37.593.223-56.39.372l.002.173Z"/></svg>
+                        <p class="idea-word">Idea</p>
+                        <svg class="arrow-1 w-8 h-auto text-muted-foreground" preserveAspectRatio="xMaxYMid meet" viewBox="0 0 151 84" fill="currentColor"><path d="M68.1 41.35c-17.996-.146-35.992-.263-53.988-.46-3.587-.04-7.18-.321-10.752-.672a2.954 2.954 0 0 1-2.532-2.166c-.293-.919.727-2.222 1.945-2.414 1.181-.186 2.357-.474 3.544-.546 7.583-.46 15.165-1.11 22.755-1.247 15.593-.28 31.19-.35 46.787-.368 14.797-.017 29.595.168 44.392.202 2.376.006 4.754-.294 7.126-.506a.972.972 0 0 0 .684-.627c.042-.366-.066-.984-.31-1.115-4.547-2.472-9.038-5.073-13.714-7.278-10.877-5.132-21.081-11.425-31.278-17.74-1.676-1.037-3.432-2.091-4.108-4.15-.123-.375-.315-1.017-.158-1.142A4.631 4.631 0 0 1 80.472.03a4.28 4.28 0 0 1 2.305.368 150.117 150.117 0 0 1 7.556 3.653c17.718 9.25 35.43 18.511 53.136 27.782 6.688 3.479 9.867 6.852 1.838 14.5-2.313 2.205-4.653 4.406-7.168 6.366a4668.43 4668.43 0 0 1-35.121 27.137 38.132 38.132 0 0 1-5.095 3.085c-1.159.629-2.318.256-3.319-.498-1.1-.83-1.784-3.244-1.404-4.305.843-2.356 2.523-4.085 4.328-5.65a2230.126 2230.126 0 0 1 20.953-17.95c4.563-3.882 9.174-7.706 13.73-11.596.225-.191.236-.787.145-1.145a1.03 1.03 0 0 0-.718-.63c-2.382-.155-4.767-.354-7.15-.342-18.797.1-37.593.223-56.39.372l.002.173Z"/></svg>
+                        <p class="build-word">Build</p>
+                        <svg class="arrow-2 w-8 h-auto text-muted-foreground" preserveAspectRatio="xMaxYMid meet" viewBox="0 0 151 84" fill="currentColor"><path d="M68.1 41.35c-17.996-.146-35.992-.263-53.988-.46-3.587-.04-7.18-.321-10.752-.672a2.954 2.954 0 0 1-2.532-2.166c-.293-.919.727-2.222 1.945-2.414 1.181-.186 2.357-.474 3.544-.546 7.583-.46 15.165-1.11 22.755-1.247 15.593-.28 31.19-.35 46.787-.368 14.797-.017 29.595.168 44.392.202 2.376.006 4.754-.294 7.126-.506a.972.972 0 0 0 .684-.627c.042-.366-.066-.984-.31-1.115-4.547-2.472-9.038-5.073-13.714-7.278-10.877-5.132-21.081-11.425-31.278-17.74-1.676-1.037-3.432-2.091-4.108-4.15-.123-.375-.315-1.017-.158-1.142A4.631 4.631 0 0 1 80.472.03a4.28 4.28 0 0 1 2.305.368 150.117 150.117 0 0 1 7.556 3.653c17.718 9.25 35.43 18.511 53.136 27.782 6.688 3.479 9.867 6.852 1.838 14.5-2.313 2.205-4.653 4.406-7.168 6.366a4668.43 4668.43 0 0 1-35.121 27.137 38.132 38.132 0 0 1-5.095 3.085c-1.159.629-2.318.256-3.319-.498-1.1-.83-1.784-3.244-1.404-4.305.843-2.356 2.523-4.085 4.328-5.65a2230.126 2230.126 0 0 1 20.953-17.95c4.563-3.882 9.174-7.706 13.73-11.596.225-.191.236-.787.145-1.145a1.03 1.03 0 0 0-.718-.63c-2.382-.155-4.767-.354-7.15-.342-18.797.1-37.593.223-56.39.372l.002.173Z"/></svg>
                         <div class="relative flex items-center">
-                            <p class="text-green-400">Ship</p>
-                            <svg class="absolute left-full w-8 h-auto -translate-y-1/2 text-green-400" preserveAspectRatio="xMaxYMid meet" viewBox="0 0 71 77" fill="currentColor"><path d="m4.09 26.93 8.32-12.86 4.03-6.22c1.42-2.19 3.01-4.34 4.24-6.64.45-.83-.39-1.18-1.11-1.21-.94-.04-2.13.35-2.71 1.12-1.59 2.1-2.92 4.43-4.35 6.64l-4.03 6.22L.15 26.84c-.54.83.47 1.21 1.15 1.24.91.04 2.26-.34 2.79-1.16v.01ZM20.04 40.99c16.39-5.37 32.84-10.59 49.17-16.15.57-.19 1.95-.68 1.73-1.53-.22-.81-1.72-.63-2.26-.46-16.45 5.18-32.8 10.69-49.19 16.07-.6.2-2.04.71-1.8 1.6.22.84 1.8.67 2.36.48l-.01-.01ZM16.7 59.74l12.77 8.15 6.28 4.01c2.16 1.38 4.29 2.89 6.54 4.11.77.41 1.96.1 2.67-.27.37-.19 1.54-1.01.86-1.52-2.06-1.55-4.33-2.85-6.5-4.23l-6.28-4.01-12.98-8.29c-1.16-.74-5.07.96-3.37 2.05h.01Z"/></svg>
+                            <p class="ship-word text-green-400">Ship</p>
+                            <svg class="ship-spark absolute left-[140%] top-1 w-8 h-auto -translate-y-1/2 text-green-400" preserveAspectRatio="xMaxYMid meet" viewBox="0 0 71 77" fill="currentColor"><path d="m4.09 26.93 8.32-12.86 4.03-6.22c1.42-2.19 3.01-4.34 4.24-6.64.45-.83-.39-1.18-1.11-1.21-.94-.04-2.13.35-2.71 1.12-1.59 2.1-2.92 4.43-4.35 6.64l-4.03 6.22L.15 26.84c-.54.83.47 1.21 1.15 1.24.91.04 2.26-.34 2.79-1.16v.01ZM20.04 40.99c16.39-5.37 32.84-10.59 49.17-16.15.57-.19 1.95-.68 1.73-1.53-.22-.81-1.72-.63-2.26-.46-16.45 5.18-32.8 10.69-49.19 16.07-.6.2-2.04.71-1.8 1.6.22.84 1.8.67 2.36.48l-.01-.01ZM16.7 59.74l12.77 8.15 6.28 4.01c2.16 1.38 4.29 2.89 6.54 4.11.77.41 1.96.1 2.67-.27.37-.19 1.54-1.01.86-1.52-2.06-1.55-4.33-2.85-6.5-4.23l-6.28-4.01-12.98-8.29c-1.16-.74-5.07.96-3.37 2.05h.01Z"/></svg>
                         </div>
                     </div>
                     
                     <div class="hero-text mt-10">
-                        <h1 class="greeting font-caveat text-[3.5rem] text-[#1E3D3D] leading-[1.2]">Hy! I Am</h1>
-                        <h2 class="name text-[4.5rem] font-bold text-[#F7B733] leading-[1.1]">Luv.</h2>
-                        <span class="exp-text text-sm font-semibold text-[#1E3D3D] leading-[1.3]">aka, Rujal Baniya</span>
-
+                        <h1 class="greeting font-caveat text-[3.5rem] text-[#1E3D3D] dark:text-[#fff] leading-[1.2]">Hey! I Am</h1>
+                        <h2 class="name text-[4.5rem] font-bold text-[#F7B733] leading-[1.1] typewriter">Luv.</h2>
+                        <span class="exp-text text-sm font-semibold text-[#1E3D3D] dark:text-[#fff] leading-[1.3]">aka, Rujal Baniya</span>
                     </div>
                 </div>
 
-                <div class="experience-social flex flex-col gap-16">
-                    {% comment %} <div class="experience flex items-center gap-2.5">
-                        <span class="years text-[3.5rem] font-bold text-[#1E3D3D] leading-none">08</span>
-                        <span class="exp-text text-sm font-semibold text-[#1E3D3D] leading-[1.3]">YEARS<br>EXPERIENCE</span>
-                    </div> {% endcomment %}
-
-               
-                    
-                    <div class="social-icons flex gap-6">
-                        <a href="https://github.com/0luv69" class="text-[#F7B733] text-lg hover:opacity-80"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/luv-79a89732a/" class="text-[#F7B733] text-lg hover:opacity-80"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+                <div class="social-icons flex gap-6">
+                    <a href="https://github.com/0luv69" target="_blank"                  class="text-[#F7B733]  text-3xl hover:opacity-80"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="text-[#F7B733]  text-3xl hover:opacity-80"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-            </div>
 
-            <!-- Center Column (Image) -->
-            <div class="center-section flex-1 flex justify-center items-center relative">
                 <!-- SVG for the dashed arrow pointing left -->
-                <svg class="dashed-arrow absolute top-[37%] left-[-45%] w-[200px] h-auto pointer-events-none z-0 hidden lg:block" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 600.000000 257.000000" > 
+                <svg class=" dashed-arrow absolute rotate-6 top-[37%] left-[40%] w-[200px] h-auto pointer-events-none z-0 hidden lg:block" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 600.000000 257.000000" > 
                     <g transform="translate(0.000000,257.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"> 
                         <path d="M5330 2304 c-179 -24 -335 -46 -348 -49 -23 -6 -23 -7 16 -53 22 -26 55 -78 73 -115 24 -48 38 -66 48 -62 9 4 28 -10 50 -35 l36 -40 235 191 c129 104 239 194 245 200 13 13 8 12 -355 -37z m277 20 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m-32 -14 c3 -5 0 -7 -8 -5 -7 3 -127 -30 -265 -73 l-251 -79 -32 44 c-17 24 -30 45 -28 47 2 1 119 17 259 35 140 19 257 35 259 37 9 8 60 3 66 -6z m64 6 c-2 -2 -101 -81 -219 -175 l-215 -172 -43 48 c-24 26 -41 42 -37 36 3 -7 1 -13 -5 -13 -7 0 -9 8 -4 23 3 12 7 22 8 23 108 46 484 219 491 225 5 5 13 9 19 9 5 0 7 -2 5 -4z m-129 -43 c-30 -13 -135 -61 -232 -105 -124 -56 -178 -85 -178 -97 -1 -14 -28 39 -33 63 -2 8 461 163 488 164 6 0 -15 -11 -45 -25z"/> 
                         <path d="M2170 2000 c-11 -7 -4 -10 28 -10 23 0 42 5 42 10 0 13 -50 13 -70 0z"/> 
@@ -176,46 +168,111 @@
                         <path d="M915 345 c-32 -10 -35 -13 -15 -14 34 -1 70 9 70 20 0 11 -5 11 -55 -6z"/> <path d="M768 323 c-16 -2 -28 -9 -28 -14 0 -11 70 -1 85 12 9 9 -6 10 -57 2z"/> <path d="M645 302 c-16 -2 -34 -8 -40 -14 -7 -7 2 -9 29 -5 58 9 68 26 11 19z"/> <path d="M490 273 c-14 -3 -29 -9 -35 -15 -7 -7 0 -9 24 -4 18 3 40 6 47 6 8 0 14 5 14 10 0 10 -6 11 -50 3z"/> <path d="M345 243 c-11 -3 -24 -9 -30 -15 -13 -12 66 1 80 13 10 10 -15 10 -50 2z"/> </g> 
                 </svg>
 
-                <div class="image-wrapper relative w-[450px] h-[450px] rounded-full bg-white border-4 border-[#F7B733] flex justify-center items-end overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.05)]">
-                    <img src="{% static 'img/me.png' %}" alt="John Deo" class="profile-img w-[90%] h-auto object-cover rounded-full mb-5">
+            </div>
+
+       
+            <!-- Center Column (Image) -->
+            <div class="center-section flex-1 flex justify-center items-center relative z-10">
+             
+                <!-- Flipping Profile Image Wrapper -->
+                <div id="profile-flipper" class="image-wrapper relative w-[350px] h-[350px] cursor-pointer group perspective-1000 shadow-[0_20px_40px_rgba(0,0,0,0.05)] rounded-full">
+                    
+                    <!-- Added id="flip-inner" to target the spin animation -->
+                    <div id="flip-inner" class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d]">
+                        <!-- Front Face (Image 1) -->
+                        <div class="absolute w-full h-full bg-white border-4 border-[#F7B733] flex justify-center items-end rounded-full overflow-hidden [backface-visibility:hidden]">
+                            <img src="{% static 'img/me.png' %}" alt="John Deo" class="profile-img w-[90%] h-auto object-cover rounded-full mb-5 pointer-events-none">
+                        </div>
+                        
+                        <!-- Back Face (Image 2) -->
+                        <div class="absolute w-full h-full bg-[#1E3D3D] border-4 border-[#F7B733] flex justify-center items-end rounded-full overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                            <div class="w-full h-full relative rounded-full overflow-hidden pointer-events-none">
+                                    <video
+                                        id="profileVideo"
+                                        src="{% static 'vid/fire1.mp4' %}"
+                                        playsinline
+                                        class="w-full h-full object-cover scale-[1.08]"
+                                    ></video>
+                            </div>
+                        </div>
+                    </div>
+
+                
                 </div>
             </div>
+
+
+
 
             <!-- Right Column -->
             <div class="right-section flex-1 flex flex-col items-center gap-16 text-center relative z-20 lg:items-end lg:text-right">
-                <p class="description text-base font-medium text-[#1E3D3D] max-w-[300px] mt-[-8rem] lg:mt-0">
-                    I build modern web apps with <br><span class="text-[#F7B733] text-center font-caveat font-2xl">Python & Django</span><br>
-                    & I enjoy creating simple and useful digital experiences.
-                </p>
-                
-                <div class="reviews-card hidden bg-white p-6 rounded-xl shadow-[0_15px_30px_rgba(0,0,0,0.06)] flex flex-col gap-2.5 text-left absolute right-10 top-[40%] w-[240px] z-10 lg:relative lg:top-auto lg:right-auto">
-                    <div class="card-header flex justify-between items-center font-semibold text-base">
-                        <span>12k Reviews On</span>
-                        <span class="stars text-[#F7B733] text-sm tracking-widest">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+            
+                <div class="description-block mt-[-8rem] lg:mt-0 max-w-[300px] text-center lg:text-right">
+
+                    <!-- small decorative label -->
+                    <span class="inline-block font-caveat font-bold text-sm text-[#F7B733] tracking-widest uppercase mb-1 opacity-70">
+                        — about me
+                    </span>
+
+                    <p class="text-base font-medium text-[#1E3D3D] dark:text-white leading-relaxed">
+                        I build
+                        <span class="relative inline-block px-1">
+                            <span class="highlight-bg highlight-bg-1 absolute inset-0 bg-[#F7B733] opacity-25 rounded-sm -rotate-1 scale-105"></span>
+                            <span class="relative font-semibold">modern web apps</span>
                         </span>
-                    </div>
-                    <div class="card-body flex items-center justify-between mt-1.5">
-                        <div class="avatars flex">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Reviewer" class="w-8 h-8 rounded-full border-2 border-white ml-0 object-cover">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Reviewer" class="w-8 h-8 rounded-full border-2 border-white ml-[-10px] object-cover">
-                            <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Reviewer" class="w-8 h-8 rounded-full border-2 border-white ml-[-10px] object-cover">
-                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Reviewer" class="w-8 h-8 rounded-full border-2 border-white ml-[-10px] object-cover">
-                            <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Reviewer" class="w-8 h-8 rounded-full border-2 border-white ml-[-10px] object-cover">
-                        </div>
-                        <span class="rating text-xl font-bold text-[#1E3D3D]">4.9</span>
-                    </div>
+                        with
+                    </p>
+
+                    <!-- Python & Django as a tilted badge -->
+                    <p class="font-caveat text-2xl font-bold text-[#1E3D3D] dark:text-white my-1"
+                    style="display: inline-block; transform: rotate(-3deg); transform-origin: center;">
+                        <span class="text-[#F7B733]">Python</span>
+                        <span class="text-[#000] opacity-40 mx-1">&</span>
+                        <span class="text-[#F7B733]">Django</span>
+                    </p>
+
+                    <p class="text-base font-medium text-[#1E3D3D] dark:text-white leading-relaxed mt-1">
+                        & I enjoy crafting
+                        <span class="relative inline-block px-1">
+                            <span class="highlight-bg highlight-bg-2 absolute inset-0 bg-[#F7B733] opacity-25 rounded-sm rotate-1 scale-105"></span>
+                            <span class="relative font-semibold">simple, useful</span>
+                        </span>
+                        <br>digital experiences.
+                    </p>
+
                 </div>
 
                 <div class="role-wrapper mt-auto flex flex-col items-center lg:items-end relative">
-                    <span class=" role-creative font-caveat text-[3rem] text-[#1E3D3D] leading-[0.8] mr-0 lg:mr-10">Creative</span>
-                    <span id="dynamic-role" class="role-designer text-[2rem] font-bold text-[#1E3D3D] transition-opacity duration-300"> Developer.</span>
+                    <span
+                        id="dynamic-creative"
+                        class="text-[#F7B733] role-creative text-start font-caveat text-[3rem] font-bold  leading-[0.8] mr-0 lg:mr-10 transition-all duration-300"
+                        style="display: inline-block; transform: rotate(-6deg); transform-origin: right center;"
+                    >Creative
+                            <span style="display: inline-block; font-size: 1px; color: transparent; background: transparent; border-radius: .1px; padding: 10px 20px;">•</span>
+                    </span>
+                    <span
+                        id="dynamic-role"
+                        class="role-designer text-[2rem] font-bold text-[#1E3D3D] dark:text-white transition-opacity min-w-[200px] duration-300"
+                    >Developer.</span>
                 </div>
             </div>
+
+            <!-- Scroll Down Indicator — lg screens only -->
+            <a href="#projects"
+                class="scroll-indicator hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 group cursor-pointer z-20">
+
+                <span class="text-xs font-medium tracking-widest uppercase text-[#1E3D3D] dark:text-white opacity-50 group-hover:opacity-100 transition-opacity duration-300">
+                    scroll
+                </span>
+
+                <div class="w-[1.5px] h-12 bg-[#1E3D3D] dark:bg-white opacity-20 relative  rounded-full">
+                    <div class="scroll-line absolute top-0 left-0 w-full h-1/2 bg-[#F7B733] rounded-full"></div>
+                    <svg class="w-6 h-6 absolute top-10 right-[-11px] text-[#f8b329] group-hover:translate-y-2 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </div>
+
+            </a>
 
         </section>
 
@@ -307,7 +364,7 @@
             setTimeout(() => {
                 const preloader = document.getElementById('preloader');
                 preloader.style.transform = 'translateY(-100%)';
-            }, 800);
+            }, 50);
         });
 
         // 2. Theme Toggle Logic
@@ -355,33 +412,81 @@
 
     <script>
         const roles = [
-            "Developer.",
-            "Designer.",
-            "Python Developer.",
-            "Django Developer.",
-            "Cybersecurity Learner.",
-            "Robotics Enthusiast.",
-            "Student."
+            { role: "Developer.", creative:  `Creative <span style="display: inline-block; font-size: 1px; color: transparent; background: transparent; border-radius: .1px; padding: 10px 20px;">•</span>`   },
+            { role: "Designer.",  creative:  `Artistic <span style="display: inline-block; font-size: 1px; color: transparent; background: transparent; border-radius: .1px; padding: 10px 20px;">•</span>`   },
+            { role: "Developer.", creative: `Python   <span style="display: inline-block; font-size: 1px; color: transparent; background: transparent; border-radius: .1px; padding: 10px 20px;">•</span>`   },
+            { role: "Developer.", creative: `Django   <span style="display: inline-block; font-size: 1px; color: transparent; background: transparent; border-radius: .1px; padding: 10px 20px;">•</span>`  },
+            { role: "Pentester.", creative: `Curious  <span style="display: inline-block; font-size: 1px; color: transparent; background: transparent; border-radius: .1px; padding: 10px 20px;">•</span>`   },
+            { role: "Bug Hunter.",creative: `Oriented <span style="display: inline-block; font-size: 1px; color: transparent; background: transparent; border-radius: .1px; padding: 10px 20px;">•</span>`   },
+            { role: "Enthusiast.",creative: `Robotics <span style="display: inline-block; font-size: 1px; color: transparent; background: transparent; border-radius: .1px; padding: 10px 20px;">•</span>`  },
+            { role: "Student.",   creative: `Relentless <span style="display: inline-block; font-size: 1px; color: transparent; background: transparent; border-radius: .1px; padding: 10px 0px;">•</span>` },
         ];
 
         let index = 0;
 
-        const roleElement = document.getElementById("dynamic-role");
+        const roleEl     = document.getElementById("dynamic-role");
+        const creativeEl = document.getElementById("dynamic-creative");
 
         setInterval(() => {
-            index++;
-            if (index >= roles.length) {
-                index = 0;
-            }
+            index = (index + 1) % roles.length;
 
-            roleElement.style.opacity = 0;
+            // fade both out
+            roleEl.style.opacity     = 0;
+            creativeEl.style.opacity = 0;
+
+            // slightly un-tilt while fading, re-tilt on reveal for a "snap" effect
+            creativeEl.style.transform = "rotate(0deg)";
 
             setTimeout(() => {
-                roleElement.textContent = roles[index];
-                roleElement.style.opacity = 1;
+                roleEl.textContent     = roles[index].role;
+                creativeEl.innerHTML = roles[index].creative;
+
+                roleEl.style.opacity     = 1;
+                creativeEl.style.opacity = 1;
+
+                // snap back to tilted
+                creativeEl.style.transform = "rotate(-6deg)";
             }, 300);
 
-        }, 2000);
+        }, 2500);
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // --- 1. Coin Spin On Load ---
+            const flipInner = document.getElementById('flip-inner');
+            if (flipInner) {
+                flipInner.classList.add('spin-on-load');
+                flipInner.addEventListener('animationend', () => {
+                    flipInner.classList.remove('spin-on-load');
+                }, { once: true });
+            }
+
+            // --- 2. Flip + Video Control ---
+            const flipper = document.getElementById('profile-flipper');
+            const video   = document.getElementById('profileVideo');
+
+            if (flipper && video) {
+                flipper.addEventListener('click', () => {
+                    flipper.classList.toggle('flipped');
+                    const isFlipped = flipper.classList.contains('flipped');
+
+                    if (isFlipped) {
+                        video.play();
+                    } else {
+                        video.pause();
+                        video.currentTime = 0; // rewind so it's fresh next flip
+                    }
+                     // ✅ Auto flip back when video ends
+                    video.addEventListener('ended', () => {
+                        flipper.classList.remove('flipped');
+                        video.currentTime = 0;
+                    });
+                });
+            }
+        });
+    </script>
+
 </body>
 </html>
