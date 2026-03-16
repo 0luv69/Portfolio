@@ -1,36 +1,6 @@
-{% comment %}
-  ╔══════════════════════════════════════════════════════════╗
-  ║           REUSABLE PROJECT CARD PARTIAL                  ║
-  ║                                                          ║
-  ║  Usage in index.html:                                    ║
-  ║  <div class="space-y-10 projectCards">                   ║
-  ║    {% for each_project in projects %}                    ║
-  ║      {% include "pages/project_card.html"                ║
-  ║         with project=each_project                        ║
-  ║              loop_index=forloop.counter0 %}              ║
-  ║    {% endfor %}                                          ║
-  ║  </div>                                                  ║
-  ║                                                          ║
-  ║  Color palette (cycles by loop_index mod 6):             ║
-  ║    0 → bg:#26997b  text:#f4fbf7  (teal)                  ║
-  ║    1 → bg:#ffca16  text:#5c3d05  (amber)                 ║
-  ║    2 → bg:#262626  text:#dddddd  (dark)                  ║
-  ║    3 → bg:#1b3a5c  text:#e8f0fb  (navy)                  ║
-  ║    4 → bg:#7c1f3a  text:#fde8ef  (crimson)               ║
-  ║    5 → bg:#3b2a6e  text:#ede8ff  (violet)                ║
-  ╚══════════════════════════════════════════════════════════╝
-{% endcomment %}
-
 {% with idx=loop_index|default:0 %}
 
 <div class="prj-card w-full" data-index="{{ idx }}">
-
-  {% comment %}
-    Layout logic:
-    - Mobile/Tablet  → always flex-col (media top, content bottom)
-    - Desktop (lg+)  → even idx: media-LEFT  content-RIGHT
-                       odd  idx: content-LEFT media-RIGHT  (flex-row-reverse)
-  {% endcomment %}
 
   <div class="prj-card__inner
               relative w-full max-w-5xl mx-auto
@@ -41,9 +11,7 @@
               p-6 sm:p-7 lg:p-8
               overflow-visible">
 
-    {% comment %} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        MEDIA SIDE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ {% endcomment %}
+    {% comment %} ━━━━  MEDIA SIDE  ━━━━━{% endcomment %}
     <div class="prj-card__media
                 relative w-full lg:w-5/12 shrink-0
                 mb-16 sm:mb-20 lg:mb-0
@@ -257,9 +225,7 @@
       </div>
     </div>
 
-    {% comment %} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        CONTENT SIDE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ {% endcomment %}
+    {% comment %} ━━━━  CONTENT SIDE  ━━━━━{% endcomment %}
     <div class="prj-card__content z-10 w-full lg:w-7/12
                 {% if idx|divisibleby:2 %}lg:pl-16 {% else %}lg:pr-12 lg:pl-4{% endif %}">
 

@@ -7,7 +7,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
+body {  overflow-x: hidden; }
 
 .slidebar-design::-webkit-scrollbar { width: 3px; }
 .slidebar-design::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.06); border-radius: 3px; }
@@ -216,19 +216,19 @@ body { font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
 .prj-card[data-index="0"]  .prj-card__inner,
 .prj-card[data-index="6"]  .prj-card__inner,
 .prj-card[data-index="12"] .prj-card__inner,
-.prj-card[data-index="18"] .prj-card__inner { background-color: #26997b; color: #f4fbf7; }
+.prj-card[data-index="18"] .prj-card__inner { background-color: #262626 ; color: #dddddd; }
  
 /* Slot 1 */
 .prj-card[data-index="1"]  .prj-card__inner,
 .prj-card[data-index="7"]  .prj-card__inner,
 .prj-card[data-index="13"] .prj-card__inner,
-.prj-card[data-index="19"] .prj-card__inner { background-color: #ffca16; color: #5c3d05; }
+.prj-card[data-index="19"] .prj-card__inner { background-color: #26997b; color: #f4fbf7; }
  
 /* Slot 2 */
 .prj-card[data-index="2"]  .prj-card__inner,
 .prj-card[data-index="8"]  .prj-card__inner,
 .prj-card[data-index="14"] .prj-card__inner,
-.prj-card[data-index="20"] .prj-card__inner { background-color: #262626; color: #dddddd; }
+.prj-card[data-index="20"] .prj-card__inner { background-color:  #ffca16 ; color:  #5c3d05  ; }
  
 /* Slot 3 */
 .prj-card[data-index="3"]  .prj-card__inner,
