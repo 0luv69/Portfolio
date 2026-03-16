@@ -1744,6 +1744,18 @@ input:where([type='file']):focus {
   z-index: 60;
 }
 
+.order-1 {
+  order: 1;
+}
+
+.order-2 {
+  order: 2;
+}
+
+.order-3 {
+  order: 3;
+}
+
 .m-32 {
   margin: 8rem;
 }
@@ -1880,10 +1892,6 @@ input:where([type='file']):focus {
   margin-top: 2rem;
 }
 
-.mt-\[-8rem\] {
-  margin-top: -8rem;
-}
-
 .mt-auto {
   margin-top: auto;
 }
@@ -1999,8 +2007,8 @@ input:where([type='file']):focus {
   height: 2rem;
 }
 
-.h-\[350px\] {
-  height: 350px;
+.h-\[240px\] {
+  height: 240px;
 }
 
 .h-\[450px\] {
@@ -2107,8 +2115,8 @@ input:where([type='file']):focus {
   width: 200px;
 }
 
-.w-\[350px\] {
-  width: 350px;
+.w-\[240px\] {
+  width: 240px;
 }
 
 .w-\[40\%\] {
@@ -2416,6 +2424,10 @@ input:where([type='file']):focus {
   justify-content: space-around;
 }
 
+.gap-10 {
+  gap: 2.5rem;
+}
+
 .gap-12 {
   gap: 3rem;
 }
@@ -2585,10 +2597,6 @@ input:where([type='file']):focus {
 
 .border {
   border-width: 1px;
-}
-
-.border-0 {
-  border-width: 0px;
 }
 
 .border-4 {
@@ -2959,11 +2967,6 @@ input:where([type='file']):focus {
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
-}
-
-.py-0 {
-  padding-top: 0px;
-  padding-bottom: 0px;
 }
 
 .py-0\.5 {
@@ -4683,6 +4686,10 @@ body {
     height: 1.5rem;
   }
 
+  .sm\:h-\[300px\] {
+    height: 300px;
+  }
+
   .sm\:min-h-\[240px\] {
     min-height: 240px;
   }
@@ -4701,6 +4708,10 @@ body {
 
   .sm\:w-24 {
     width: 6rem;
+  }
+
+  .sm\:w-\[300px\] {
+    width: 300px;
   }
 
   .sm\:w-auto {
@@ -5031,6 +5042,14 @@ body {
     top: 50%;
   }
 
+  .lg\:order-1 {
+    order: 1;
+  }
+
+  .lg\:order-2 {
+    order: 2;
+  }
+
   .lg\:mb-0 {
     margin-bottom: 0px;
   }
@@ -5047,10 +5066,6 @@ body {
     margin-right: 2.5rem;
   }
 
-  .lg\:mt-0 {
-    margin-top: 0px;
-  }
-
   .lg\:block {
     display: block;
   }
@@ -5065,6 +5080,10 @@ body {
 
   .lg\:hidden {
     display: none;
+  }
+
+  .lg\:h-\[350px\] {
+    height: 350px;
   }
 
   .lg\:max-h-\[21rem\] {
@@ -5093,6 +5112,10 @@ body {
 
   .lg\:w-7\/12 {
     width: 58.333333%;
+  }
+
+  .lg\:w-\[350px\] {
+    width: 350px;
   }
 
   .lg\:-translate-y-1\/2 {
@@ -5141,6 +5164,14 @@ body {
     justify-content: space-between;
   }
 
+  .lg\:gap-0 {
+    gap: 0px;
+  }
+
+  .lg\:gap-16 {
+    gap: 4rem;
+  }
+
   .lg\:gap-24 {
     gap: 6rem;
   }
@@ -5173,6 +5204,11 @@ body {
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .lg\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
   .lg\:py-8 {
