@@ -351,15 +351,15 @@
             {% for item in media_all %}{% if forloop.first %}
             <div class="reveal media-item mb-4 rounded-2xl overflow-hidden"
                  style="max-height:560px"
-                 data-src="{% if item.image %}{{ item.image.url }}{% elif item.external_url %}{{ item.external_url }}{% endif %}">
+                 data-src="{% if item.image %} {% static item.image.url %} {% elif item.external_url %} {% static item.external_url %} {% endif %}">
                 {% if item.media_type == 'gif_video' and item.file %}
-                    <video src="{{ item.file.url }}" autoplay loop muted playsinline
+                    <video src="{% static item.file.url %}" autoplay loop muted playsinline
                            style="width:100%;max-height:560px;object-fit:cover;display:block"></video>
                 {% elif item.image %}
-                    <img src="{{ item.image.url }}" alt="{{ item.alt_text|default:project.title }}"
+                    <img src="{% static item.image.url %}" alt="{{ item.alt_text|default:project.title }}"
                          style="width:100%;max-height:560px;object-fit:cover" loading="eager" />
                 {% elif item.external_url %}
-                    <img src="{{ item.external_url }}" alt="{{ item.alt_text|default:project.title }}"
+                    <img src="{% static item.external_url %}" alt="{{ item.alt_text|default:project.title }}"
                          style="width:100%;max-height:560px;object-fit:cover" loading="eager" />
                 {% endif %}
                 {% if item.caption %}<div class="media-caption">{{ item.caption }}</div>{% endif %}
@@ -372,15 +372,15 @@
             <div class="reveal gallery-track {% if count == 1 %}gallery-single{% elif count == 2 %}gallery-double{% else %}gallery-triple{% endif %}">
                 {% for item in media_all %}{% if not forloop.first %}
                 <div class="media-item"
-                     data-src="{% if item.image %}{{ item.image.url }}{% elif item.external_url %}{{ item.external_url }}{% endif %}">
+                     data-src="{% if item.image %} {% static item.image.url %} {% elif item.external_url %} {% static item.external_url %} {% endif %}">
                     {% if item.media_type == 'gif_video' and item.file %}
-                        <video src="{{ item.file.url }}" autoplay loop muted playsinline
+                        <video src="{% static item.file.url %}" autoplay loop muted playsinline
                                style="width:100%;aspect-ratio:16/10;object-fit:cover;display:block"></video>
                     {% elif item.image %}
-                        <img src="{{ item.image.url }}" alt="{{ item.alt_text|default:project.title }}"
+                        <img src="{% static item.image.url %}" alt="{{ item.alt_text|default:project.title }}"
                              style="width:100%;aspect-ratio:16/10;object-fit:cover" loading="lazy" />
                     {% elif item.external_url %}
-                        <img src="{{ item.external_url }}" alt="{{ item.alt_text|default:project.title }}"
+                        <img src="{% static item.external_url %}" alt="{{ item.alt_text|default:project.title }}"
                              style="width:100%;aspect-ratio:16/10;object-fit:cover" loading="lazy" />
                     {% endif %}
                     {% if item.caption %}<div class="media-caption">{{ item.caption }}</div>{% endif %}
@@ -419,7 +419,7 @@
                         {% for tech in project.technologies.all %}
                         <span class="tech-badge" title="{{ tech.short_description }}">
                             {% if tech.logo_type == 'image' and tech.logo_image %}
-                                <img src="{{ tech.logo_image.url }}" alt="{{ tech.name }}" />
+                                <img src="{% static tech.logo_image.url %}" alt="{{ tech.name }}" />
                             {% elif tech.logo_type == 'svg' and tech.svg %}
                                 {{ tech.svg|safe }}
                             {% endif %}
@@ -494,7 +494,7 @@
                 <div class="tech-card">
                     <div style="width:36px;height:36px;display:flex;align-items:center;justify-content:center">
                         {% if tech.logo_type == 'image' and tech.logo_image %}
-                            <img src="{{ tech.logo_image.url }}" alt="{{ tech.name }}"
+                            <img src="{% static tech.logo_image.url %}" alt="{{ tech.name }}"
                                  style="width:30px;height:30px;object-fit:contain" />
                         {% elif tech.logo_type == 'svg' and tech.svg %}
                             {{ tech.svg|safe }}
