@@ -298,7 +298,7 @@
 
         {% comment %} Project Showcase — links to detail page {% endcomment %}
         {% if project.slug %}
-        <a href="/projects/{{ project.slug }}/"
+        <a href="{% url 'project_detail' slug=project.slug %}" target="_blank" rel="noopener noreferrer"
            class="prj-link hover:opacity-70 transition-opacity">
           Project Showcase
         </a>

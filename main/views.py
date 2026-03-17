@@ -30,60 +30,26 @@ def home(request):
         final_list.extend(list(particular_grp))
     projects = final_list
     technologies = Technology.objects.all().order_by('-order')
-    selected_video_url = random.choice(video_list)
-    return render(request, 'pages/index.html', {'projects':projects, 'technologies': technologies, 'video_list': video_list, 'selected_video_url':  selected_video_url})
+    selected_video_index = random.randint(0, len(video_list) - 1)
+    selected_video_url = video_list[selected_video_index]
+    print("selected_video_url", selected_video_url, "selected_video_index", selected_video_index)
+    return render(request, 'pages/index.html', {'projects':projects, 'technologies': technologies, 'video_list': video_list, 'selected_video_url':  selected_video_url , 'selected_video_index':  selected_video_index})
 
 
-def temp0(request):
+def project_detail(request, slug):
+    project = Project.objects.filter(slug=slug).first()
+    if not project:
+        return HttpResponse("Project not found, Sorry!", status=404)
+    return render(request, 'pages/project_detail.html', {'project': project})
+
+
+def old_portfolio(request):
     final_list= []
     for i in range(5,0,-1):
         particular_grp= Project.objects.filter(sort_order=i).order_by('?')
         final_list.extend(list(particular_grp))
     projects = final_list
     return render(request, 'pages/old.html', {'projects':projects})
-
-
-def temp1(request):
-    final_list= []
-    for i in range(5,0,-1):
-        particular_grp= Project.objects.filter(sort_order=i).order_by('?')
-        final_list.extend(list(particular_grp))
-    projects = final_list
-    return render(request, 'pages/temp-1.html', {'projects':projects})
-
-def temp2(request):
-    final_list= []
-    for i in range(5,0,-1):
-        particular_grp= Project.objects.filter(sort_order=i).order_by('?')
-        final_list.extend(list(particular_grp))
-    projects = final_list
-    return render(request, 'pages/temp-2.html', {'projects':projects})
-
-
-def temp3(request):
-    final_list= []
-    for i in range(5,0,-1):
-        particular_grp= Project.objects.filter(sort_order=i).order_by('?')
-        final_list.extend(list(particular_grp))
-    projects = final_list
-    return render(request, 'pages/temp-3.html', {'projects':projects})
-
-
-def temp4(request):
-    final_list= []
-    for i in range(5,0,-1):
-        particular_grp= Project.objects.filter(sort_order=i).order_by('?')
-        final_list.extend(list(particular_grp))
-    projects = final_list
-    return render(request, 'pages/temp-4.html', {'projects':projects})
-
-
-
-
-
-
-
-
 
 
 def seo(request):
