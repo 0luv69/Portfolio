@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-caveat { font-family: 'Caveat', cursive; }
+        
+        /* 3D Flip Utility Classes */
+        .perspective-1000 { perspective: 1000px; }
+        #profile-flipper.flipped #flip-inner { transform: rotateY(180deg); }
+
+        @keyframes coinSpin {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(1080deg); }
+        }
+        .spin-on-load {
+            animation: coinSpin 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        @keyframes typing {
+          from { width: 0 }
+          to { 
+            width: 100%;
+            border-right: 0px solid transparent;
+           }
+        }
+        .typewriter {
+          overflow: hidden;
+          white-space: nowrap;
+          border-right: 2px solid #F7B733;
+          width: 0;
+        }
+        .typewriter.animate-on {
+          animation: typing 1s steps(20,end) forwards;
+        }
+
+        @keyframes arrow-draw {
+            from { opacity: 1; clip-path: inset(0 100% 0 0); }
+            to   { opacity: 1; clip-path: inset(0 0%   0 0); }
+        }
+        .dashed-arrow.animate-on {
+            animation: arrow-draw 1.2s ease-in-out .4s forwards;
+        }
+
+        .idea-word, .build-word, .ship-word,
+        .arrow-1, .arrow-2, .ship-spark {
+            opacity: 0;
+        }
+
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes arrow-in {
+            from { opacity: 0; transform: translateX(-12px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes spark-pop {
+            0%   { opacity: 0;   transform: translate(-50%, -50%) scale(0.3) rotate(-30deg); }
+            50%  { opacity: 1;   transform: translate(-50%, -50%) scale(1.2) rotate(10deg);  }
+            75%  { opacity: 1;   transform: translate(-50%, -50%) scale(0.9) rotate(-5deg);  }
+            100% { opacity: 1;   transform: translate(-50%, -50%) scale(1)   rotate(0deg);   }
+        }
+
+        .idea-word.animate-on  { animation: fade-up  0.4s ease-out 0.3s  forwards; }
+        .arrow-1.animate-on     { animation: arrow-in 0.4s ease-out 0.6s  forwards; }
+        .build-word.animate-on { animation: fade-up  0.4s ease-out 0.9s  forwards; }
+        .arrow-2.animate-on    { animation: arrow-in 0.4s ease-out 1.2s  forwards; }
+        .ship-word.animate-on  { animation: fade-up  0.4s ease-out 1.5s  forwards; }
+        .ship-spark.animate-on { animation: spark-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.8s forwards; }
+
+        @keyframes highlight-sweep {
+            from { width: 0%; }
+            to   { width: 100%; }
+        }
+        .highlight-bg.animate-on {
+            animation: highlight-sweep 0.6s ease-out forwards;
+        }
+        .highlight-bg-1 {width: 0; animation-delay: 0.4s; }
+        .highlight-bg-2 {width: 0; animation-delay: 0.9s; }
+
+        /* Ensure smooth touch interactions */
+        #profile-flipper {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Prevent scrolling on mobile for single viewport experience */
+        @media (max-width: 1024px) {
+            body {
+                overflow: hidden;
+                height: 100svh;
+            }
+            main {
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 overflow-x-hidden">
+    <main class="max-w-7xl mx-auto px-6 h-full">
+        <!-- Hero Section -->
+        <section class="h-full lg:min-h-[100svh] flex flex-col justify-between py-6 lg:py-20 lg:flex-row lg:justify-between lg:items-center gap-2 lg:gap-0" id="home">
+            <!-- Top Section (Mobile) / Left Section (Desktop) -->
+            <div class="left-section relative flex flex-col gap-2 lg:gap-24 z-20 items-center text-center lg:items-start lg:text-left order-1">
+                <!-- Idea Build Ship Flow -->
+                <div class="flex items-center gap-3 sm:gap-6 text-sm sm:text-xl font-semibold text-muted-foreground mb-1 lg:my-4">
+                    <p class="idea-word animate-on">Idea</p>
+                    <svg class="arrow-1 animate-on w-4 sm:w-8 h-auto text-slate-400" fill="currentColor" preserveaspectratio="xMaxYMid meet" viewbox="0 0 151 84"><path d="M68.1 41.35c-17.996-.146-35.992-.263-53.988-.46-3.587-.04-7.18-.321-10.752-.672a2.954 2.954 0 0 1-2.532-2.166c-.293-.919.727-2.222 1.945-2.414 1.181-.186 2.357-.474 3.544-.546 7.583-.46 15.165-1.11 22.755-1.247 15.593-.28 31.19-.35 46.787-.368 14.797-.017 29.595.168 44.392.202 2.376.006 4.754-.294 7.126-.506a.972.972 0 0 0 .684-.627c.042-.366-.066-.984-.31-1.115-4.547-2.472-9.038-5.073-13.714-7.278-10.877-5.132-21.081-11.425-31.278-17.74-1.676-1.037-3.432-2.091-4.108-4.15-.123-.375-.315-1.017-.158-1.142A4.631 4.631 0 0 1 80.472.03a4.28 4.28 0 0 1 2.305.368 150.117 150.117 0 0 1 7.556 3.653c17.718 9.25 35.43 18.511 53.136 27.782 6.688 3.479 9.867 6.852 1.838 14.5-2.313 2.205-4.653 4.406-7.168 6.366a4668.43 4668.43 0 0 1-35.121 27.137 38.132 38.132 0 0 1-5.095 3.085c-1.159.629-2.318.256-3.319-.498-1.1-.83-1.784-3.244-1.404-4.305.843-2.356 2.523-4.085 4.328-5.65a2230.126 2230.126 0 0 1 20.953-17.95c4.563-3.882 9.174-7.706 13.73-11.596.225-.191.236-.787.145-1.145a1.03 1.03 0 0 0-.718-.63c-2.382-.155-4.767-.354-7.15-.342-18.797.1-37.593.223-56.39.372l.002.173Z"></path></svg>
+                    <p class="build-word animate-on">Build</p>
+                    <svg class="arrow-2 animate-on w-4 sm:w-8 h-auto text-slate-400" fill="currentColor" preserveaspectratio="xMaxYMid meet" viewbox="0 0 151 84"><path d="M68.1 41.35c-17.996-.146-35.992-.263-53.988-.46-3.587-.04-7.18-.321-10.752-.672a2.954 2.954 0 0 1-2.532-2.166c-.293-.919.727-2.222 1.945-2.414 1.181-.186 2.357-.474 3.544-.546 7.583-.46 15.165-1.11 22.755-1.247 15.593-.28 31.19-.35 46.787-.368 14.797-.017 29.595.168 44.392.202 2.376.006 4.754-.294 7.126-.506a.972.972 0 0 0 .684-.627c.042-.366-.066-.984-.31-1.115-4.547-2.472-9.038-5.073-13.714-7.278-10.877-5.132-21.081-11.425-31.278-17.74-1.676-1.037-3.432-2.091-4.108-4.15-.123-.375-.315-1.017-.158-1.142A4.631 4.631 0 0 1 80.472.03a4.28 4.28 0 0 1 2.305.368 150.117 150.117 0 0 1 7.556 3.653c17.718 9.25 35.43 18.511 53.136 27.782 6.688 3.479 9.867 6.852 1.838 14.5-2.313 2.205-4.653 4.406-7.168 6.366a4668.43 4668.43 0 0 1-35.121 27.137 38.132 38.132 0 0 1-5.095 3.085c-1.159.629-2.318.256-3.319-.498-1.1-.83-1.784-3.244-1.404-4.305.843-2.356 2.523-4.085 4.328-5.65a2230.126 2230.126 0 0 1 20.953-17.95c4.563-3.882 9.174-7.706 13.73-11.596.225-.191.236-.787.145-1.145a1.03 1.03 0 0 0-.718-.63c-2.382-.155-4.767-.354-7.15-.342-18.797.1-37.593.223-56.39.372l.002.173Z"></path></svg>
+                    <div class="relative flex items-center">
+                        <p class="ship-word animate-on text-green-500">Ship</p>
+                        <svg class="ship-spark animate-on absolute left-[140%] top-1 w-4 sm:w-8 h-auto -translate-y-1/2 text-green-500" fill="currentColor" preserveaspectratio="xMaxYMid meet" viewbox="0 0 71 77"><path d="m4.09 26.93 8.32-12.86 4.03-6.22c1.42-2.19 3.01-4.34 4.24-6.64.45-.83-.39-1.18-1.11-1.21-.94-.04-2.13.35-2.71 1.12-1.59 2.1-2.92 4.43-4.35 6.64l-4.03 6.22L.15 26.84c-.54.83.47 1.21 1.15 1.24.91.04 2.26-.34 2.79-1.16v.01ZM20.04 40.99c16.39-5.37 32.84-10.59 49.17-16.15.57-.19 1.95-.68 1.73-1.53-.22-.81-1.72-.63-2.26-.46-16.45 5.18-32.8 10.69-49.19 16.07-.6.2-2.04.71-1.8 1.6.22.84 1.8.67 2.36.48l-.01-.01ZM16.7 59.74l12.77 8.15 6.28 4.01c2.16 1.38 4.29 2.89 6.54 4.11.77.41 1.96.1 2.67-.27.37-.19 1.54-1.01.86-1.52-2.06-1.55-4.33-2.85-6.5-4.23l-6.28-4.01-12.98-8.29c-1.16-.74-5.07.96-3.37 2.05h.01Z"></path></svg>
+                    </div>
+                </div>
+                <div class="hero-text">
+                    <h1 class="font-caveat text-3xl sm:text-[3.5rem] text-[#1E3D3D] leading-tight font-bold">Hey! I Am</h1>
+                    <h2 class="name text-5xl sm:text-[5rem] font-bold text-[#F7B733] leading-none typewriter animate-on mx-auto lg:mx-0">Luv.</h2>
+                    <span class="block mt-1 text-sm sm:text-lg font-semibold text-[#1E3D3D] leading-relaxed opacity-80">aka, Rujal Baniya</span>
+                </div>
+                <div class="social-icons flex gap-6 lg:gap-8 mt-2">
+                    <a class="text-[#F7B733] text-2xl lg:text-4xl hover:opacity-80 transition-opacity" href="https://github.com/0luv69" target="_blank"><i class="fab fa-github"></i></a>
+                    <a class="text-[#F7B733] text-2xl lg:text-4xl hover:opacity-80 transition-opacity" href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <!-- Middle Section: Center Column (Image) -->
+            <div class="center-section flex flex-col justify-center items-center relative z-10 order-2 py-2 lg:py-0">
+                <div class="image-wrapper relative w-[200px] h-[200px] sm:w-[320px] sm:h-[320px] lg:w-[380px] lg:h-[380px] cursor-pointer perspective-1000 shadow-[0_20px_40px_rgba(0,0,0,0.08)] rounded-full active:scale-95 transition-transform duration-200" id="profile-flipper">
+                    <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d]" id="flip-inner">
+                        <!-- Front Face -->
+                        <div class="absolute w-full h-full bg-white border-4 border-[#F7B733] flex justify-center items-end rounded-full overflow-hidden [backface-visibility:hidden]">
+                            <img alt="Luv" class="profile-img w-[92%] h-auto object-cover rounded-full mb-4 lg:mb-6 pointer-events-none" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmqYz8ihnC_5g1dpmhYDsKzXePsSdgxEUI95I5olgQfOCyM1TEf2zgwhhKRdqkZNU609xxziAXttpz2viES1cxA-aa8aQ6Cg1Fz3-XwiXmoFEbqEHd1cWY88AoFbCFyGzy6cEzBNPLQLNuVO4Jx0qQe4-YTDu_bvomkpfzC2ARdUcn_46ROxOBUyhNGW2wCcQgceT2TZRB54hLJOU7cffZrqTcP0QpHgLFABh2pvavxr0T8MOrPzKVlGn0byji24xX31DUz3zoZC1k"/>
+                        </div>
+                        <!-- Back Face -->
+                        <div class="absolute w-full h-full bg-[#1E3D3D] border-4 border-[#F7B733] flex justify-center items-end rounded-full overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                            <div class="w-full h-full relative rounded-full overflow-hidden pointer-events-none bg-slate-800">
+                                <video class="w-full h-full object-cover scale-[1.08]" id="profileVideo" playsinline=""></video>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Indicator for mobile -->
+                    <div class="lg:hidden absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white px-3 py-0.5 rounded-full text-[8px] font-bold text-[#F7B733] uppercase tracking-tighter shadow-sm border border-[#F7B733]/20 z-30">Tap to flip</div>
+                </div>
+            </div>
+            <!-- Bottom Section: Right Column (About) -->
+            <div class="right-section flex flex-col items-center lg:items-end text-center lg:text-right order-3 relative z-20 -mt-8 lg:mt-0 pb-8 lg:pb-0">
+                <div class="description-block max-w-[320px] bg-slate-50/80 backdrop-blur-sm lg:bg-transparent p-4 lg:p-0 rounded-2xl">
+                    <span class="inline-block font-caveat font-bold text-sm text-[#F7B733] tracking-widest uppercase mb-1 opacity-80">
+                        — about me
+                    </span>
+                    <p class="text-base sm:text-xl font-medium text-[#1E3D3D] leading-tight">
+                        I build
+                        <span class="relative inline-block px-1">
+                            <span class="highlight-bg animate-on highlight-bg-1 absolute inset-0 bg-[#F7B733] opacity-25 rounded-sm -rotate-1 scale-110"></span>
+                            <span class="relative font-bold">modern web apps</span>
+                        </span>
+                        with
+                    </p>
+                    <p class="font-caveat text-2xl sm:text-4xl font-bold text-[#1E3D3D] my-1" style="display: inline-block; transform: rotate(-2deg); transform-origin: center;">
+                        <span class="text-[#F7B733]">Python</span>
+                        <span class="text-slate-400 mx-1">&amp;</span>
+                        <span class="text-[#F7B733]">Django</span>
+                    </p>
+                    <p class="text-base sm:text-xl font-medium text-[#1E3D3D] leading-tight mt-1">
+                        &amp; I enjoy crafting
+                        <span class="relative inline-block px-1">
+                            <span class="highlight-bg animate-on highlight-bg-2 absolute inset-0 bg-[#F7B733] opacity-25 rounded-sm rotate-1 scale-110"></span>
+                            <span class="relative font-bold">simple, useful</span>
+                        </span>
+                        <br class="hidden sm:block"/>digital experiences.
+                    </p>
+                </div>
+                <div class="role-wrapper flex flex-col items-center lg:items-end relative mt-2">
+                    <span class="text-[#F7B733] role-creative font-caveat text-[2.5rem] sm:text-[4.5rem] font-bold leading-[0.7] transition-all duration-300" style="display: inline-block; transform: rotate(-5deg); transform-origin: center lg:right center;">Creative</span>
+                    <span class="role-designer text-[1.5rem] sm:text-[3rem] font-bold text-[#1E3D3D] transition-opacity min-w-[120px] sm:min-w-[200px] duration-300">Developer.</span>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const flipper = document.getElementById('profile-flipper');
+        
+        if (flipper) {
+            // Smooth flip logic for both click and touch
+            flipper.addEventListener('click', () => {
+                flipper.classList.toggle('flipped');
+            });
+        }
+
+        // Intersection Observer to re-trigger animations if needed or ensure they fire on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.animate-on').forEach(el => {
+                        el.style.animationPlayState = 'running';
+                    });
+                }
+            });
+        }, observerOptions);
+
+        const hero = document.getElementById('home');
+        if (hero) observer.observe(hero);
+    });
+</script>
+</body>
+</html>
