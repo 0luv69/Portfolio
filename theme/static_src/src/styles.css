@@ -92,6 +92,8 @@ body {  overflow-x: hidden; }
 
 /* _____________________________________________________________________________________________ */
 
+
+/* preloader code */
   @keyframes wave {
     0%   { transform: translateY(0px) scaleY(1); }
     30%  { transform: translateY(-14px) scaleY(0.95); }
