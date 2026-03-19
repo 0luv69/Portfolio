@@ -32,7 +32,6 @@ def home(request):
     technologies = Technology.objects.all().order_by('-order')
     selected_video_index = random.randint(0, len(video_list) - 1)
     selected_video_url = video_list[selected_video_index]
-    print("selected_video_url", selected_video_url, "selected_video_index", selected_video_index)
     return render(request, 'pages/index.html', {'projects':projects, 'technologies': technologies, 'video_list': video_list, 'selected_video_url':  selected_video_url , 'selected_video_index':  selected_video_index})
 
 

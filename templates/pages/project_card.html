@@ -1,7 +1,7 @@
 {% load static %}
 {% with idx=loop_index|default:0 %}
 
-<div class="prj-card w-full" data-index="{{ idx }}">
+<div class="prj-card w-full font-iosevka" data-index="{{ idx }}">
 
   <div class="prj-card__inner
               relative w-full max-w-5xl mx-auto
@@ -243,7 +243,7 @@
       {% endif %}
 
       {% comment %} Short summary {% endcomment %}
-      <p class="prj-card__summary text-base sm:text-lg leading-relaxed mb-7 max-w-lg opacity-90">
+      <p class="prj-card__summary text-base sm:text-lg leading-relaxed mb-7 max-w-lg opacity-90 ">
         {{ project.short_summary }}
       </p>
 

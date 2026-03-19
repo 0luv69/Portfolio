@@ -40,7 +40,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Iosevka+Charon+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
     <!-- CSS Style sheet calling -->
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
@@ -56,6 +56,7 @@
 
         .font-caveat { font-family: 'Caveat', cursive; }
         .font-poppins { font-family: 'Poppins', sans-serif; }
+        .font-iosevka { font-family: 'Iosevka Charon Mono', monospace; }
 
     </style>
 </head>
@@ -78,7 +79,7 @@
     <!-- Floating Glass Navigation (Desktop Left, Mobile Bottom) -->
     <nav 
         style="user-select: none;"
-        class="fixed bottom-6 lg:max-h-[21rem] left-1/2 -translate-x-1/2 lg:left-8 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 z-50 bg-white/30 dark:bg-black/30 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] px-6 py-4 lg:py-8 lg:px-4 rounded-full flex lg:flex-col gap-6 lg:gap-8 transition-all duration-300">
+        class="fixed bottom-6 left-1/2 -translate-x-1/2 lg:left-8 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 z-50 bg-white/30 dark:bg-black/30 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] px-6 py-4 lg:py-8 lg:px-4 rounded-full flex lg:flex-col gap-6 lg:gap-8 transition-all duration-300">
         <a href="#home" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
             <i class="fas fa-home text-lg"></i>
             <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Home</span>
@@ -86,6 +87,10 @@
         <a href="#projects" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
             <i class="fas fa-layer-group text-lg"></i>
             <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Work</span>
+        </a>
+        <a href="#about" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
+            <i class="fas fa-user text-lg"></i>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black  dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">About</span>
         </a>
         <a href="#skills" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
             <i class="fas fa-tools text-lg"></i>
@@ -95,6 +100,7 @@
             <i class="fas fa-envelope text-lg"></i>
             <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black  dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Contact</span>
         </a>
+        
         <!-- Theme Toggle Button -->
         <button id="theme-toggle" class="nav-item text-slate-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors duration-300 relative group mt-auto lg:pt-1 lg:border-t lg:border-gray-300/50 dark:lg:border-gray-700/50">
             <i class="fas fa-moon text-lg" id="icon-moon"></i>
@@ -216,13 +222,16 @@
                         
                         <!-- Back Face (Image 2) -->
                         <div class="absolute w-full h-full bg-[#1E3D3D] border-4 border-[#F7B733] flex justify-center items-end rounded-full overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                            <div class="w-full h-full relative rounded-full overflow-hidden pointer-events-none">
-                                <video
-                                        id="profileVideo"
-                                        src="{% static selected_video_url %}"
-                                        playsinline
-                                        class="w-full h-full object-cover scale-[1.08]"
-                                    ></video>
+                            <div id="video-container" class="w-full h-full relative rounded-full overflow-hidden pointer-events-none">
+                                    {% for video_url in video_list %}
+                                        <video
+                                            data-index="{{ forloop.counter0 }}"
+                                            src="{% static video_url %}"
+                                            preload="auto"
+                                            playsinline
+                                            class="profile-video absolute inset-0 w-full h-full object-cover scale-[1.08] {% if forloop.counter0 != selected_video_index %}hidden{% endif %}"
+                                        ></video>
+                                    {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -302,8 +311,11 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="pt-32 reveal">
-            <h2 class="font-display text-4xl font-bold tracking-tight mb-16">Selected Work</h2>
+        <section id="projects" class="pt-32 pb-20 reveal">
+            <div class="mb-16">
+                <span class="text-xs font-medium font-poppins tracking-[0.3em] text-gray-500 uppercase mb-4 block">What I Do</span>
+                <h2 class="font-display text-4xl lg:text-[4.37em] font-medium font-caveat tracking-tight mb-16">Selected Work</h2>
+            </div>
 
             <div class="space-y-10 projectCards">
                 {% for each_project in projects %}
@@ -318,11 +330,39 @@
             </div>
         </section>
 
-        <section id="skills" class="pt-32 pb-20 px-6">
+        <section id="about" class="text-right pt-28 pb-20 mx-[10%]" >
+            
+            <div class="mb-16">
+                <span class="text-xs font-medium font-poppins tracking-[0.3em] text-gray-500 uppercase mb-4 block">Who am I?</span>
+                <h2 id="about-heading" class="font-caveat ml-auto mb-7 font-medium tracking-wide text-4xl lg:text-[4.37em]">
+                    Behind the Code
+                </h2>
+            </div>
+
+            <p class="ml-auto mt-2 mb-0 font-medium font-iosevka text-pretty text-xl">
+                Switching curiosity into code, 
+                I'm Rujal — a software developer passionate about Python, web development, and cybersecurity, 
+                building practical and user-focused digital solutions. 
+                I enjoy solving problems, learning new technologies, and turning ideas into real, working digital products that are both useful and user-friendly.
+            </p>
+
+            <a href="#contact"
+                role="button"
+                class="inline-block mt-4 px-3 py-1.5 border-2 border-[#F7B733] rounded-full
+                    bg-transparent text-[#343a40] font-extrabold no-underline cursor-pointer
+                    transition-all duration-300 ease-[cubic-bezier(.37,0,.63,1)]
+                    hover:bg-[#F7B733] hover:text-white"
+                >
+                Get in Touch
+            </a>
+
+        </section>
+
+        <section id="skills" class="pt-28 pb-20 px-6">
             <div class="max-w-5xl mx-auto">
                 <div class="mb-16">
-                    <span class="text-xs font-medium tracking-[0.3em] text-gray-500 uppercase mb-4 block">Capabilities</span>
-                    <h2 class="font-serif text-4xl font-light tracking-tight">
+                    <span class="text-xs font-medium font-poppins tracking-[0.3em] text-gray-500 uppercase mb-4 block">Capabilities</span>
+                    <h2 class=" text-4xl lg:text-[4.37em] font-medium font-caveat tracking-tight">
                         Tools & Technologies
                     </h2>
                 </div>
@@ -336,7 +376,7 @@
                                 class="w-8 h-8 object-contain opacity-70 group-hover:opacity-100 transition-opacity"
                             />
                         </div>
-                        <span class="text-[11px] text-gray-500 font-medium tracking-wide group-hover:text-black dark:group-hover:text-gray-300 transition-colors">
+                        <span class="text-[11px] font-iosevka text-gray-500 font-medium tracking-wide group-hover:text-black dark:group-hover:text-gray-300 transition-colors">
                             {{ technology.name }}
                         </span>
                     </div>
@@ -344,6 +384,8 @@
                 </div>
             </div>
         </section>
+
+     
 
         <!-- Contact Section -->
         <section id="contact" class="pt-32 pb-16 reveal hidden">
@@ -505,45 +547,53 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-
-            // --- 2. Flip + Video Control ---
             const flipper = document.getElementById('profile-flipper');
-            const video   = document.getElementById('profileVideo');
-            const videoData = JSON.parse(document.getElementById('video-data').textContent);
-            const staticLink = "{% static '' %}"; // Base static path from Django
-            const videoList = videoData.map(url => `${staticLink}${url}`);
-            let currentVideoIndex = {{selected_video_index}};
+            const videos  = [...document.querySelectorAll('.profile-video')];
+            let currentIndex = {{ selected_video_index }};
 
-            console.log("Available videos:", videoList);
-            console.log("Initially selected video:", currentVideoIndex);
-            
-            if (flipper && video) {
+            function getVideo(index) {
+                return videos[index];
+            }
+
+            function switchToVideo(index) {
+                videos.forEach((v, i) => {
+                    if (i === index) {
+                        v.classList.remove('hidden');
+                    } else {
+                        v.classList.add('hidden');
+                        v.pause();
+                        v.currentTime = 0;
+                    }
+                });
+                currentIndex = index;
+            }
+
+            function nextIndex() {
+                return (currentIndex + 1) % videos.length;
+            }
+
+            // Attach "ended" listener once per video
+            videos.forEach((v) => {
+                v.addEventListener('ended', () => {
+                    flipper.classList.remove('flipped');
+                    v.currentTime = 0;
+                    switchToVideo(nextIndex());
+                });
+            });
+
+            if (flipper) {
                 flipper.addEventListener('click', () => {
                     flipper.classList.toggle('flipped');
                     const isFlipped = flipper.classList.contains('flipped');
+                    const current = getVideo(currentIndex);
 
                     if (isFlipped) {
-                        video.play();
+                        current.play();
                     } else {
-                        video.pause();
-                        video.currentTime = 0; // rewind so it's fresh next flip
-                    
-                        // Switch to next video when flipping back
-                        currentVideoIndex = (currentVideoIndex + 1) % videoList.length;
-                        video.src = videoList[currentVideoIndex];
-                    
+                        current.pause();
+                        current.currentTime = 0;
+                        switchToVideo(nextIndex()); // queue next video while hidden
                     }
-                     // ✅ Auto flip back when video ends
-                    video.addEventListener('ended', () => {
-                        flipper.classList.remove('flipped');
-                        video.currentTime = 0;
-
-
-                        // Switch to next video when flipping back
-                        currentVideoIndex = (currentVideoIndex + 1) % videoList.length;
-                        video.src = videoList[currentVideoIndex];
-                    });
-                    console.log(`Video ${isFlipped ? 'playing' : 'paused'}: ${video.src}`);
                 });
             }
         });

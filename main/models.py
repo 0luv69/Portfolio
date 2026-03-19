@@ -84,6 +84,52 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+
+
+class Achievement(models.Model):
+
+    class AchievementType(models.TextChoices):
+        AWARD       = "award",        "Award"
+        CERTIFICATION = "certification", "Certification"
+        RECOGNITION = "recognition",  "Recognition"
+        COMPETITION = "competition",  "Competition"
+        PUBLICATION = "publication",  "Publication"
+        MILESTONE   = "milestone",    "Milestone"
+        OTHER       = "other",        "Other"
+
+    # --- Core Info ---
+    title            = models.CharField(max_length=200)
+    slug             = models.SlugField(max_length=220, unique=True, blank=True)
+    achievement_type = models.CharField(max_length=20, choices=AchievementType.choices, default=AchievementType.OTHER)
+    issuer           = models.CharField(max_length=200, blank=True, help_text="Org/person who gave the award e.g. 'Google', 'Harvard'")
+    short_description = models.CharField(max_length=180)
+    full_description  = models.TextField(blank=True)
+    
+
+    # --- Media ---
+    image      = models.ImageField(upload_to="achievements/", blank=True, null=True, help_text="Badge, certificate screenshot, trophy photo")
+    image_alt  = models.CharField(max_length=120, blank=True)
+
+    # --- Flags & Ordering ---
+    is_featured   = models.BooleanField(default=False, help_text="Show on hero/highlights section")
+    is_published  = models.BooleanField(default=True)
+    sort_order    = models.PositiveIntegerField(default=0)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["sort_order", "-created_at"]
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.title} ({self.issuer})" if self.issuer else self.title
 
 
 class ProjectLink(models.Model):
@@ -96,6 +142,7 @@ class ProjectLink(models.Model):
         OTHER = "other", "Other"
 
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="links")
+    achievement = models.ForeignKey(Achievement, on_delete=models.CASCADE, related_name="achievements_links", blank=True, null=True)
     link_type = models.CharField(max_length=20, choices=LinkType.choices, default=LinkType.WEBSITE)
     label = models.CharField(max_length=80, blank=True)
     url = models.URLField()
@@ -105,7 +152,8 @@ class ProjectLink(models.Model):
         ordering = ["sort_order", "id"]
 
     def __str__(self):
-        return f"{self.project.title} - {self.link_type}"
+        owner = self.project or self.achievement
+        return f"{owner} - {self.link_type}"
 
 
 class ProjectMedia(models.Model):
@@ -116,6 +164,7 @@ class ProjectMedia(models.Model):
         OTHER = "other", "Other"
 
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="media_items")
+    achievement = models.ForeignKey(Achievement, on_delete=models.CASCADE, related_name="achievements_media", blank=True, null=True)
     media_type = models.CharField(max_length=20, choices=MediaType.choices, default=MediaType.OTHER)
     image = models.ImageField(upload_to="projects/images/", blank=True, null=True)
     file = models.FileField(upload_to="projects/media/", blank=True, null=True)
@@ -128,7 +177,6 @@ class ProjectMedia(models.Model):
         ordering = ["sort_order", "id"]
 
     def __str__(self):
-        return f"{self.project.title} - {self.media_type}"
-
-
+        owner = self.project or self.achievement
+        return f"{owner} - {self.media_type}"
 
