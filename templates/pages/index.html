@@ -39,8 +39,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Iosevka+Charon+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Iosevka+Charon+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
     <!-- CSS Style sheet calling -->
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
@@ -79,7 +79,7 @@
     <!-- Floating Glass Navigation (Desktop Left, Mobile Bottom) -->
     <nav 
         style="user-select: none;"
-        class="fixed bottom-6 left-1/2 -translate-x-1/2 lg:left-8 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 z-50 bg-white/30 dark:bg-black/30 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] px-6 py-4 lg:py-8 lg:px-4 rounded-full flex lg:flex-col gap-6 lg:gap-8 transition-all duration-300">
+        class="fixed bottom-6  lg:max-h-[90vh] left-1/2 -translate-x-1/2 lg:left-8 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 z-50 bg-white/30 dark:bg-black/30 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] px-6 py-4 lg:py-5  lg:px-4 rounded-full flex lg:flex-col gap-6 transition-all duration-300">
         <a href="#home" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
             <i class="fas fa-home text-lg"></i>
             <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Home</span>
@@ -109,9 +109,9 @@
         </button>
     </nav>
 
-    <main class="pt-10 lg:pt-14 max-w-6xl mx-auto px-6" style="user-select: none;">
+    <main class="pt-10 lg:pt-14 max-w-6xl mx-auto px-6" >
         <!-- Hero Section -->
-        <section id="home" class="min-h-[70vh] flex flex-col justify-center py-6 lg:py-20 lg:flex-row lg:justify-between lg:items-center gap-2 lg:gap-0">
+        <section id="home" style="user-select: none;" class="min-h-[70vh] flex flex-col justify-center py-6 lg:py-20 lg:flex-row lg:justify-between lg:items-center gap-2 lg:gap-0">
             
             <!-- left column -->
             <div class="left-section relative flex flex-col gap-2 lg:gap-24 z-20 items-center text-center lg:items-start lg:text-left order-1">
@@ -312,7 +312,7 @@
 
         <!-- Projects Section -->
         <section id="projects" class="pt-32 pb-20 reveal">
-            <div class="mb-16">
+            <div class="mb-18">
                 <span class="text-xs font-medium font-poppins tracking-[0.3em] text-gray-500 uppercase mb-4 block">What I Do</span>
                 <h2 class="font-display text-4xl lg:text-[4.37em] font-medium font-caveat tracking-tight mb-16">Selected Work</h2>
             </div>
@@ -341,7 +341,7 @@
 
             <p class="ml-auto mt-2 mb-0 font-medium font-iosevka text-pretty text-xl">
                 Switching curiosity into code, 
-                I'm Rujal — a software developer passionate about Python, web development, and cybersecurity, 
+                I'm Rujal aka Luv — a software developer passionate about Python, web development, and cybersecurity, 
                 building practical and user-focused digital solutions. 
                 I enjoy solving problems, learning new technologies, and turning ideas into real, working digital products that are both useful and user-friendly.
             </p>
@@ -424,6 +424,17 @@
             </div>
         </section>
     </main>
+
+    <!-- ══ FOOTER NAV ══ -->
+    <footer class="max-w-6xl mx-auto px-5 py-14">
+        <div class="reveal flex justify-center">
+            <p class="font-caveat text-xl lg:text-4xl " style="color:#94a3b8">
+                Crafted with care by 
+                <span class="text-[#F7931E]">luv</span>
+                .<span style="color:#e85d26">.</span>.
+            </p>
+        </div>
+    </footer>
 
 
     {{ video_list|json_script:"video-data" }}

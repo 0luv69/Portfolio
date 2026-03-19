@@ -3091,6 +3091,16 @@ input:where([type='file']):focus {
   color: rgb(52 58 64 / var(--tw-text-opacity, 1));
 }
 
+.text-\[\#e85d26\] {
+  --tw-text-opacity: 1;
+  color: rgb(232 93 38 / var(--tw-text-opacity, 1));
+}
+
+.text-\[\#F7931E\] {
+  --tw-text-opacity: 1;
+  color: rgb(247 147 30 / var(--tw-text-opacity, 1));
+}
+
 .no-underline {
   text-decoration-line: none;
 }
@@ -4514,6 +4524,10 @@ body {
     max-height: 21rem;
   }
 
+  .lg\:max-h-\[90vh\] {
+    max-height: 90vh;
+  }
+
   .lg\:min-h-\[260px\] {
     min-height: 260px;
   }
@@ -4644,6 +4658,11 @@ body {
     padding-bottom: 2rem;
   }
 
+  .lg\:py-5 {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
   .lg\:pl-16 {
     padding-left: 4rem;
   }
@@ -4693,6 +4712,11 @@ body {
 
   .lg\:text-\[4\.37em\] {
     font-size: 4.37em;
+  }
+
+  .lg\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 
   .dark\:lg\:border-gray-700\/50:is(.dark *) {
