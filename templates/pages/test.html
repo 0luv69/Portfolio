@@ -1,276 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Palette Showcase</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Achievements</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: #f0ede8;
+      min-height: 100vh;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a1a;
-            padding: 40px 20px;
-        }
+    /* ── subtle grain overlay on bg ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    /* ── section ── */
+    .section { position: relative; z-index: 1; }
 
-        h1 {
-            text-align: center;
-            color: #ffffff;
-            margin-bottom: 10px;
-            font-size: 2.5rem;
-        }
+    /* ── card shell (transparent, provides spacing) ── */
+    .a-card {
+      position: relative;
+    }
 
-        .subtitle {
-            text-align: center;
-            color: #888888;
-            margin-bottom: 50px;
-        }
+    /* ── main card body ── */
+    .card-body {
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 18px;
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 4px 16px rgba(0,0,0,0.06),
+        0 12px 40px rgba(0,0,0,0.04);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      position: relative;
+      overflow: visible;
+    }
+    .a-card:hover .card-body {
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 8px 28px rgba(0,0,0,0.09),
+        0 20px 60px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
 
-        .theme-section {
-            margin-bottom: 60px;
-        }
+    /* ── avatar circle ── */
+    .avatar-wrap {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+    .img-left  .avatar-wrap { left:  -44px; }
+    .img-right .avatar-wrap { right: -44px; left: auto; }
 
-        .theme-title {
-            color: #ffffff;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            padding-left: 10px;
-            border-left: 4px solid #ffffff;
-        }
+    .avatar-ring {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      border: 2.5px solid #ffffff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      overflow: hidden;
+      background: #d6cfc6;
+    }
 
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
+    /* dual avatar */
+    .dual-wrap { position: relative; width: 88px; height: 88px; }
+    .dual-wrap .avatar-ring { position: absolute; }
+    .dual-wrap .avatar-ring:first-child { width:64px; height:64px; top:0; left:0; z-index:3; }
+    .dual-wrap .avatar-ring:last-child  { width:56px; height:56px; bottom:0; right:0; z-index:2; }
 
-        .card {
-            border-radius: 12px;
-            padding: 30px;
-            min-height: 150px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    /* ── status pill ── */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: 100px;
+      padding: 3px 10px 3px 8px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .status-verified {
+      background: #edf7f0;
+      color: #1a6b3c;
+      border: 1px solid #c3e8d1;
+    }
+    .status-top {
+      background: #fef9eb;
+      color: #7a5500;
+      border: 1px solid #f3d96b;
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
+    /* ── tech chips ── */
+    .t-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #f6f5f2;
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 6px;
+      padding: 3px 9px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 10.5px;
+      font-weight: 500;
+      color: #444;
+      letter-spacing: 0.01em;
+    }
 
-        .card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
+    /* ── CTA button ── */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 9px;
+      padding: 8px 18px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+    .cta-green {
+      background: #1a6b3c;
+      color: #ffffff;
+      border-color: #1a6b3c;
+    }
+    .cta-green:hover { background: #155630; box-shadow: 0 4px 16px rgba(26,107,60,0.28); }
 
-        .card p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
+    .cta-blue {
+      background: transparent;
+      color: #1a3a6b;
+      border-color: #c5d5ea;
+    }
+    .cta-blue:hover { background: #f0f5fb; border-color: #a8c1de; }
 
-        .color-code {
-            margin-top: 15px;
-            font-size: 0.75rem;
-            font-family: 'Courier New', monospace;
-            opacity: 0.7;
-        }
+    /* ── divider ── */
+    .soft-divider {
+      height: 1px;
+      background: #f0ede8;
+    }
 
-        /* Your Original Colors */
-        .original-1 { background-color: #262626; color: #dddddd; }
-        .original-2 { background-color: #26997b; color: #f4fbf7; }
-        .original-3 { background-color: #ffca16; color: #5c3d05; }
+    /* card title */
+    .card-title { font-family: 'Bricolage Grotesque', sans-serif; }
 
-        /* Theme 1: Ocean Breeze */
-        .ocean-1 { background-color: #1e293b; color: #f1f5f9; }
-        .ocean-2 { background-color: #06b6d4; color: #ecfeff; }
-        .ocean-3 { background-color: #8b5cf6; color: #f5f3ff; }
+    /* label */
+    .meta-label {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+    .meta-value {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #333;
+      margin-top: 2px;
+    }
 
-        /* Theme 2: Midnight Cyber */
-        .cyber-1 { background-color: #0f0f0f; color: #a3a3a3; }
-        .cyber-2 { background-color: #bef264; color: #1a2e05; }
-        .cyber-3 { background-color: #f472b6; color: #3b0726; }
+    /* description text uses Lora for elegance */
+    .desc-text {
+      font-size: 13.5px;
+      line-height: 1.75;
+      color: #666;
+    }
 
-        /* Theme 3: Warm Earth */
-        .earth-1 { background-color: #292524; color: #e7e5e4; }
-        .earth-2 { background-color: #ea580c; color: #fff7ed; }
-        .earth-3 { background-color: #ca8a04; color: #fefce8; }
+    /* section eyebrow */
+    .eyebrow {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #aaa9a4;
+    }
+    .section-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700;
+      color: #1c1b18;
+      line-height: 1.1;
+    }
 
-        /* Theme 4: Royal Velvet */
-        .royal-1 { background-color: #312e81; color: #e0e7ff; }
-        .royal-2 { background-color: #059669; color: #ecfdf5; }
-        .royal-3 { background-color: #d97706; color: #fffbeb; }
-
-        /* Copy Button */
-        .copy-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: inherit;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.7rem;
-            margin-top: 10px;
-            transition: background 0.3s ease;
-        }
-
-        .copy-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        footer {
-            text-align: center;
-            color: #666666;
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid #333333;
-        }
-    </style>
+    /* animate cards in on load */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .a-card:nth-child(1) { animation: fadeUp 0.55s cubic-bezier(.22,.97,.58,1) 0.1s both; }
+    .a-card:nth-child(2) { animation: fadeUp 0.55s cubic-bezier(.22,.97,.58,1) 0.22s both; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🎨 Color Palette Showcase</h1>
-        <p class="subtitle">High Contrast Card Color Combinations</p>
 
-        <!-- Your Original Colors -->
-        <div class="theme-section">
-            <h2 class="theme-title">Your Original Colors</h2>
-            <div class="cards-grid">
-                <div class="card original-1">
-                    <h3>Dark Base</h3>
-                    <p>Perfect for main card backgrounds</p>
-                    <div class="color-code">bg: #262626 | text: #dddddd</div>
-                </div>
-                <div class="card original-2">
-                    <h3>Emerald Green</h3>
-                    <p>Great for success states</p>
-                    <div class="color-code">bg: #26997b | text: #f4fbf7</div>
-                </div>
-                <div class="card original-3">
-                    <h3>Golden Yellow</h3>
-                    <p>Excellent for warnings/highlights</p>
-                    <div class="color-code">bg: #ffca16 | text: #5c3d05</div>
-                </div>
-            </div>
+<div class="section max-w-xl mx-auto px-8 py-20">
+
+  <!-- Header -->
+  <p class="eyebrow mb-2">Recognition</p>
+  <h2 class="section-title text-[38px] mb-14">Achievements</h2>
+
+  <div class="flex flex-col gap-12">
+
+    <!-- ═══ CARD 1 — image left ═══ -->
+    <div class="a-card img-left">
+
+      <!-- title row above card -->
+      <div class="flex items-center justify-between gap-3 mb-3 pl-[58px]">
+        <h3 class="card-title text-[18px] font-bold text-[#1c1b18] leading-tight">Rahat Choice Award</h3>
+        <span class="status-pill status-verified">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          Verified
+        </span>
+      </div>
+
+      <div class="card-body">
+
+        <!-- avatar left -->
+        <div class="avatar-wrap">
+          <div class="avatar-ring">
+            <svg viewBox="0 0 88 88" width="88" height="88" xmlns="http://www.w3.org/2000/svg">
+              <rect width="88" height="88" fill="#c9bfb4"/>
+              <ellipse cx="44" cy="36" rx="16" ry="18" fill="#a07860"/>
+              <ellipse cx="44" cy="33" rx="13" ry="15" fill="#c4916e"/>
+              <path d="M16 88 Q44 62 72 88" fill="#3d3d5c"/>
+            </svg>
+          </div>
         </div>
 
-        <!-- Theme 1: Ocean Breeze -->
-        <div class="theme-section">
-            <h2 class="theme-title">Theme 1: Ocean Breeze 🌊</h2>
-            <div class="cards-grid">
-                <div class="card ocean-1">
-                    <h3>Dark Slate</h3>
-                    <p>Professional & clean base</p>
-                    <div class="color-code">bg: #1e293b | text: #f1f5f9</div>
-                </div>
-                <div class="card ocean-2">
-                    <h3>Vibrant Cyan</h3>
-                    <p>Primary action color</p>
-                    <div class="color-code">bg: #06b6d4 | text: #ecfeff</div>
-                </div>
-                <div class="card ocean-3">
-                    <h3>Electric Purple</h3>
-                    <p>Highlight & accent</p>
-                    <div class="color-code">bg: #8b5cf6 | text: #f5f3ff</div>
-                </div>
-            </div>
-        </div>
+        <!-- content -->
+        <div class="pl-[60px] pr-6 pt-5 pb-5">
 
-        <!-- Theme 2: Midnight Cyber -->
-        <div class="theme-section">
-            <h2 class="theme-title">Theme 2: Midnight Cyber 🌃</h2>
-            <div class="cards-grid">
-                <div class="card cyber-1">
-                    <h3>Deep Void</h3>
-                    <p>Ultra dark base</p>
-                    <div class="color-code">bg: #0f0f0f | text: #a3a3a3</div>
-                </div>
-                <div class="card cyber-2">
-                    <h3>Neon Lime</h3>
-                    <p>High energy accent</p>
-                    <div class="color-code">bg: #bef264 | text: #1a2e05</div>
-                </div>
-                <div class="card cyber-3">
-                    <h3>Hot Pink</h3>
-                    <p>Bold statements</p>
-                    <div class="color-code">bg: #f472b6 | text: #3b0726</div>
-                </div>
-            </div>
-        </div>
+          <!-- chips -->
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="t-chip">React</span>
+            <span class="t-chip">Node.js</span>
+            <span class="t-chip">PostgreSQL</span>
+            <span class="t-chip">REST API</span>
+          </div>
 
-        <!-- Theme 3: Warm Earth -->
-        <div class="theme-section">
-            <h2 class="theme-title">Theme 3: Warm Earth 🍂</h2>
-            <div class="cards-grid">
-                <div class="card earth-1">
-                    <h3>Warm Charcoal</h3>
-                    <p>Soft & inviting base</p>
-                    <div class="color-code">bg: #292524 | text: #e7e5e4</div>
-                </div>
-                <div class="card earth-2">
-                    <h3>Burnt Orange</h3>
-                    <p>Energy & warmth</p>
-                    <div class="color-code">bg: #ea580c | text: #fff7ed</div>
-                </div>
-                <div class="card earth-3">
-                    <h3>Mustard Gold</h3>
-                    <p>Notes & warnings</p>
-                    <div class="color-code">bg: #ca8a04 | text: #fefce8</div>
-                </div>
-            </div>
-        </div>
+          <div class="soft-divider mb-4"></div>
 
-        <!-- Theme 4: Royal Velvet -->
-        <div class="theme-section">
-            <h2 class="theme-title">Theme 4: Royal Velvet 👑</h2>
-            <div class="cards-grid">
-                <div class="card royal-1">
-                    <h3>Deep Indigo</h3>
-                    <p>Luxury base color</p>
-                    <div class="color-code">bg: #312e81 | text: #e0e7ff</div>
-                </div>
-                <div class="card royal-2">
-                    <h3>Emerald Green</h3>
-                    <p>Wealth & growth</p>
-                    <div class="color-code">bg: #059669 | text: #ecfdf5</div>
-                </div>
-                <div class="card royal-3">
-                    <h3>Metallic Gold</h3>
-                    <p>Premium highlights</p>
-                    <div class="color-code">bg: #d97706 | text: #fffbeb</div>
-                </div>
-            </div>
-        </div>
+          <p class="desc-text mb-5">
+            Created Sambandha Web App, a platform for mental health where users can get suggestions from family members or a psychiatrist through secure online sessions.
+          </p>
 
-        <footer>
-            <p>💡 Tip: Bright backgrounds use dark text for better readability!</p>
-        </footer>
+          <!-- footer -->
+          <div class="flex items-end gap-5 flex-wrap">
+            <div>
+              <p class="meta-label">Issued by</p>
+              <p class="meta-value">TechFest Nepal</p>
+            </div>
+            <div>
+              <p class="meta-label">Issued on</p>
+              <p class="meta-value">Dec 2024</p>
+            </div>
+            <div class="ml-auto">
+              <button class="cta-btn cta-green">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                View Credential
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
 
-    <script>
-        // Add click to copy functionality
-        document.querySelectorAll('.color-code').forEach(code => {
-            code.style.cursor = 'pointer';
-            code.addEventListener('click', () => {
-                const text = code.textContent;
-                navigator.clipboard.writeText(text);
-                
-                const originalText = code.textContent;
-                code.textContent = '✅ Copied!';
-                setTimeout(() => {
-                    code.textContent = originalText;
-                }, 1500);
-            });
-        });
-    </script>
+    <!-- ═══ CARD 2 — image right ═══ -->
+    <div class="a-card img-right">
+
+      <!-- title row, aligned right -->
+      <div class="flex items-center justify-between gap-3 mb-3 pr-[58px]">
+        <span class="status-pill status-top">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Top Credential
+        </span>
+        <h3 class="card-title text-[18px] font-bold text-[#1c1b18] leading-tight text-right">AWS Solutions Architect Pro</h3>
+      </div>
+
+      <div class="card-body">
+
+        <!-- avatar right -->
+        <div class="avatar-wrap">
+          <div class="dual-wrap">
+            <div class="avatar-ring">
+              <svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+                <rect width="64" height="64" fill="#111827"/>
+                <text x="32" y="42" font-size="26" text-anchor="middle" fill="#fbbf24" font-family="system-ui">🏆</text>
+              </svg>
+            </div>
+            <div class="avatar-ring">
+              <svg viewBox="0 0 56 56" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+                <rect width="56" height="56" fill="#f0f4ff"/>
+                <text x="28" y="34" font-size="13" text-anchor="middle" fill="#3b4fcf" font-family="system-ui" font-weight="700">MIT</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- content — padding right for avatar -->
+        <div class="pr-[60px] pl-6 pt-5 pb-5">
+
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="t-chip">EC2 / S3</span>
+            <span class="t-chip">Kubernetes</span>
+            <span class="t-chip">CloudFront</span>
+            <span class="t-chip">Lambda</span>
+          </div>
+
+          <div class="soft-divider mb-4"></div>
+
+          <p class="desc-text mb-5">
+            Validated expertise in designing and deploying scalable, highly available, and fault-tolerant systems on AWS. Covers advanced networking, multi-region architectures, and cost-optimized solution design.
+          </p>
+
+          <div class="flex items-end gap-5 flex-wrap">
+            <div>
+              <p class="meta-label">Issued by</p>
+              <p class="meta-value">Amazon Web Services</p>
+            </div>
+            <div>
+              <p class="meta-label">Issued on</p>
+              <p class="meta-value">Jun 2024</p>
+            </div>
+            <div class="ml-auto">
+              <button class="cta-btn cta-blue">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                View Certificate
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </body>
 </html>
