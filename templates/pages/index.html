@@ -96,9 +96,9 @@
             <i class="fas fa-user text-lg"></i>
             <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black  dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">About</span>
         </a>
-        <a href="#skills" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
-            <i class="fas fa-tools text-lg"></i>
-            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black  dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Skills</span>
+        <a href="#contact" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
+            <i class="fas fa-envelope text-lg"></i>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black  dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Contact</span>
         </a>
         {% comment %} <a href="#contact" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
             <i class="fas fa-envelope text-lg"></i>
@@ -141,6 +141,8 @@
                 </div>
 
                 <div class="social-icons flex gap-6">
+                    <a href="mailto:baniyarujal@gmail.com" target="_blank"                  class="text-[#F7B733]  text-2xl lg:text-3xl hover:opacity-80"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.instagram.com/luv.baniya.7/" target="_blank"                  class="text-[#F7B733]  text-2xl lg:text-3xl hover:opacity-80"><i class="fab fa-instagram"></i></a>
                     <a href="https://github.com/0luv69" target="_blank"                  class="text-[#F7B733]  text-2xl lg:text-3xl hover:opacity-80"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank" class="text-[#F7B733]  text-2xl lg:text-3xl hover:opacity-80"><i class="fab fa-linkedin-in"></i></a>
                 </div>
@@ -411,7 +413,7 @@
         <section id="skills" class="pt-28 pb-20 px-6">
             <div class="max-w-5xl mx-auto">
                 <div class="mb-16">
-                    <span class="text-xs font-medium font-poppins tracking-[0.3em] text-gray-500 uppercase mb-4 block">Capabilities</span>
+                    <span class="text-xs font-medium font-poppins tracking-[0.3em] text-gray-500 uppercase mb-4 block">What I use</span>
                     <h2 class=" text-4xl lg:text-[4.37em] font-medium font-caveat tracking-tight">
                         Tools & Technologies
                     </h2>
@@ -436,38 +438,64 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="pt-32 pb-16 reveal hidden">
-            <div class="bento-card p-8 md:p-16 relative overflow-hidden bg-white dark:bg-surface border border-gray-200 dark:border-border rounded-3xl">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
-                    <div>
-                        <h2 class="font-display text-4xl font-bold tracking-tight mb-4">Let's build something together.</h2>
-                        <p class="text-gray-500 dark:text-gray-400 font-light mb-8 max-w-md">
-                            Feel free to reach out if you're looking for a developer, have a question, or simply want to connect.
-                        </p>
-                        <div class="space-y-4">
-                            <a href="mailto:baniyarujal@gmail.com" class="flex items-center gap-4 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">
-                                <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-surface border border-gray-200 dark:border-border flex items-center justify-center">
-                                    <i class="fas fa-envelope text-sm"></i>
-                                </div>
-                                <span class="text-sm font-medium">baniyarujal@gmail.com</span>
-                            </a>
-                        </div>
-                    </div>
+        <section id="contact" class="pt-32 pb-16 reveal">
+            <div class="bento-card p-8 md:p-16 relative overflow-hidden border border-gray-200 dark:border-white/10 bg-white dark:bg-[#111] rounded-3xl">
+                <h2 class="font-display text-4xl font-bold tracking-tight mb-4 font-caveat">
+                    Let's build something together.
+                </h2>
+                <p class="text-gray-500 dark:text-gray-400 font-light mb-8 sm:max-w-sm font-iosevka">
+                    Ready to turn your bold ideas into world-class software? Let's collaborate and build something extraordinary together. Reach out below.
+                </p>
 
-                    <!-- Clean Form -->
-                    <form method="post" action="/contact/" class="space-y-5">
-                        {% csrf_token %}
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                            <input id="name" type="text" name="name" required placeholder="Name" class="w-full bg-gray-50 dark:bg-surface border border-gray-200 dark:border-border rounded-xl px-4 py-3 text-sm placeholder-gray-500 dark:placeholder-gray-600 focus:outline-none transition-colors">
-                            <input id="email" type="email" name="email" required placeholder="Email" class="w-full bg-gray-50 dark:bg-surface border border-gray-200 dark:border-border rounded-xl px-4 py-3 text-sm placeholder-gray-500 dark:placeholder-gray-600 focus:outline-none transition-colors">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 relative font-iosevka">
+
+                    <a href="mailto:baniyarujal@gmail.com"
+                    class="contact-row group flex items-center gap-4 px-4 py-3 rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#111] hover:border-[#F7B733] dark:hover:border-[#F7B733] hover:bg-[#F7B733]/5 transition-all duration-200 hover:translate-x-1">
+                        <div class="w-10 h-10 rounded-xl bg-[#F7B733]/10 border border-[#F7B733]/25 flex items-center justify-center flex-shrink-0 text-[#F7B733]">
+                            <i class="fas fa-envelope text-sm"></i>
                         </div>
-                        <input id="subject" type="text" name="subject" required placeholder="Subject" class="w-full bg-gray-50 dark:bg-surface border border-gray-200 dark:border-border rounded-xl px-4 py-3 text-sm placeholder-gray-500 dark:placeholder-gray-600 focus:outline-none transition-colors">
-                        <textarea id="message" name="message" rows="4" required placeholder="Message" class="w-full bg-gray-50 dark:bg-surface border border-gray-200 dark:border-border rounded-xl px-4 py-3 text-sm placeholder-gray-500 dark:placeholder-gray-600 focus:outline-none transition-colors resize-none"></textarea>
-                        
-                        <button type="submit" class="w-full py-3.5 bg-black dark:bg-white text-white dark:text-black rounded-xl font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
-                            <span id="btn_txt">Send Message</span>
-                        </button>
-                    </form>
+                        <div class="flex flex-col gap-0.5 min-w-0">
+                            <span class="text-[10px] uppercase tracking-widest text-gray-400 font-medium">Email</span>
+                            <span class="text-sm font-medium text-gray-800 dark:text-gray-100 truncate">baniyarujal@gmail.com</span>
+                        </div>
+                        <i class="fas fa-arrow-right text-xs text-gray-300 dark:text-gray-600 group-hover:text-[#F7B733] group-hover:translate-x-1 transition-all duration-200 ml-auto"></i>
+                    </a>
+
+                    <a href="https://github.com/0luv69" target="_blank"
+                    class="contact-row group flex items-center gap-4 px-4 py-3 rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#111] hover:border-[#F7B733] dark:hover:border-[#F7B733] hover:bg-[#F7B733]/5 transition-all duration-200 hover:translate-x-1">
+                        <div class="w-10 h-10 rounded-xl bg-[#F7B733]/10 border border-[#F7B733]/25 flex items-center justify-center flex-shrink-0 text-[#F7B733]">
+                            <i class="fab fa-github text-sm"></i>
+                        </div>
+                        <div class="flex flex-col gap-0.5">
+                            <span class="text-[10px] uppercase tracking-widest text-gray-400 font-medium">GitHub</span>
+                            <span class="text-sm font-medium text-gray-800 dark:text-gray-100">0luv69</span>
+                        </div>
+                        <i class="fas fa-arrow-right text-xs text-gray-300 dark:text-gray-600 group-hover:text-[#F7B733] group-hover:translate-x-1 transition-all duration-200 ml-auto"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/luv-79a89732a/" target="_blank"
+                    class="contact-row group flex items-center gap-4 px-4 py-3 rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#111] hover:border-[#F7B733] dark:hover:border-[#F7B733] hover:bg-[#F7B733]/5 transition-all duration-200 hover:translate-x-1">
+                        <div class="w-10 h-10 rounded-xl bg-[#F7B733]/10 border border-[#F7B733]/25 flex items-center justify-center flex-shrink-0 text-[#F7B733]">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </div>
+                        <div class="flex flex-col gap-0.5">
+                            <span class="text-[10px] uppercase tracking-widest text-gray-400 font-medium">LinkedIn</span>
+                            <span class="text-sm font-medium text-gray-800 dark:text-gray-100">Rujal Baniya</span>
+                        </div>
+                        <i class="fas fa-arrow-right text-xs text-gray-300 dark:text-gray-600 group-hover:text-[#F7B733] group-hover:translate-x-1 transition-all duration-200 ml-auto"></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/luv.baniya.7/" target="_blank"
+                    class="contact-row group flex items-center gap-4 px-4 py-3 rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#111] hover:border-[#F7B733] dark:hover:border-[#F7B733] hover:bg-[#F7B733]/5 transition-all duration-200 hover:translate-x-1">
+                        <div class="w-10 h-10 rounded-xl bg-[#F7B733]/10 border border-[#F7B733]/25 flex items-center justify-center flex-shrink-0 text-[#F7B733]">
+                            <i class="fab fa-instagram text-sm"></i>
+                        </div>
+                        <div class="flex flex-col gap-0.5">
+                            <span class="text-[10px] uppercase tracking-widest text-gray-400 font-medium">Instagram</span>
+                            <span class="text-sm font-medium text-gray-800 dark:text-gray-100">luv.baniya.7</span>
+                        </div>
+                        <i class="fas fa-arrow-right text-xs text-gray-300 dark:text-gray-600 group-hover:text-[#F7B733] group-hover:translate-x-1 transition-all duration-200 ml-auto"></i>
+                    </a>
                 </div>
             </div>
         </section>

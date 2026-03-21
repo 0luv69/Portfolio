@@ -19,8 +19,12 @@ from django.contrib import messages
 
 video_list = [
     "vid/fire1.mp4",
+    "vid/love.mp4",
+    "vid/fire3.mp4",
     "vid/love-anger.mp4",
-    "vid/love.mp4"
+    "vid/love2.mp4",
+    "vid/fire2.mp4",
+
 ]
 
 def home(request):
