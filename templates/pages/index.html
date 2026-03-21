@@ -79,7 +79,7 @@
     <!-- Floating Glass Navigation (Desktop Left, Mobile Bottom) -->
     <nav 
         style="user-select: none;"
-        class="fixed bottom-6  lg:max-h-[90vh] left-1/2 -translate-x-1/2 lg:left-8 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 z-50 bg-white/30 dark:bg-black/30 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] px-6 py-4 lg:py-5  lg:px-4 rounded-full flex lg:flex-col gap-6 transition-all duration-300">
+        class="fixed bottom-6 lg:max-h-[90vh] left-1/2 -translate-x-1/2 lg:left-8 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 z-50 bg-white/30 dark:bg-black/30 backdrop-blur-xl border border-gray-900/50 dark:border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] px-5 py-4 lg:py-5 lg:px-4 rounded-full flex lg:flex-col items-center gap-5 lg:gap-6 transition-all duration-300">
         <a href="#home" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
             <i class="fas fa-home text-lg"></i>
             <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Home</span>
@@ -88,21 +88,25 @@
             <i class="fas fa-layer-group text-lg"></i>
             <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Work</span>
         </a>
+        <a href="#typespeed" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
+            <i class="fas fa-keyboard   text-lg"></i>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">TypeSpeed</span>
+        </a>
         <a href="#about" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
             <i class="fas fa-user text-lg"></i>
             <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black  dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">About</span>
         </a>
         <a href="#skills" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
             <i class="fas fa-tools text-lg"></i>
-            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Skills</span>
+            <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black  dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Skills</span>
         </a>
-        <a href="#contact" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
+        {% comment %} <a href="#contact" class="nav-item text-slate-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 relative group">
             <i class="fas fa-envelope text-lg"></i>
             <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:text-black  dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Contact</span>
-        </a>
+        </a> {% endcomment %}
         
         <!-- Theme Toggle Button -->
-        <button id="theme-toggle" class="nav-item text-slate-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors duration-300 relative group mt-auto lg:pt-1 lg:border-t lg:border-gray-300/50 dark:lg:border-gray-700/50">
+        <button id="theme-toggle" class="nav-item text-slate-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors duration-300 relative group mt-auto">
             <i class="fas fa-moon text-lg" id="icon-moon"></i>
             <i class="fas fa-sun text-lg" id="icon-sun" style="display:none;"></i>
             <span class="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-white dark:bg-surface border border-gray-200 dark:border-border px-3 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block pointer-events-none shadow-lg">Theme</span>
@@ -221,7 +225,7 @@
                         </div>
                         
                         <!-- Back Face (Image 2) -->
-                        <div class="absolute w-full h-full bg-[#1E3D3D] border-4 border-[#F7B733] flex justify-center items-end rounded-full overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                        <div class="absolute w-full h-full bg-[#BDA6CE] border-4 border-[#F7B733] flex justify-center items-end rounded-full overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)]">
                             <div id="video-container" class="w-full h-full relative rounded-full overflow-hidden pointer-events-none">
                                     {% for video_url in video_list %}
                                         <video
@@ -330,6 +334,50 @@
             </div>
         </section>
 
+
+        <!-- Typing Speed Test Section -->
+        <section id="typespeed" class="pt-28 pb-20 px-6 reveal">
+            <div class="max-w-5xl mx-auto">
+                <div class="mb-12">
+                    <span class="text-xs font-medium font-poppins tracking-[0.3em] text-gray-500 uppercase mb-4 block">For fun</span>
+                    <h2 class="text-4xl lg:text-[4.37em] font-medium font-caveat tracking-tight">How fast do you type?</h2>
+                </div>
+
+                <div id="type-widget" class="relative rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#111] p-8 shadow-sm">
+                    
+                    <!-- sentence display -->
+                    <div id="type-display" class="font-iosevka whitespace-normal break-words text-base sm:text-lg leading-loose mb-6 select-none min-h-[3rem]"></div>
+
+                    <!-- input -->
+                    <input
+                        id="type-input"
+                        type="text"
+                        autocomplete="off"
+                        autocorrect="off"
+                        autocapitalize="off"
+                        spellcheck="false"
+                        placeholder="Start typing here…"
+                        class="w-full bg-gray-50 dark:bg-[#1a1a1a] border-2 border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 font-iosevka text-sm focus:outline-none focus:border-[#F7B733] transition-colors"
+                    />
+
+                    <!-- footer row -->
+                    <div class="mt-4 flex items-center justify-between font-iosevka text-xs text-gray-400">
+                        <span>
+                            <kbd class="bg-gray-100 dark:bg-[#222] border border-gray-300 dark:border-white/10 rounded px-1.5 py-0.5 text-gray-500 dark:text-gray-400">TAB</kbd>
+                            restart
+                        </span>
+                        <span id="type-timer" class="tabular-nums transition-all duration-200">0.000s</span>
+                    </div>
+
+                    <!-- result banner -->
+                    <div id="type-result" class="hidden mt-6 text-center py-4 rounded-xl bg-[#F7B733]/10 border border-[#F7B733]/30">
+                        <p id="type-result-text" class="font-caveat text-3xl font-bold text-[#F7B733] px-1"></p>
+                        <p class="text-xs text-gray-400 font-iosevka mt-1">Press TAB to try again</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- About Section -->
         <section id="about" class="text-right pt-28 pb-20 mx-[10%]" >
             
@@ -383,22 +431,6 @@
                         </span>
                     </div>
                     {% endfor %}
-                </div>
-            </div>
-        </section>
-
-
-<div class="relative mt-2 rounded border p-4 pt-8 pb-5 shadow-2xs sm:px-8"><div class="w-full font-medium text-[10px] sm:text-base"><span class="text-muted-foreground/50">T</span><span class="text-muted-foreground/50">h</span><span class="text-muted-foreground/50">e</span><span class="text-muted-foreground/50"> </span><span class="text-muted-foreground/50">q</span><span class="text-muted-foreground/50">u</span><span class="text-muted-foreground/50">i</span><span class="text-muted-foreground/50">c</span><span class="text-muted-foreground/50">k</span><span class="text-muted-foreground/50"> </span><span class="text-muted-foreground/50">b</span><span class="text-muted-foreground/50">r</span><span class="text-muted-foreground/50">o</span><span class="text-muted-foreground/50">w</span><span class="text-muted-foreground/50">n</span><span class="text-muted-foreground/50"> </span><span class="text-muted-foreground/50">f</span><span class="text-muted-foreground/50">o</span><span class="text-muted-foreground/50">x</span><span class="text-muted-foreground/50"> </span><span class="text-muted-foreground/50">j</span><span class="text-muted-foreground/50">u</span><span class="text-muted-foreground/50">m</span><span class="text-muted-foreground/50">p</span><span class="text-muted-foreground/50">s</span><span class="text-muted-foreground/50"> </span><span class="text-muted-foreground/50">o</span><span class="text-muted-foreground/50">v</span><span class="text-muted-foreground/50">e</span><span class="text-muted-foreground/50">r</span><span class="text-muted-foreground/50"> </span><span class="text-muted-foreground/50">t</span><span class="text-muted-foreground/50">h</span><span class="text-muted-foreground/50">e</span><span class="text-muted-foreground/50"> </span><span class="text-muted-foreground/50">l</span><span class="text-muted-foreground/50">a</span><span class="text-muted-foreground/50">z</span><span class="text-muted-foreground/50">y</span><span class="text-muted-foreground/50"> </span><span class="text-muted-foreground/50">d</span><span class="text-muted-foreground/50">o</span><span class="text-muted-foreground/50">g</span><span class="text-muted-foreground/50">.</span></div><input class="flex h-10 w-full rounded-md px-3 py-7 ring-offset-background file:border-0 file:bg-transparent file:font-medium file:text-foreground file:text-sm placeholder:text-muted-foreground focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-100 md:text-sm peer mt-[8px] border-[3px] border-black bg-background text-sm sm:text-base dark:border-primary/15 dark:bg-muted" placeholder="Start typing here..." aria-label="Start typing here" type="text" value=""><div class="mt-2 flex items-center justify-between opacity-0 transition-opacity duration-300 peer-focus:opacity-100"><div class="flex items-center gap-1 font-mono text-xs"><kbd class="rounded border bg-accent px-1.5">TAB</kbd>- restart</div><div class="relative z-10 font-mono text-xs">0.000<div data-state="true" class="-translate-y-1/2 data-[state=false]:-translate-x-5 absolute top-1/2 left-0 z-0 text-xs transition-all duration-300 data-[state=true]:translate-x-0 data-[state=false]:opacity-100 data-[state=true]:opacity-0">😏</div></div></div><img alt="Bongo Cat" class="-rotate-[0.3deg] absolute top-[23px] right-[24px] w-[5rem] sm:top-[23px] sm:right-[40px] sm:w-[100px] dark:hidden" src="/none.png"><img alt="Bongo Cat" class="-rotate-[0.3deg] absolute top-[23px] right-[24px] hidden w-[5rem] sm:top-[23px] sm:right-[40px] sm:w-[100px] dark:block" src="/none_dark.png"></div>
-
-
-        <!-- Achievements Section -->
-        <section id="achievements" class="pt-28 pb-20 px-6 hidden">
-            <div class="max-w-5xl mx-auto">
-                <div class="mb-16">
-                    <span class="text-xs font-medium font-poppins tracking-[0.3em] text-gray-500 uppercase mb-4 block">Recognition</span>
-                    <h2 class=" text-4xl lg:text-[4.37em] font-medium font-caveat tracking-tight">
-                        Achievements
-                    </h2>
                 </div>
             </div>
         </section>
@@ -504,18 +536,54 @@
         }
         updateIcons();
 
-        themeToggleBtn.addEventListener('click', function() {
-            // Toggle the dark class on html element
-            htmlElement.classList.toggle('dark');
+        themeToggleBtn.addEventListener('click', function () {
+            if (document.__themeAnimating) return; // prevent double-clicks
+            document.__themeAnimating = true;
 
-            // Save preference to localStorage
-            if (htmlElement.classList.contains('dark')) {
-                localStorage.setItem('color-theme', 'dark');
-            } else {
-                localStorage.setItem('color-theme', 'light');
-            }
-            updateIcons();
+            const rect = this.getBoundingClientRect();
+            const x = Math.round(rect.left + rect.width / 2);
+            const y = Math.round(rect.top  + rect.height / 2);
+
+            const willBeDark = !htmlElement.classList.contains('dark');
+            const newBg = willBeDark ? '#0a0a0a' : '#FFF8F0';
+
+            // Overlay on TOP — z-index high, starts as 0px circle
+            const overlay = document.createElement('div');
+            overlay.style.cssText = [
+                'position:fixed',
+                'inset:0',
+                'z-index:-100',
+                `background:${newBg}`,
+                `clip-path:circle(0px at ${x}px ${y}px)`,
+                'pointer-events:none',
+                'will-change:clip-path',
+            ].join(';');
+            document.body.appendChild(overlay);
+
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                // Expand circle to cover full screen
+                overlay.style.transition = 'clip-path 5.7s cubic-bezier(0.22, 1, 0.36, 1)';
+                overlay.style.clipPath = `circle(200vmax at ${x}px ${y}px)`;
+
+                // Switch theme halfway — page is fully hidden under overlay, zero flash
+                setTimeout(() => {
+                    htmlElement.classList.toggle('dark');
+                    localStorage.setItem('color-theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+                    updateIcons();
+                }, 200);
+
+                // Remove overlay — page already matches, removal is invisible
+                setTimeout(() => {
+                    overlay.remove();
+                    document.__themeAnimating = false;
+                }, 500);
+            }));
         });
+
+
+
+
+
 
         // 3. Dynamic Role & Creative Text Rotation
         const roles = [
@@ -624,6 +692,95 @@
                 });
             }
         });
+    </script>
+
+
+    <!-- type writter-->
+    <script>
+        (function () {
+            const SENTENCE = "The quick brown fox named LUV jumps over the lazy dog.";
+
+            const display  = document.getElementById('type-display');
+            const input    = document.getElementById('type-input');
+            const timerEl  = document.getElementById('type-timer');
+            const resultEl = document.getElementById('type-result');
+            const resultTxt = document.getElementById('type-result-text');
+
+            let startTime = null;
+            let rafId = null;
+            let done = false;
+
+            function render() {
+                display.innerHTML = SENTENCE.split('').map((char, i) => {
+                    const typed = input.value[i];
+                    let color = 'color: #94a3b8;'; // untyped — muted
+                    if (typed !== undefined) {
+                        color = typed === char
+                            ? 'color: inherit;'        // correct
+                            : 'color: #ef4444; text-decoration: underline wavy #ef4444;'; // wrong
+                    }
+                    const isCursor = i === input.value.length;
+                    const cursor = isCursor
+                        ? 'border-left: 2px solid #F7B733; margin-left: -1px; animation: cursorBlink 0.9s step-end infinite;'
+                        : '';
+                    const display_char = char === ' ' ? ' ' : char;
+                    return `<span style="${color}${cursor}">${display_char}</span>`;
+                }).join('');
+            }
+
+            function tick() {
+                if (!startTime || done) return;
+                timerEl.textContent = ((performance.now() - startTime) / 1000).toFixed(3) + 's';
+                rafId = requestAnimationFrame(tick);
+            }
+
+            function reset() {
+                input.value = '';
+                startTime = null;
+                done = false;
+                cancelAnimationFrame(rafId);
+                timerEl.textContent = '0.000s';
+                resultEl.classList.add('hidden');
+                input.disabled = false;
+                input.focus();
+                render();
+            }
+
+            input.addEventListener('input', () => {
+                if (done) return;
+
+                if (!startTime && input.value.length === 1) {
+                    startTime = performance.now();
+                    rafId = requestAnimationFrame(tick);
+                }
+
+                render();
+
+                if (input.value === SENTENCE) {
+                    cancelAnimationFrame(rafId);
+                    const elapsed = ((performance.now() - startTime) / 1000).toFixed(3);
+                    timerEl.textContent = elapsed + 's';
+                    done = true;
+                    input.disabled = true;
+                    resultTxt.textContent = `🎉 Done in ${elapsed}s!`;
+                    resultEl.classList.remove('hidden');
+                }
+            });
+
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Tab') {
+                    e.preventDefault();
+                    reset();
+                }
+            });
+
+            // Cursor blink keyframe — inject once
+            const style = document.createElement('style');
+            style.textContent = `@keyframes cursorBlink { 0%,100%{opacity:1} 50%{opacity:0} }`;
+            document.head.appendChild(style);
+
+            render();
+        })();
     </script>
 
 </body>
