@@ -23,7 +23,10 @@ video_list = [
     "vid/fire3.mp4",
     "vid/love-anger.mp4",
     "vid/love2.mp4",
+    "vid/fire4.mp4",
+    "vid/love3.mp4",
     "vid/fire2.mp4",
+    "vid/love4.mp4",
 
 ]
 
