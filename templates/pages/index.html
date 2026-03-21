@@ -536,9 +536,21 @@
         }
         updateIcons();
 
+
+        const typeSound = new Audio("{% static 'audio/click.mp3' %}");
+
+        typeSound.preload = "auto"; // load once
+
+        function playTypeSound() {
+            typeSound.currentTime = 0; // restart from beginning
+            typeSound.play();
+        }
+
+
         themeToggleBtn.addEventListener('click', function () {
             if (document.__themeAnimating) return; // prevent double-clicks
             document.__themeAnimating = true;
+            playTypeSound();
 
             const rect = this.getBoundingClientRect();
             const x = Math.round(rect.left + rect.width / 2);
