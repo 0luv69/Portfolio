@@ -9,9 +9,9 @@
     <!-- Favicon -->
     <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon" />
 
-    <title>{{ project.title }} — Rujal Baniya</title>
+    <title>Projects — Rujal Baniya</title>
     <meta name="author" content="Rujal Baniya" />
-    <meta name="description" content="{{ project.short_summary }}" />
+    <meta name="description" content="A collection of my projects and their descriptions." />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -258,10 +258,8 @@
 
     <!-- ░░ MAIN ░░ -->
     <main class="pt-[62px] relative z-10">
-
         <!-- ══ HERO ══ -->
-        <header class="max-w-6xl mx-auto px-5 pt-16 pb-12">
-
+        <header class="max-w-6xl mx-auto px-5 pt-16">
             <!-- Breadcrumb -->
             <nav class="reveal flex items-center gap-2 text-[11px] font-medium tracking-widest uppercase mb-8" style="color:#94a3b8" aria-label="Breadcrumb">
                 <a href="{% url 'home' %}" class="hover:text-[#e85d26] transition-colors">Home</a>
@@ -270,245 +268,27 @@
                 <span class="opacity-30">/</span>
                 <span class="opacity-50 truncate max-w-[180px]">{{ project.title }}</span>
             </nav>
-
-            {% if project.featured %}
-            <div class="reveal mb-5">
-                <span class="featured-badge">
-                    <i class="fas fa-star" style="font-size:8px"></i> Featured Project
-                </span>
-            </div>
-            {% endif %}
-
-            <!-- Title block -->
-            <div class="reveal">
-                <div class="accent-bar mb-5"></div>
-                <h1 class="font-display leading-[1.08] tracking-tight mb-6"
-                    style="font-size: clamp(2.4rem, 6vw, 4.5rem); color: #0f172a;" 
-                    class="dark:text-slate-100">
-                    {{ project.title }}
-                </h1>
-            </div>
-
-            <!-- Summary + meta -->
-            <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
-                <div class="md:col-span-2">
-                    <p class="text-lg leading-relaxed" style="color:#334155">{{ project.short_summary }}</p>
-                </div>
-                <div class="flex flex-col gap-5 md:border-l md:pl-8" style="border-color:rgba(15,23,42,0.1)">
-                    {% if project.role %}
-                    <div>
-                        <p class="meta-label">Role</p>
-                        <p class="meta-value">{{ project.role }}</p>
-                    </div>
-                    {% endif %}
-                    {% if project.duration %}
-                    <div>
-                        <p class="meta-label">Timeline</p>
-                        <p class="meta-value">{{ project.duration }}</p>
-                    </div>
-                    {% endif %}
-                    <div>
-                        <p class="meta-label">Year</p>
-                        <p class="meta-value">{{ project.created_at|date:"Y" }}</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA Links -->
-            {% if project.links.all %}
-            <div class="reveal flex flex-wrap gap-3 mt-10">
-                {% for link in project.links.all %}
-                    <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
-                       class="link-chip {% if forloop.first %}link-chip-primary{% else %}link-chip-ghost{% endif %}">
-                        {% if link.link_type == 'github' %}<i class="fab fa-github"></i>
-                        {% elif link.link_type == 'website' %}<i class="fas fa-external-link-alt" style="font-size:11px"></i>
-                        {% elif link.link_type == 'demo' %}<i class="fas fa-bolt" style="font-size:11px"></i>
-                        {% elif link.link_type == 'demo_video' %}<i class="fas fa-play" style="font-size:11px"></i>
-                        {% elif link.link_type == 'documentation' %}<i class="fas fa-book" style="font-size:11px"></i>
-                        {% else %}<i class="fas fa-link" style="font-size:11px"></i>{% endif %}
-                        {{ link.label|default:link.get_link_type_display }}
-                    </a>
-                {% endfor %}
-            </div>
-            {% endif %}
         </header>
 
-        <hr class="rule max-w-6xl mx-auto" />
-
-        <!-- ══ MEDIA GALLERY ══ -->
-        {% with media_all=project.media_items.all %}
-        {% if media_all %}
-        <section class="max-w-6xl mx-auto px-5 py-14" aria-label="Project gallery">
-            <div class="reveal flex items-center gap-3 mb-8">
-                <div class="accent-bar"></div>
-                <h2 class="font-display text-2xl" style="color:#0f172a">Gallery</h2>
+        <!-- Projects Section -->
+        <section id="projects" class="px-5 pb-20 reveal max-w-6xl mx-auto">
+            <div class="mb-18">
+                <span class="text-xs font-medium font-poppins tracking-[0.3em] text-gray-500 uppercase mb-4 block">What I Do</span>
+                <h2 class="font-display text-4xl lg:text-[4.37em] font-medium font-caveat tracking-tight mb-16">My Works</h2>
             </div>
 
-            <!-- Hero image (first item) -->
-            {% for item in media_all %}{% if forloop.first %}
-            <div class="reveal media-item mb-4 rounded-2xl overflow-hidden"
-                 style="max-height:560px"
-                 data-src="{% if item.image %} {% static item.image.url %} {% elif item.external_url %} {% static item.external_url %} {% endif %}">
-                {% if item.media_type == 'gif_video' and item.file %}
-                    <video src="{% static item.file.url %}" autoplay loop muted playsinline
-                           style="width:100%;max-height:560px;object-fit:cover;display:block"></video>
-                {% elif item.image %}
-                    <img src="{% static item.image.url %}" alt="{{ item.alt_text|default:project.title }}"
-                         style="width:100%;max-height:560px;object-fit:cover" loading="eager" />
-                {% elif item.external_url %}
-                    <img src="{% static item.external_url %}" alt="{{ item.alt_text|default:project.title }}"
-                         style="width:100%;max-height:560px;object-fit:cover" loading="eager" />
-                {% endif %}
-                {% if item.caption %}<div class="media-caption">{{ item.caption }}</div>{% endif %}
-            </div>
-            {% endif %}{% endfor %}
-
-            <!-- Remaining items -->
-            {% if media_all.count > 1 %}
-            {% with count=media_all.count|add:"-1" %}
-            <div class="reveal gallery-track {% if count == 1 %}gallery-single{% elif count == 2 %}gallery-double{% else %}gallery-triple{% endif %}">
-                {% for item in media_all %}{% if not forloop.first %}
-                <div class="media-item"
-                     data-src="{% if item.image %} {% static item.image.url %} {% elif item.external_url %} {% static item.external_url %} {% endif %}">
-                    {% if item.media_type == 'gif_video' and item.file %}
-                        <video src="{% static item.file.url %}" autoplay loop muted playsinline
-                               style="width:100%;aspect-ratio:16/10;object-fit:cover;display:block"></video>
-                    {% elif item.image %}
-                        <img src="{% static item.image.url %}" alt="{{ item.alt_text|default:project.title }}"
-                             style="width:100%;aspect-ratio:16/10;object-fit:cover" loading="lazy" />
-                    {% elif item.external_url %}
-                        <img src="{% static item.external_url %}" alt="{{ item.alt_text|default:project.title }}"
-                             style="width:100%;aspect-ratio:16/10;object-fit:cover" loading="lazy" />
-                    {% endif %}
-                    {% if item.caption %}<div class="media-caption">{{ item.caption }}</div>{% endif %}
-                </div>
-                {% endif %}{% endfor %}
-            </div>
-            {% endwith %}
-            {% endif %}
-        </section>
-        <hr class="rule max-w-6xl mx-auto" />
-        {% endif %}
-        {% endwith %}
-
-        <!-- ══ DESCRIPTION + SIDEBAR ══ -->
-        <section class="max-w-6xl mx-auto px-5 py-14 grid grid-cols-1 lg:grid-cols-[1fr_290px] gap-14">
-
-            <!-- Full description -->
-            <div>
-                <div class="reveal flex items-center gap-3 mb-8">
-                    <div class="accent-bar"></div>
-                    <h2 class="font-display text-2xl" style="color:#0f172a">About the Project</h2>
-                </div>
-                <div class="reveal project-prose">
-                    {{ project.full_description|linebreaks }}
-                </div>
+            <div class="space-y-10 projectCards">
+                {% for each_project in projects %}
+                    {% include "pages/project_card.html" with project=each_project loop_index=forloop.counter0 %}
+                {% endfor %} 
             </div>
 
-            <!-- Sidebar -->
-            <aside class="space-y-6 lg:pt-0 pt-4">
-
-                <!-- Tech Stack card -->
-                {% if project.technologies.all %}
-                <div class="reveal surface rounded-2xl p-6">
-                    <p class="meta-label mb-4">Built with</p>
-                    <div class="flex flex-wrap gap-2">
-                        {% for tech in project.technologies.all %}
-                        <span class="tech-badge" title="{{ tech.short_description }}">
-                            {% if tech.logo_type == 'image' and tech.logo_image %}
-                                <img src="{% static tech.logo_image.url %}" alt="{{ tech.name }}" />
-                            {% elif tech.logo_type == 'svg' and tech.svg %}
-                                {{ tech.svg|safe }}
-                            {% endif %}
-                            {{ tech.name }}
-                        </span>
-                        {% endfor %}
-                    </div>
-                </div>
-                {% endif %}
-
-                <!-- Project info card -->
-                <div class="reveal surface rounded-2xl p-6 space-y-4">
-                    <p class="meta-label">Project Details</p>
-                    {% if project.role %}
-                    <div>
-                        <p class="meta-label">Role</p>
-                        <p class="meta-value">{{ project.role }}</p>
-                    </div>
-                    {% endif %}
-                    {% if project.duration %}
-                    <div>
-                        <p class="meta-label">Duration</p>
-                        <p class="meta-value">{{ project.duration }}</p>
-                    </div>
-                    {% endif %}
-                    <div>
-                        <p class="meta-label">Published</p>
-                        <p class="meta-value">{{ project.created_at|date:"M j, Y" }}</p>
-                    </div>
-                </div>
-
-                <!-- Links card -->
-                {% if project.links.all %}
-                <div class="reveal surface rounded-2xl p-6">
-                    <p class="meta-label mb-4">Links</p>
-                    <div class="flex flex-col gap-1">
-                        {% for link in project.links.all %}
-                        <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
-                           class="flex items-center justify-between text-sm font-medium group transition-colors py-2"
-                           style="border-bottom:1px solid rgba(15,23,42,0.05); color:#334155">
-                            <span class="flex items-center gap-2.5">
-                                {% if link.link_type == 'github' %}<i class="fab fa-github" style="width:14px;text-align:center"></i>
-                                {% elif link.link_type == 'website' %}<i class="fas fa-globe" style="width:14px;text-align:center"></i>
-                                {% elif link.link_type == 'demo' %}<i class="fas fa-bolt" style="width:14px;text-align:center"></i>
-                                {% elif link.link_type == 'demo_video' %}<i class="fas fa-film" style="width:14px;text-align:center"></i>
-                                {% elif link.link_type == 'documentation' %}<i class="fas fa-book-open" style="width:14px;text-align:center"></i>
-                                {% else %}<i class="fas fa-link" style="width:14px;text-align:center"></i>{% endif %}
-                                {{ link.label|default:link.get_link_type_display }}
-                            </span>
-                            <i class="fas fa-arrow-right text-xs opacity-0 group-hover:opacity-100 transition-all"
-                               style="transform:translateX(0);transition:all 0.2s"></i>
-                        </a>
-                        {% endfor %}
-                    </div>
-                </div>
-                {% endif %}
-
-            </aside>
-        </section>
-
-        <hr class="rule max-w-6xl mx-auto" />
-
-        <!-- ══ TECH STACK GRID ══ -->
-        {% if project.technologies.all %}
-        <section class="max-w-6xl mx-auto px-5 py-14" aria-label="Technology stack">
-            <div class="reveal flex items-center gap-3 mb-8">
-                <div class="accent-bar"></div>
-                <h2 class="font-display text-2xl" style="color:#0f172a">Technology Stack</h2>
-            </div>
-            <div class="reveal grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-                {% for tech in project.technologies.all %}
-                <div class="tech-card">
-                    <div style="width:36px;height:36px;display:flex;align-items:center;justify-content:center">
-                        {% if tech.logo_type == 'image' and tech.logo_image %}
-                            <img src="{% static tech.logo_image.url %}" alt="{{ tech.name }}"
-                                 style="width:30px;height:30px;object-fit:contain" />
-                        {% elif tech.logo_type == 'svg' and tech.svg %}
-                            {{ tech.svg|safe }}
-                        {% else %}
-                            <span class="font-caveat font-bold text-2xl" style="color:#e85d26">{{ tech.name|first }}</span>
-                        {% endif %}
-                    </div>
-                    <span class="tech-name">{{ tech.name }}</span>
-                    {% if tech.short_description %}
-                    <span class="tech-desc">{{ tech.short_description }}</span>
-                    {% endif %}
-                </div>
-                {% endfor %}``
+            <div class="mt-16 text-center">
+                <a href="https://github.com/0luv69" target="_blank" class="inline-flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors border-b border-transparent hover:border-black dark:hover:border-white pb-0.5">
+                    Explore all projects on GitHub <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                </a>
             </div>
         </section>
-        <hr class="rule max-w-6xl mx-auto" />
-        {% endif %}
 
         <!-- ══ FOOTER NAV ══ -->
         <footer class="max-w-6xl mx-auto px-5 py-14">
@@ -538,7 +318,6 @@
         const toggle = document.getElementById('theme-toggle');
         const darkIcon  = toggle.querySelector('.dark-icon');
         const lightIcon = toggle.querySelector('.light-icon');
-
 
         const typeSound = new Audio("{% static 'audio/click.mp3' %}");
 
@@ -604,6 +383,19 @@
                 }, 500);
             }));
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // ── Scroll progress ──
         const bar = document.getElementById('progress-bar');

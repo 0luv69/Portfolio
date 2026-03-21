@@ -39,11 +39,20 @@ def home(request):
     return render(request, 'pages/index.html', {'projects':projects, 'technologies': technologies, 'video_list': video_list, 'selected_video_url':  selected_video_url , 'selected_video_index':  selected_video_index})
 
 
+
+def projects_list(request):
+    projects = Project.objects.all()
+    if not projects:
+        return HttpResponse("Project not found, Sorry!", status=404)
+    return render(request, 'pages/projects.html', {'projects': projects})
+
+
 def project_detail(request, slug):
     project = Project.objects.filter(slug=slug).first()
     if not project:
         return HttpResponse("Project not found, Sorry!", status=404)
     return render(request, 'pages/project_detail.html', {'project': project})
+
 
 
 def old_portfolio(request):
